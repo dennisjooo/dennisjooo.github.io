@@ -1,0 +1,22 @@
+@import url(nav-bar.css);
+@import url(home.css);
+@import url(about.css);
+@import url(work.css);
+
+body{
+  background-image: url(../img/background.jpg);
+  background-size: cover;
+  background-color: black;
+  color: white;
+}
+
+#header {
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 20px 0;
+}
+
+#header.header-scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 5px 0;
+}

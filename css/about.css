@@ -1,0 +1,55 @@
+.about{
+    padding: 20px ;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.about .about-content{
+    padding: 100px;
+    border-radius: 10px;
+}
+
+.about-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    padding-top: 2em;
+}
+
+.about h2{
+    font-size: 30px;
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.about h5{
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 30px;
+    font-weight: lighter;
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.about-img img{
+    max-height: 15em;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    border: #ffffff 3px solid;
+}
+
+.about-text {
+    padding: 0 2em;
+    text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+    .about-wrapper {
+      flex-direction: column;
+    }
+  
+    .about-text {
+      padding-top: 1em;
+    }
+}

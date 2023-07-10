@@ -1,0 +1,30 @@
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+.main-splash{
+    position: absolute;
+    top: 45%;
+    text-align: center;
+}
+
+.main-splash h1{
+    font-size: 4rem;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #000000;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.main-splash h5{
+    font-size: 1.5rem;
+    color: white;
+    font-weight: lighter;
+    text-shadow: 2px 2px 4px #000000;
+    white-space: nowrap;
+}
