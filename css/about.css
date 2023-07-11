@@ -41,6 +41,7 @@
 @media screen and (max-width: 768px) {
     .about-wrapper {
         flex-direction: column;
+        padding: 0 1em;
     }
   
     .about-text {
