@@ -1,8 +1,8 @@
 .about{
-    padding: 120px ;
+    padding: 200px 120px 200px 120px;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin: 15px auto;
+    background-color: #eee;
 }
 
 .about .about-content{
@@ -15,17 +15,11 @@
     justify-content: center;
 }
 
-.about h2{
-    font-size: 30px;
-    text-shadow: 2px 2px 2px #000000;
-}
-
 .about h5{
     font-size: 20px;
-    color: #ffffff;
+    color: #333;
     line-height: 30px;
     font-weight: lighter;
-    text-shadow: 2px 2px 2px #000000;
 }
 
 .about-img img{
@@ -33,20 +27,31 @@
     width: auto;
     display: block;
     margin: 0 auto;
-    border: #ffffff 3px solid;
+    /* border: #000000 3px solid; */
+    border-radius: 120px;
+    overflow-clip-margin: content-box;
+    overflow: clip;
 }
 
 .about-text {
     padding: 0 2em;
-    text-align: justify;
+    text-align: left;
 }
 
 @media screen and (max-width: 768px) {
     .about-wrapper {
-      flex-direction: column;
+        flex-direction: column;
     }
   
     .about-text {
-      padding-top: 1em;
+        padding-top: 1em;
+    }
+
+    .about-text h5{
+        font-size: 18px;
+    }
+
+    .about-img img{
+        max-height: 12em;
     }
 }

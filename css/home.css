@@ -4,6 +4,9 @@
     align-items: center;
     height: 100vh;
     position: relative;
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    animation: fadeIn 1s;
 }
 
 .main-splash{
@@ -14,17 +17,29 @@
 
 .main-splash h1{
     font-size: 4rem;
-    color: white;
+    color: #eee;
     font-weight: bold;
-    text-shadow: 2px 2px 4px #000000;
-    white-space: nowrap;
-    text-transform: uppercase;
+    text-shadow: 2px 2px 4px #333;
+    font-style: italic;
 }
 
 .main-splash h5{
     font-size: 1.5rem;
-    color: white;
+    color: #eee;
     font-weight: lighter;
-    text-shadow: 2px 2px 4px #000000;
-    white-space: nowrap;
+    text-shadow: 2px 2px 4px #333;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+@media screen and (max-width: 768px) {
+    .main-splash h1{
+        flex-direction: column;
+    }
+    .main-splash h5{
+        flex-direction: column;
+    }
 }
