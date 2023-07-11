@@ -50,7 +50,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1075px) {
     .skills {
         padding: 100px 10px;
     }
