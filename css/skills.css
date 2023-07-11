@@ -39,7 +39,7 @@
 }
 
 .skills-item img {
-    height: 100px;
+    height: 13vh;
     width: auto;
     margin: 0 auto;
     padding-bottom: 10px;
@@ -52,7 +52,7 @@
     }
 
     .skills-wrapper {
-        padding: 0 20px;
+        padding: 0 10px;
     }
 
     .skills-item {
@@ -60,6 +60,6 @@
     }
 
     .skills-item img {
-        height: 60px;
+        height: 10vh;
     }
 }
