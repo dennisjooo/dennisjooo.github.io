@@ -1,7 +1,8 @@
 .skills {
     background: #fff;
-    padding: 200px 120px 200px 120px;
+    padding: 200px 120px;
     margin: 15px auto;
+    min-height: 75vh;
 }
 
 .skills-container {
@@ -21,8 +22,11 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 10px 0;
 }
+
+.skills-row > * {
+    flex: 1 1 5em;
+  }
 
 .skills-item {
     display: flex;
@@ -42,11 +46,11 @@
     height: 11vh;
     width: auto;
     margin: 0 auto;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
 }
 
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 768px) {
     .skills {
         padding: 100px 10px;
     }
