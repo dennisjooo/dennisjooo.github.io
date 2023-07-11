@@ -38,8 +38,10 @@
 @media screen and (max-width: 768px) {
     .main-splash h1{
         flex-direction: column;
+        font-size: 4rem;
     }
     .main-splash h5{
+        font-size: 2rem;
         flex-direction: column;
     }
 }

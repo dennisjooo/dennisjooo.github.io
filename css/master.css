@@ -87,7 +87,7 @@ body{
 
 @media screen and (max-width: 768px) {
   .section-title h2{
-    font-size: 30px;
+    font-size: 40px;
   }
   .section-title{
     margin-bottom: 20px;
@@ -95,10 +95,14 @@ body{
   }
 
   .section-title-white h2{
-    font-size: 30px;
+    font-size: 40px;
   }
   .section-title-white{
     margin-bottom: 20px;
     flex-direction: column;
+  }
+
+  .header-scrolled{
+    display: none;
   }
 }

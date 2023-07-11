@@ -48,7 +48,7 @@
 
 @media screen and (max-width: 1050px) {
     .skills {
-        padding: 100px 0;
+        padding: 100px 10px;
     }
 
     .skills-wrapper {
@@ -60,6 +60,6 @@
     }
 
     .skills-item img {
-        height: 75px;
+        height: 60px;
     }
 }
