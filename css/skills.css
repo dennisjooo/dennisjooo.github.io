@@ -29,7 +29,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 3em;
-    margin: 0 5em;
+    margin: 0 4em;
 }
 
 .skills-item h5 {
@@ -39,7 +39,7 @@
 }
 
 .skills-item img {
-    height: 13vh;
+    height: 11vh;
     width: auto;
     margin: 0 auto;
     padding-bottom: 10px;
