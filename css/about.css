@@ -1,5 +1,5 @@
 .about{
-    padding: 200px 120px 200px 120px;
+    padding: 200px 120px;
     text-align: center;
     margin: 15px auto;
     background-color: #eee;
@@ -34,7 +34,7 @@
 }
 
 .about-text {
-    padding: 0 2em;
+    padding: 100px 2em;
     text-align: left;
 }
 
