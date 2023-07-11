@@ -75,16 +75,6 @@ body{
           transition-delay: 0.3s;
 }
 
-.appear.inview:nth-child(4) {
-  -webkit-transition-delay: 0.4s;
-          transition-delay: 0.4s;
-}
-
-.appear.inview:nth-child(5) {
-  -webkit-transition-delay: 0.5s;
-          transition-delay: 0.5s;
-}
-
 @media screen and (max-width: 768px) {
   .section-title h2{
     font-size: 40px;
