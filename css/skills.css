@@ -49,7 +49,7 @@
 }
 
 
-@media screen and (max-width: 1075px) {
+@media screen and (max-width: 1050px) {
     .skills {
         padding: 100px 10px;
     }
@@ -64,5 +64,17 @@
 
     .skills-item img {
         height: 8vh;
+    }
+
+    .skills-row {
+        margin: 0 1em;
+    }
+
+    .skills-row > * {
+        flex: 1 1 2em;
+    }
+
+    .skills-item h5{
+        font-size: 12px;
     }
 }
