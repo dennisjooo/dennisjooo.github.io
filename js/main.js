@@ -1,6 +1,8 @@
 (function() {
     "use strict";
   
+
+    // NAVBAR
     /**
      * Easy selector helper function
      */
@@ -13,19 +15,19 @@
       }
     }
     
-      /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
+    /**
+    * Easy event listener function
+    */
+    const on = (type, el, listener, all = false) => {
+        let selectEl = select(el, all)
+        if (selectEl) {
+        if (all) {
+            selectEl.forEach(e => e.addEventListener(type, listener))
+        } else {
+            selectEl.addEventListener(type, listener)
+        }
+        }
     }
-  }
 
     /**
      * Easy on scroll event listener 
@@ -70,6 +72,45 @@
       onscroll(document, headerScrolled)
     }
 
+    /**
+     * Mobile nav toggle
+     */
+    on('click', '.mobile-nav-toggle', function(e) {
+        select('#navbar').classList.toggle('navbar-mobile')
+        this.classList.toggle('bi-list')
+        this.classList.toggle('bi-x')
+    })
+
+    /**
+     * Mobile nav dropdowns activate
+     */
+    on('click', '.navbar .dropdown > a', function(e) {
+        if (select('#navbar').classList.contains('navbar-mobile')) {
+        e.preventDefault()
+        this.nextElementSibling.classList.toggle('dropdown-active')
+        }
+    }, true)
+
+    /**
+     * Scroll with offset on links with a class name .scrollto
+     */
+    on('click', '.scrollto', function(e) {
+        if (select(this.hash)) {
+        let navbar = select('#navbar')
+        if (navbar.classList.contains('navbar-mobile')) {
+            
+            navbar.classList.remove('navbar-mobile')
+            let navbarToggle = select('.mobile-nav-toggle')
+            navbarToggle.classList.toggle('bi-list')
+            navbarToggle.classList.toggle('bi-x')
+            
+        }
+        scrollto(this.hash)
+        e.preventDefault()
+        }
+    }, true)
+
+    // FADE IN ANIMATION
     const items = document.querySelectorAll('.appear');
 
     const active = function(entries){
@@ -84,6 +125,6 @@
     const io = new IntersectionObserver(active);
     for(let i=0; i < items.length; i++){
         io.observe(items[i]);
- }
+    }
   
 })()

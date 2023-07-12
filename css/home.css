@@ -40,14 +40,15 @@
     }
     .main-splash h1{
         flex-direction: column;
-        font-size: 4rem;
+        font-size: 8vh;
+        padding: 0 10px;
     }
     .main-splash h5{
-        font-size: 2rem;
+        font-size: 3vh;
         flex-direction: column;
     }
 
     .main-splash {
-        top: 30%;
+        top: 40%;
     }
 }
