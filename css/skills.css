@@ -33,7 +33,6 @@
     flex-direction: column;
     align-items: center;
     padding-top: 3em;
-    margin: 0 4em;
 }
 
 .skills-item h5 {
@@ -50,7 +49,7 @@
 }
 
 
-@media screen and (max-width: 1075px) {
+@media screen and (max-width: 1024px) {
     .skills {
         padding: 100px 10px;
     }
