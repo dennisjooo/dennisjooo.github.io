@@ -29,10 +29,30 @@
     text-shadow: 2px 2px 4px #333;
 }
 
+.scroll {
+    position: absolute;
+    bottom: 20px;
+    z-index: 2;
+    display: inline-block;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    transition: opacity .3s;
+}
+
+.scroll i {
+    font-size: 30px;
+    line-height: 30px;
+    color: #eee;
+}
+
+.scroll:hover {
+    opacity: .5;
+}
+
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
-  }
+}
 
 @media screen and (max-width: 768px) {
     .home {
