@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>Projects - Dennis Jonathan</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    
+    <!-- CSS -->
+    <link href="css/master.css" rel="stylesheet">
+    
+    <!-- Icon -->
+    <link rel="icon" href="img/my_logo.png">
+
+</head>
+
+<body>
+    <!--Header-->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <!--Navbar-->
+            <nav id="navbar" class="navbar">
+                <ul>
+                <li><a class="nav-link scrollto" href="index.html#home">Home</a></li>
+                <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
+                <li><a class="nav-link scrollto" href="index.html#work">Work Experience</a></li>
+                <li><a class="nav-link scrollto" href="index.html#skills">Skills</a></li>
+                <li><a class="nav-link scrollto" href="index.html#contact">Contacts</a></li>
+                <li><a class="nav-link scrollto" href="certifications.html#certifications">Certifications</a></li>
+                <li><a class="nav-link scrollto active" href="projects.html#projects">Projects</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Projects -->
+    <div id="projects" class="projects appear">
+        <div class="projects-container">
+            <!-- Title -->
+            <div class="section-title-white">
+                <h2>Some of My Projects.</h2>
+            </div>
+
+            <!-- Cards wrapper-->
+            <div class="projects-wrapper">
+                <!-- HP-textgen -->
+                <div id="hp-textgen" class="card projects-card">
+                    <img class="card-img-top" src="img/project/hp_text_gen.svg" alt="Sample of the Generated Text">
+                    <div class="card-body projects-content-text">
+                        <h5 class="card-title">Wizardry Books Text-Generation (2023)</h5>
+                        <p class="card-text">
+                            A boredom project of mine, heavily inspired by <a href="https://www.youtube.com/watch?v=kCc8FmEb1nY&t=2156s">Karpathy's video</a>.This is a character-level Transformer model trained on the Harry Potter books. The aim of the project for me personally is to try to remember how to use PyTorch and Lightning, and to try to understand the Transformer model better.
+                        </p>
+
+                        <p class="card-text">
+                            The dataset is taken from <a href="https://github.com/formcept/whiteboard/tree/master/nbviewer/notebooks/data/harrypotter">Formcept's Github Repo</a>. Obviously, the dataset is not big enough to train a good model, but it is good enough for me to try out some things.
+                        </p>
+                            
+                        <p class="card-text">
+                            Trained it on Kaggle's two T4 GPUs for 5 epochs and it took about roughly 10 hours. I used a batch-size of 512 and AdamW optimizer with a learning rate of 0.001. Other notable hyperparameters choice are the maximum context length (block size) of 32, embedding size of 512, 8 layers, 16 heads, and a dropout rate of 0.1.
+                        </p>
+
+                        <p class="card-text"><small class="text-muted"><a href="https://github.com/dennisjooo/Character-Generation-on-Wizardry-Books">Github Repo</a></small></p>
+                    </div>
+                </div>
+
+                <!-- DCGAN-MNIST -->
+                <div id="dcgan-mnist" class="card projects-card">
+                    <img class="card-img-top" src="img/project/dcgan_mnist.png">
+                    <div class="card-body projects-content-text">
+                        <h5 class="card-title">Deep Convolutional GAN on MNIST (2023)</h5>
+                        <p class="card-text">
+                            An application of the DCGAN model on the MNIST dataset. My application was based on Aurelien Geron's book (Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow 3rd edition), except mine was done in PyTorch.
+                        </p>
+
+                        <p class="card-text">
+                            The model was trained using Kaggle's P100 GPU for about 300 epochs. The structure of the model resembles the one in Aurelien Geron's book, Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow. The generator and discriminator are both CNNs. The generator takes in a 100-dimensional noise vector and outputs a 28x28 image. The discriminator takes in a 28x28 image and outputs a single value, which is the probability that the image is real.
+                        </p>
+
+                        <p class="card-text"><small class="text-muted"><a href="https://github.com/dennisjooo/DCGAN-on-MNIST">Github Repo</a></small></p>
+                    </div>
+                </div>
+
+                <!-- AE Credit Fraud -->
+                <div id="ae-creditfraud" class="card projects-card">
+                    <img class="card-img-top" src="img/project/ae_creditfraud.png">
+                    <div class="card-body projects-content-text">
+                        <h5 class="card-title">Comparative Analysis of Fraud Detection Models (2023)</h5>
+                        <p class="card-text">
+                            Payment card fraud is an ongoing major issue in the financial industry, causing substantial financial losses projected to reach 40 billion dollars in 2027. As the industry grows, detecting fraud patterns becomes inherently difficult, almost impossible to detect manually.
+
+                            Nowadays, the design of payment card fraud detection techniques rely on the use of unsupervised machine learning studying an imbalanced dataset uncovering patterns and outliers.
+                                
+                            We compared three unsupervised-learning models, namely K-Means Clustering, Gaussian Mixture, and AutoEncoder, in predicting transaction fraud. The idea of this project is to train each model with "clean" dataset which we have an abundance of and tune it to detect "novelties" which in this context are the fraudulent transactions.
+                        </p>
+                            
+                        <p class="card-text">
+                            Taken from <a href="https://www.kaggle.com/datasets/ealaxi/paysim1">Lopez-Rojas's Paysim dataset</a>. It contains 6 million transactions, with 11 features. The dataset is highly imbalanced, with only 0.13% of the transactions being fraudulent.
+                        </p>
+
+                        <p class="card-text">
+                            The AutoEncoder method outperformed the other two methods with an AUC of 0.93. The reconstruction threshold was tuned to maximize the F1 score, which was 0.86.
+
+                            The reason why the model was tuned the threshold to maximize the F1 score was because although it is important to minimise the number of false negatives, flagging a lot of transactions as fraudulent would be a hassle for the customers.
+                        </p>
+
+                        <p class="card-text"><small class="text-muted"><a href="https://github.com/dennisjooo/Credit-Fraud-Detector">Github Repo</a></small></p>
+                    </div>
+                </div>
+
+                <!-- Stock Modelling with Sentiment -->
+                <div id="bachelor-fp" class="card projects-card">
+                    <img class="card-img-top" src="img/project/stock_fp.png">
+                    <div class="card-body projects-content-text">
+                        <h5 class="card-title">Using Twitter Sentiments, Metadata, and Daily Increase of Covid-19 to Improve Stock Modelling(2023)</h5>
+                        <p class="card-text">
+                            Stock investment experienced an increase in investors during the Covid-19 pandemic era, thus creating a situation where many investors held discussions and shared news about stocks on social media, one of which was Twitter. The purpose of this study is to compare performance and find the best model from the SARIMAX (Seasonal Auto-Regressive Integrated Moving Average with eXogenous factors) and LSTM (Long Short-Term Memory) models in predicting changes in stock prices and find out significant exogenous variables in making predictions. This research was made to answer what models can predict changes in stock prices and what exogenous variables can be used for the model.
+                        </p>
+                        
+                        <p class="card-text">
+                            The data was taken from April 11th, 2022 up to January 31st, 2023. The historical stock prices was taken from <a href="https://finance.yahoo.com/quote/GOTO.JK/">Yahoo Finance!</a>. Sentiments for this research was gathered from <a href="https://twitter.com/search?q=%24goto&src=typed_query">Twitter/X </a>. Last, the daily increase of Covid-19 cases was taken from the Covid-19 API (which is now deprecated).
+                        </p>
+
+                        <p class="card-text">
+                            The LSTM with exogenous variables, which were the tweet sentiment and metadata along with new Covid-19 cases in Indonesia outperformed all other candidate models. That being said, we have found that not all exogenous variables were important for the model itself, the number of likes and quote tweets being the two worst contributors.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- All NBA Predictor -->
+                <div id="all-nba-pred" class="card projects-card">
+                    <img class="card-img-top" src="img/project/all_nba_pred.svg">
+                    <div class="card-body projects-content-text">
+                        <h5 class="card-title">All-NBA-Predictor (2022)</h5>
+                        <p class="card-text">
+                            This project attempted to predict the All-NBA selections using Logistic Regression, Random Forests, and a Multi-Layer Perceptron.
+                            The aim for the project was to predict the probability for each player in a given season to be selected in either one of the All-NBA teams.
+                            The project was done for my sixth semester's Research and Methodology course final project.
+                            Paper for the project is available in this repo, but it is written in Bahasa Indonesia.
+                        </p>
+                        <p class="card-text">
+                            The data for the project was taken from <a href="basketball-reference.com">Basketball-reference.com</a>. 
+                            The inputs for the models were Advanced Statistics for each players from the 1988-1989 season up to and including the 2020-2021 season.
+                            In order to validate the performance of the best model, the Advanced Statistics for the 2021-2022 season was used to predict the season's All-NBA selection.
+                        </p>
+
+                        <p class="card-text"><small class="text-muted">
+                            <a href="https://github.com/dennisjooo/Credit-Fraud-Detector">Github Repo</a>&nbsp;&nbsp;&nbsp;
+                            <a href="https://docs.google.com/presentation/d/190z_733eXOQEWJ3sTLA6T_b8lYXbDoYpxGR7XV6soXk/edit?usp=sharing">Presentation Deck</a>&nbsp;&nbsp;&nbsp;
+                            <a href="https://github.com/dennisjooo/All-NBA-Predictor/blob/master/Result.pdf">Paper</a></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Java Scripts-->
+    <script src="js/main.js"></script>
+
+</html>

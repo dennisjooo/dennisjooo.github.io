@@ -1,0 +1,30 @@
+.projects {
+    background: #333;
+    padding: 200px 120px;
+    margin: 15px auto;
+    min-height: 75vh;
+}
+
+.projects-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.projects-wrapper {
+    display: grid;
+    padding: 0px 100px;
+    align-items: center;
+}
+
+.projects-card{
+    margin: 5vh auto;
+}
+
+.projects-content-text{
+    margin: 30px;
+}
+
+.projects-card img {
+    padding: 5vh 5vh 1vh 5vh;
+}
