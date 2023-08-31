@@ -28,3 +28,17 @@
 .projects-card img {
     padding: 5vh 5vh 1vh 5vh;
 }
+
+@media screen and (max-width: 768px) {
+    .projects {
+        padding: 100px 10px;
+    }
+
+    .projects-wrapper {
+        padding: 0 10px;
+    }
+
+    .projects-card img {
+        padding: 2.5vh 2.5vh 0vh 2.5vh;
+    }
+}
