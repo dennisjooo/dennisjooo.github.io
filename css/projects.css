@@ -25,6 +25,11 @@
     margin: 30px;
 }
 
+.projects-content-text p {
+    font-size: 15px;
+    font-weight: lighter;
+}
+
 .projects-card img {
     padding: 5vh 5vh 1vh 5vh;
 }
