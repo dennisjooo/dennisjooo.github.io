@@ -30,6 +30,14 @@
     font-weight: lighter;
 }
 
+.projects-content-text h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px 0;
+    font-style: italic;
+    text-align: center;
+}
+
 .projects-card img {
     padding: 5vh 5vh 1vh 5vh;
 }

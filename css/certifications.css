@@ -13,6 +13,7 @@
 
 .certifications-wrapper {
     display: grid;
+    margin: 10vh auto;
     padding: 0px 100px;
     align-items: center;
 }
