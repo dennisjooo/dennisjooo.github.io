@@ -52,6 +52,35 @@
 
             <!-- Cards wrapper-->
             <div class="projects-wrapper">
+                <!-- Birb-classifier -->
+                <div id="Birb-classifier" class="card projects-card">
+                    <img class="card-img-top" src="img/project/birb_classifier.png" alt="Sample of the model result">
+                    <div class="card-body projects-content-text">
+                        <h5 class="card-title">Bird Classifier on EfficientNet-B2 (2023)</h5>
+                        <p class="card-text">
+                            This was a project I did for Ruangguru's Engineering Academy Mastering AI Bootcamp, in particular their
+                            task was to train any image classifier on any dataset. Since I find birds to be quite fascinating, I decided to train my classifier on pictures of birds to classify them, and it turned out to be quite a fun project.
+                        </p>
+
+                        <p class="card-text">
+                            The dataset is taken from <a href="https://www.kaggle.com/gpiosenka/100-bird-species">Gpiosenka's Kaggle Dataset</a>. As the dataset is still actively being updated, I used the dataset from September 24th, 2023. It has 525 different species with 84,635 training images, 2,625 each for validation and test images
+                        </p>
+                            
+                        <p class="card-text">
+                            Trained it on Kaggle's P100 GPU with the help of Lightning. The model used was a pre-trained <a href="https://huggingface.co/google/efficientnet-b2">EfficientNet-B2 from HuggingFace</a> which was originall trained for ImageNet-1K. It ended up performing super well, reaching 99% accuracy only after 26 epochs. Full training logs and hyperparameters are available in the repo and the model itself is available for download on HuggingFace's model hub.
+                        </p>
+
+                        <p class="card-text">
+                            What was actually memorable was that I got my first ever <a href="https://huggingface.co/dennisjooo/Birds-Classifier-EfficientNetB2/discussions/1">discussion on HuggingFace</a>. It was a question about converting the model to ONNX, which was a fun and a bit frustrating experience for me.
+                        </p>
+
+                        <p class="card-text">
+                            <small class="text-muted"><a href="https://github.com/dennisjooo/Birds-Classifier-EfficientNetB2">Github Repo</a></small>
+                            <small class="text-muted"><a href="https://huggingface.co/dennisjooo/Birds-Classifier-EfficientNetB2">HuggingFace Repo</a></small>
+                        </p>
+                    </div>
+                </div>
+
                 <!-- HP-textgen -->
                 <div id="hp-textgen" class="card projects-card">
                     <img class="card-img-top" src="img/project/hp_text_gen.svg" alt="Sample of the Generated Text">
