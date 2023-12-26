@@ -1,52 +1,52 @@
 .certifications {
     background: #232323;
-    padding: 200px 120px;
-    margin: 0px auto 15px auto;
+    padding: 27.5vh 16.5vh;
+    margin: 0 auto 2.06vh auto;
     min-height: 75vh;
 }
 
 .certifications-container {
     width: 100%;
-    max-width: 960px;
+    max-width: 131.87vh;
     margin: 0 auto;
 }
 
 .certifications-wrapper {
     display: grid;
     margin: 10vh auto;
-    padding: 0px 100px;
+    padding: 0px 14vh;
     align-items: center;
 }
 
 .certifications-wrapper h3 {
-    font-size: 18px;
+    font-size: 2.47vh;
     font-weight: bold;
-    margin: 15px 0;
+    margin: 2.06vh 0;
     font-style: italic;
     text-align: center;
 }
 
 .certifications-wrapper p {
-    font-size: 15px;
+    font-size: 2.06vh;
     font-weight: lighter;
 }
 
 .certifications-wrapper li {
-    font-size: 15px;
+    font-size: 2.06vh;
     font-weight: lighter;
 }
 
 .certifications-content {
-    margin: 30px;
+    margin: 4.12vh;
 }
 
 
 @media screen and (max-width: 768px) {
     .certifications {
-        padding: 100px 10px;
+        padding: 14vh 1.4vh;
     }
 
     .certifications-wrapper {
-        padding: 0 10px;
+        padding: 0 1.4vh;
     }
 }

@@ -1,12 +1,12 @@
 .about{
-    padding: 200px 120px;
+    padding: 27.5vh 16.5vh;
     text-align: center;
-    margin: 15px auto;
+    margin: 2.06vh auto;
     background-color: #eee;
 }
 
 .about .container{
-    border-radius: 10px;
+    border-radius: 1.4vh;
 }
 
 .about-wrapper {
@@ -16,32 +16,31 @@
 }
 
 .about h5{
-    font-size: 20px;
+    font-size: 2.75vh;
     color: #333;
-    line-height: 30px;
+    line-height: 4.12vh;
     font-weight: lighter;
 }
 
 .about-img img{
-    max-height: 15em;
+    max-height: 24vh;
     width: auto;
     display: block;
     margin: 0 auto;
-    /* border: #000000 3px solid; */
-    border-radius: 120px;
+    border-radius: 16.5vh;
     overflow-clip-margin: content-box;
     overflow: clip;
 }
 
 .about-text {
-    padding: 100px 2em;
+    padding: 14vh 3.2vh;
     text-align: left;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
 
     .about {
-        padding: 100px 20px 100px 20px;
+        padding: 14vh 2.75vh 14vh 2.75vh;
     }
     
     .container {
@@ -54,15 +53,15 @@
     }
   
     .about-text {
-        padding: 1em 0 0 0;
+        padding: 1.6vh 0 0 0;
     }
 
     .about-text h5{
-        font-size: 18px;
+        font-size: 2.5vh;
     }
 
     .about-img img{
-        max-height: 12em;
-        margin-top: 1em;
+        max-height: 19.2vh;
+        margin-top: 1.6vh;
     }
 }

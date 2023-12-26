@@ -1,14 +1,14 @@
 .work {
-    padding: 200px 120px 200px 120px;
+    padding: 27.5vh 16.5vh;
     background-color: #333;
-    margin: 15px auto;
+    margin: 2.06vh auto;
 }
 
 /* Credits to https://www.w3schools.com/howto/howto_css_timeline.asp */
 /* The actual timeline (the vertical ruler) */
 .timeline {
     position: relative;
-    max-width: 1200px;
+    max-width: 164.84vh;
     margin: 0 auto;
 }
 
@@ -16,17 +16,17 @@
 .timeline::after {
     content: '';
     position: absolute;
-    width: 6px;
+    width: .82vh;
     background-color: #ffffff;
     top: 0;
     bottom: 0;
     left: 50%;
-    margin-left: -3px;
+    margin-left: -.41vh;
 }
 
 /* tl-container around content */
 .tl-container {
-    padding: 10px 40px;
+    padding: 1.4vh 5.49vh;
     position: relative;
     background-color: inherit;
     width: 50%;
@@ -36,12 +36,12 @@
 .tl-container::after {
     content: '';
     position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -12px;
+    width: 3.43vh;
+    height: 3.43vh;
+    right: -1.65vh;
     background-color: #ffffff;
-    border: 4px solid #333;
-    top: 15px;
+    border: 0.55vh solid #333;
+    top: 2.06vh;
     border-radius: 50%;
     z-index: 1;
 }
@@ -63,115 +63,122 @@
     content: " ";
     height: 0;
     position: absolute;
-    top: 22px;
+    top: 3.02vh;
     width: 0;
     z-index: 1;
-    right: 30px;
+    right: 4.12vh;
     border: medium solid white;
-    border-width: 10px 0 10px 10px;
+    border-width: 1.4vh 0 1.4vh 1.4vh;
     border-color: transparent transparent transparent white;
 }
 
 /* Add arrows to the right tl-container (pointing left) */
 .right::before {
-content: " ";
-height: 0;
-position: absolute;
-top: 22px;
-width: 0;
-z-index: 1;
-left: 31px;
-border: medium solid white;
-border-width: 10px 10px 10px 0;
-border-color: transparent white transparent transparent;
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 3.02vh;
+    width: 0;
+    z-index: 1;
+    left: 4.26vh;
+    border: medium solid white;
+    border-width: 1.4vh 1.4vh 1.4vh 0;
+    border-color: transparent white transparent transparent;
 }
 
 /* Fix the circle for tl-containers on the right side */
 .right::after {
-left: -13px;
+    left: -1.79vh;
 }
 
 /* The actual content */
 .content {
-padding: 20px 30px;
-background-color: rgb(255, 255, 255);
-position: relative;
-border-radius: 6px;
-color: #333;
+    padding: 2.75vh 4.12vh;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    border-radius: .82vh;
+    color: #333;
 }
 
 .content-wrapper{
-padding: 20px 0px;
-display: flex;
-align-items: center;
-justify-content: center;
+    padding: 2.75vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .content-text{
-padding: 0 2em ;
-text-align: left;
-/* margin-left: .5em; */
+    padding: 0 3.2vh ;
+    text-align: left;
 }
 
 .content h2{
-font-size: 25px;
-text-decoration: underline;
-font-style: italic;
+    font-size: 2.25vh;
+    font-style: italic;
+    font-weight: 500;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 0.82vh 0;
 }
 
 .content h5{
-font-size: 20px;
-color: #333;
-line-height: 30px;
-font-weight: lighter;
+    font-size: 2.25vh;
+    color: #333;
+    line-height: 4.12vh;
+    font-weight: lighter;
 }
 
-.content span{
-font-weight: bold;
+.content span {
+    font-weight: bold;
+}
+
+.content ul{
+    font-size: 2.25vh;
 }
 
 .content img{
-max-height: 5em;
-width: auto;
-margin: 0 auto;
-margin-right: 1em;
-position: relative;
-padding: 0px 15px;
+    max-height: 8vh;
+    width: auto;
+    margin: 0 auto;
+    margin-right: 1.6vh;
+    position: relative;
+    padding: 0 2.06vh;
 }
 
 .content ul {
-font-weight: lighter;
+    font-weight: lighter;
 }
 
 /* Media queries - Responsive timeline on screens less than 1075px wide */
 @media screen and (max-width: 1075px) {
     .work{
-        padding: 150px 20px;
+        padding: 20.6vh 2.75vh;
     }
 
     /* Place the timelime to the left */
     .timeline::after {
-        left: 31px;
+        left: 4.26vh;
     }
 
     /* Full-width tl-containers */
     .tl-container {
         width: 100%;
-        padding-left: 68px;
-        padding-right: 15px;
+        padding-left: 9.34vh;
+        padding-right: 2.06vh;
     }
 
     /* Make sure that all arrows are pointing leftwards */
     .tl-container::before {
-        left: 60px;
+        left: 8.24vh;
         border: medium solid white;
-        border-width: 10px 10px 10px 0;
+        border-width: 1.4vh 1.4vh 1.4vh 0;
         border-color: transparent white transparent transparent;
     }
 
     /* Make sure all circles are at the same spot */
     .left::after, .right::after {
-        left: 18px;
+        left: 2.5vh;
     }
 
     /* Make all right tl-containers behave like the left ones */
@@ -189,37 +196,50 @@ font-weight: lighter;
     }
 
     .content h2{
-        font-size: 20px;
+        font-size: 2.75vh;
         text-align: center;
     }
 
     .content h5{
-        font-size: 15px;
+        font-size: 2.06vh;
         color: #333;
-        line-height: 20px;
+        line-height: 2.75vh;
         font-weight: lighter;
     }
 
     .content ul{
-        font-size: 15px;
+        font-size: 2.06vh;
         color: #333;
-        line-height: 20px;
+        line-height: 2.75vh;
         font-weight: lighter;
         text-align: left;
+        margin-left: -1.6vh;
     }
 
     .content img{
-        max-height: 3em;
+        max-height: 4.8vh;
         width: auto;
         margin: 0 auto;
         position: relative;
     }
 
     .content {
-        padding : 20px 10px;
+        padding : 2.75vh 1.4vh;
     }
 
-    .content ul {
-        margin-left: -1em;
+}
+
+/* Remove the timeline and arrow pointers */
+@media screen and (max-width: 380px) {
+    .timeline::after, .tl-container::before, .tl-container::after {
+        display: none;
+    }
+
+    .tl-container {
+        padding: 2.75vh 1.4vh;
+    }
+    
+    .content h2{
+        font-size: 2.06vh;
     }
 }
