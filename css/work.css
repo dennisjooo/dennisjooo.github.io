@@ -230,7 +230,7 @@
 }
 
 /* Remove the timeline and arrow pointers */
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 500px) {
     .timeline::after, .tl-container::before, .tl-container::after {
         display: none;
     }

@@ -7,7 +7,7 @@
 @import url(footer.css);
 @import url(certifications.css);
 @import url(projects.css);
-@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Space+Grotesk:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 
 html{
 	scroll-behavior: smooth;
@@ -15,11 +15,12 @@ html{
 
 body{
 	background-color:  #adadad;
-	font-family: "Mulish", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
+	font-family: "Nunito Sans", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-variation-settings:
+		"wdth" 100,
+		"YTLC" 500
 }
 
 #header {
