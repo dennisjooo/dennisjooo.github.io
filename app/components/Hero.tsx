@@ -3,7 +3,7 @@
 import React, { useCallback } from 'react';
 import { useTypingEffect } from '../hooks/useTypingEffect';
 import { useScrollEffect } from '../hooks/useScrollEffect';
-import { motion } from 'framer-motion';
+import { motion, AnimationControls } from 'framer-motion';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { fadeInDownVariants, fadeInUpVariants } from '../animations/variants';
 
@@ -11,7 +11,7 @@ const DESCRIPTIONS = ['machine learning engineer', 'data scientist', 'ai enthusi
 
 interface HeroContentProps {
     description: string;
-    mainControls: any;
+    mainControls: AnimationControls;
 }
 
 const HeroContent: React.FC<HeroContentProps> = ({ description, mainControls }) => (
@@ -31,7 +31,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ description, mainControls }) 
     </motion.div>
 );
 
-const ScrollButton: React.FC<{ onClick: () => void; mainControls: any }> = ({ onClick, mainControls }) => (
+const ScrollButton: React.FC<{ onClick: () => void; mainControls: AnimationControls }> = ({ onClick, mainControls }) => (
     <motion.button
         onClick={onClick}
         className="absolute bottom-8 transition-transform hover:translate-y-1"
