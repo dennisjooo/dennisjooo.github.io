@@ -1,10 +1,20 @@
 import Link from 'next/link';
 import { NavItem } from '../data/navbarContent';
 
-export const BurgerButton: React.FC<{
+interface NavButtonProps {
     isMenuOpen: boolean;
     setIsMenuOpen: (isOpen: boolean) => void;
-}> = ({ isMenuOpen, setIsMenuOpen }) => (
+}
+
+interface MenuProps {
+    navItems: NavItem[];
+    handleNavigation: (sectionId: string) => void;
+    scrolled?: boolean;
+    isMenuOpen?: boolean;
+    setIsMenuOpen?: (isOpen: boolean) => void;
+}
+
+export const BurgerButton: React.FC<NavButtonProps> = ({ isMenuOpen, setIsMenuOpen }) => (
     <button
         className="md:hidden text-white"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -14,11 +24,7 @@ export const BurgerButton: React.FC<{
     </button>
 );
 
-export const DesktopMenu: React.FC<{
-    navItems: NavItem[];
-    scrolled: boolean;
-    handleNavigation: (sectionId: string) => void;
-}> = ({ navItems, scrolled, handleNavigation }) => (
+export const DesktopMenu: React.FC<MenuProps> = ({ navItems, scrolled, handleNavigation }) => (
     <ul className="hidden md:flex md:flex-row justify-around items-center w-full">
         {navItems.map((item) => (
             <li key={item.id} className="w-full md:w-auto">
@@ -50,11 +56,7 @@ export const DesktopMenu: React.FC<{
     </ul>
 );
 
-export const MobileMenu: React.FC<{
-    navItems: NavItem[];
-    isMenuOpen: boolean;
-    handleNavigation: (sectionId: string) => void;
-}> = ({ navItems, isMenuOpen, handleNavigation }) => (
+export const MobileMenu: React.FC<MenuProps> = ({ navItems, isMenuOpen, handleNavigation, setIsMenuOpen }) => (
     <div className={`
         md:hidden overflow-hidden transition-all duration-300 ease-in-out
         ${isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}
@@ -65,13 +67,17 @@ export const MobileMenu: React.FC<{
                     {item.href ? (
                         <Link
                             href={item.href}
+                            onClick={() => setIsMenuOpen?.(false)}
                             className="w-full px-4 py-2 text-white lowercase hover:bg-gray-700 transition-colors duration-300 ease-in-out block"
                         >
                             {item.label}
                         </Link>
                     ) : (
                         <button
-                            onClick={() => handleNavigation(item.id)}
+                            onClick={() => {
+                                handleNavigation(item.id);
+                                setIsMenuOpen?.(false);
+                            }}
                             className="w-full px-4 py-2 text-white lowercase hover:bg-gray-700 transition-colors duration-300 ease-in-out"
                         >
                             {item.label}

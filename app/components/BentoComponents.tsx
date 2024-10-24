@@ -47,7 +47,7 @@ export const BentoCard = ({ name, className, description, href, cta, date }: Ben
         </div>
 
         <div className="mt-4">
-            <Button className="transition-transform duration-300 ease-in-out group-hover:translate-x-1">
+            <Button className="transition-transform duration-300 ease-in-out group-hover:translate-x-1 text-black">
                 <a href={href} className="flex items-center">
                     {cta}
                     <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />

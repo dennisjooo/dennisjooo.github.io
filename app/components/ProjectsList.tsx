@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react';
 import { BentoGrid, BentoCard } from './BentoComponents';
 import { projects } from '../data/projectContent';
+import { createUrlSlug } from '../utils/urlHelpers';
 
 export default function ProjectsList() {
     const sortedProjects = useMemo(() => 
@@ -18,7 +19,7 @@ export default function ProjectsList() {
                     name={title}
                     className="col-span-3 md:col-span-2 lg:col-span-1"
                     description={description}
-                    href={`/project/${id}`}
+                    href={`/project/${createUrlSlug(title)}`}
                     cta="View Project"
                     date={date}
                 />
