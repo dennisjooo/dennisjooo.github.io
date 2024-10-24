@@ -11,9 +11,9 @@ const WorkExperience: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
 
     return (
-        <section ref={ref} id="work" className="py-8 md:py-12 flex items-center justify-center min-h-screen px-4 md:px-0">
+        <section ref={ref} id="work" className="py-8 md:py-12 flex items-center justify-center min-h-screen px-4 md:px-0 bg-black text-white">
             <div className="w-full max-w-3xl">
-                <motion.h2 
+                <motion.h2
                     className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center"
                     variants={fadeInUpVariants}
                     initial="hidden"
@@ -29,7 +29,7 @@ const WorkExperience: React.FC = () => {
 };
 
 const Timeline: React.FC<{ items: TimelineItemData[], mainControls: AnimationControls }> = ({ items, mainControls }) => (
-    <motion.div 
+    <motion.div
         className="relative border-l-2 border-gray-300 ml-1 md:ml-3"
         variants={fadeInVariants}
         initial="hidden"
@@ -43,7 +43,7 @@ const Timeline: React.FC<{ items: TimelineItemData[], mainControls: AnimationCon
 );
 
 const TimelineItem: React.FC<TimelineItemData & { index: number, mainControls: AnimationControls }> = ({ date, title, company, imageSrc, responsibilities, index, mainControls }) => (
-    <motion.div 
+    <motion.div
         className="mb-6 md:mb-8 ml-4 md:ml-6"
         variants={fadeInUpVariants}
         initial="hidden"
@@ -77,9 +77,9 @@ const TimelineContent: React.FC<{ title: string; company: string; responsibiliti
 
 const CompanyLogo: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
     <div className="ml-4 flex-shrink-0 w-12 h-12 md:w-16 md:h-16">
-        <Image 
-            src={src} 
-            alt={alt} 
+        <Image
+            src={src}
+            alt={alt}
             width={64}
             height={64}
             className="object-contain"

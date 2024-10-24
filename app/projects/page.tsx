@@ -8,7 +8,7 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 
 export default function ProjectsAndCertificationsPage() {
   return (
-    <section id='projects-and-certifications' className='flex flex-col items-center justify-center min-h-screen py-16'>
+    <section id='projects-and-certifications' className='flex flex-col items-center justify-center min-h-screen py-16 bg-black text-white'>
       <div className="container mx-auto px-4 pt-16">
         <h1 className="text-4xl mb-8 text-center font-bold">Projects & Certifications</h1>
         
