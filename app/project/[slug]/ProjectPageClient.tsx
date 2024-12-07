@@ -2,24 +2,24 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Project } from '../../data/projectContent';
+import { Project } from '../../data/projects';
 import ProjectContent from '../../components/ProjectContent';
 import ProjectLinks from '../../components/ProjectLinks';
 
 export default function ProjectPageClient({ project }: { project: Project }) {
     return (
-        <section 
-            id='projects' 
+        <section
+            id='projects'
             className='flex flex-col items-center justify-start min-h-screen pt-16 px-4 sm:px-6 md:px-8 bg-black text-white'
         >
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="w-full max-w-4xl mx-auto py-8"
             >
                 <header>
-                    <motion.h1 
+                    <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
@@ -27,7 +27,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                     >
                         {project.title}
                     </motion.h1>
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
@@ -37,7 +37,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                     </motion.p>
                 </header>
                 <ProjectImage src={project.imageUrl} alt={project.title} />
-                <motion.p 
+                <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
@@ -66,7 +66,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
     return (
-        <motion.div 
+        <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}

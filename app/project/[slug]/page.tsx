@@ -1,4 +1,4 @@
-import { projects } from '../../data/projectContent';
+import { projects } from '../../data/projects';
 import { createUrlSlug } from '../../utils/urlHelpers';
 import ProjectPageClient from './ProjectPageClient';
 

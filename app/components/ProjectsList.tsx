@@ -2,20 +2,19 @@
 
 import React, { useMemo } from 'react';
 import { BentoGrid, BentoCard } from './BentoComponents';
-import { projects } from '../data/projectContent';
+import { Project, projects } from '../data/projects';
 import { createUrlSlug } from '../utils/urlHelpers';
 
 export default function ProjectsList() {
-    const sortedProjects = useMemo(() => 
-        [...projects].sort((a, b) => b.id - a.id),
+    const sortedProjects = useMemo(() =>
+        [...projects].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
         []
     );
 
     return (
         <BentoGrid className="max-w-7xl mx-auto py-8">
-            {sortedProjects.map(({ id, title, description, date }) => (
+            {sortedProjects.map(({ title, description, date }: Project) => (
                 <BentoCard
-                    key={id}
                     name={title}
                     className="col-span-3 md:col-span-2 lg:col-span-1"
                     description={description}
