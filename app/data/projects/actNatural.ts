@@ -13,9 +13,7 @@ The system is built on Groq's LLMs, with different models handling different asp
 - Gemma 2 9B powers the individual characters
 - Llama 3.3 70B generates the scenarios and plotlines and orchestrates the conversation
 
-Under the hood, there are several key components working together (or at least trying to):
-
-The Play Manager acts as the director, attempting to keep everything from completely derailing. Meanwhile, AI actors do their best to stay in character while the Narrator adds dramatic commentary. The Orchestrator's job is to ensure the characters actually interact with each other in somewhat coherent ways.
+Under the hood, there are several key components working together (or at least trying to). The Play Manager acts as the director, attempting to keep everything from completely derailing. Meanwhile, AI actors do their best to stay in character while the Narrator adds dramatic commentary. The Orchestrator's job is to ensure the characters actually interact with each other in somewhat coherent ways.
 
 The system has several fun features that emerged during development. Characters maintain internal monologues that users never see (probably for the best). Each scene is completely unexpected thanks to random scenario generation. Every character has their own personality, background, and secret agenda. The narrator tries their best to set the mood, though results may vary.
 
