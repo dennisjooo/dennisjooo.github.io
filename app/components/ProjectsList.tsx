@@ -15,6 +15,7 @@ export default function ProjectsList() {
         <BentoGrid className="max-w-7xl mx-auto py-8">
             {sortedProjects.map(({ title, description, date }: Project) => (
                 <BentoCard
+                    key={`${title}_${date}`}
                     name={title}
                     className="col-span-3 md:col-span-2 lg:col-span-1"
                     description={description}
