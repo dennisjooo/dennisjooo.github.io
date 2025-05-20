@@ -6,8 +6,9 @@ import { useScrollEffect } from '../hooks/useScrollEffect';
 import { motion, AnimationControls } from 'framer-motion';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { fadeInDownVariants, fadeInUpVariants } from '../animations/variants';
+import { HERO_CONTENT } from '../data/heroContent';
 
-const DESCRIPTIONS = ['machine learning engineer', 'data scientist', 'ai enthusiast', 'i have no clue what i am doing'];
+const DESCRIPTIONS = HERO_CONTENT.descriptions;
 
 interface HeroContentProps {
     description: string;
