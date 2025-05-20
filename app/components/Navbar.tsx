@@ -23,7 +23,7 @@ const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => {
             const heroSection = document.getElementById('home');
-            const isHeroSection = heroSection 
+            const isHeroSection = heroSection
                 ? window.scrollY < (heroSection.offsetTop + heroSection.offsetHeight)
                 : false;
 
@@ -39,28 +39,39 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [pathname]);
 
+    useEffect(() => {
+        if (pathname === '/') {
+            const sectionToScroll = sessionStorage.getItem('scrollToSection');
+            if (sectionToScroll) {
+                document.getElementById(sectionToScroll)?.scrollIntoView({ behavior: 'smooth' });
+                sessionStorage.removeItem('scrollToSection');
+            }
+        }
+    }, [pathname]);
+
     const handleNavigation = (sectionId: string) => {
         if (pathname === '/') {
             document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
         } else {
-            router.push(`/#${sectionId}`);
+            sessionStorage.setItem('scrollToSection', sectionId);
+            router.push('/');
         }
         setState(prev => ({ ...prev, isMenuOpen: false }));
     };
 
     const getNavStyles = () => {
         const { isHeroSection, scrolled, isMenuOpen } = state;
-        
-        const bgClass = !isHeroSection || scrolled || isMenuOpen 
-            ? 'bg-black bg-opacity-90' 
+
+        const bgClass = !isHeroSection || scrolled || isMenuOpen
+            ? 'bg-black bg-opacity-90'
             : 'bg-transparent';
-            
-        const navWidth = (isHeroSection && !scrolled && pathname === '/') 
-            ? 'w-11/12 lg:w-5/6' 
+
+        const navWidth = (isHeroSection && !scrolled && pathname === '/')
+            ? 'w-11/12 lg:w-5/6'
             : 'w-11/12 lg:w-3/4 xl:w-2/3';
-            
-        const shadowClass = (!isHeroSection || scrolled) && !isMenuOpen 
-            ? 'shadow-lg' 
+
+        const shadowClass = (!isHeroSection || scrolled) && !isMenuOpen
+            ? 'shadow-lg'
             : '';
 
         return { bgClass, navWidth, shadowClass };
@@ -77,19 +88,19 @@ const Navbar = () => {
                 transition-all duration-300 ease-in-out overflow-hidden
             `}>
                 <div className="flex justify-between items-center px-4 py-3">
-                    <BurgerButton 
-                        isMenuOpen={state.isMenuOpen} 
-                        setIsMenuOpen={(isMenuOpen) => setState(prev => ({ ...prev, isMenuOpen }))} 
+                    <BurgerButton
+                        isMenuOpen={state.isMenuOpen}
+                        setIsMenuOpen={(isMenuOpen) => setState(prev => ({ ...prev, isMenuOpen }))}
                     />
-                    <DesktopMenu 
-                        navItems={navItems} 
-                        scrolled={state.scrolled} 
-                        handleNavigation={handleNavigation} 
+                    <DesktopMenu
+                        navItems={navItems}
+                        scrolled={state.scrolled}
+                        handleNavigation={handleNavigation}
                     />
                 </div>
-                <MobileMenu 
-                    navItems={navItems} 
-                    isMenuOpen={state.isMenuOpen} 
+                <MobileMenu
+                    navItems={navItems}
+                    isMenuOpen={state.isMenuOpen}
                     handleNavigation={handleNavigation}
                     setIsMenuOpen={(isMenuOpen) => setState(prev => ({ ...prev, isMenuOpen }))}
                 />
