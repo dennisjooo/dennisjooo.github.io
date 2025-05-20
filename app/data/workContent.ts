@@ -13,8 +13,10 @@ export const workExperienceData: TimelineItemData[] = [
         company: "Sinarmas Land",
         imageSrc: "/images/work/sinarmas.svg",
         responsibilities: [
-            "Improved existing OCR pipelines for detecting and extracting information from documents",
-            "Created auto-summarising app for extracting key information from lengthy sales letters that incorporates Generative AI and OCR."
+            "Led optimization of OCR pipelines, significantly improving document information extraction accuracy and processing speed",
+            "Architected and deployed an AI-powered document summarization system that dramatically reduced sales letter review time",
+            "Engineered an enterprise chatbot using LangChain and OpenAI, streamlining internal communications across departments",
+            "Developed and integrated automated OCR services for invoices and tax documents, achieving high-accuracy document processing at scale"
         ]
     },
     {
@@ -53,7 +55,7 @@ export const workExperienceData: TimelineItemData[] = [
         company: "Universitas Prasetiya Mulya",
         imageSrc: "/images/work/prasmul.svg",
         responsibilities: [
-            "GPA: 3.88",
+            "Graduated with a GPA of 3.88",
             "Thesis on \"Predictive Modelling of Changes in GOTO Stock Prices using Historical and Exogenous Data with LSTM and SARIMAX\"",
             "Beneficiary of the Young Scholar Indonesia Scholarship"
         ]

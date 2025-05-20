@@ -11,7 +11,7 @@ const WorkExperience: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
 
     return (
-        <section ref={ref} id="work" className="py-8 md:py-12 flex items-center justify-center min-h-screen px-4 md:px-0 bg-black text-white">
+        <section ref={ref} id="work" className="py-16 md:py-24 flex items-center justify-center min-h-screen px-4 md:px-0 bg-black text-white">
             <div className="w-full max-w-3xl">
                 <motion.h2
                     className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center"
@@ -64,12 +64,14 @@ const TimelineDot: React.FC = () => (
 );
 
 const TimelineContent: React.FC<{ title: string; company: string; responsibilities: string[] }> = ({ title, company, responsibilities }) => (
-    <div className="flex-grow">
+    <div className="flex-grow pr-4">
         <h4 className="text-base md:text-lg font-semibold">{title}</h4>
-        <h5 className="text-sm md:text-base text-gray-600">{company}</h5>
-        <ul className="list-disc list-inside mt-2 text-sm md:text-base">
+        <h5 className="text-sm md:text-base text-gray-600 mb-2">{company}</h5>
+        <ul className="space-y-1.5 text-sm md:text-base">
             {responsibilities.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index} className="pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-gray-400">
+                    {item}
+                </li>
             ))}
         </ul>
     </div>
