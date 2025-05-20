@@ -6,6 +6,7 @@ export { dcgan } from './dcgan';
 export { fraudDetection } from './fraudDetection';
 export { sarimaGoto } from './sarimaGoto';
 export { allNbaPredictor } from './allNbaPredictor';
+export { documentRotation } from './documentRotation';
 
 import { Project } from './types';
 import { actNatural } from './actNatural';
@@ -15,6 +16,7 @@ import { dcgan } from './dcgan';
 import { fraudDetection } from './fraudDetection';
 import { sarimaGoto } from './sarimaGoto';
 import { allNbaPredictor } from './allNbaPredictor';
+import { documentRotation } from './documentRotation';
 
 export const projects: Project[] = [
     actNatural,
@@ -23,5 +25,6 @@ export const projects: Project[] = [
     dcgan,
     fraudDetection,
     sarimaGoto,
-    allNbaPredictor
+    allNbaPredictor,
+    documentRotation
 ]; 
