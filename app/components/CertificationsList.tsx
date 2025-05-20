@@ -16,7 +16,7 @@ const CertificationCard = ({ cert }: { cert: Certification }) => (
 
 export default function CertificationsList() {
     return (
-        <BentoGrid className="max-w-7xl mx-auto py-8">
+        <BentoGrid className="max-w-7xl mx-auto">
             {certifications.map((cert) => (
                 <CertificationCard key={cert.id} cert={cert} />
             ))}

@@ -12,7 +12,7 @@ export default function ProjectsList() {
     );
 
     return (
-        <BentoGrid className="max-w-7xl mx-auto py-8">
+        <BentoGrid className="max-w-7xl mx-auto">
             {sortedProjects.map(({ title, description, date }: Project) => (
                 <BentoCard
                     key={`${title}_${date}`}

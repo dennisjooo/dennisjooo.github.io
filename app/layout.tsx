@@ -19,7 +19,7 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
     title: "Dennis's Portfolio",
-    description: "A crapy portfolio made with crapy skills",
+    description: "A crapy portfolio made with crappy skills",
     icons: {
         icon: '/favicon.ico',
     },

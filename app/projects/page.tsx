@@ -22,7 +22,7 @@ export default function ProjectsAndCertificationsPage() {
             id='projects-and-certifications'
             className='flex flex-col items-center justify-center min-h-screen py-16 bg-black text-white'
         >
-            <div className="container max-w-7xl mx-auto px-4 pt-16">
+            <div className="container max-w-7xl mx-auto px-8 pt-16">
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ export default function ProjectsAndCertificationsPage() {
                     Projects & Certifications
                 </motion.h1>
 
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto mt-24">
                     <SectionTitle>Projects</SectionTitle>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
