@@ -1,17 +1,15 @@
 export const aboutContent = {
-  intro: `Hi there! I'm Dennis Jonathan, an AI enthusiast and lifelong learner with a solid background in
-    mathematics and statistics. I'm proficient in Python, R, SQL, and advanced deep learning
-    frameworks like Torch, TensorFlow, and Keras. I specialize in integrating machine learning into
-    business operations, helping companies transform their decision-making processes and uncover
-    hidden opportunities.`,
-  
-  experience: `While I have experience deploying machine learning models using Azure, I'm also familiar with a
-    range of other cloud platforms and deployment strategies. This flexibility ensures that I can
-    adapt to various environments and help businesses harness the power of AI efficiently and
-    effectively. I'm passionate about staying ahead of the curve, always diving into the latest AI
-    techniques and breakthroughs.`,
-  
-  personal: `When I'm not working with data, you'll find me exploring new tech trends and tinkering with side
-    projects. Let's connect and explore how we can leverage AI and cloud technology to drive success
-    and innovation.`
+  intro: `Hey, I'm Dennis — AI nerd, stats guy, and someone who genuinely enjoys figuring stuff out. I come from a 
+  strong background in math and statistics, and I spend most of my time building machine learning systems with Python, 
+  R, and SQL. Whether it's deep learning with TensorFlow or prototyping fast in Torch, I'm all about using the right 
+  tools to solve real problems.`,
+
+  experience: `I've shipped machine learning apps to production using Azure, but I'm just as comfortable working 
+  across different cloud platforms and deployment setups. My focus is on helping businesses turn data into decisions — 
+  not just predictions, but insights that actually move the needle. I stay deep in the AI world, always exploring 
+  new methods, models, and use cases.`,
+
+  personal: `Outside of work, I'm probably reading ML papers, writing something, tearing through comics, 
+  or losing track of time in sim racing. I like side projects that push me to learn — whether it's some weird new idea 
+  or a tool that just needs to exist. If you're into data, AI, or just making cool stuff — let's talk.`,
 };
