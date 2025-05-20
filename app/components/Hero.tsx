@@ -26,7 +26,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ description, mainControls }) 
         <h1 className="text-4xl md:text-5xl mb-3 text-white font-bold">
             <span className="underline decoration-4 underline-offset-4">Dennis</span> Jonathan
         </h1>
-        <h2 className="text-2xl font-light text-white">
+        <h2 className="text-lg md:text-2xl font-light text-white">
             {description}<span className="animate-pulse">|</span>
         </h2>
     </motion.div>

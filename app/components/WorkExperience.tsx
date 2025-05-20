@@ -11,7 +11,7 @@ const WorkExperience: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
 
     return (
-        <section ref={ref} id="work" className="py-16 md:py-24 flex items-center justify-center min-h-screen px-4 md:px-0 bg-black text-white">
+        <section ref={ref} id="work" className="py-16 md:py-24 flex items-center justify-center min-h-screen px-8 md:px-0 bg-black text-white">
             <div className="w-full max-w-3xl">
                 <motion.h2
                     className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center"

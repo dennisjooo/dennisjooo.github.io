@@ -1,7 +1,7 @@
 export const skillIcons = [
-    'python', 'sql', 'javascript', 'html5', 'typescript',
-    'tensorflow', 'pytorch', 'scikitlearn',
-    'pandas', 'git', 'flask', 'openai', 'fastapi', 'github',
-    'cplusplus', 'microsoftazure', 'react', 'langchain',
+    'python', 'postgresql', 'javascript', 'html5', 'css', 'typescript', 
+    'tensorflow', 'pytorch', 'scikitlearn', 'huggingface', 'lightning', 'keras',
+    'pandas', 'git', 'flask', 'openai', 'fastapi', 'github', 'docker',
+    'cplusplus', 'microsoftazure', 'react', 'langchain', 'gradio', 'streamlit',
     'microsoftexcel', 'microsoftpowerpoint', 'microsoftword'
 ];

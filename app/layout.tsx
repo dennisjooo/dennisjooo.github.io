@@ -19,9 +19,23 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
     title: "Dennis's Portfolio",
-    description: "A crapy portfolio made with crappy skills",
+    description: "AI enthusiast and problem solver with a background in math, stats, and machine learning. I build practical tools, explore weird ideas, and make complex stuff a little more approachable.",
+    keywords: ['AI', 'Machine Learning', 'Data Science', 'Portfolio', 'Developer', 'Math', 'Statistics'],
+    authors: [{ name: 'Dennis Jonathan', url: 'https://dennisjooo.github.io' }],
+    metadataBase: new URL('https://dennisjooo.github.io'),
     icons: {
         icon: '/favicon.ico',
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
     },
 };
 

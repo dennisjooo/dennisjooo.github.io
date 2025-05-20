@@ -7,8 +7,12 @@ export const HERO_CONTENT: HeroContent = {
         'machine learning engineer',
         'data scientist',
         'ai enthusiast',
-        'sim racer',
+        'cat guy',
+        'a bad sim racer',
         'i think i am a good person',
-        'i have no clue what i am doing'
+        'i have no clue what i am doing',
+        'software developer',
+        'avid reader',
+        'lifelong learner'
     ]
 }; 

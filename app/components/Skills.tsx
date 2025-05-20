@@ -26,7 +26,7 @@ const Skills: React.FC = () => {
                     animate={mainControls}
                     transition={{ duration: 0.8 }}
                 >
-                    Skills
+                    Skills.
                 </motion.h2>
                 <motion.div
                     variants={fadeInUpVariants}

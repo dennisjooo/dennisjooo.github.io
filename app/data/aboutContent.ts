@@ -1,15 +1,9 @@
 export const aboutContent = {
-  intro: `Hey, I'm Dennis — AI nerd, stats guy, and someone who genuinely enjoys figuring stuff out. I come from a 
-  strong background in math and statistics, and I spend most of my time building machine learning systems with Python, 
-  R, and SQL. Whether it's deep learning with TensorFlow or prototyping fast in Torch, I'm all about using the right 
-  tools to solve real problems.`,
+  intro: `Hey, I'm Dennis — I like solving problems, learning weird stuff, and building things that (hopefully) make life a little easier. I’ve got a background in math and stats, but these days I’m more into what you can do with that knowledge — especially when it comes to AI, automation, and making things a bit smarter than they were yesterday.`,
 
-  experience: `I've shipped machine learning apps to production using Azure, but I'm just as comfortable working 
-  across different cloud platforms and deployment setups. My focus is on helping businesses turn data into decisions — 
-  not just predictions, but insights that actually move the needle. I stay deep in the AI world, always exploring 
-  new methods, models, and use cases.`,
+  experience: `I've built and shipped ML apps, worked across different stacks, and helped teams get real value out of messy data. But honestly, what excites me most isn’t just the tech — it’s the moment when something clicks for someone, or when a rough idea turns into something real. I’m into making AI less intimidating, more useful, and ideally a little more fun. Whether it’s prototyping tools, building out workflows, or just tinkering until something works — that’s my happy place.`,
 
-  personal: `Outside of work, I'm probably reading ML papers, writing something, tearing through comics, 
-  or losing track of time in sim racing. I like side projects that push me to learn — whether it's some weird new idea 
-  or a tool that just needs to exist. If you're into data, AI, or just making cool stuff — let's talk.`,
+  personal: `Outside of work, you’ll usually find me reading ML papers I don’t fully understand (yet), scribbling down half-finished ideas, tearing through comics, or doing laps in sim racing like it actually matters. I’m a big fan of side projects — the stranger the better — and I really enjoy working on stuff that doesn’t have a clear roadmap. I think good ideas come from unexpected places, and I try to stay open to all of it.`,
+
+  outro: `If you’re into data, design, or just making cool things — feel free to reach out. I’m always down to talk shop, swap ideas, or build something weird together.`,
 };
