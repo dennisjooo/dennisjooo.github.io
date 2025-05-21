@@ -1,23 +1,23 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Project } from '../../data/projects';
 import ProjectContent from '../../components/ProjectContent';
 import ProjectLinks from '../../components/ProjectLinks';
-import Link from 'next/link';
 
 export default function ProjectPageClient({ project }: { project: Project }) {
     return (
         <section
             id='projects'
-            className='flex flex-col items-center justify-start min-h-screen pt-24 pb-16 px-4 sm:px-6 md:px-8 bg-black text-white'
+            className='flex flex-col items-center justify-start min-h-screen pt-24 pb-16 px-2 sm:px-6 md:px-8 bg-black text-white'
         >
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="w-full max-w-4xl mx-auto py-12 px-8"
+                className="w-full max-w-4xl mx-auto py-4 px-8"
             >
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}

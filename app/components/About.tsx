@@ -12,9 +12,13 @@ const About: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
 
     return (
-        <section ref={ref} id="about" className="min-h-screen flex flex-col items-center justify-center p-8 bg-white text-black">
+        <section
+            ref={ref}
+            id="about"
+            className="min-h-screen flex flex-col items-center justify-center px-8 py-16 pt-20 md:pt-8 bg-white text-black"
+        >
             <motion.h2
-                className="text-4xl mb-8 text-center font-bold"
+                className="text-3xl md:text-4xl mb-8 text-center font-bold"
                 variants={fadeInUpVariants}
                 initial="hidden"
                 animate={mainControls}
