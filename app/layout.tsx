@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from 'next/font/google';
-import { ThemeProvider } from 'next-themes';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'katex/dist/katex.min.css';
 import "./globals.css";
-import Navbar from "./components/navbar/Navbar";
+import { ClientLayout } from "./components/ClientLayout";
 
 const inter = Inter({
     subsets: ['latin'],
@@ -42,13 +40,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={`${inter.variable} ${robotoMono.variable} bg-black`}>
-            <body>
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                    <Navbar />
-                    <main>{children}</main>
-                </ThemeProvider>
-            </body>
+        <html lang="en" className={`${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
+            <ClientLayout>{children}</ClientLayout>
         </html>
     );
 }
