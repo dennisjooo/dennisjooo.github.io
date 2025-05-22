@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NavItem } from '../data/navbarContent';
+import { NavItem } from '../../data/navbarContent';
 
 interface NavButtonProps {
     isMenuOpen: boolean;

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { BurgerButton, DesktopMenu, MobileMenu } from './NavbarComponents';
-import { navItems } from '../data/navbarContent';
+import { navItems } from '../../data/navbarContent';
 
 interface NavbarState {
     scrolled: boolean;

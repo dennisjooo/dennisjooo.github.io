@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import ProjectsList from '../components/ProjectsList';
+import ProjectsList from '../components/projects/ProjectsList';
 import CertificationsList from '../components/CertificationsList';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
