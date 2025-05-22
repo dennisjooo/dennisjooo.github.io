@@ -5,7 +5,7 @@ export interface ContactLink {
 }
 
 export const contactLinks: ContactLink[] = [
-    { href: "mailto:dennisjonathan78@gmail.com", ariaLabel: "Email", icon: "bi-envelope" },
-    { href: "https://github.com/dennisjooo", ariaLabel: "GitHub", icon: "bi-github" },
-    { href: "https://www.linkedin.com/in/dennisjooo/", ariaLabel: "LinkedIn", icon: "bi-linkedin" },
+    { href: "mailto:dennisjonathan78@gmail.com", ariaLabel: "Email", icon: "envelope" },
+    { href: "https://github.com/dennisjooo", ariaLabel: "GitHub", icon: "github" },
+    { href: "https://www.linkedin.com/in/dennisjooo/", ariaLabel: "LinkedIn", icon: "linkedin" },
 ];

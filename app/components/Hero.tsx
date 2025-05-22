@@ -7,6 +7,7 @@ import { motion, AnimationControls } from 'framer-motion';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { fadeInDownVariants, fadeInUpVariants } from '../animations/variants';
 import { HERO_CONTENT } from '../data/heroContent';
+import { BsChevronDown } from "react-icons/bs";
 
 interface HeroContentProps {
     description: string;
@@ -41,8 +42,7 @@ const ScrollButton: React.FC<{ onClick: () => void; mainControls: AnimationContr
         whileHover={{ scale: 1.2 }}
         transition={{ duration: 1.5, delay: 0.2 }}
     >
-        <motion.i
-            className="bi bi-chevron-down text-white text-4xl block"
+        <motion.div
             animate={{
                 y: [0, -8, 0],
             }}
@@ -51,7 +51,9 @@ const ScrollButton: React.FC<{ onClick: () => void; mainControls: AnimationContr
                 repeat: Infinity,
                 ease: "easeInOut"
             }}
-        />
+        >
+            <BsChevronDown className="text-white text-4xl" />
+        </motion.div>
     </motion.button>
 );
 

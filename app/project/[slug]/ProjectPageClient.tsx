@@ -7,6 +7,7 @@ import { Project } from '../../data/projects';
 import ProjectContent from '../../components/projects/ProjectContent';
 import ProjectLinks from '../../components/projects/ProjectLinks';
 import ProjectDescription from '../../components/projects/ProjectDescription';
+import { BsArrowLeft } from "react-icons/bs";
 
 export default function ProjectPageClient({ project }: { project: Project }) {
     return (
@@ -27,7 +28,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                     className="mb-4"
                 >
                     <Link href="/projects" className="inline-flex items-center text-neutral-400 hover:text-white transition-colors">
-                        <i className="bi bi-arrow-left mr-2"></i>
+                        <BsArrowLeft className="mr-2" />
                         Back to Projects
                     </Link>
                 </motion.div>
