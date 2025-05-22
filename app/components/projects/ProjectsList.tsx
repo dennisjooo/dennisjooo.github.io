@@ -12,12 +12,12 @@ export default function ProjectsList() {
     );
 
     return (
-        <BentoGrid className="max-w-7xl mx-auto">
+        <BentoGrid className="max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {sortedProjects.map(({ title, description, date }: Project) => (
                 <BentoCard
                     key={`${title}_${date}`}
                     name={title}
-                    className="col-span-3 md:col-span-2 lg:col-span-1"
+                    className="col-span-1"
                     description={description}
                     href={`/project/${createUrlSlug(title)}`}
                     cta="View Project"
