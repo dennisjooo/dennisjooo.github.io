@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
-import Navbar from "./components/Navbar";
-import "./globals.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'katex/dist/katex.min.css';
+import "./globals.css";
+import Navbar from "./components/Navbar";
 
 const inter = Inter({
     subsets: ['latin'],

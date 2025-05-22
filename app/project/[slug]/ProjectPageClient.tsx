@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Project } from '../../data/projects';
 import ProjectContent from '../../components/ProjectContent';
 import ProjectLinks from '../../components/ProjectLinks';
+import ProjectDescription from '../../components/ProjectDescription';
 
 export default function ProjectPageClient({ project }: { project: Project }) {
     return (
@@ -49,14 +50,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                     </motion.p>
                 </header>
                 <ProjectImage src={project.imageUrl} alt={project.title} />
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                    className="text-base sm:text-lg md:text-xl mb-6 italic"
-                >
-                    {project.description}
-                </motion.p>
+                <ProjectDescription description={project.description} />
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
