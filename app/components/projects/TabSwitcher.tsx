@@ -2,19 +2,29 @@
 
 import { motion } from 'framer-motion';
 
+type TabType = 'projects' | 'certifications';
+
 interface TabSwitcherProps {
-    activeTab: 'projects' | 'certifications';
-    onTabChange: (tab: 'projects' | 'certifications') => void;
+    activeTab: TabType;
+    onTabChange: (tab: TabType) => void;
 }
 
 export default function TabSwitcher({ activeTab, onTabChange }: TabSwitcherProps) {
     return (
-        <div className="flex justify-center w-full mb-12">
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="flex justify-center w-full mb-12"
+        >
             <div className="relative flex bg-neutral-900 rounded-xl p-1">
                 {['projects', 'certifications'].map((tab) => (
-                    <button
+                    <motion.button
                         key={tab}
-                        onClick={() => onTabChange(tab as 'projects' | 'certifications')}
+                        onClick={() => onTabChange(tab as TabType)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         className={`
                             relative z-10 px-5 sm:px-8 py-2
                             text-sm font-medium capitalize 
@@ -31,9 +41,9 @@ export default function TabSwitcher({ activeTab, onTabChange }: TabSwitcherProps
                                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                             />
                         )}
-                    </button>
+                    </motion.button>
                 ))}
             </div>
-        </div>
+        </motion.div>
     );
 } 

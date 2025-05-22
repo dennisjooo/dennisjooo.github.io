@@ -67,7 +67,12 @@ export const MobileMenu: React.FC<MenuProps> = ({ navItems, isMenuOpen, handleNa
                     {item.href ? (
                         <Link
                             href={item.href}
-                            onClick={() => setIsMenuOpen?.(false)}
+                            onClick={() => {
+                                if (item.id === 'projects') {
+                                    sessionStorage.setItem('fromNav', 'true');
+                                }
+                                setIsMenuOpen?.(false);
+                            }}
                             className="w-full px-4 py-2 text-white lowercase hover:bg-gray-700 transition-colors duration-300 ease-in-out block"
                         >
                             {item.label}

@@ -13,7 +13,7 @@ export default function ProjectsList() {
 
     return (
         <BentoGrid className="max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            {sortedProjects.map(({ title, description, date }: Project) => (
+            {sortedProjects.map(({ title, description, date, imageUrl }: Project) => (
                 <BentoCard
                     key={`${title}_${date}`}
                     name={title}
@@ -22,6 +22,7 @@ export default function ProjectsList() {
                     href={`/project/${createUrlSlug(title)}`}
                     cta="View Project"
                     date={date}
+                    imageUrl={imageUrl}
                 />
             ))}
         </BentoGrid>

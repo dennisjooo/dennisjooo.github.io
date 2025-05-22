@@ -11,6 +11,7 @@ const CertificationCard = ({ cert }: { cert: Certification }) => (
     href={cert.link}
     cta="View Certificate"
     date={`${cert.issuer} | ${cert.date}`}
+    isCertification={true}
   />
 );
 
