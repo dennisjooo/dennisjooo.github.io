@@ -9,8 +9,13 @@ export async function generateStaticParams() {
     }));
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-    const project = projects.find((p) => createUrlSlug(p.title) === params.slug);
+type PageProps = {
+    params: Promise<{ slug: string }>;
+};
+
+export default async function Page({ params }: PageProps) {
+    const { slug } = await params;
+    const project = projects.find((p) => createUrlSlug(p.title) === slug);
 
     if (!project) {
         return <div className="text-center py-16">Project not found</div>;
