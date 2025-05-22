@@ -1,6 +1,7 @@
 import React from "react";
 import { DockIcon as BaseDockIcon } from "./Dock";
 import * as Bs from "react-icons/bs";
+import { IconType } from "react-icons";
 
 interface DockIconProps {
     href: string;
@@ -13,7 +14,7 @@ export const DockIcon: React.FC<DockIconProps> = ({ href, ariaLabel, icon }) => 
     const iconName = "Bs" + icon.replace("bi-", "").split("-").map(part =>
         part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
     ).join("");
-    const IconComponent = (Bs as any)[iconName];
+    const IconComponent: IconType = (Bs as Record<string, IconType>)[iconName];
 
     return (
         <BaseDockIcon>
