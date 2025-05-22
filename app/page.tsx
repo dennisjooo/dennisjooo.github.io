@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import WorkExperience from './components/WorkExperience';
 import Contacts from './components/Contacts';
+import BackToTop from './components/BackToTop';
 
 export default function Home() {
     return (
@@ -12,6 +13,7 @@ export default function Home() {
             <WorkExperience />
             <Skills />
             <Contacts />
+            <BackToTop />
         </main>
     );
 }

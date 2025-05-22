@@ -6,6 +6,7 @@ import ProjectsList from '../components/projects/ProjectsList';
 import CertificationsList from '../components/projects/CertificationsList';
 import TabSwitcher from '../components/projects/TabSwitcher';
 import { useTabState } from '../hooks/useTabState';
+import BackToTop from '../components/BackToTop';
 
 const contentVariants = {
     initial: { opacity: 0, y: 20 },
@@ -55,6 +56,7 @@ export default function ProjectsAndCertificationsPage() {
             className='flex flex-col min-h-screen py-16 bg-black text-white'
         >
             <ProjectsContent />
+            <BackToTop />
         </section>
     );
 }
