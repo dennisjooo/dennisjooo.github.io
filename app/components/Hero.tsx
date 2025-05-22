@@ -33,14 +33,25 @@ const HeroContent: React.FC<HeroContentProps> = ({ description, mainControls }) 
 const ScrollButton: React.FC<{ onClick: () => void; mainControls: AnimationControls }> = ({ onClick, mainControls }) => (
     <motion.button
         onClick={onClick}
-        className="absolute bottom-8 transition-transform hover:translate-y-1"
+        className="absolute bottom-8"
         aria-label="Scroll to About section"
         variants={fadeInUpVariants}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        whileHover={{ scale: 1.2 }}
+        transition={{ duration: 1.5, delay: 0.2 }}
     >
-        <i className="bi bi-chevron-down text-white text-4xl"></i>
+        <motion.i
+            className="bi bi-chevron-down text-white text-4xl block"
+            animate={{
+                y: [0, -8, 0],
+            }}
+            transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }}
+        />
     </motion.button>
 );
 
