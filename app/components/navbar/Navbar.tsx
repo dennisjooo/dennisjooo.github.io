@@ -9,18 +9,26 @@ interface NavbarState {
     scrolled: boolean;
     isMenuOpen: boolean;
     isHeroSection: boolean;
+    isMounted: boolean;
 }
 
 const Navbar = () => {
     const [state, setState] = useState<NavbarState>({
         scrolled: false,
         isMenuOpen: false,
-        isHeroSection: true
+        isHeroSection: true,
+        isMounted: false
     });
     const pathname = usePathname();
     const router = useRouter();
 
     useEffect(() => {
+        setState(prev => ({ ...prev, isMounted: true }));
+    }, []);
+
+    useEffect(() => {
+        if (!state.isMounted) return;
+
         const handleScroll = () => {
             const heroSection = document.getElementById('home');
             const isHeroSection = heroSection
@@ -37,24 +45,37 @@ const Navbar = () => {
         handleScroll();
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [pathname]);
+    }, [pathname, state.isMounted]);
 
     useEffect(() => {
+        if (!state.isMounted) return;
+
         if (pathname === '/') {
-            const sectionToScroll = sessionStorage.getItem('scrollToSection');
-            if (sectionToScroll) {
-                document.getElementById(sectionToScroll)?.scrollIntoView({ behavior: 'smooth' });
-                sessionStorage.removeItem('scrollToSection');
+            try {
+                const sectionToScroll = sessionStorage.getItem('scrollToSection');
+                if (sectionToScroll) {
+                    document.getElementById(sectionToScroll)?.scrollIntoView({ behavior: 'smooth' });
+                    sessionStorage.removeItem('scrollToSection');
+                }
+            } catch (error) {
+                console.error('Error accessing sessionStorage:', error);
             }
         }
-    }, [pathname]);
+    }, [pathname, state.isMounted]);
 
     const handleNavigation = (sectionId: string) => {
+        if (!state.isMounted) return;
+
         if (pathname === '/') {
             document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
         } else {
-            sessionStorage.setItem('scrollToSection', sectionId);
-            router.push('/');
+            try {
+                sessionStorage.setItem('scrollToSection', sectionId);
+                router.push('/');
+            } catch (error) {
+                console.error('Error accessing sessionStorage:', error);
+                router.push('/');
+            }
         }
         setState(prev => ({ ...prev, isMenuOpen: false }));
     };
@@ -87,7 +108,7 @@ const Navbar = () => {
                 ${shadowClass}
                 transition-all duration-300 ease-in-out overflow-hidden
             `}>
-                <div className="flex justify-between items-center px-4 py-3">
+                <div className="flex justify-between items-center px-4 py-3 min-h-[3rem]">
                     <BurgerButton
                         isMenuOpen={state.isMenuOpen}
                         setIsMenuOpen={(isMenuOpen) => setState(prev => ({ ...prev, isMenuOpen }))}
