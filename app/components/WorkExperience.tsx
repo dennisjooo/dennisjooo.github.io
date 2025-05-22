@@ -41,56 +41,42 @@ const Timeline: React.FC<{ items: TimelineItemData[], mainControls: AnimationCon
         transition={{ duration: 0.5, delay: 0.5 }}
     >
         {items.map((item, index) => (
-            <TimelineItem key={index} {...item} index={index} mainControls={mainControls} />
+            <div key={index} className="relative">
+                <div className="absolute w-2 md:w-3 h-2 md:h-3 bg-gray-300 rounded-full mt-[14px] -left-[5px] md:-left-[7px]" />
+                <motion.div
+                    className="mb-6 md:mb-8 ml-4 md:ml-6"
+                    variants={fadeInUpVariants}
+                    initial="hidden"
+                    animate={mainControls}
+                    transition={{ duration: 0.5, delay: 0.75 + index * 0.2 }}
+                >
+                    <h3 className="text-lg md:text-xl font-semibold">{item.date}</h3>
+                    <div className="flex items-start mt-2">
+                        <div className="flex-grow pr-4">
+                            <h4 className="text-base md:text-lg font-semibold">{item.title}</h4>
+                            <h5 className="text-sm md:text-base text-gray-600 mb-2">{item.company}</h5>
+                            <ul className="space-y-1.5 text-sm md:text-base">
+                                {item.responsibilities.map((responsibility, idx) => (
+                                    <li key={idx} className="pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-gray-400">
+                                        {responsibility}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 w-12 h-12 md:w-16 md:h-16">
+                            <Image
+                                src={item.imageSrc}
+                                alt={item.company}
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
         ))}
     </motion.div>
-);
-
-const TimelineItem: React.FC<TimelineItemData & { index: number, mainControls: AnimationControls }> = ({ date, title, company, imageSrc, responsibilities, index, mainControls }) => (
-    <motion.div
-        className="mb-6 md:mb-8 ml-4 md:ml-6"
-        variants={fadeInUpVariants}
-        initial="hidden"
-        animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.75 + index * 0.2 }}
-    >
-        <TimelineDot />
-        <h3 className="text-lg md:text-xl font-semibold">{date}</h3>
-        <div className="flex items-start mt-2">
-            <TimelineContent title={title} company={company} responsibilities={responsibilities} />
-            <CompanyLogo src={imageSrc} alt={company} />
-        </div>
-    </motion.div>
-);
-
-const TimelineDot: React.FC = () => (
-    <div className="absolute w-2 md:w-3 h-2 md:h-3 bg-gray-300 rounded-full mt-2 -left-[5px] md:-left-[7px]"></div>
-);
-
-const TimelineContent: React.FC<{ title: string; company: string; responsibilities: string[] }> = ({ title, company, responsibilities }) => (
-    <div className="flex-grow pr-4">
-        <h4 className="text-base md:text-lg font-semibold">{title}</h4>
-        <h5 className="text-sm md:text-base text-gray-600 mb-2">{company}</h5>
-        <ul className="space-y-1.5 text-sm md:text-base">
-            {responsibilities.map((item, index) => (
-                <li key={index} className="pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-gray-400">
-                    {item}
-                </li>
-            ))}
-        </ul>
-    </div>
-);
-
-const CompanyLogo: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
-    <div className="ml-4 flex-shrink-0 w-12 h-12 md:w-16 md:h-16">
-        <Image
-            src={src}
-            alt={alt}
-            width={64}
-            height={64}
-            className="object-contain"
-        />
-    </div>
 );
 
 export default WorkExperience;
