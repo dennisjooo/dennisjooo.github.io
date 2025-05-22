@@ -11,7 +11,7 @@ export const HERO_CONTENT: HeroContent = {
         "confidently confused™",
         "still waiting for my Hogwarts letter",
         "drowning in unread comics",
-        "eternal student of everything and nothing",
+        "eternally a struggling student",
         "free bitcoin → bit.ly/totally-not-a-rickroll",
         "sudo make me indomie",
         "404: what is a good developer?",

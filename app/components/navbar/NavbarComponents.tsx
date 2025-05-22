@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { NavItem } from '../../data/navbarContent';
+import { BsList, BsX } from 'react-icons/bs';
 
 interface NavButtonProps {
     isMenuOpen: boolean;
@@ -20,7 +21,7 @@ export const BurgerButton: React.FC<NavButtonProps> = ({ isMenuOpen, setIsMenuOp
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         aria-label="Toggle menu"
     >
-        <i className={`bi ${isMenuOpen ? 'bi-x' : 'bi-list'} text-2xl transition-transform duration-300 ease-in-out`}></i>
+        {isMenuOpen ? <BsX size={24} /> : <BsList size={24} />}
     </button>
 );
 
