@@ -8,8 +8,6 @@ import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { fadeInDownVariants, fadeInUpVariants } from '../animations/variants';
 import { HERO_CONTENT } from '../data/heroContent';
 
-const DESCRIPTIONS = HERO_CONTENT.descriptions;
-
 interface HeroContentProps {
     description: string;
     mainControls: AnimationControls;
@@ -48,7 +46,7 @@ const ScrollButton: React.FC<{ onClick: () => void; mainControls: AnimationContr
 
 const Hero: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
-    const description = useTypingEffect(DESCRIPTIONS);
+    const description = useTypingEffect(HERO_CONTENT.descriptions);
 
     useScrollEffect(ref);
 

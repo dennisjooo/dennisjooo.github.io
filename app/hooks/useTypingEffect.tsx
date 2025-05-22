@@ -1,14 +1,16 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { shuffleArray } from '../utils/array';
 
 export const useTypingEffect = (descriptions: string[]) => {
+    const shuffledDescriptions = useMemo(() => shuffleArray(descriptions), [descriptions]);
     const [description, setDescription] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);
-    const [typingSpeed, setTypingSpeed] = useState(150);
+    const [typingSpeed, setTypingSpeed] = useState(100);
 
     const handleTyping = useCallback(() => {
-        const i = loopNum % descriptions.length;
-        const fullDescription = descriptions[i];
+        const i = loopNum % shuffledDescriptions.length;
+        const fullDescription = shuffledDescriptions[i];
 
         setDescription(isDeleting
             ? fullDescription.substring(0, description.length - 1)
@@ -23,7 +25,7 @@ export const useTypingEffect = (descriptions: string[]) => {
             setIsDeleting(false);
             setLoopNum(loopNum + 1);
         }
-    }, [description, isDeleting, loopNum, descriptions]);
+    }, [description, isDeleting, loopNum, shuffledDescriptions]);
 
     useEffect(() => {
         const timer = setTimeout(handleTyping, typingSpeed);
