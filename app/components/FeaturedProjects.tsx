@@ -42,8 +42,8 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     };
 
     return (
-        <section id="projects" className="min-h-screen py-8 sm:py-20 bg-black text-white flex flex-col">
-            <div className="container max-w-7xl mx-auto px-4 sm:px-8 flex-1 flex flex-col">
+        <section id="projects" className="min-h-screen py-20 bg-black text-white flex flex-col">
+            <div className="container max-w-7xl mx-auto px-8 sm:px-8 flex-1 flex flex-col">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
