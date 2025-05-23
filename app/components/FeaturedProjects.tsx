@@ -99,7 +99,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                 >
                     <Link
                         href="/projects"
-                        className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 bg-white text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                        className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-6 bg-white text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
                     >
                         View All Projects and More.
                         <ArrowUpRightIcon className="w-4 h-4" />
