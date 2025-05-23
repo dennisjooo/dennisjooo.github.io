@@ -9,7 +9,7 @@ import {
     SimpleIcon,
 } from "react-icon-cloud";
 
-export const cloudProps: Omit<ICloud, "children"> = {
+const cloudProps: Omit<ICloud, "children"> = {
     containerProps: {
         style: {
             display: "flex",
@@ -35,53 +35,52 @@ export const cloudProps: Omit<ICloud, "children"> = {
     },
 };
 
-const renderCustomIcon = (icon: SimpleIcon) => renderSimpleIcon({
-    icon,
-    size: 42,
-    aProps: {
-        href: undefined,
-        target: undefined,
-        rel: undefined,
-        onClick: (e: React.MouseEvent) => e.preventDefault(),
-    },
-});
-
-export type DynamicCloudProps = {
-    iconSlugs: string[];
-    customIcons?: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>>;
-};
-
-type IconData = {
-    simpleIcons: Record<string, SimpleIcon>;
-    allIcon: Record<string, { title: string; hex: string; slug: string; }>;
-};
-
-const IconCloud: React.FC<DynamicCloudProps> = ({ iconSlugs, customIcons }) => {
-    const [icons, setIcons] = useState<IconData>({
-        simpleIcons: {},
-        allIcon: {}
+const renderColoredIcon = (icon: SimpleIcon, color: string) =>
+    renderSimpleIcon({
+        icon: { ...icon, hex: color },
+        size: 42,
+        bgHex: '#000000',
+        fallbackHex: color,
+        minContrastRatio: 0,
+        aProps: {
+            onClick: (e: React.MouseEvent) => e.preventDefault(),
+        },
     });
 
+interface IconCloudProps {
+    iconSlugs: string[];
+    customIcons?: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>>;
+    iconColor?: string;
+}
+
+const IconCloud: React.FC<IconCloudProps> = ({
+    iconSlugs,
+    customIcons,
+    iconColor = '#ffffff'
+}) => {
+    const [simpleIcons, setSimpleIcons] = useState<Record<string, SimpleIcon>>({});
+
     useEffect(() => {
-        fetchSimpleIcons({ slugs: iconSlugs }).then(setIcons);
+        fetchSimpleIcons({ slugs: iconSlugs }).then((data) => {
+            setSimpleIcons(data.simpleIcons);
+        });
     }, [iconSlugs]);
 
-    const renderedIcons = useMemo(() => {
-        return Object.values(icons.simpleIcons).map((icon: SimpleIcon) => renderCustomIcon(icon));
-    }, [icons]);
+    const allIcons = useMemo(() => {
+        const renderedSimpleIcons = Object.values(simpleIcons).map((icon) =>
+            renderColoredIcon(icon, iconColor)
+        );
 
-    const customRenderedIcons = useMemo(() => {
-        return Object.entries(customIcons || {}).map(([name, Icon]) => (
-            <Icon key={name} style={{ fontSize: 42 }} />
+        const renderedCustomIcons = Object.entries(customIcons || {}).map(([name, Icon]) => (
+            <Icon key={name} style={{ fontSize: 42, color: iconColor }} />
         ));
-    }, [customIcons]);
+
+        return [...renderedSimpleIcons, ...renderedCustomIcons];
+    }, [simpleIcons, customIcons, iconColor]);
 
     return (
         <Cloud {...cloudProps}>
-            {[
-                ...(renderedIcons?.length ? renderedIcons : [<div key="no-icons">No icons to display</div>]),
-                ...customRenderedIcons
-            ]}
+            {allIcons.length > 0 ? allIcons : [<div key="no-icons">No icons to display</div>]}
         </Cloud>
     );
 };
