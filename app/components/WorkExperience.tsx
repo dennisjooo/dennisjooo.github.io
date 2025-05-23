@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, AnimationControls } from 'framer-motion';
-import { workExperienceData, TimelineItemData } from '../data/workContent';
+import { workExperienceData, TimelineItemData } from '../../data/workContent';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { fadeInUpVariants, fadeInVariants } from '../animations/variants';
 

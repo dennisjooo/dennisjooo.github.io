@@ -3,7 +3,7 @@
 import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import Spinner from './Spinner';
-import { skillIcons } from '../data/skillContent';
+import { skillIcons } from '../../data/skillContent';
 import { motion } from 'framer-motion';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { fadeInUpVariants } from '../animations/variants';
@@ -17,9 +17,9 @@ const Skills: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
 
     return (
-        <section ref={ref} id="skills" className="py-20 bg-white text-black min-h-screen flex items-center justify-center">
+        <section ref={ref} id="skills" className="py-20 bg-black text-white min-h-screen flex items-center justify-center">
             <div className="container mx-auto px-4 flex flex-col items-center justify-center">
-                <motion.h2 
+                <motion.h2
                     className="text-3xl md:text-4xl font-bold text-center mb-12"
                     variants={fadeInUpVariants}
                     initial="hidden"

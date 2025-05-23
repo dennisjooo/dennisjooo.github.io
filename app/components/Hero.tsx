@@ -6,7 +6,7 @@ import { useScrollEffect } from '../hooks/useScrollEffect';
 import { motion, AnimationControls } from 'framer-motion';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { fadeInDownVariants, fadeInUpVariants } from '../animations/variants';
-import { HERO_CONTENT } from '../data/heroContent';
+import { HERO_CONTENT } from '../../data/heroContent';
 import { BsChevronDown } from "react-icons/bs";
 
 interface HeroContentProps {

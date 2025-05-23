@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Project } from '../../data/projects';
+import { Project } from '../../../data/projects';
 import ProjectContent from '../../components/projects/ProjectContent';
 import ProjectLinks from '../../components/projects/ProjectLinks';
 import ProjectDescription from '../../components/projects/ProjectDescription';

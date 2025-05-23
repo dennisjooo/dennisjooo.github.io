@@ -1,6 +1,6 @@
 import React from 'react';
 import { BentoGrid, BentoCard } from '../BentoComponents';
-import { certifications, Certification } from '../../data/certificationContent';
+import { certifications, Certification } from '../../../data/certificationContent';
 
 const CertificationCard = ({ cert }: { cert: Certification }) => (
   <BentoCard
