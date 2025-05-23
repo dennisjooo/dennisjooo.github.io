@@ -42,17 +42,17 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     };
 
     return (
-        <section id="projects" className="py-20 bg-black text-white">
-            <div className="container max-w-7xl mx-auto px-8">
+        <section id="projects" className="min-h-screen py-8 sm:py-20 bg-black text-white flex flex-col">
+            <div className="container max-w-7xl mx-auto px-4 sm:px-8 flex-1 flex flex-col">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-8 sm:mb-16"
                 >
-                    <h2 className="text-4xl font-bold mb-4">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                         Projects.
                     </h2>
                 </motion.div>
@@ -63,8 +63,9 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
+                    className="flex-1 flex items-center"
                 >
-                    <BentoGrid className="max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <BentoGrid className="w-full mx-auto grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                         {featuredProjects.map(({ title, description, date, imageUrl }, index) => (
                             <motion.div
                                 key={`${title}_${date}`}
@@ -72,11 +73,11 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                className={`h-full ${index === 2 ? 'sm:col-start-1 sm:col-end-3 sm:w-1/2 sm:mx-auto md:col-start-auto md:col-end-auto md:w-full md:mx-0' : ''}`}
+                                className="h-full"
                             >
                                 <BentoCard
                                     name={title}
-                                    className="col-span-1 h-[480px]"
+                                    className="col-span-1 h-[350px] md:h-[480px]"
                                     description={truncateDescription(description)}
                                     href={`/project/${createUrlSlug(title)}`}
                                     cta="View Project"
@@ -94,11 +95,11 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    className="text-center mt-10"
+                    className="text-center mt-6 sm:mt-10"
                 >
                     <Link
                         href="/projects"
-                        className="inline-flex items-center gap-2 px-8 py-3 bg-white text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
+                        className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 bg-white text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
                     >
                         View All Projects and More.
                         <ArrowUpRightIcon className="w-4 h-4" />
