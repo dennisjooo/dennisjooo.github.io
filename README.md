@@ -16,8 +16,8 @@ This project is a responsive and interactive portfolio website showcasing Dennis
 
 ## Technologies Used
 
-- Next.js 14
-- React 18
+- Next.js
+- React
 - TypeScript
 - Tailwind CSS
 - Framer Motion for animations
@@ -25,11 +25,6 @@ This project is a responsive and interactive portfolio website showcasing Dennis
 - MagicUI for the UI components
 
 ## Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or later)
-- npm or yarn
 
 ### Installation
 
@@ -65,16 +60,6 @@ This project is set up for deployment on GitHub Pages. The deployment process is
 
 1. Push your changes to the `main` branch.
 2. The GitHub Action will automatically build and deploy the site to GitHub Pages.
-
-## Project Structure
-
-- `app/`: Contains the main application code
-  - `components/`: React components
-  - `data/`: Static data for projects, skills, etc.
-  - `hooks/`: Custom React hooks
-  - `animations/`: Animation variants for Framer Motion
-- `public/`: Static assets like images
-- `.github/workflows/`: GitHub Actions for deployment
 
 ## Acknowledgments
 
