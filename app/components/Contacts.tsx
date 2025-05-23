@@ -1,6 +1,6 @@
 import React from "react";
 import { Dock } from "./Dock";
-import { contactLinks } from "../data/contactContent";
+import { contactLinks } from "../../data/contactContent";
 import { DockIcon } from "./DockIcon";
 
 const Contacts: React.FC = () => (

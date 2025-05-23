@@ -4,6 +4,8 @@ import About from './components/About';
 import WorkExperience from './components/WorkExperience';
 import Contacts from './components/Contacts';
 import BackToTop from './components/BackToTop';
+import FeaturedProjects from './components/FeaturedProjects';
+import { projects } from '../data/projects';
 
 export default function Home() {
     return (
@@ -11,6 +13,7 @@ export default function Home() {
             <Hero />
             <About />
             <WorkExperience />
+            <FeaturedProjects projects={projects} />
             <Skills />
             <Contacts />
             <BackToTop />

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { aboutContent } from '../data/aboutContent';
+import { aboutContent } from '../../data/aboutContent';
 import { motion } from 'framer-motion';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { fadeInUpVariants } from '../animations/variants';

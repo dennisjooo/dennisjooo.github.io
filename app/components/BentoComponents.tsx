@@ -53,8 +53,8 @@ export const BentoCard = ({ name, className, description, href, cta, date, image
             </div>
         )}
 
-        <div className="flex flex-col flex-grow p-4 sm:p-6">
-            <div>
+        <div className="flex flex-col flex-grow p-4 sm:p-6 justify-between">
+            <div className="flex-grow">
                 <h3 className="font-semibold text-lg sm:text-xl text-neutral-800 mb-1 line-clamp-2">
                     {name}
                 </h3>
@@ -62,7 +62,7 @@ export const BentoCard = ({ name, className, description, href, cta, date, image
                 <p className="text-sm sm:text-base text-neutral-600 line-clamp-3">{description}</p>
             </div>
 
-            <div className="mt-4">
+            <div className="mt-4 flex-shrink-0">
                 <Button
                     className="transition-transform duration-300 ease-in-out group-hover:translate-x-1 text-black text-sm sm:text-base px-0 py-1 h-auto hover:bg-transparent"
                 >
