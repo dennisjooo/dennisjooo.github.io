@@ -36,6 +36,11 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
         });
     };
 
+    const truncateDescription = (description: string, maxLength: number = 120) => {
+        if (description.length <= maxLength) return description;
+        return description.slice(0, maxLength).trim() + '...';
+    };
+
     return (
         <section id="projects" className="py-20 bg-white text-black">
             <div className="container max-w-7xl mx-auto px-8">
@@ -62,7 +67,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <BentoGrid className="max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <BentoGrid className="max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                         {featuredProjects.map(({ title, description, date, imageUrl }, index) => (
                             <motion.div
                                 key={`${title}_${date}`}
@@ -70,12 +75,12 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                className="h-full"
+                                className={`h-full ${index === 2 ? 'sm:col-start-1 sm:col-end-3 sm:w-1/2 sm:mx-auto md:col-start-auto md:col-end-auto md:w-full md:mx-0' : ''}`}
                             >
                                 <BentoCard
                                     name={title}
-                                    className="col-span-1 h-full min-h-[420px] sm:min-h-[440px] md:min-h-[460px]"
-                                    description={description}
+                                    className="col-span-1 h-[480px]"
+                                    description={truncateDescription(description)}
                                     href={`/project/${createUrlSlug(title)}`}
                                     cta="View Project"
                                     date={formatDate(date)}
