@@ -42,7 +42,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     };
 
     return (
-        <section id="projects" className="py-20 bg-white text-black">
+        <section id="projects" className="py-20 bg-black text-white">
             <div className="container max-w-7xl mx-auto px-8">
                 {/* Section Header */}
                 <motion.div
@@ -52,12 +52,9 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl font-bold mb-4 text-black">
-                        Featured Projects
+                    <h2 className="text-4xl font-bold mb-4">
+                        Projects.
                     </h2>
-                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                        A showcase of my latest work in AI, machine learning, and software development
-                    </p>
                 </motion.div>
 
                 {/* Projects Grid */}
@@ -101,9 +98,9 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                 >
                     <Link
                         href="/projects"
-                        className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-semibold rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
+                        className="inline-flex items-center gap-2 px-8 py-3 bg-white text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
                     >
-                        View All Projects
+                        View All Projects and More.
                         <ArrowUpRightIcon className="w-4 h-4" />
                     </Link>
                 </motion.div>

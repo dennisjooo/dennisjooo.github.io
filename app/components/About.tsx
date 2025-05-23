@@ -15,7 +15,7 @@ const About: React.FC = () => {
         <section
             ref={ref}
             id="about"
-            className="min-h-screen flex flex-col items-center justify-center px-8 py-16 pt-20 md:pt-8 bg-white text-black"
+            className="min-h-screen flex flex-col items-center justify-center px-8 py-16 pt-20 md:pt-8 bg-black text-white"
         >
             <motion.h2
                 className="text-3xl md:text-4xl mb-8 text-center font-bold"
