@@ -14,7 +14,7 @@ const WorkExperience: React.FC = () => {
         <section
             ref={ref}
             id="work"
-            className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0 bg-black text-white"
+            className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0 bg-white text-black"
         >
             <div className="w-full max-w-3xl">
                 <motion.h2

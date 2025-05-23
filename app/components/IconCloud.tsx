@@ -56,7 +56,7 @@ interface IconCloudProps {
 const IconCloud: React.FC<IconCloudProps> = ({
     iconSlugs,
     customIcons,
-    iconColor = '#ffffff'
+    iconColor = '#000000'
 }) => {
     const [simpleIcons, setSimpleIcons] = useState<Record<string, SimpleIcon>>({});
 

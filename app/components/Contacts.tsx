@@ -5,7 +5,8 @@ import { DockIcon } from "./DockIcon";
 
 const Contacts: React.FC = () => (
     <section id="contact" className="flex flex-col items-center bg-black text-white">
-        <Dock className="mb-4">
+        <h2 className="text-2xl font-semibold mt-12 text-center">Feel free to reach me here.</h2>
+        <Dock className="my-6">
             {contactLinks.map(({ href, ariaLabel, icon }) => (
                 <DockIcon key={ariaLabel} href={href} ariaLabel={ariaLabel} icon={icon} />
             ))}
