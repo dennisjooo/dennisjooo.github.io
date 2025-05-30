@@ -6,6 +6,7 @@ import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Components } from 'react-markdown';
+import { useState } from 'react';
 
 interface ProjectContentProps {
     content: string;
@@ -16,6 +17,77 @@ interface CodeProps {
     className?: string;
     children?: React.ReactNode;
 }
+
+const CodeBlock = ({ children, className }: CodeProps) => {
+    const [copied, setCopied] = useState(false);
+    const match = /language-(\w+)/.exec(className || '');
+    const language = match ? match[1] : '';
+    const codeString = String(children).replace(/\n$/, '');
+
+    const copyToClipboard = async () => {
+        try {
+            await navigator.clipboard.writeText(codeString);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy code:', err);
+        }
+    };
+
+    return (
+        <div className="not-prose my-6">
+            <div className="bg-gray-900 border border-gray-700/50 rounded-lg overflow-hidden shadow-lg">
+                {/* macOS-style window header */}
+                <div className="bg-gray-800 px-4 py-2 border-b border-gray-700/50 flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                        <div className="flex space-x-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full" />
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full" />
+                            <div className="w-3 h-3 bg-green-500 rounded-full" />
+                        </div>
+                        {language && (
+                            <span className="text-xs text-gray-400 font-mono">
+                                {language}
+                            </span>
+                        )}
+                    </div>
+                    <button
+                        onClick={copyToClipboard}
+                        className="flex items-center space-x-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-600/50 rounded transition-all duration-200 border border-gray-600/30 hover:border-gray-500/50"
+                        title="Copy code"
+                    >
+                        {copied ? (
+                            <>
+                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                                <span>Copied!</span>
+                            </>
+                        ) : (
+                            <>
+                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+                                </svg>
+                                <span>Copy</span>
+                            </>
+                        )}
+                    </button>
+                </div>
+                <div className="overflow-x-auto">
+                    <SyntaxHighlighter
+                        style={vscDarkPlus}
+                        language={language || 'text'}
+                        PreTag="div"
+                        className="!m-0 !p-4 !bg-transparent text-sm leading-relaxed"
+                    >
+                        {codeString}
+                    </SyntaxHighlighter>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const MarkdownComponents: Components = {
     // Headings
@@ -83,11 +155,12 @@ const MarkdownComponents: Components = {
     code: ({ inline, children, className }: CodeProps) => {
         const match = /language-(\w+)/.exec(className || '');
         const language = match ? match[1] : '';
+        const codeString = String(children);
 
-        // Check if it's truly inline code (single backticks)
-        const isInlineCode = inline || !String(children).includes('\n');
+        // Better inline code detection
+        const isInlineCode = inline === true || (!className && !codeString.includes('\n') && codeString.length < 100);
 
-        if (isInlineCode && !language) {
+        if (isInlineCode) {
             return (
                 <code className="bg-gray-700/50 rounded px-2 py-1 text-sm font-mono text-orange-300 border border-gray-600/30">
                     {children}
@@ -95,35 +168,7 @@ const MarkdownComponents: Components = {
             );
         }
 
-        return (
-            <div className="not-prose my-6">
-                <div className="bg-gray-900 border border-gray-700/50 rounded-lg overflow-hidden shadow-lg">
-                    {/* macOS-style window header */}
-                    <div className="bg-gray-800 px-4 py-2 border-b border-gray-700/50 flex items-center justify-between">
-                        <div className="flex space-x-2">
-                            <div className="w-3 h-3 bg-red-500 rounded-full" />
-                            <div className="w-3 h-3 bg-yellow-500 rounded-full" />
-                            <div className="w-3 h-3 bg-green-500 rounded-full" />
-                        </div>
-                        {language && (
-                            <span className="text-xs text-gray-400 font-mono">
-                                {language}
-                            </span>
-                        )}
-                    </div>
-                    <div className="overflow-x-auto">
-                        <SyntaxHighlighter
-                            style={vscDarkPlus}
-                            language={language || 'text'}
-                            PreTag="div"
-                            className="!m-0 !p-4 !bg-transparent text-sm leading-relaxed"
-                        >
-                            {String(children).replace(/\n$/, '')}
-                        </SyntaxHighlighter>
-                    </div>
-                </div>
-            </div>
-        );
+        return <CodeBlock className={className}>{children}</CodeBlock>;
     },
     pre: ({ children }) => <>{children}</>,
 
