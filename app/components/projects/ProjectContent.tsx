@@ -153,8 +153,6 @@ const MarkdownComponents: Components = {
 
     // Code
     code: ({ inline, children, className }: CodeProps) => {
-        const match = /language-(\w+)/.exec(className || '');
-        const language = match ? match[1] : '';
         const codeString = String(children);
 
         // Better inline code detection
