@@ -84,7 +84,10 @@ const MarkdownComponents: Components = {
         const match = /language-(\w+)/.exec(className || '');
         const language = match ? match[1] : '';
 
-        if (inline) {
+        // Check if it's truly inline code (single backticks)
+        const isInlineCode = inline || !String(children).includes('\n');
+
+        if (isInlineCode && !language) {
             return (
                 <code className="bg-gray-700/50 rounded px-2 py-1 text-sm font-mono text-orange-300 border border-gray-600/30">
                     {children}
