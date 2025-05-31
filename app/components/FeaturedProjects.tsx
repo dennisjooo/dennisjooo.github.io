@@ -42,7 +42,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     };
 
     return (
-        <section id="projects" className="min-h-screen py-20 bg-black text-white flex flex-col">
+        <section id="projects" className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0">
             <div className="container max-w-7xl mx-auto px-8 sm:px-8 flex-1 flex flex-col">
                 {/* Section Header */}
                 <motion.div
@@ -50,7 +50,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-8 sm:mb-16"
+                    className="text-center mb-8 sm:mb-12"
                 >
                     <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                         Projects.
