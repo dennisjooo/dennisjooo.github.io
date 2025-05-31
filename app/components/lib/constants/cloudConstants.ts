@@ -21,23 +21,23 @@ export const CLOUD_ANIMATIONS = {
         @keyframes cloudFloatBase {
             0% {
                 background-position: 0% 0%;
-                transform: scale(1) rotate(0deg);
+                transform: scale(1.1) rotate(0deg);
             }
             25% {
                 background-position: 4% 3%;
-                transform: scale(1.03) rotate(1deg);
+                transform: scale(1.13) rotate(1deg);
             }
             50% {
                 background-position: -3% 4%;
-                transform: scale(1) rotate(-1deg);
+                transform: scale(1.1) rotate(-1deg);
             }
             75% {
                 background-position: 3% -3%;
-                transform: scale(1.02) rotate(1.5deg);
+                transform: scale(1.12) rotate(1.5deg);
             }
             100% {
                 background-position: 0% 0%;
-                transform: scale(1) rotate(0deg);
+                transform: scale(1.1) rotate(0deg);
             }
         }
     `,
@@ -45,19 +45,19 @@ export const CLOUD_ANIMATIONS = {
         @keyframes cloudFloatOverlay {
             0% {
                 background-position: 0% 0%;
-                transform: scale(1.02) rotate(0deg);
+                transform: scale(1.12) rotate(0deg);
             }
             33% {
                 background-position: -4% -3%;
-                transform: scale(1) rotate(-2deg);
+                transform: scale(1.1) rotate(-2deg);
             }
             66% {
                 background-position: 3% -4%;
-                transform: scale(1.04) rotate(1deg);
+                transform: scale(1.14) rotate(1deg);
             }
             100% {
                 background-position: 0% 0%;
-                transform: scale(1.02) rotate(0deg);
+                transform: scale(1.12) rotate(0deg);
             }
         }
     `,
@@ -65,7 +65,7 @@ export const CLOUD_ANIMATIONS = {
         @media (prefers-reduced-motion: reduce) {
             .absolute {
                 animation: none !important;
-                transform: none !important;
+                transform: scale(1.1) !important;
             }
         }
     `

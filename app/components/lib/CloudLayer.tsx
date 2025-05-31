@@ -6,14 +6,17 @@ import { BASE_GRADIENT } from './constants/cloudConstants';
 const CloudLayer: React.FC<CloudLayerProps> = ({ clouds, isOverlay = false }) => {
     const baseStyles: React.CSSProperties = {
         position: 'absolute',
-        inset: 0,
+        inset: '-5%',
+        width: '110%',
+        height: '110%',
         transformOrigin: 'center',
+        transform: 'scale(1.1)',
     };
 
     if (isOverlay) {
         return (
             <div
-                className="absolute inset-0"
+                className="absolute inset-0 overflow-hidden"
                 style={{
                     ...baseStyles,
                     background: generateGradients(clouds),
@@ -27,7 +30,7 @@ const CloudLayer: React.FC<CloudLayerProps> = ({ clouds, isOverlay = false }) =>
 
     return (
         <div
-            className="absolute inset-0"
+            className="absolute inset-0 overflow-hidden"
             style={{
                 ...baseStyles,
                 background: `${generateGradients(clouds)},\n${BASE_GRADIENT}`,
