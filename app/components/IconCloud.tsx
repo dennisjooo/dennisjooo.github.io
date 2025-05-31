@@ -38,7 +38,7 @@ const cloudProps: Omit<ICloud, "children"> = {
 const renderColoredIcon = (icon: SimpleIcon, color: string) =>
     renderSimpleIcon({
         icon: { ...icon, hex: color },
-        size: 42,
+        size: 40,
         bgHex: '#000000',
         fallbackHex: color,
         minContrastRatio: 0,

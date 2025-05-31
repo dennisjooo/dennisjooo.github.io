@@ -20,8 +20,8 @@ function ProjectsContent() {
 
     return (
         <div className={`container max-w-7xl mx-auto px-8 pt-16 transition-opacity duration-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-            <h1 className="text-4xl mb-8 text-center font-bold">
-                Projects & Certifications
+            <h1 className="text-3xl lg:text-4xl mb-8 text-center font-bold">
+                Projects & Certifications.
             </h1>
 
             <TabSwitcher activeTab={activeTab} onTabChange={setActiveTab} />
