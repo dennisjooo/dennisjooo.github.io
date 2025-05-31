@@ -8,6 +8,7 @@ import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { fadeInDownVariants, fadeInUpVariants } from '../animations/variants';
 import { HERO_CONTENT } from '../../data/heroContent';
 import { BsChevronDown } from "react-icons/bs";
+import CloudBackground from './CloudBackground';
 
 interface HeroContentProps {
     description: string;
@@ -71,9 +72,9 @@ const Hero: React.FC = () => {
         <section
             id='home'
             ref={ref}
-            className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center relative"
-            style={{ backgroundImage: "url('/images/background.webp')" }}
+            className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden"
         >
+            <CloudBackground />
             <HeroContent description={description} mainControls={mainControls} />
             <ScrollButton onClick={scrollToAbout} mainControls={mainControls} />
         </section>
