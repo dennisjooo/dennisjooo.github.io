@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CloudLayerProps } from './types/cloud';
 import { generateGradients } from './utils/cloudUtils';
 import { BASE_GRADIENT } from './constants/cloudConstants';
 
 const CloudLayer: React.FC<CloudLayerProps> = ({ clouds, isOverlay = false }) => {
+    const [staticGradients, setStaticGradients] = useState('');
+
+    useEffect(() => {
+        setStaticGradients(generateGradients(clouds));
+    }, [clouds]);
+
     const baseStyles: React.CSSProperties = {
         position: 'absolute',
         inset: '-5%',
@@ -19,7 +25,7 @@ const CloudLayer: React.FC<CloudLayerProps> = ({ clouds, isOverlay = false }) =>
                 className="absolute inset-0 overflow-hidden"
                 style={{
                     ...baseStyles,
-                    background: generateGradients(clouds),
+                    background: staticGradients,
                     animation: 'cloudFloatOverlay 20s ease-in-out infinite',
                     mixBlendMode: 'soft-light',
                     zIndex: -1,
@@ -33,7 +39,8 @@ const CloudLayer: React.FC<CloudLayerProps> = ({ clouds, isOverlay = false }) =>
             className="absolute inset-0 overflow-hidden"
             style={{
                 ...baseStyles,
-                background: `${generateGradients(clouds)},\n${BASE_GRADIENT}`,
+                background: `${staticGradients},
+${BASE_GRADIENT}`,
                 animation: 'cloudFloatBase 30s ease-in-out infinite',
                 zIndex: -2,
             }}
