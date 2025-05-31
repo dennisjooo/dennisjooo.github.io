@@ -15,10 +15,10 @@ const About: React.FC = () => {
         <section
             ref={ref}
             id="about"
-            className="min-h-screen flex flex-col items-center justify-center px-8 py-16 pt-20 md:pt-8 bg-black text-white"
+            className="min-h-screen flex flex-col items-center justify-center my-16 px-8 py-16 pt-20 md:pt-8 bg-black text-white"
         >
             <motion.h2
-                className="text-3xl md:text-4xl mb-8 text-center font-bold"
+                className="text-3xl md:text-4xl lg:mt-16 mb-8 text-center font-bold"
                 variants={fadeInUpVariants}
                 initial="hidden"
                 animate={mainControls}
@@ -53,7 +53,7 @@ const ProfileImage: React.FC<{ mainControls: AnimationControls }> = ({ mainContr
             alt="Profile picture"
             width={300}
             height={300}
-            className="rounded-full shadow-lg w-[200px] h-[200px] md:w-[300px] md:h-[300px]"
+            className="rounded-full shadow-lg w-[225px] h-[225px] md:w-[300px] md:h-[300px]"
         />
     </motion.div>
 );
