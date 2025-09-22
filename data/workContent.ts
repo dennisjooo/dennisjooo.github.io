@@ -13,11 +13,11 @@ export const workExperienceData: TimelineItemData[] = [
         company: "Sinarmas Land",
         imageSrc: "/images/work/sinarmas.svg",
         responsibilities: [
-            "Spearheaded the optimization of OCR pipelines, leading to significant enhancements in document information extraction accuracy and processing velocity.",
-            "Architected and successfully deployed an innovative AI-powered document summarization system, which drastically reduced sales letter review durations.",
+            "Spearheaded optimization of OCR pipelines and developed self-service AI platform, achieving high-accuracy document processing for 2,000+ daily requests.",
+            "Architected and deployed an AI-powered document summarization system for sales letters using Generative AI and OCR, significantly reducing review time.",
             "Developed and seamlessly integrated automated OCR services for invoices and tax documents, achieving high-accuracy document processing at a significant scale.",
-            "Experimented with and implemented cutting-edge AI models for document processing, including OCR, LLMs, and RAG, to enhance the company's data extraction and analysis capabilities.",
-            "Engineered a robust enterprise agentic chatbot utilizing LangChain and OpenAI, effectively streamlining internal communications across diverse departments.",
+            "Experimented with and implemented cutting-edge AI models for document processing, including OCR, LLMs, and RAG, to enhance the company's data extraction and analysis capabilities.", 
+            "Engineered a robust enterprise agentic chatbot utilizing LangChain and OpenAI, effectively streamlining internal communications across diverse departments. It uses RAG and ReAct to provide accurate and up-to-date information to employees.",
         ],
     },
     {
