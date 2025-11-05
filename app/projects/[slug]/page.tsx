@@ -6,13 +6,14 @@ import { projects } from '@/data/projects';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
 
 type ProjectPageProps = {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata(
     { params }: ProjectPageProps,
 ): Promise<Metadata> {
-    const project = projects.find((p) => createUrlSlug(p.title) === params.slug);
+    const { slug } = await params;
+    const project = projects.find((p) => createUrlSlug(p.title) === slug);
 
     if (!project) {
         return {
@@ -31,8 +32,9 @@ export async function generateStaticParams() {
     }));
 }
 
-export default function Page({ params }: ProjectPageProps) {
-    const project = projects.find((p) => createUrlSlug(p.title) === params.slug);
+export default async function Page({ params }: ProjectPageProps) {
+    const { slug } = await params;
+    const project = projects.find((p) => createUrlSlug(p.title) === slug);
 
     if (!project) {
         notFound();
