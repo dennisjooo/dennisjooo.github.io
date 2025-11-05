@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getSessionItem, removeSessionItem, setSessionItem } from '@/lib/utils/storage';
 
 type TabType = 'projects' | 'certifications';
 
@@ -7,13 +8,13 @@ export function useTabState() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        const fromNav = sessionStorage.getItem('fromNav') === 'true';
+        const fromNav = getSessionItem('fromNav') === 'true';
         if (fromNav) {
-            sessionStorage.removeItem('fromNav');
-            sessionStorage.removeItem('projectsActiveTab');
+            removeSessionItem('fromNav');
+            removeSessionItem('projectsActiveTab');
             setActiveTab('projects');
         } else {
-            const storedTab = sessionStorage.getItem('projectsActiveTab') as TabType;
+            const storedTab = getSessionItem('projectsActiveTab') as TabType | null;
             if (storedTab && (storedTab === 'projects' || storedTab === 'certifications')) {
                 setActiveTab(storedTab);
             }
@@ -23,7 +24,7 @@ export function useTabState() {
 
     useEffect(() => {
         if (mounted) {
-            sessionStorage.setItem('projectsActiveTab', activeTab);
+            setSessionItem('projectsActiveTab', activeTab);
         }
     }, [activeTab, mounted]);
 

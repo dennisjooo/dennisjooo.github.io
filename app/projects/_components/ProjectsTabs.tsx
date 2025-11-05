@@ -5,13 +5,7 @@ import CertificationsList from '@/components/projects/CertificationsList';
 import ProjectsList from '@/components/projects/ProjectsList';
 import TabSwitcher from '@/components/projects/TabSwitcher';
 import { useTabState } from '@/lib/hooks/useTabState';
-
-const contentVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 },
-    transition: { duration: 0.5 },
-};
+import { tabContentVariants } from '@/lib/animations/variants';
 
 export function ProjectsTabs() {
     const { activeTab, setActiveTab, mounted } = useTabState();
@@ -29,14 +23,14 @@ export function ProjectsTabs() {
                     {activeTab === 'projects' ? (
                         <motion.div
                             key="projects"
-                            {...contentVariants}
+                            {...tabContentVariants}
                         >
                             <ProjectsList />
                         </motion.div>
                     ) : (
                         <motion.div
                             key="certifications"
-                            {...contentVariants}
+                            {...tabContentVariants}
                         >
                             <CertificationsList />
                         </motion.div>
