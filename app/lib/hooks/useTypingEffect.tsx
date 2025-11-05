@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { shuffleArray } from '../utils/array';
+import { shuffleArray } from '@/app/lib/utils/array';
 
 export const useTypingEffect = (descriptions: string[]) => {
     const shuffledDescriptions = useMemo(() => shuffleArray(descriptions), [descriptions]);

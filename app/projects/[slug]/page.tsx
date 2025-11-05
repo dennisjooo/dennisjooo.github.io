@@ -1,7 +1,7 @@
-import { projects } from '../../../data/projects';
-import { createUrlSlug } from '../../utils/urlHelpers';
+import { projects } from '@/data/projects';
+import { createUrlSlug } from '@/app/lib/utils/urlHelpers';
 import ProjectPageClient from './ProjectPageClient';
-import BackToTop from '../../components/BackToTop';
+import BackToTop from '@/app/components/BackToTop';
 import type { Metadata } from "next";
 
 export async function generateMetadata({

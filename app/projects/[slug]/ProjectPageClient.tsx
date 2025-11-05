@@ -3,10 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Project } from '../../../data/projects';
-import ProjectContent from '../../components/projects/ProjectContent';
-import ProjectLinks from '../../components/projects/ProjectLinks';
-import ProjectDescription from '../../components/projects/ProjectDescription';
+import { Project } from '@/data/projects';
+import ProjectContent from '@/app/components/projects/ProjectContent';
+import ProjectLinks from '@/app/components/projects/ProjectLinks';
+import ProjectDescription from '@/app/components/projects/ProjectDescription';
 import { BsArrowLeft } from "react-icons/bs";
 
 export default function ProjectPageClient({ project }: { project: Project }) {

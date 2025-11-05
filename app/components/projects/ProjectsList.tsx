@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useMemo } from 'react';
-import { BentoGrid, BentoCard } from '../BentoComponents';
-import { Project, projects } from '../../../data/projects';
-import { createUrlSlug } from '../../utils/urlHelpers';
+import { BentoGrid, BentoCard } from '@/app/components/BentoComponents';
+import { Project, projects } from '@/data/projects';
+import { createUrlSlug } from '@/app/lib/utils/urlHelpers';
 
 export default function ProjectsList() {
     const sortedProjects = useMemo(() =>
@@ -19,7 +19,7 @@ export default function ProjectsList() {
                     name={title}
                     className="col-span-1"
                     description={description}
-                    href={`/project/${createUrlSlug(title)}`}
+                    href={`/projects/${createUrlSlug(title)}`}
                     cta="View Project"
                     date={date}
                     imageUrl={imageUrl}

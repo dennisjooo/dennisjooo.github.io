@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ProjectsList from '../components/projects/ProjectsList';
-import CertificationsList from '../components/projects/CertificationsList';
-import TabSwitcher from '../components/projects/TabSwitcher';
-import { useTabState } from '../hooks/useTabState';
-import BackToTop from '../components/BackToTop';
+import ProjectsList from '@/app/components/projects/ProjectsList';
+import CertificationsList from '@/app/components/projects/CertificationsList';
+import TabSwitcher from '@/app/components/projects/TabSwitcher';
+import { useTabState } from '@/app/lib/hooks/useTabState';
+import BackToTop from '@/app/components/BackToTop';
 
 const contentVariants = {
     initial: { opacity: 0, y: 20 },
