@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import BackToTop from '@/components/BackToTop';
-import { ProjectsTabs } from './_components/ProjectsTabs';
+import { ProjectsTabs } from '@/components/projects/ProjectsTabs';
 
 export const metadata: Metadata = {
     title: "Projects & Certifications | Dennis' Portfolio",
