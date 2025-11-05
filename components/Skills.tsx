@@ -2,11 +2,11 @@
 
 import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import Spinner from '@/app/components/Spinner';
+import Spinner from '@/components/Spinner';
 import { skillIcons } from '@/data/skillContent';
 import { motion } from 'framer-motion';
-import { useAnimateOnScroll } from '@/app/lib/hooks/useAnimateOnScroll';
-import { fadeInUpVariants } from '@/app/lib/animations/variants';
+import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
+import { fadeInUpVariants } from '@/lib/animations/variants';
 
 const IconCloud = dynamic(() => import('./IconCloud'), {
     ssr: false,

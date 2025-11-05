@@ -1,13 +1,16 @@
 'use client';
 
 import { ThemeProvider } from 'next-themes';
-import Navbar from "@/app/components/navbar/Navbar";
+import type { ReactNode } from 'react';
 
-export function ClientLayout({ children }: { children: React.ReactNode }) {
+type ProvidersProps = {
+    children: ReactNode;
+};
+
+export function Providers({ children }: ProvidersProps) {
     return (
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-            <Navbar />
             {children}
         </ThemeProvider>
     );
-} 
+}

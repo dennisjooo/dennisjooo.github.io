@@ -1,7 +1,22 @@
 import type { Metadata } from "next";
-import 'katex/dist/katex.min.css';
+import type { ReactNode } from "react";
+import "katex/dist/katex.min.css";
 import "./globals.css";
-import { ClientLayout } from "@/app/components/ClientLayout";
+import { Inter, Roboto_Mono } from "next/font/google";
+import Navbar from "@/components/navbar/Navbar";
+import { Providers } from "./providers";
+
+const inter = Inter({
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-inter",
+});
+
+const robotoMono = Roboto_Mono({
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-roboto-mono",
+});
 
 export const metadata: Metadata = {
     title: "Dennis' Portfolio",
@@ -25,18 +40,18 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+type RootLayoutProps = {
+    children: ReactNode;
+};
+
+export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono:wght@100..700&display=swap" rel="stylesheet" />
-            </head>
-            <body className="bg-black" suppressHydrationWarning>
-                <ClientLayout>
+            <body className={`bg-black ${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
+                <Providers>
+                    <Navbar />
                     <main>{children}</main>
-                </ClientLayout>
+                </Providers>
             </body>
         </html>
     );

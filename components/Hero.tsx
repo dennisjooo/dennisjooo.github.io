@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useCallback } from 'react';
-import { useTypingEffect } from '@/app/lib/hooks/useTypingEffect';
-import { useScrollEffect } from '@/app/lib/hooks/useScrollEffect';
+import { useTypingEffect } from '@/lib/hooks/useTypingEffect';
+import { useScrollEffect } from '@/lib/hooks/useScrollEffect';
 import { motion, AnimationControls } from 'framer-motion';
-import { useAnimateOnScroll } from '@/app/lib/hooks/useAnimateOnScroll';
-import { fadeInDownVariants, fadeInUpVariants } from '@/app/lib/animations/variants';
+import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
+import { fadeInDownVariants, fadeInUpVariants } from '@/lib/animations/variants';
 import { HERO_CONTENT } from '@/data/heroContent';
 import { BsChevronDown } from "react-icons/bs";
 
