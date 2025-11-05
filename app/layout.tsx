@@ -1,20 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from 'next/font/google';
 import 'katex/dist/katex.min.css';
 import "./globals.css";
 import { ClientLayout } from "./components/ClientLayout";
-
-const inter = Inter({
-    subsets: ['latin'],
-    display: 'swap',
-    variable: '--font-inter',
-});
-
-const robotoMono = Roboto_Mono({
-    subsets: ['latin'],
-    display: 'swap',
-    variable: '--font-roboto-mono',
-});
 
 export const metadata: Metadata = {
     title: "Dennis' Portfolio",
@@ -40,7 +27,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={`${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
+        <html lang="en" suppressHydrationWarning>
+            <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono:wght@100..700&display=swap" rel="stylesheet" />
+            </head>
             <ClientLayout>{children}</ClientLayout>
         </html>
     );
