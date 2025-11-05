@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { cn } from "@/app/lib/utils";
-import { Button } from "@/app/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 interface BentoGridProps {

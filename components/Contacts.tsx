@@ -1,7 +1,7 @@
 import React from "react";
-import { Dock } from "@/app/components/Dock";
+import { Dock } from "@/components/Dock";
 import { contactLinks } from "@/data/contactContent";
-import { DockIcon } from "@/app/components/DockIcon";
+import { DockIcon } from "@/components/DockIcon";
 
 const Contacts: React.FC = () => (
     <section id="contact" className="flex flex-col items-center bg-black text-white">

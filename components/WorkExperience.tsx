@@ -4,8 +4,8 @@ import React from 'react';
 import Image from 'next/image';
 import { motion, AnimationControls } from 'framer-motion';
 import { workExperienceData, TimelineItemData } from '@/data/workContent';
-import { useAnimateOnScroll } from '@/app/lib/hooks/useAnimateOnScroll';
-import { fadeInUpVariants, fadeInVariants } from '@/app/lib/animations/variants';
+import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
+import { fadeInUpVariants, fadeInVariants } from '@/lib/animations/variants';
 
 const WorkExperience: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();

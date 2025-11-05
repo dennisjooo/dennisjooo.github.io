@@ -4,8 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
-import { BentoGrid, BentoCard } from '@/app/components/BentoComponents';
-import { createUrlSlug } from '@/app/lib/utils/urlHelpers';
+import { BentoGrid, BentoCard } from '@/components/BentoComponents';
+import { createUrlSlug } from '@/lib/utils/urlHelpers';
 
 interface Project {
     title: string;

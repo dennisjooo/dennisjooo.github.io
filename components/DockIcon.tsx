@@ -1,5 +1,5 @@
 import React from "react";
-import { DockIcon as BaseDockIcon } from "@/app/components/Dock";
+import { DockIcon as BaseDockIcon } from "@/components/Dock";
 import * as Bs from "react-icons/bs";
 import { IconType } from "react-icons";
 

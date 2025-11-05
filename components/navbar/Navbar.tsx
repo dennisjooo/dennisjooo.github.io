@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { BurgerButton, DesktopMenu, MobileMenu } from '@/app/components/navbar/NavbarComponents';
+import { BurgerButton, DesktopMenu, MobileMenu } from '@/components/navbar/NavbarComponents';
 import { navItems } from '@/data/navbarContent';
 
 interface NavbarState {
