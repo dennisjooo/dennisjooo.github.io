@@ -1,45 +1,23 @@
-'use client';
+"use client";
 
-import React from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import { BentoGrid, BentoCard } from '@/components/BentoComponents';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
-
-interface Project {
-    title: string;
-    description: string;
-    imageUrl: string;
-    blogPost: string;
-    date: string;
-    links: Array<{
-        text: string;
-        url: string;
-    }>;
-}
+import { sortProjectsByDate, formatProjectDate, truncateProjectDescription } from '@/lib/utils/projectFormatting';
+import { Project } from '@/data/projects/types';
 
 interface FeaturedProjectsProps {
     projects: Project[];
 }
 
 const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
-    // Select the 3 most recent/featured projects
-    const featuredProjects = projects
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        .slice(0, 3);
-
-    const formatDate = (dateString: string) => {
-        return new Date(dateString).toLocaleDateString('en-US', {
-            month: 'long',
-            year: 'numeric'
-        });
-    };
-
-    const truncateDescription = (description: string, maxLength: number = 120) => {
-        if (description.length <= maxLength) return description;
-        return description.slice(0, maxLength).trim() + '...';
-    };
+    const featuredProjects = useMemo(
+        () => sortProjectsByDate(projects).slice(0, 3),
+        [projects]
+    );
 
     return (
         <section id="projects" className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0">
@@ -78,10 +56,10 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                                 <BentoCard
                                     name={title}
                                     className="col-span-1 h-[350px] md:h-[480px]"
-                                    description={truncateDescription(description)}
+                                    description={truncateProjectDescription(description)}
                                     href={`/projects/${createUrlSlug(title)}`}
                                     cta="View Project"
-                                    date={formatDate(date)}
+                                    date={formatProjectDate(date)}
                                     imageUrl={imageUrl}
                                 />
                             </motion.div>
@@ -110,4 +88,4 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     );
 };
 
-export default FeaturedProjects; 
+export default FeaturedProjects;

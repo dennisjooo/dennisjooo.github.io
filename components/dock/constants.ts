@@ -1,0 +1,2 @@
+export const DEFAULT_MAGNIFICATION = 60;
+export const DEFAULT_DISTANCE = 140;
