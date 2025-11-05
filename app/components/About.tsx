@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { aboutContent } from '../../data/aboutContent';
+import { aboutContent } from '@/data/aboutContent';
 import { motion } from 'framer-motion';
-import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
-import { fadeInUpVariants } from '../animations/variants';
+import { useAnimateOnScroll } from '@/app/lib/hooks/useAnimateOnScroll';
+import { fadeInUpVariants } from '@/app/lib/animations/variants';
 import { AnimationControls } from 'framer-motion';
 
 const About: React.FC = () => {

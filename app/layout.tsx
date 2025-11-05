@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import 'katex/dist/katex.min.css';
 import "./globals.css";
-import { ClientLayout } from "./components/ClientLayout";
+import { ClientLayout } from "@/app/components/ClientLayout";
 
 export const metadata: Metadata = {
     title: "Dennis' Portfolio",
@@ -33,7 +33,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono:wght@100..700&display=swap" rel="stylesheet" />
             </head>
-            <ClientLayout>{children}</ClientLayout>
+            <body className="bg-black" suppressHydrationWarning>
+                <ClientLayout>
+                    <main>{children}</main>
+                </ClientLayout>
+            </body>
         </html>
     );
 }

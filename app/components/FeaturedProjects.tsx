@@ -4,8 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
-import { BentoGrid, BentoCard } from './BentoComponents';
-import { createUrlSlug } from '../utils/urlHelpers';
+import { BentoGrid, BentoCard } from '@/app/components/BentoComponents';
+import { createUrlSlug } from '@/app/lib/utils/urlHelpers';
 
 interface Project {
     title: string;
@@ -79,7 +79,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                                     name={title}
                                     className="col-span-1 h-[350px] md:h-[480px]"
                                     description={truncateDescription(description)}
-                                    href={`/project/${createUrlSlug(title)}`}
+                                    href={`/projects/${createUrlSlug(title)}`}
                                     cta="View Project"
                                     date={formatDate(date)}
                                     imageUrl={imageUrl}
