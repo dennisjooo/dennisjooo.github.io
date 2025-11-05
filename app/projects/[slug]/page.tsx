@@ -1,16 +1,18 @@
-import { projects } from '@/data/projects';
-import { createUrlSlug } from '@/app/lib/utils/urlHelpers';
-import ProjectPageClient from './ProjectPageClient';
-import BackToTop from '@/app/components/BackToTop';
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import BackToTop from '@/components/BackToTop';
+import ProjectPageClient from './ProjectPageClient';
+import { projects } from '@/data/projects';
+import { createUrlSlug } from '@/lib/utils/urlHelpers';
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-    const { slug } = await params;
-    const project = projects.find((p) => createUrlSlug(p.title) === slug);
+type ProjectPageProps = {
+    params: { slug: string };
+};
+
+export async function generateMetadata(
+    { params }: ProjectPageProps,
+): Promise<Metadata> {
+    const project = projects.find((p) => createUrlSlug(p.title) === params.slug);
 
     if (!project) {
         return {
@@ -29,16 +31,11 @@ export async function generateStaticParams() {
     }));
 }
 
-type PageProps = {
-    params: Promise<{ slug: string }>;
-};
-
-export default async function Page({ params }: PageProps) {
-    const { slug } = await params;
-    const project = projects.find((p) => createUrlSlug(p.title) === slug);
+export default function Page({ params }: ProjectPageProps) {
+    const project = projects.find((p) => createUrlSlug(p.title) === params.slug);
 
     if (!project) {
-        return <div className="text-center py-16">Project not found</div>;
+        notFound();
     }
 
     return (
