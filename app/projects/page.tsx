@@ -1,53 +1,11 @@
-'use client';
+import type { Metadata } from 'next';
+import BackToTop from '@/components/BackToTop';
+import { ProjectsTabs } from './_components/ProjectsTabs';
 
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import ProjectsList from '@/app/components/projects/ProjectsList';
-import CertificationsList from '@/app/components/projects/CertificationsList';
-import TabSwitcher from '@/app/components/projects/TabSwitcher';
-import { useTabState } from '@/app/lib/hooks/useTabState';
-import BackToTop from '@/app/components/BackToTop';
-
-const contentVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 },
-    transition: { duration: 0.5 }
+export const metadata: Metadata = {
+    title: "Projects & Certifications | Dennis' Portfolio",
+    description: "Explore Dennis' highlighted projects and professional certifications.",
 };
-
-function ProjectsContent() {
-    const { activeTab, setActiveTab, mounted } = useTabState();
-
-    return (
-        <div className={`container max-w-7xl mx-auto px-8 pt-16 transition-opacity duration-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-            <h1 className="text-3xl lg:text-4xl mb-8 text-center font-bold">
-                Projects & Certifications.
-            </h1>
-
-            <TabSwitcher activeTab={activeTab} onTabChange={setActiveTab} />
-
-            <div className="max-w-7xl mx-auto min-h-[50vh]">
-                <AnimatePresence mode="wait">
-                    {activeTab === 'projects' ? (
-                        <motion.div
-                            key="projects"
-                            {...contentVariants}
-                        >
-                            <ProjectsList />
-                        </motion.div>
-                    ) : (
-                        <motion.div
-                            key="certifications"
-                            {...contentVariants}
-                        >
-                            <CertificationsList />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-        </div>
-    );
-}
 
 export default function ProjectsAndCertificationsPage() {
     return (
@@ -55,7 +13,7 @@ export default function ProjectsAndCertificationsPage() {
             id='projects-and-certifications'
             className='flex flex-col min-h-screen py-16 bg-black text-white'
         >
-            <ProjectsContent />
+            <ProjectsTabs />
             <BackToTop />
         </section>
     );
