@@ -15,10 +15,10 @@ const About: React.FC = () => {
         <section
             ref={ref}
             id="about"
-            className="min-h-screen flex flex-col items-center justify-center my-16 px-8 py-16 pt-20 md:pt-8 bg-black text-white"
+            className="min-h-screen flex flex-col items-center justify-center my-16 px-8 py-16 pt-20 md:pt-8 bg-white dark:bg-black text-gray-900 dark:text-white"
         >
             <motion.h2
-                className="text-3xl md:text-4xl lg:mt-16 mb-8 text-center font-bold"
+                className="text-3xl md:text-4xl lg:mt-16 mb-8 text-center font-bold text-gray-900 dark:text-white"
                 variants={fadeInUpVariants}
                 initial="hidden"
                 animate={mainControls}
@@ -60,7 +60,7 @@ const ProfileImage: React.FC<{ mainControls: AnimationControls }> = ({ mainContr
 
 const AboutContent: React.FC<{ mainControls: AnimationControls }> = ({ mainControls }) => (
     <motion.div
-        className="md:w-3/4 md:pl-5 font-light"
+        className="md:w-3/4 md:pl-5 font-light text-gray-700 dark:text-gray-300"
         variants={fadeInUpVariants}
         initial="hidden"
         animate={mainControls}
@@ -69,7 +69,7 @@ const AboutContent: React.FC<{ mainControls: AnimationControls }> = ({ mainContr
         {Object.entries(aboutContent).map(([key, content], index) => (
             <motion.h5
                 key={key}
-                className="mb-4 last:mb-0"
+                className="mb-4 last:mb-0 text-gray-700 dark:text-gray-300"
                 variants={fadeInUpVariants}
                 initial="hidden"
                 animate={mainControls}

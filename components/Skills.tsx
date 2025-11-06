@@ -17,10 +17,10 @@ const Skills: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
 
     return (
-        <section ref={ref} id="skills" className="py-20 bg-white text-black min-h-screen flex items-center justify-center">
+        <section ref={ref} id="skills" className="py-20 bg-white dark:bg-black text-gray-900 dark:text-white min-h-screen flex items-center justify-center">
             <div className="container mx-auto px-6 flex flex-col items-center justify-center">
                 <motion.h2
-                    className="text-3xl md:text-4xl font-bold text-center mb-4"
+                    className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
                     variants={fadeInUpVariants}
                     initial="hidden"
                     animate={mainControls}
@@ -29,7 +29,7 @@ const Skills: React.FC = () => {
                     Stacks and Techs.
                 </motion.h2>
                 <motion.p
-                    className="text-lg md:text-md text-gray-500 text-center mb-12 max-w-3xl leading-relaxed"
+                    className="text-lg md:text-md text-gray-500 dark:text-gray-400 text-center mb-12 max-w-3xl leading-relaxed"
                     variants={fadeInUpVariants}
                     initial="hidden"
                     animate={mainControls}

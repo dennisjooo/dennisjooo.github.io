@@ -20,7 +20,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     );
 
     return (
-        <section id="projects" className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0">
+        <section id="projects" className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0 bg-white dark:bg-black">
             <div className="container max-w-7xl mx-auto px-8 sm:px-8 flex-1 flex flex-col">
                 {/* Section Header */}
                 <motion.div
@@ -30,10 +30,10 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-8 sm:mb-12"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-5">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-5 text-gray-900 dark:text-white">
                         Featured Projects.
                     </h2>
-                    <p className="text-lg md:text-md text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-md text-gray-500 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         A highlight reel of builds I loved obsessing over.  Mostly scrappy experiments that makes me cherish the good old days.
                     </p>
                 </motion.div>
@@ -80,7 +80,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                 >
                     <Link
                         href="/projects"
-                        className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-6 bg-white text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                        className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-6 bg-gray-900 dark:bg-white text-white dark:text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
                     >
                         View All Projects and More.
                         <ArrowUpRightIcon className="w-4 h-4" />

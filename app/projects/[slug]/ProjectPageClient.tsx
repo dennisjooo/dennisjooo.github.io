@@ -13,7 +13,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
     return (
         <section
             id='projects'
-            className='flex flex-col items-center justify-start min-h-screen pt-24 pb-16 px-2 sm:px-6 md:px-8 bg-black text-white'
+            className='flex flex-col items-center justify-start min-h-screen pt-24 pb-16 px-2 sm:px-6 md:px-8 bg-white dark:bg-black text-gray-900 dark:text-white'
         >
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                     transition={{ duration: 0.8 }}
                     className="mb-4"
                 >
-                    <Link href="/projects" className="inline-flex items-center text-neutral-400 hover:text-white transition-colors">
+                    <Link href="/projects" className="inline-flex items-center text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                         <BsArrowLeft className="mr-2" />
                         Back to Projects
                     </Link>
@@ -37,7 +37,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2"
+                        className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-gray-900 dark:text-white"
                     >
                         {project.title}
                     </motion.h1>
@@ -45,7 +45,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="text-sm sm:text-base md:text-lg text-neutral-400"
+                        className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-neutral-400"
                     >
                         {project.date}
                     </motion.p>
@@ -78,7 +78,7 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] mb-6 bg-white rounded-lg overflow-hidden"
+            className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] mb-6 bg-gray-100 dark:bg-white rounded-lg overflow-hidden"
         >
             <Image
                 src={src}
