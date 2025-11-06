@@ -1,5 +1,6 @@
 "use client";
 
+import type { ComponentPropsWithoutRef } from "react";
 import { Components } from "react-markdown";
 import { CodeBlock, type CodeProps } from "./CodeBlock";
 
@@ -88,4 +89,137 @@ export const markdownComponents: Components = {
     td: ({ children }) => (
         <td className="px-6 py-4 text-gray-100 text-sm font-medium">{children}</td>
     ),
+
+    // Media
+    img: ({ src, alt, title, ...rest }: ComponentPropsWithoutRef<"img">) => {
+        if (!src) {
+            return null;
+        }
+
+        return (
+            <figure className="my-8">
+                <img
+                    src={src}
+                    alt={alt ?? ''}
+                    loading="lazy"
+                    className="w-full h-auto rounded-lg border border-gray-700/50 shadow-lg"
+                    {...rest}
+                />
+                {title ? (
+                    <figcaption className="mt-2 text-center text-sm text-neutral-400">
+                        {title}
+                    </figcaption>
+                ) : null}
+            </figure>
+        );
+    },
+    video: ({
+        src,
+        controls,
+        autoPlay,
+        loop,
+        muted,
+        children,
+        poster,
+        title,
+        ...rest
+    }: ComponentPropsWithoutRef<"video">) => {
+        if (!src && !children) {
+            return null;
+        }
+
+        const showControls = controls ?? true;
+
+        return (
+            <figure className="my-8">
+                <video
+                    className="w-full rounded-lg border border-gray-700/50 shadow-lg"
+                    controls={showControls}
+                    autoPlay={autoPlay}
+                    loop={loop}
+                    muted={muted}
+                    poster={poster}
+                    {...rest}
+                >
+                    {src ? <source src={src} /> : null}
+                    {children}
+                </video>
+                {title ? (
+                    <figcaption className="mt-2 text-center text-sm text-neutral-400">
+                        {title}
+                    </figcaption>
+                ) : null}
+            </figure>
+        );
+    },
+    iframe: ({
+        src,
+        title,
+        width,
+        height,
+        allow,
+        allowFullScreen,
+        ...rest
+    }: ComponentPropsWithoutRef<"iframe">) => {
+        if (!src) {
+            return null;
+        }
+
+        return (
+            <div className="my-8">
+                <div className="relative w-full overflow-hidden rounded-lg border border-gray-700/50 shadow-lg">
+                    <div className="aspect-video">
+                        <iframe
+                            src={src}
+                            title={title}
+                            width={width}
+                            height={height}
+                            allow={allow}
+                            allowFullScreen={allowFullScreen}
+                            className="w-full h-full"
+                            loading="lazy"
+                            {...rest}
+                        />
+                    </div>
+                </div>
+            </div>
+        );
+    },
+    audio: ({
+        src,
+        controls,
+        autoPlay,
+        loop,
+        muted,
+        children,
+        title,
+        ...rest
+    }: ComponentPropsWithoutRef<"audio">) => {
+        if (!src && !children) {
+            return null;
+        }
+
+        const showControls = controls ?? true;
+
+        return (
+            <figure className="my-8">
+                <audio
+                    className="w-full"
+                    controls={showControls}
+                    autoPlay={autoPlay}
+                    loop={loop}
+                    muted={muted}
+                    {...rest}
+                >
+                    {src ? <source src={src} /> : null}
+                    {children}
+                </audio>
+                {title ? (
+                    <figcaption className="mt-2 text-center text-sm text-neutral-400">
+                        {title}
+                    </figcaption>
+                ) : null}
+            </figure>
+        );
+    },
 };
