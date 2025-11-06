@@ -26,7 +26,7 @@ const Skills: React.FC = () => {
                     animate={mainControls}
                     transition={{ duration: 0.8 }}
                 >
-                    Stacks and Techs.
+                    Skills, Stacks, and Techs.
                 </motion.h2>
                 <motion.p
                     className="text-lg md:text-md text-gray-500 dark:text-gray-400 text-center mb-12 max-w-3xl leading-relaxed"
