@@ -2,9 +2,9 @@
 
 import React from "react";
 import { Dock } from "@/components/Dock";
-import { contactLinks } from "@/data/contactContent";
 import { DockIcon } from "@/components/DockIcon";
 import GradientUnderline from "@/components/GradientUnderline";
+import { contactLinks } from "@/data/contactContent";
 
 const Contacts: React.FC = () => {
     return (
@@ -23,7 +23,6 @@ const Contacts: React.FC = () => {
                     <DockIcon key={ariaLabel} href={href} ariaLabel={ariaLabel} icon={icon} />
                 ))}
             </Dock>
-            <p className="text-sm text-gray-500 dark:text-gray-600 mb-8">© Dennis Jonathan {new Date().getFullYear()}</p>
         </section>
     );
 };
