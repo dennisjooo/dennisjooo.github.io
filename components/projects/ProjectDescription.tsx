@@ -16,7 +16,7 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-base sm:text-lg md:text-xl mb-6 italic"
+            className="mb-8 text-base italic text-zinc-300 sm:text-lg md:text-xl"
         >
             {parts.map((part, index) => {
                 if (part.startsWith('$$') && part.endsWith('$$')) {

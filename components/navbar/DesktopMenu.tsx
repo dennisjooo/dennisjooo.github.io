@@ -10,12 +10,12 @@ interface DesktopMenuProps {
 }
 
 const baseClasses =
-    "w-full md:w-auto px-4 py-2 rounded-xl md:rounded-full transition-colors duration-300 ease-in-out text-white lowercase";
+    "w-full md:w-auto px-4 py-2 rounded-xl md:rounded-full text-xs font-medium uppercase tracking-[0.3em] text-zinc-200 transition-colors duration-300 ease-in-out";
 
 export const DesktopMenu = ({ navItems, scrolled, onNavigate }: DesktopMenuProps) => (
     <ul className="hidden md:flex md:flex-row justify-around items-center w-full">
         {navItems.map((item) => {
-            const hoverClass = scrolled ? "hover:bg-gray-700" : "hover:bg-white hover:bg-opacity-20";
+            const hoverClass = scrolled ? "hover:bg-white/15" : "hover:bg-white/10";
             const className = `${baseClasses} ${hoverClass}`;
 
             return (

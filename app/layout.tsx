@@ -47,7 +47,10 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`bg-black ${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
+            <body
+                className={`relative min-h-screen overflow-x-hidden text-zinc-100 antialiased ${inter.variable} ${robotoMono.variable}`}
+                suppressHydrationWarning
+            >
                 <Providers>
                     <Navbar />
                     <main>{children}</main>

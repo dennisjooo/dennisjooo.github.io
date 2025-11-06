@@ -16,17 +16,25 @@ interface HeroContentProps {
 
 const HeroContent: React.FC<HeroContentProps> = ({ description, mainControls }) => (
     <motion.div
-        className="text-center p-8"
+        className="relative z-10 flex max-w-3xl flex-col items-center gap-6 text-center"
         variants={fadeInDownVariants}
         initial="hidden"
         animate={mainControls}
         transition={{ duration: 0.6 }}
     >
-        <h1 className="text-4xl md:text-5xl mb-3 text-white font-bold">
-            <span className="underline decoration-4 underline-offset-4">Dennis</span> Jonathan
+        <span className="text-xs uppercase tracking-[0.4em] text-zinc-500">
+            Portfolio
+        </span>
+        <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-white">
+            <span className="bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">Dennis</span>{' '}
+            Jonathan
         </h1>
-        <h2 className="text-lg md:text-2xl font-light text-white">
-            {description}<span className="animate-pulse">|</span>
+        <p className="max-w-xl text-base md:text-lg text-zinc-400">
+            I build practical tools, experiment with AI, and turn curious ideas into thoughtful experiences.
+        </p>
+        <h2 className="text-lg md:text-2xl font-light text-zinc-200">
+            {description}
+            <span className="ml-1 inline-block animate-pulse">|</span>
         </h2>
     </motion.div>
 );
@@ -34,7 +42,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ description, mainControls }) 
 const ScrollButton: React.FC<{ onClick: () => void; mainControls: AnimationControls }> = ({ onClick, mainControls }) => (
     <motion.button
         onClick={onClick}
-        className="absolute bottom-8"
+        className="absolute bottom-12"
         aria-label="Scroll to About section"
         variants={fadeInUpVariants}
         initial="hidden"
@@ -52,7 +60,9 @@ const ScrollButton: React.FC<{ onClick: () => void; mainControls: AnimationContr
                 ease: "easeInOut"
             }}
         >
-            <BsChevronDown className="text-white text-4xl" />
+            <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur">
+                <BsChevronDown className="text-white text-2xl" />
+            </div>
         </motion.div>
     </motion.button>
 );
@@ -71,9 +81,12 @@ const Hero: React.FC = () => {
         <section
             id='home'
             ref={ref}
-            className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/background.webp')" }}
+            className="relative isolate flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-6 py-24 text-center"
         >
+            <div className="absolute inset-0 -z-20 bg-gradient-to-b from-black via-zinc-950 to-black" />
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_65%)]" />
+            <div className="absolute -top-20 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute bottom-[-8rem] left-1/4 -z-10 h-72 w-72 rounded-full bg-white/5 blur-3xl" />
             <HeroContent description={description} mainControls={mainControls} />
             <ScrollButton onClick={scrollToAbout} mainControls={mainControls} />
         </section>

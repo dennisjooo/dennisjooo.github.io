@@ -97,16 +97,19 @@ export const useNavbarState = (): UseNavbarStateReturn => {
     );
 
     const styles = useMemo<NavbarStyles>(() => {
-        const bgClass = !isHeroSection || scrolled || isMenuOpen
-            ? "bg-black bg-opacity-90"
-            : "bg-transparent";
+        const isSolid = !isHeroSection || scrolled || isMenuOpen;
+        const bgClass = isSolid
+            ? "border border-white/15 bg-white/[0.08] backdrop-blur"
+            : "border border-white/10 bg-white/[0.04] backdrop-blur";
 
         const navWidth =
             isHeroSection && !scrolled && pathname === "/"
                 ? "w-11/12 lg:w-5/6"
                 : "w-11/12 lg:w-3/4 xl:w-2/3";
 
-        const shadowClass = (!isHeroSection || scrolled) && !isMenuOpen ? "shadow-lg" : "";
+        const shadowClass = (!isHeroSection || scrolled) && !isMenuOpen
+            ? "shadow-[0_18px_45px_-28px_rgba(255,255,255,0.45)]"
+            : "";
 
         return { bgClass, navWidth, shadowClass };
     }, [isHeroSection, isMenuOpen, pathname, scrolled]);

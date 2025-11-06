@@ -39,7 +39,7 @@ const renderColoredIcon = (icon: SimpleIcon, color: string) =>
     renderSimpleIcon({
         icon: { ...icon, hex: color },
         size: 40,
-        bgHex: '#000000',
+        bgHex: "transparent",
         fallbackHex: color,
         minContrastRatio: 0,
         aProps: {
@@ -50,15 +50,22 @@ const renderColoredIcon = (icon: SimpleIcon, color: string) =>
 interface IconCloudProps {
     iconSlugs: string[];
     customIcons?: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>>;
-    iconColor?: string;
+    colorMode?: "light" | "dark" | "auto";
+    lightColor?: string;
+    darkColor?: string;
 }
 
 const IconCloud: React.FC<IconCloudProps> = ({
     iconSlugs,
     customIcons,
-    iconColor = '#000000'
+    colorMode = "dark",
+    lightColor = "#111111",
+    darkColor = "#ffffff",
 }) => {
     const [simpleIcons, setSimpleIcons] = useState<Record<string, SimpleIcon>>({});
+    const [resolvedColor, setResolvedColor] = useState<string>(() =>
+        colorMode === "light" ? lightColor : darkColor
+    );
 
     useEffect(() => {
         fetchSimpleIcons({ slugs: iconSlugs }).then((data) => {
@@ -66,17 +73,40 @@ const IconCloud: React.FC<IconCloudProps> = ({
         });
     }, [iconSlugs]);
 
+    useEffect(() => {
+        if (colorMode === "auto") {
+            if (typeof window === "undefined") {
+                setResolvedColor(darkColor);
+                return;
+            }
+
+            const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+            const applyColor = () => {
+                setResolvedColor(mediaQuery.matches ? darkColor : lightColor);
+            };
+
+            applyColor();
+            mediaQuery.addEventListener("change", applyColor);
+
+            return () => {
+                mediaQuery.removeEventListener("change", applyColor);
+            };
+        }
+
+        setResolvedColor(colorMode === "dark" ? darkColor : lightColor);
+    }, [colorMode, darkColor, lightColor]);
+
     const allIcons = useMemo(() => {
         const renderedSimpleIcons = Object.values(simpleIcons).map((icon) =>
-            renderColoredIcon(icon, iconColor)
+            renderColoredIcon(icon, resolvedColor)
         );
 
         const renderedCustomIcons = Object.entries(customIcons || {}).map(([name, Icon]) => (
-            <Icon key={name} style={{ fontSize: 42, color: iconColor }} />
+            <Icon key={name} style={{ fontSize: 42, color: resolvedColor }} />
         ));
 
         return [...renderedSimpleIcons, ...renderedCustomIcons];
-    }, [simpleIcons, customIcons, iconColor]);
+    }, [simpleIcons, customIcons, resolvedColor]);
 
     return (
         <Cloud {...cloudProps}>

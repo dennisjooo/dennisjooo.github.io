@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface BentoGridProps {
     children: ReactNode;
@@ -29,16 +29,14 @@ export const BentoGrid = ({ children, className }: BentoGridProps) => (
 export const BentoCard = ({ name, className, description, href, cta, date, imageUrl, isCertification }: BentoCardProps) => (
     <div
         className={cn(
-            "group relative flex flex-col justify-between overflow-hidden rounded-xl",
-            "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-            "transform-gpu transition-all duration-300 ease-in-out hover:scale-[1.02]",
-            "dark:bg-white dark:text-black dark:[border:1px_solid_rgba(0,0,0,.1)]",
+            "group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-white/10",
+            "bg-zinc-950/60 transition-transform duration-500 ease-out hover:-translate-y-2 hover:border-white/30",
             isCertification ? "min-h-[200px]" : "min-h-[320px] sm:min-h-[360px] md:min-h-[400px]",
             className
         )}
     >
         {!isCertification && (
-            <div className="relative w-full h-40 sm:h-48">
+            <div className="relative h-40 w-full overflow-hidden sm:h-48">
                 {imageUrl ? (
                     <Image
                         src={imageUrl}
@@ -48,31 +46,43 @@ export const BentoCard = ({ name, className, description, href, cta, date, image
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                 ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900" />
+                    <div className="h-full w-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.1),transparent_70%)]" />
                 )}
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 to-transparent" />
             </div>
         )}
 
-        <div className="flex flex-col flex-grow p-4 sm:p-6 justify-between">
-            <div className="flex-grow">
-                <h3 className="font-semibold text-lg sm:text-xl text-neutral-800 mb-1 line-clamp-2">
+        <div className="flex flex-grow flex-col justify-between p-5 sm:p-6">
+            <div className="flex-grow space-y-3">
+                <h3 className="line-clamp-2 text-lg font-semibold text-white sm:text-xl">
                     {name}
                 </h3>
-                <p className="text-xs sm:text-sm text-neutral-500 mb-2">{date}</p>
-                <p className="text-sm sm:text-base text-neutral-600 line-clamp-3">{description}</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-zinc-500 sm:text-sm">{date}</p>
+                <p className="line-clamp-3 text-sm text-zinc-300 sm:text-base">{description}</p>
             </div>
 
             <div className="mt-4 flex-shrink-0">
-                <Button
-                    className="transition-transform duration-300 ease-in-out group-hover:translate-x-1 text-black text-sm sm:text-base px-0 py-1 h-auto hover:bg-transparent"
-                >
-                    <a href={href} className="flex items-center">
+                {href.startsWith('http') ? (
+                    <a
+                        href={href}
+                        className="group/cta inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em] text-white transition-transform duration-300 hover:translate-x-1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {cta}
-                        <ArrowRightIcon className="ml-2 h-3 w-3 sm:h-4 sm:w-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
+                        <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
                     </a>
-                </Button>
+                ) : (
+                    <Link
+                        href={href}
+                        className="group/cta inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em] text-white transition-transform duration-300 hover:translate-x-1"
+                    >
+                        {cta}
+                        <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
+                    </Link>
+                )}
             </div>
         </div>
-        <div className="pointer-events-none absolute inset-0 transition-colors duration-300 group-hover:bg-black/[.03]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
     </div>
 );

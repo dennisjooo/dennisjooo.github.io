@@ -9,7 +9,7 @@ interface ProjectLinksProps {
 
 export default function ProjectLinks({ links }: ProjectLinksProps) {
     return (
-        <nav className="mt-8 flex flex-wrap gap-4">
+        <nav className="mt-10 flex flex-wrap gap-4">
             {links.map((link, index) => (
                 <ProjectLink key={index} {...link} />
             ))}
@@ -21,7 +21,7 @@ function ProjectLink({ url, text }: Link) {
     return (
         <a
             href={url}
-            className="inline-block bg-black text-white px-4 py-2 rounded hover:bg-gray-300 hover:text-black transition-colors text-sm sm:text-base md:text-lg"
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2 text-xs font-medium uppercase tracking-[0.3em] text-zinc-100 transition-all duration-300 hover:border-white/40 hover:bg-white/10"
             target="_blank"
             rel="noopener noreferrer"
         >

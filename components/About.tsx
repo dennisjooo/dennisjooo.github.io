@@ -15,34 +15,38 @@ const About: React.FC = () => {
         <section
             ref={ref}
             id="about"
-            className="min-h-screen flex flex-col items-center justify-center my-16 px-8 py-16 pt-20 md:pt-8 bg-black text-white"
+            className="relative flex min-h-screen w-full items-center justify-center px-6 py-24"
         >
-            <motion.h2
-                className="text-3xl md:text-4xl lg:mt-16 mb-8 text-center font-bold"
-                variants={fadeInUpVariants}
-                initial="hidden"
-                animate={mainControls}
-                transition={{ duration: 0.8 }}
-            >
-                About.
-            </motion.h2>
-            <motion.div
-                className="max-w-4xl mx-auto flex flex-col md:flex-row items-center"
-                variants={fadeInUpVariants}
-                initial="hidden"
-                animate={mainControls}
-                transition={{ duration: 0.8, delay: 0.2 }}
-            >
-                <ProfileImage mainControls={mainControls} />
-                <AboutContent mainControls={mainControls} />
-            </motion.div>
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.05),transparent_60%)]" />
+            <div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_65%)]" />
+            <div className="container relative mx-auto w-full max-w-5xl">
+                <motion.h2
+                    className="text-left text-3xl font-semibold uppercase tracking-[0.25em] text-zinc-300 md:text-center md:text-4xl md:tracking-[0.35em]"
+                    variants={fadeInUpVariants}
+                    initial="hidden"
+                    animate={mainControls}
+                    transition={{ duration: 0.8 }}
+                >
+                    About
+                </motion.h2>
+                <motion.div
+                    className="mt-12 grid gap-12 md:grid-cols-[minmax(220px,280px),1fr] md:items-start"
+                    variants={fadeInUpVariants}
+                    initial="hidden"
+                    animate={mainControls}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                    <ProfileImage mainControls={mainControls} />
+                    <AboutContent mainControls={mainControls} />
+                </motion.div>
+            </div>
         </section>
     );
 };
 
 const ProfileImage: React.FC<{ mainControls: AnimationControls }> = ({ mainControls }) => (
     <motion.div
-        className="md:w-1/2 mb-8 md:mb-0"
+        className="mb-10 w-full md:mb-0"
         variants={fadeInUpVariants}
         initial="hidden"
         animate={mainControls}
@@ -53,14 +57,14 @@ const ProfileImage: React.FC<{ mainControls: AnimationControls }> = ({ mainContr
             alt="Profile picture"
             width={300}
             height={300}
-            className="rounded-full shadow-lg w-[225px] h-[225px] md:w-[300px] md:h-[300px]"
+            className="mx-auto h-[220px] w-[220px] rounded-full border border-white/10 bg-white/5 object-cover shadow-[0_30px_80px_-45px_rgba(255,255,255,0.6)] md:h-[280px] md:w-[280px]"
         />
     </motion.div>
 );
 
 const AboutContent: React.FC<{ mainControls: AnimationControls }> = ({ mainControls }) => (
     <motion.div
-        className="md:w-3/4 md:pl-5 font-light"
+        className="space-y-6 text-left text-base font-light text-zinc-300 md:border-l md:border-white/10 md:pl-8"
         variants={fadeInUpVariants}
         initial="hidden"
         animate={mainControls}
@@ -69,7 +73,7 @@ const AboutContent: React.FC<{ mainControls: AnimationControls }> = ({ mainContr
         {Object.entries(aboutContent).map(([key, content], index) => (
             <motion.h5
                 key={key}
-                className="mb-4 last:mb-0"
+                className="leading-relaxed text-zinc-400"
                 variants={fadeInUpVariants}
                 initial="hidden"
                 animate={mainControls}

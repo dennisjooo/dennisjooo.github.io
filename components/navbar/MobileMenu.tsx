@@ -37,7 +37,7 @@ export const MobileMenu = ({
                                 }
                                 onToggle(false);
                             }}
-                            className="w-full px-4 py-2 text-white lowercase hover:bg-gray-700 transition-colors duration-300 ease-in-out block"
+                            className="block w-full px-4 py-3 text-xs font-medium uppercase tracking-[0.3em] text-zinc-100 transition-colors duration-300 ease-in-out hover:bg-white/10"
                         >
                             {item.label}
                         </Link>
@@ -47,7 +47,7 @@ export const MobileMenu = ({
                                 onNavigate(item.id);
                                 onToggle(false);
                             }}
-                            className="w-full px-4 py-2 text-white lowercase hover:bg-gray-700 transition-colors duration-300 ease-in-out"
+                            className="w-full px-4 py-3 text-xs font-medium uppercase tracking-[0.3em] text-zinc-100 transition-colors duration-300 ease-in-out hover:bg-white/10"
                         >
                             {item.label}
                         </button>
