@@ -55,7 +55,7 @@ export const BentoCard = ({
                 "backdrop-blur-sm transition-all duration-300 ease-out",
                 "hover:shadow-xl hover:scale-[1.02] hover:border-neutral-300/50",
                 "dark:bg-neutral-900 dark:border-neutral-800 dark:hover:border-neutral-700",
-                isCertification ? "min-h-[200px]" : "min-h-[320px] sm:min-h-[360px] md:min-h-[400px]",
+                isCertification ? "min-h-[200px]" : "min-h-[380px] sm:min-h-[400px] md:min-h-[420px]",
                 className
             )}
         >
