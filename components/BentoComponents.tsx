@@ -21,9 +21,9 @@ interface BentoCardProps {
 }
 
 export const BentoGrid = ({ children, className }: BentoGridProps) => (
-    <div 
+    <div
         className={cn(
-            "grid gap-4 auto-rows-fr",
+            "grid gap-6 auto-rows-fr",
             className
         )}
     >
@@ -31,20 +31,20 @@ export const BentoGrid = ({ children, className }: BentoGridProps) => (
     </div>
 );
 
-export const BentoCard = ({ 
-    name, 
-    className, 
-    description, 
-    href, 
-    cta, 
-    date, 
-    imageUrl, 
-    isCertification = false 
+export const BentoCard = ({
+    name,
+    className,
+    description,
+    href,
+    cta,
+    date,
+    imageUrl,
+    isCertification = false
 }: BentoCardProps) => {
     const isExternal = href.startsWith("http");
     const LinkComponent = isExternal ? "a" : Link;
-    const linkProps = isExternal 
-        ? { href, target: "_blank", rel: "noopener noreferrer" } 
+    const linkProps = isExternal
+        ? { href, target: "_blank", rel: "noopener noreferrer" }
         : { href };
 
     return (
@@ -77,14 +77,14 @@ export const BentoCard = ({
                 </div>
             )}
 
-            <div className="flex flex-col flex-1 p-5 sm:p-6">
+            <div className="flex flex-col flex-1 p-6">
                 <div className="flex-1 space-y-2">
                     <div className="flex items-start justify-between gap-3">
                         <h3 className="font-semibold text-lg sm:text-xl text-neutral-900 dark:text-neutral-100 line-clamp-2 leading-tight">
                             {name}
                         </h3>
                     </div>
-                    <time 
+                    <time
                         className="block text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-medium"
                         dateTime={date}
                     >
@@ -98,22 +98,22 @@ export const BentoCard = ({
                 <LinkComponent
                     {...linkProps}
                     className={cn(
-                        "mt-5 inline-flex items-center gap-2 text-sm sm:text-base font-medium",
+                        "mt-6 inline-flex items-center gap-2 text-base font-medium",
                         "text-neutral-900 dark:text-neutral-100",
                         "transition-all duration-200 ease-out",
                         "group-hover:gap-3"
                     )}
                 >
                     {cta}
-                    <ArrowRightIcon 
-                        className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5" 
+                    <ArrowRightIcon
+                        className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
                         aria-hidden="true"
                     />
                 </LinkComponent>
             </div>
 
-            <div 
-                className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-neutral-900/5 dark:ring-white/5" 
+            <div
+                className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-neutral-900/5 dark:ring-white/5"
                 aria-hidden="true"
             />
         </article>
