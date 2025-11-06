@@ -55,7 +55,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                             >
                                 <BentoCard
                                     name={title}
-                                    className="col-span-1 h-[350px] md:h-[480px]"
+                                    className="col-span-1 h-[320px] md:h-[440px]"
                                     description={truncateProjectDescription(description)}
                                     href={`/projects/${createUrlSlug(title)}`}
                                     cta="View Project"
