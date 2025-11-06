@@ -1,4 +1,5 @@
 export interface TimelineItemData {
+    id: string;
     date: string;
     title: string;
     company: string;
@@ -8,6 +9,7 @@ export interface TimelineItemData {
 
 export const workExperienceData: TimelineItemData[] = [
     {
+        id: "sinarmas-staff",
         date: "February 2024 - Now",
         title: "Analytics, AI, & ML Staff",
         company: "Sinarmas Land",
@@ -21,6 +23,7 @@ export const workExperienceData: TimelineItemData[] = [
         ],
     },
     {
+        id: "sinarmas-intern",
         date: "November 2023 - January 2024",
         title: "ML/AI Developer and Tester Intern",
         company: "Sinarmas Land",
@@ -31,6 +34,7 @@ export const workExperienceData: TimelineItemData[] = [
         ],
     },
     {
+        id: "vidio-intern",
         date: "August - December 2022",
         title: "Business Intelligence Analyst Intern",
         company: "Vidio.com",
@@ -41,6 +45,7 @@ export const workExperienceData: TimelineItemData[] = [
         ],
     },
     {
+        id: "prasmul-marketing-intern",
         date: "January - February 2020",
         title: "Marketing Research Intern",
         company: "Universitas Prasetiya Mulya",
@@ -51,6 +56,7 @@ export const workExperienceData: TimelineItemData[] = [
         ],
     },
     {
+        id: "prasmul-bachelor-math",
         date: "August 2019 - August 2023",
         title: "Bachelor of Mathematics",
         company: "Universitas Prasetiya Mulya",
