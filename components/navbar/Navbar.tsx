@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { BurgerButton } from "@/components/navbar/BurgerButton";
 import { DesktopMenu } from "@/components/navbar/DesktopMenu";
 import { MobileMenu } from "@/components/navbar/MobileMenu";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { navItems } from "@/data/navbarContent";
 import {
     useClientReady,
@@ -28,7 +29,7 @@ const Navbar = () => {
         closeMenu: () => setIsMenuOpen(false),
     });
 
-    const { bgClass, navWidth, shadowClass } = useNavbarStyles({
+    const { bgClass, navWidth, shadowClass, textColorClass } = useNavbarStyles({
         isHeroSection,
         scrolled,
         isMenuOpen,
@@ -51,18 +52,24 @@ const Navbar = () => {
                     <BurgerButton
                         isMenuOpen={isMenuOpen}
                         onToggle={(nextIsMenuOpen) => setIsMenuOpen(nextIsMenuOpen)}
+                        textColorClass={textColorClass}
                     />
                     <DesktopMenu
                         navItems={navItems}
                         scrolled={scrolled}
                         onNavigate={handleNavigation}
+                        textColorClass={textColorClass}
                     />
+                    <div className="ml-2">
+                        <ThemeToggle textColorClass={textColorClass} />
+                    </div>
                 </div>
                 <MobileMenu
                     navItems={navItems}
                     isMenuOpen={isMenuOpen}
                     onNavigate={handleNavigation}
                     onToggle={(nextIsMenuOpen) => setIsMenuOpen(nextIsMenuOpen)}
+                    textColorClass={textColorClass}
                 />
             </div>
         </nav>
