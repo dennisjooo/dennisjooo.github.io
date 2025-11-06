@@ -8,7 +8,7 @@ import { DEFAULT_DISTANCE, DEFAULT_MAGNIFICATION } from "./constants";
 import type { DockIconProps } from "./DockIcon";
 
 const dockVariants = cva(
-    "mx-auto w-max h-[58px] p-2 flex gap-2 rounded-2xl border supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md"
+    "mx-auto w-max h-[58px] p-2 flex gap-2 rounded-2xl border border-gray-300 dark:border-gray-700 supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md"
 );
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
@@ -48,11 +48,11 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
                 {React.Children.map(children, (child) =>
                     React.isValidElement(child) && React.isValidElement<DockIconProps>(child)
                         ? React.cloneElement(child, {
-                              mouseX,
-                              magnification,
-                              distance,
-                              ...child.props,
-                          })
+                            mouseX,
+                            magnification,
+                            distance,
+                            ...child.props,
+                        })
                         : child
                 )}
             </motion.div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import { useTheme } from "next-themes";
 import {
     Cloud,
     fetchSimpleIcons,
@@ -35,11 +36,11 @@ const cloudProps: Omit<ICloud, "children"> = {
     },
 };
 
-const renderColoredIcon = (icon: SimpleIcon, color: string) =>
+const renderColoredIcon = (icon: SimpleIcon, color: string, bgColor: string) =>
     renderSimpleIcon({
         icon: { ...icon, hex: color },
         size: 40,
-        bgHex: '#000000',
+        bgHex: bgColor,
         fallbackHex: color,
         minContrastRatio: 0,
         aProps: {
@@ -59,6 +60,12 @@ const IconCloud: React.FC<IconCloudProps> = ({
     iconColor = '#000000'
 }) => {
     const [simpleIcons, setSimpleIcons] = useState<Record<string, SimpleIcon>>({});
+    const { theme, systemTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         fetchSimpleIcons({ slugs: iconSlugs }).then((data) => {
@@ -66,17 +73,22 @@ const IconCloud: React.FC<IconCloudProps> = ({
         });
     }, [iconSlugs]);
 
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+    const isDark = mounted ? currentTheme === 'dark' : true;
+    const bgColor = isDark ? '#000000' : '#ffffff';
+    const defaultIconColor = isDark ? '#ffffff' : '#000000';
+
     const allIcons = useMemo(() => {
         const renderedSimpleIcons = Object.values(simpleIcons).map((icon) =>
-            renderColoredIcon(icon, iconColor)
+            renderColoredIcon(icon, iconColor === '#000000' ? defaultIconColor : iconColor, bgColor)
         );
 
         const renderedCustomIcons = Object.entries(customIcons || {}).map(([name, Icon]) => (
-            <Icon key={name} style={{ fontSize: 42, color: iconColor }} />
+            <Icon key={name} style={{ fontSize: 42, color: iconColor === '#000000' ? defaultIconColor : iconColor }} />
         ));
 
         return [...renderedSimpleIcons, ...renderedCustomIcons];
-    }, [simpleIcons, customIcons, iconColor]);
+    }, [simpleIcons, customIcons, iconColor, defaultIconColor, bgColor]);
 
     return (
         <Cloud {...cloudProps}>

@@ -14,11 +14,11 @@ const WorkExperience: React.FC = () => {
         <section
             ref={ref}
             id="work"
-            className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0 bg-white text-black"
+            className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0 bg-white dark:bg-black text-gray-900 dark:text-white"
         >
             <div className="w-full max-w-3xl">
                 <motion.h2
-                    className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-center"
+                    className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-white"
                     variants={fadeInUpVariants}
                     initial="hidden"
                     animate={mainControls}
@@ -27,7 +27,7 @@ const WorkExperience: React.FC = () => {
                     Work Experience.
                 </motion.h2>
                 <motion.p
-                    className="text-lg md:text-md text-gray-600 text-center mb-12 leading-relaxed"
+                    className="text-lg md:text-md text-gray-600 dark:text-gray-400 text-center mb-12 leading-relaxed"
                     variants={fadeInUpVariants}
                     initial="hidden"
                     animate={mainControls}
@@ -43,7 +43,7 @@ const WorkExperience: React.FC = () => {
 
 const Timeline: React.FC<{ items: TimelineItemData[], mainControls: AnimationControls }> = ({ items, mainControls }) => (
     <motion.div
-        className="relative border-l-2 border-gray-300 ml-1 md:ml-3"
+        className="relative border-l-2 border-gray-300 dark:border-gray-700 ml-1 md:ml-3"
         variants={fadeInVariants}
         initial="hidden"
         animate={mainControls}
@@ -51,7 +51,7 @@ const Timeline: React.FC<{ items: TimelineItemData[], mainControls: AnimationCon
     >
         {items.map((item, index) => (
             <div key={index} className="relative">
-                <div className="absolute w-2 md:w-3 h-2 md:h-3 bg-gray-300 rounded-full mt-[14px] -left-[5px] md:-left-[7px]" />
+                <div className="absolute w-2 md:w-3 h-2 md:h-3 bg-gray-300 dark:bg-gray-700 rounded-full mt-[14px] -left-[5px] md:-left-[7px]" />
                 <motion.div
                     className="mb-6 md:mb-8 ml-4 md:ml-6"
                     variants={fadeInUpVariants}
@@ -59,14 +59,14 @@ const Timeline: React.FC<{ items: TimelineItemData[], mainControls: AnimationCon
                     animate={mainControls}
                     transition={{ duration: 0.5, delay: 0.75 + index * 0.2 }}
                 >
-                    <h3 className="text-lg md:text-xl font-semibold">{item.date}</h3>
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">{item.date}</h3>
                     <div className="flex items-start mt-2">
                         <div className="flex-grow pr-4">
-                            <h4 className="text-base md:text-lg font-semibold">{item.title}</h4>
-                            <h5 className="text-sm md:text-base text-gray-600 mb-2">{item.company}</h5>
-                            <ul className="space-y-1.5 text-sm md:text-base">
+                            <h4 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h4>
+                            <h5 className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-2">{item.company}</h5>
+                            <ul className="space-y-1.5 text-sm md:text-base text-gray-700 dark:text-gray-300">
                                 {item.responsibilities.map((responsibility, idx) => (
-                                    <li key={idx} className="pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-gray-400">
+                                    <li key={idx} className="pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-gray-400 dark:before:text-gray-600">
                                         {responsibility}
                                     </li>
                                 ))}

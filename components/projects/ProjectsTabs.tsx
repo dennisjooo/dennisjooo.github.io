@@ -15,10 +15,10 @@ export function ProjectsTabs() {
             className={`container max-w-7xl mx-auto px-8 pt-16 transition-opacity duration-300 ${mounted ? "opacity-100" : "opacity-0"
                 }`}
         >
-            <h1 className="text-3xl lg:text-4xl mb-6 text-center font-bold">
+            <h1 className="text-3xl lg:text-4xl mb-6 text-center font-bold text-gray-900 dark:text-white">
                 Projects & Certifications.
             </h1>
-            <p className="text-lg md:text-md text-gray-400 text-center max-w-3xl mx-auto mb-12 leading-relaxed">
+            <p className="text-lg md:text-md text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto mb-12 leading-relaxed">
                 Browse the builds I&apos;ve been nerding out on lately alongside the creds backing them up.<br />Tap around, steal ideas, and shout if you want the behind-the-scenes tour.
             </p>
 
