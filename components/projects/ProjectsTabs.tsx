@@ -1,11 +1,12 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import CertificationsList from "@/components/projects/CertificationsList";
 import ProjectsList from "@/components/projects/ProjectsList";
 import TabSwitcher from "@/components/projects/TabSwitcher";
-import { useTabState } from "@/lib/hooks/useTabState";
 import { tabContentVariants } from "@/lib/animations/variants";
+import { useTabState } from "@/lib/hooks/useTabState";
+import { AnimatePresence, motion } from "framer-motion";
+import GradientUnderline from "../GradientUnderline";
 
 export function ProjectsTabs() {
     const { activeTab, setActiveTab, mounted } = useTabState();
@@ -16,7 +17,9 @@ export function ProjectsTabs() {
                 }`}
         >
             <h1 className="text-3xl lg:text-4xl mb-6 text-center font-bold text-gray-900 dark:text-white">
-                Projects & Certifications.
+                <GradientUnderline>
+                    Projects & Certifications.
+                </GradientUnderline>
             </h1>
             <p className="text-lg md:text-md text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto mb-12 leading-relaxed">
                 Browse the builds I&apos;ve been nerding out on lately alongside the creds backing them up.<br />Tap around, steal ideas, and shout if you want the behind-the-scenes tour.
