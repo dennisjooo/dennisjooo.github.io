@@ -72,7 +72,7 @@ const AboutContent: React.FC<{ mainControls: AnimationControls }> = ({ mainContr
         {Object.entries(aboutContent).map(([key, content], index) => (
             <motion.h5
                 key={key}
-                className="mb-4 last:mb-0 text-gray-700 dark:text-gray-300"
+                className="mb-4 last:mb-0 text-base md:text-lg text-gray-700 dark:text-gray-300"
                 variants={fadeInUpVariants}
                 initial="hidden"
                 animate={mainControls}

@@ -36,7 +36,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                             Featured Projects.
                         </GradientUnderline>
                     </h2>
-                    <p className="text-lg md:text-md text-gray-500 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         A highlight reel of builds I loved obsessing over.  Mostly scrappy experiments that makes me cherish the good old days.
                     </p>
                 </motion.div>

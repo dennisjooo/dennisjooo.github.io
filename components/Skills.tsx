@@ -32,7 +32,7 @@ const Skills: React.FC = () => {
                     </GradientUnderline>
                 </motion.h2>
                 <motion.p
-                    className="text-lg md:text-md text-gray-500 dark:text-gray-400 text-center mb-12 max-w-3xl leading-relaxed"
+                    className="text-base md:text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-3xl leading-relaxed"
                     variants={fadeInUpVariants}
                     initial="hidden"
                     animate={mainControls}
