@@ -4,8 +4,11 @@ import { contactLinks } from "@/data/contactContent";
 import { DockIcon } from "@/components/DockIcon";
 
 const Contacts: React.FC = () => (
-    <section id="contact" className="flex flex-col items-center bg-black text-white">
-        <h2 className="text-md lg:text-lg font-semibold mt-12 text-center">Feel free to reach me here.</h2>
+    <section id="contact" className="flex flex-col items-center bg-black text-white px-8">
+        <h2 className="mt-12 text-xl md:text-2xl font-semibold text-center">Reach Me Here.</h2>
+        <p className="mt-4 text-lg md:text-md text-gray-400 text-center max-w-2xl leading-relaxed">
+            Let&apos;s talk shop, job offers, or whatever you&apos;re building next, and swap stories interesting stories about tech and life in general.
+        </p>
         <Dock className="my-6">
             {contactLinks.map(({ href, ariaLabel, icon }) => (
                 <DockIcon key={ariaLabel} href={href} ariaLabel={ariaLabel} icon={icon} />

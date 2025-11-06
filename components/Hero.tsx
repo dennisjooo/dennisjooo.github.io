@@ -22,6 +22,9 @@ const HeroContent: React.FC<HeroContentProps> = ({ description, mainControls }) 
         animate={mainControls}
         transition={{ duration: 0.6 }}
     >
+        <p className="text-sm uppercase tracking-[1em] text-indigo-200 mb-2 font-light">
+            A <span className="font-semibold">Portfolio</span> for
+        </p>
         <h1 className="text-4xl md:text-5xl mb-3 text-white font-bold">
             <span className="underline decoration-4 underline-offset-4">Dennis</span> Jonathan
         </h1>

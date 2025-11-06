@@ -26,6 +26,15 @@ const WorkExperience: React.FC = () => {
                 >
                     Work Experience.
                 </motion.h2>
+                <motion.p
+                    className="text-lg md:text-md text-gray-600 text-center mb-12 leading-relaxed"
+                    variants={fadeInUpVariants}
+                    initial="hidden"
+                    animate={mainControls}
+                    transition={{ duration: 0.5, delay: 0.35 }}
+                >
+                    Some of the gigs that taught me how to ship fast without cutting the good corners and how to keep teams looped in so momentum stays loud from kickoff to ship day.
+                </motion.p>
                 <Timeline items={workExperienceData} mainControls={mainControls} />
             </div>
         </section>
