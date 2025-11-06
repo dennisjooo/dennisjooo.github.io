@@ -4,7 +4,7 @@ import "katex/dist/katex.min.css";
 import "./globals.css";
 import { Inter, Roboto_Mono } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
-import { CopyrightNotice } from "@/components/CopyrightNotice";
+import { CopyrightNotice } from "@/components/shared";
 import { Providers } from "./providers";
 
 const inter = Inter({

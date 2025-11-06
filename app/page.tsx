@@ -1,10 +1,10 @@
-import Skills from '@/components/Skills';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import WorkExperience from '@/components/WorkExperience';
-import Contacts from '@/components/Contacts';
-import BackToTop from '@/components/BackToTop';
-import FeaturedProjects from '@/components/FeaturedProjects';
+import Skills from '@/components/skills';
+import Hero from '@/components/hero';
+import About from '@/components/about';
+import WorkExperience from '@/components/work-experience';
+import Contacts from '@/components/contacts';
+import { BackToTop } from '@/components/shared';
+import FeaturedProjects from '@/components/featured-projects';
 import { projects } from '@/data/projects';
 
 export default function Home() {
