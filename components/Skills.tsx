@@ -28,7 +28,7 @@ const Skills: React.FC = () => {
                     transition={{ duration: 0.8 }}
                 >
                     <GradientUnderline delay={0.8}>
-                        Skills, Stacks, and Techs.
+                        Skills and Stacks.
                     </GradientUnderline>
                 </motion.h2>
                 <motion.p
