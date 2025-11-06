@@ -46,7 +46,7 @@ const WorkExperience: React.FC = () => {
 
 const Timeline: React.FC<{ items: TimelineItemData[], mainControls: AnimationControls }> = ({ items, mainControls }) => (
     <motion.div
-        className="relative border-l-2 border-gray-300 dark:border-gray-700 ml-1 md:ml-3"
+        className="relative border-l-2 border-purple-400 dark:border-purple-500 ml-1 md:ml-3"
         variants={fadeInVariants}
         initial="hidden"
         animate={mainControls}
@@ -54,7 +54,7 @@ const Timeline: React.FC<{ items: TimelineItemData[], mainControls: AnimationCon
     >
         {items.map((item, index) => (
             <div key={index} className="relative">
-                <div className="absolute w-2 md:w-3 h-2 md:h-3 bg-gray-300 dark:bg-gray-700 rounded-full mt-[14px] -left-[5px] md:-left-[7px]" />
+                <div className="absolute w-2 md:w-3 h-2 md:h-3 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-full mt-[14px] -left-[5px] md:-left-[7px] drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
                 <motion.div
                     className="mb-6 md:mb-8 ml-4 md:ml-6"
                     variants={fadeInUpVariants}
