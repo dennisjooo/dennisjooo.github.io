@@ -13,7 +13,7 @@ interface ProjectContentProps {
 
 export default function ProjectContent({ content }: ProjectContentProps) {
     return (
-        <article className="prose prose-sm sm:prose-base md:prose-lg max-w-none prose-invert">
+        <article className="prose prose-sm sm:prose-base md:prose-lg max-w-none prose-gray dark:prose-invert">
             <ReactMarkdown
                 components={markdownComponents}
                 remarkPlugins={[remarkMath, remarkGfm]}
