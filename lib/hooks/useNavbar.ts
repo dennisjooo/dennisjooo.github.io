@@ -104,7 +104,9 @@ interface NavbarStylesParams {
 export const useNavbarStyles = ({ isHeroSection, scrolled, isMenuOpen, pathname }: NavbarStylesParams) =>
     useMemo(() => {
         const bgClass =
-            !isHeroSection || scrolled || isMenuOpen ? "bg-black bg-opacity-90" : "bg-transparent";
+            !isHeroSection || scrolled || isMenuOpen
+                ? "bg-white/90 dark:bg-black/90 backdrop-blur-sm"
+                : "bg-transparent";
 
         const navWidth =
             isHeroSection && !scrolled && pathname === "/"
@@ -113,5 +115,9 @@ export const useNavbarStyles = ({ isHeroSection, scrolled, isMenuOpen, pathname 
 
         const shadowClass = (!isHeroSection || scrolled) && !isMenuOpen ? "shadow-lg" : "";
 
-        return { bgClass, navWidth, shadowClass };
+        const textColorClass = isHeroSection && !scrolled && !isMenuOpen && pathname === "/"
+            ? "text-white"
+            : "text-gray-900 dark:text-white";
+
+        return { bgClass, navWidth, shadowClass, textColorClass };
     }, [isHeroSection, isMenuOpen, pathname, scrolled]);

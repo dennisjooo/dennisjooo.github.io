@@ -8,6 +8,7 @@ interface MobileMenuProps {
     isMenuOpen: boolean;
     onNavigate: (sectionId: string) => void;
     onToggle: (isOpen: boolean) => void;
+    textColorClass: string;
 }
 
 export const MobileMenu = ({
@@ -15,6 +16,7 @@ export const MobileMenu = ({
     isMenuOpen,
     onNavigate,
     onToggle,
+    textColorClass,
 }: MobileMenuProps) => (
     <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
@@ -37,7 +39,7 @@ export const MobileMenu = ({
                                 }
                                 onToggle(false);
                             }}
-                            className="w-full px-4 py-2 text-white lowercase hover:bg-gray-700 transition-colors duration-300 ease-in-out block"
+                            className={`w-full px-4 py-2 lowercase hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out block ${textColorClass}`}
                         >
                             {item.label}
                         </Link>
@@ -47,7 +49,7 @@ export const MobileMenu = ({
                                 onNavigate(item.id);
                                 onToggle(false);
                             }}
-                            className="w-full px-4 py-2 text-white lowercase hover:bg-gray-700 transition-colors duration-300 ease-in-out"
+                            className={`w-full px-4 py-2 lowercase hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out ${textColorClass}`}
                         >
                             {item.label}
                         </button>

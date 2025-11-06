@@ -7,16 +7,16 @@ interface DesktopMenuProps {
     navItems: NavItem[];
     scrolled: boolean;
     onNavigate: (sectionId: string) => void;
+    textColorClass: string;
 }
 
-const baseClasses =
-    "w-full md:w-auto px-4 py-2 rounded-xl md:rounded-full transition-colors duration-300 ease-in-out text-white lowercase";
-
-export const DesktopMenu = ({ navItems, scrolled, onNavigate }: DesktopMenuProps) => (
+export const DesktopMenu = ({ navItems, scrolled, onNavigate, textColorClass }: DesktopMenuProps) => (
     <ul className="hidden md:flex md:flex-row justify-around items-center w-full">
         {navItems.map((item) => {
-            const hoverClass = scrolled ? "hover:bg-gray-700" : "hover:bg-white hover:bg-opacity-20";
-            const className = `${baseClasses} ${hoverClass}`;
+            const hoverClass = scrolled 
+                ? "hover:bg-gray-200 dark:hover:bg-gray-700" 
+                : "hover:bg-gray-900 hover:bg-opacity-20 dark:hover:bg-white dark:hover:bg-opacity-20";
+            const className = `w-full md:w-auto px-4 py-2 rounded-xl md:rounded-full transition-colors duration-300 ease-in-out lowercase ${textColorClass} ${hoverClass}`;
 
             return (
                 <li key={item.id} className="w-full md:w-auto">
