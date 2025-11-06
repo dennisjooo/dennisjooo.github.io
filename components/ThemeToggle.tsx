@@ -9,12 +9,14 @@ import { useTheme } from 'next-themes';
 interface ThemeToggleProps extends React.ComponentPropsWithoutRef<'button'> {
     duration?: number;
     textColorClass?: string;
+    scrolled?: boolean;
 }
 
 export const ThemeToggle = ({
     className,
     duration = 400,
     textColorClass = 'text-gray-900 dark:text-white',
+    scrolled = false,
     ...props
 }: ThemeToggleProps) => {
     const { theme, setTheme, systemTheme } = useTheme();
@@ -27,6 +29,10 @@ export const ThemeToggle = ({
 
     const currentTheme = theme === 'system' ? systemTheme : theme;
     const isDark = mounted ? currentTheme === 'dark' : false;
+
+    const hoverClass = scrolled
+        ? "hover:bg-gray-200 dark:hover:bg-gray-700"
+        : "hover:bg-gray-900 hover:bg-opacity-20 dark:hover:bg-white dark:hover:bg-opacity-20";
 
     const toggleTheme = useCallback(async () => {
         if (!buttonRef.current) return;
@@ -85,7 +91,8 @@ export const ThemeToggle = ({
             ref={buttonRef}
             onClick={toggleTheme}
             className={cn(
-                'relative w-10 h-10 rounded-full hover:bg-white/20 dark:hover:bg-gray-700/50 flex items-center justify-center transition-all duration-300 ease-in-out',
+                'relative w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out',
+                hoverClass,
                 className
             )}
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}

@@ -61,7 +61,7 @@ const Navbar = () => {
                         textColorClass={textColorClass}
                     />
                     <div className="ml-2">
-                        <ThemeToggle textColorClass={textColorClass} />
+                        <ThemeToggle textColorClass={textColorClass} scrolled={scrolled} />
                     </div>
                 </div>
                 <MobileMenu
