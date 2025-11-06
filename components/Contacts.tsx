@@ -10,12 +10,12 @@ const Contacts: React.FC = () => {
     return (
         <section id="contact" className="flex flex-col items-center bg-white dark:bg-black text-gray-900 dark:text-white px-8">
             <div className="w-full max-w-md h-[2px] mt-12 bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-600 to-transparent" />
-            <h2 className="mt-8 text-xl md:text-2xl font-semibold text-center text-gray-900 dark:text-white">
+            <h2 className="mt-8 text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white">
                 <GradientUnderline delay={0.3}>
                     Reach Me Here.
                 </GradientUnderline>
             </h2>
-            <p className="mt-4 text-lg md:text-md text-gray-600 dark:text-gray-400 text-center max-w-2xl leading-relaxed">
+            <p className="mt-4 text-base md:text-lg text-gray-600 dark:text-gray-400 text-center max-w-2xl leading-relaxed">
                 Let&apos;s talk shop, job offers, or whatever you&apos;re building next, and swap stories interesting stories about tech and life in general.
             </p>
             <Dock className="my-6">
