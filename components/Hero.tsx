@@ -1,14 +1,15 @@
 'use client';
 
-import React, { useCallback } from 'react';
-import { useTypingEffect } from '@/lib/hooks/useTypingEffect';
-import { useScrollEffect } from '@/lib/hooks/useScrollEffect';
-import { motion, AnimationControls, useInView } from 'framer-motion';
-import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
-import { fadeInDownVariants, fadeInUpVariants } from '@/lib/animations/variants';
-import { HERO_CONTENT } from '@/data/heroContent';
-import { BsChevronDown } from "react-icons/bs";
 import GradientUnderline from '@/components/GradientUnderline';
+import { Iridescence } from '@/components/iridescence';
+import { HERO_CONTENT } from '@/data/heroContent';
+import { fadeInUpVariants } from '@/lib/animations/variants';
+import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
+import { useScrollEffect } from '@/lib/hooks/useScrollEffect';
+import { useTypingEffect } from '@/lib/hooks/useTypingEffect';
+import { AnimationControls, motion, useInView } from 'framer-motion';
+import React, { useCallback, useMemo } from 'react';
+import { BsChevronDown } from "react-icons/bs";
 
 interface HeroContentProps {
     description: string;
@@ -85,14 +86,25 @@ const Hero: React.FC = () => {
         document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
     }, []);
 
+    const iridescenceColor = useMemo<[number, number, number]>(() => [0.5, 0.2, 0.8], []);
+
     return (
         <section
             id='home'
             ref={ref}
-            className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/background.webp')" }}
+            className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden"
         >
-            <HeroContent description={description} isInView={isInView} />
+            <div className="absolute inset-0">
+                <Iridescence
+                    color={iridescenceColor}
+                    mouseReact={false}
+                    amplitude={0.5}
+                    speed={0.5}
+                />
+            </div>
+            <div className="relative">
+                <HeroContent description={description} isInView={isInView} />
+            </div>
             <ScrollButton onClick={scrollToAbout} mainControls={mainControls} />
         </section>
     );
