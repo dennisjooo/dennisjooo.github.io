@@ -8,6 +8,7 @@ import { BentoGrid, BentoCard } from '@/components/BentoComponents';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
 import { sortProjectsByDate, formatProjectDate, truncateProjectDescription } from '@/lib/utils/projectFormatting';
 import { Project } from '@/data/projects/types';
+import GradientUnderline from '@/components/GradientUnderline';
 
 interface FeaturedProjectsProps {
     projects: Project[];
@@ -31,7 +32,9 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     className="text-center mb-8 sm:mb-12"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold mb-5 text-gray-900 dark:text-white">
-                        Featured Projects.
+                        <GradientUnderline delay={0.6}>
+                            Featured Projects.
+                        </GradientUnderline>
                     </h2>
                     <p className="text-lg md:text-md text-gray-500 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         A highlight reel of builds I loved obsessing over.  Mostly scrappy experiments that makes me cherish the good old days.

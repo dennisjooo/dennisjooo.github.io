@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
 import { fadeInUpVariants } from '@/lib/animations/variants';
 import { AnimationControls } from 'framer-motion';
+import GradientUnderline from '@/components/GradientUnderline';
 
 const About: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
@@ -24,7 +25,9 @@ const About: React.FC = () => {
                 animate={mainControls}
                 transition={{ duration: 0.8 }}
             >
-                About.
+                <GradientUnderline delay={0.8}>
+                    About.
+                </GradientUnderline>
             </motion.h2>
             <motion.div
                 className="max-w-4xl mx-auto flex flex-col md:flex-row items-center"

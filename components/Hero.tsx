@@ -8,6 +8,7 @@ import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
 import { fadeInDownVariants, fadeInUpVariants } from '@/lib/animations/variants';
 import { HERO_CONTENT } from '@/data/heroContent';
 import { BsChevronDown } from "react-icons/bs";
+import GradientUnderline from '@/components/GradientUnderline';
 
 interface HeroContentProps {
     description: string;
@@ -32,16 +33,9 @@ const HeroContent: React.FC<HeroContentProps> = ({ description, isInView }) => (
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, delay: 0.3 }}
         >
-            <span className="relative inline-block">
+            <GradientUnderline delay={0.7}>
                 Dennis
-                <motion.span
-                    className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-full drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]"
-                    initial={{ scaleX: 0 }}
-                    animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-                    transition={{ duration: 0.8, delay: 0.7 }}
-                    style={{ transformOrigin: "left" }}
-                />
-            </span> Jonathan
+            </GradientUnderline> Jonathan
         </motion.h1>
         <motion.h2
             className="text-lg md:text-2xl font-light text-white"
