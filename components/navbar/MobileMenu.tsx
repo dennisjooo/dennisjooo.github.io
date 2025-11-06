@@ -11,51 +11,66 @@ interface MobileMenuProps {
     textColorClass: string;
 }
 
+const itemBaseClasses =
+    "block w-full rounded-2xl px-5 py-3 text-sm lowercase tracking-wide transition-colors duration-300 ease-in-out";
+const hoverClasses = "hover:bg-gray-900/5 dark:hover:bg-white/10";
+
 export const MobileMenu = ({
     navItems,
     isMenuOpen,
     onNavigate,
     onToggle,
     textColorClass,
-}: MobileMenuProps) => (
-    <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
-        }`}
-    >
-        <ul className="flex flex-col items-center w-full py-2">
-            {navItems.map((item) => (
-                <li key={item.id} className="w-full text-center">
-                    {item.href ? (
-                        <Link
-                            href={item.href}
-                            onClick={() => {
-                                if (item.id === "projects") {
-                                    try {
-                                        sessionStorage.setItem("fromNav", "true");
-                                    } catch (error) {
-                                        console.error("Error accessing sessionStorage:", error);
-                                    }
-                                }
-                                onToggle(false);
-                            }}
-                            className={`w-full px-4 py-2 lowercase hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out block ${textColorClass}`}
-                        >
-                            {item.label}
-                        </Link>
-                    ) : (
-                        <button
-                            onClick={() => {
-                                onNavigate(item.id);
-                                onToggle(false);
-                            }}
-                            className={`w-full px-4 py-2 lowercase hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out ${textColorClass}`}
-                        >
-                            {item.label}
-                        </button>
-                    )}
-                </li>
-            ))}
-        </ul>
-    </div>
-);
+}: MobileMenuProps) => {
+    const containerClasses = [
+        "md:hidden origin-top overflow-hidden transition-all duration-300 ease-in-out",
+        isMenuOpen ? "max-h-[26rem] opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2",
+    ].join(" ");
+
+    const handleToggleOff = () => onToggle(false);
+
+    const handleLinkClick = (item: NavItem) => () => {
+        if (item.id === "projects") {
+            try {
+                sessionStorage.setItem("fromNav", "true");
+            } catch (error) {
+                console.error("Error accessing sessionStorage:", error);
+            }
+        }
+        handleToggleOff();
+    };
+
+    const handleNavigateClick = (item: NavItem) => () => {
+        onNavigate(item.id);
+        handleToggleOff();
+    };
+
+    return (
+        <div className={containerClasses} aria-hidden={!isMenuOpen}>
+            <nav
+                aria-label="Mobile navigation"
+                className="mx-4 mb-4 rounded-3xl border border-gray-200/40 bg-white/80 p-3 shadow-xl backdrop-blur dark:border-white/10 dark:bg-neutral-800"
+            >
+                <ul className="flex flex-col gap-1 text-center">
+                    {navItems.map((item) => {
+                        const className = `${itemBaseClasses} ${hoverClasses} ${textColorClass}`;
+
+                        return (
+                            <li key={item.id}>
+                                {item.href ? (
+                                    <Link href={item.href} onClick={handleLinkClick(item)} className={className}>
+                                        {item.label}
+                                    </Link>
+                                ) : (
+                                    <button type="button" onClick={handleNavigateClick(item)} className={className}>
+                                        {item.label}
+                                    </button>
+                                )}
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
+        </div>
+    );
+};
