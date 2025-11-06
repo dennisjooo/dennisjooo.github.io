@@ -3,5 +3,5 @@ export const skillIcons = [
     'tensorflow', 'pytorch', 'scikitlearn', 'huggingface', 'lightning', 'keras',
     'pandas', 'git', 'flask', 'openai', 'fastapi', 'github', 'docker',
     'cplusplus', 'react', 'langchain', 'streamlit', 'opencv', 'nextdotjs',
-    'tailwindcss', 'azure'
+    'tailwindcss', 'upstash', 'shadcnui'
 ];
