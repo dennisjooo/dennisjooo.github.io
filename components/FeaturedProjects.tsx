@@ -30,9 +30,12 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-8 sm:mb-12"
                 >
-                    <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                        Projects.
+                    <h2 className="text-3xl md:text-4xl font-bold mb-5">
+                        Featured Projects.
                     </h2>
+                    <p className="text-lg md:text-md text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                        A highlight reel of builds I loved obsessing over.  Mostly scrappy experiments that makes me cherish the good old days.
+                    </p>
                 </motion.div>
 
                 {/* Projects Grid */}

@@ -20,14 +20,23 @@ const Skills: React.FC = () => {
         <section ref={ref} id="skills" className="py-20 bg-white text-black min-h-screen flex items-center justify-center">
             <div className="container mx-auto px-6 flex flex-col items-center justify-center">
                 <motion.h2
-                    className="text-3xl md:text-4xl font-bold text-center mb-12"
+                    className="text-3xl md:text-4xl font-bold text-center mb-4"
                     variants={fadeInUpVariants}
                     initial="hidden"
                     animate={mainControls}
                     transition={{ duration: 0.8 }}
                 >
-                    Skills.
+                    Stacks and Techs.
                 </motion.h2>
+                <motion.p
+                    className="text-lg md:text-md text-gray-500 text-center mb-12 max-w-3xl leading-relaxed"
+                    variants={fadeInUpVariants}
+                    initial="hidden"
+                    animate={mainControls}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                >
+                    Some of the tools and technologies I&apos;ve used to build stuff. This represents things I&apos;ve dabbled in and might be updated in the future as I explore new technologies.
+                </motion.p>
                 <motion.div
                     variants={fadeInUpVariants}
                     initial="hidden"
