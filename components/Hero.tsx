@@ -17,9 +17,9 @@ interface HeroContentProps {
 }
 
 const HeroContent: React.FC<HeroContentProps> = ({ description, isInView }) => (
-    <div className="text-center p-8">
+    <div className="text-center px-8">
         <motion.p
-            className="text-sm uppercase tracking-[1em] mb-2 font-light"
+            className="text-sm uppercase tracking-[1em] mb-4 font-light"
             initial={{ opacity: 0, y: -20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.5, delay: 0 }}
@@ -29,7 +29,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ description, isInView }) => (
             </span>
         </motion.p>
         <motion.h1
-            className="text-4xl md:text-5xl mb-3 text-white font-bold"
+            className="text-4xl md:text-5xl mb-6 text-white font-bold"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, delay: 0.3 }}

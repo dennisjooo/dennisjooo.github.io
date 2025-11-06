@@ -21,17 +21,17 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     );
 
     return (
-        <section id="projects" className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0 bg-white dark:bg-black">
-            <div className="container max-w-7xl mx-auto px-8 sm:px-8 flex-1 flex flex-col">
+        <section id="projects" className="py-24 flex items-center justify-center min-h-screen px-8 bg-white dark:bg-black">
+            <div className="container max-w-7xl mx-auto flex-1 flex flex-col">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-8 sm:mb-12"
+                    className="text-center mb-12"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-5 text-gray-900 dark:text-white">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
                         <GradientUnderline delay={0.6}>
                             Featured Projects.
                         </GradientUnderline>
@@ -49,7 +49,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="flex-1 flex items-center"
                 >
-                    <BentoGrid className="w-full mx-auto grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                    <BentoGrid className="w-full mx-auto grid-cols-1 md:grid-cols-3 gap-6">
                         {featuredProjects.map(({ title, description, date, imageUrl }, index) => (
                             <motion.div
                                 key={`${title}_${date}`}
@@ -79,11 +79,11 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    className="text-center mt-6 sm:mt-10"
+                    className="text-center mt-8"
                 >
                     <Link
                         href="/projects"
-                        className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-6 bg-gray-900 dark:bg-white text-white dark:text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105 text-base"
                     >
                         View All Projects and More.
                         <ArrowUpRightIcon className="w-4 h-4" />

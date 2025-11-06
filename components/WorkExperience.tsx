@@ -15,11 +15,11 @@ const WorkExperience: React.FC = () => {
         <section
             ref={ref}
             id="work"
-            className="py-24 flex items-center justify-center min-h-screen px-8 md:px-0 bg-white dark:bg-black text-gray-900 dark:text-white"
+            className="py-24 flex items-center justify-center min-h-screen px-8 bg-white dark:bg-black text-gray-900 dark:text-white"
         >
             <div className="w-full max-w-3xl">
                 <motion.h2
-                    className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-white"
+                    className="text-3xl md:text-4xl font-bold mb-6 text-center text-gray-900 dark:text-white"
                     variants={fadeInUpVariants}
                     initial="hidden"
                     animate={mainControls}
@@ -56,7 +56,7 @@ const Timeline: React.FC<{ items: TimelineItemData[], mainControls: AnimationCon
             <div key={index} className="relative">
                 <div className="absolute w-2 md:w-3 h-2 md:h-3 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-full mt-[14px] -left-[5px] md:-left-[7px] drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
                 <motion.div
-                    className="mb-6 md:mb-8 ml-4 md:ml-6"
+                    className="mb-8 ml-6"
                     variants={fadeInUpVariants}
                     initial="hidden"
                     animate={mainControls}
