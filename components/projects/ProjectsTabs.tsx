@@ -28,17 +28,23 @@ export function ProjectsTabs() {
             <TabSwitcher activeTab={activeTab} onTabChange={setActiveTab} />
 
             <div className="max-w-7xl mx-auto min-h-[50vh] mt-8">
-                <AnimatePresence mode="wait">
-                    {activeTab === "projects" ? (
-                        <motion.div key="projects" {...tabContentVariants}>
-                            <ProjectsList />
-                        </motion.div>
-                    ) : (
-                        <motion.div key="certifications" {...tabContentVariants}>
-                            <CertificationsList />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                {mounted ? (
+                    <AnimatePresence mode="wait">
+                        {activeTab === "projects" ? (
+                            <motion.div key="projects" {...tabContentVariants}>
+                                <ProjectsList />
+                            </motion.div>
+                        ) : (
+                            <motion.div key="certifications" {...tabContentVariants}>
+                                <CertificationsList />
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                ) : (
+                    <motion.div key="projects" {...tabContentVariants}>
+                        <ProjectsList />
+                    </motion.div>
+                )}
             </div>
         </div>
     );
