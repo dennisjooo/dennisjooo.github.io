@@ -4,6 +4,7 @@ import "katex/dist/katex.min.css";
 import "./globals.css";
 import { Inter, Roboto_Mono } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
+import { CopyrightNotice } from "@/components/CopyrightNotice";
 import { Providers } from "./providers";
 
 const inter = Inter({
@@ -51,6 +52,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <Providers>
                     <Navbar />
                     <main>{children}</main>
+                    <footer className="flex justify-center px-8 py-10 bg-white dark:bg-black">
+                        <CopyrightNotice />
+                    </footer>
                 </Providers>
             </body>
         </html>
