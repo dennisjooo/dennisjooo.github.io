@@ -8,6 +8,8 @@ export function useTabState() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
+
         const fromNav = getSessionItem('fromNav') === 'true';
         if (fromNav) {
             removeSessionItem('fromNav');
@@ -19,7 +21,6 @@ export function useTabState() {
                 setActiveTab(storedTab);
             }
         }
-        requestAnimationFrame(() => setMounted(true));
     }, []);
 
     useEffect(() => {
