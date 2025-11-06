@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { BurgerButton } from "@/components/navbar/BurgerButton";
 import { DesktopMenu } from "@/components/navbar/DesktopMenu";
 import { MobileMenu } from "@/components/navbar/MobileMenu";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { ThemeToggle } from "@/components/theme";
 import { navItems } from "@/data/navbarContent";
 import {
     useClientReady,

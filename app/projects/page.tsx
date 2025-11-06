@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import BackToTop from '@/components/BackToTop';
+import { BackToTop } from '@/components/shared';
 import { ProjectsTabs } from '@/components/projects/ProjectsTabs';
 
 export const metadata: Metadata = {
