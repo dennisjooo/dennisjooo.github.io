@@ -6,6 +6,7 @@ import { motion, AnimationControls } from 'framer-motion';
 import { workExperienceData, TimelineItemData } from '@/data/workContent';
 import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
 import { fadeInUpVariants, fadeInVariants } from '@/lib/animations/variants';
+import GradientUnderline from '@/components/GradientUnderline';
 
 const WorkExperience: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
@@ -24,7 +25,9 @@ const WorkExperience: React.FC = () => {
                     animate={mainControls}
                     transition={{ duration: 0.5, delay: 0.25 }}
                 >
-                    Work Experience.
+                    <GradientUnderline delay={0.75}>
+                        Work Experience.
+                    </GradientUnderline>
                 </motion.h2>
                 <motion.p
                     className="text-lg md:text-md text-gray-600 dark:text-gray-400 text-center mb-12 leading-relaxed"

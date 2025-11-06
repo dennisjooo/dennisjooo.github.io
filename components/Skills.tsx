@@ -7,6 +7,7 @@ import { skillIcons } from '@/data/skillContent';
 import { motion } from 'framer-motion';
 import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
 import { fadeInUpVariants } from '@/lib/animations/variants';
+import GradientUnderline from '@/components/GradientUnderline';
 
 const IconCloud = dynamic(() => import('./IconCloud'), {
     ssr: false,
@@ -26,7 +27,9 @@ const Skills: React.FC = () => {
                     animate={mainControls}
                     transition={{ duration: 0.8 }}
                 >
-                    Skills, Stacks, and Techs.
+                    <GradientUnderline delay={0.8}>
+                        Skills, Stacks, and Techs.
+                    </GradientUnderline>
                 </motion.h2>
                 <motion.p
                     className="text-lg md:text-md text-gray-500 dark:text-gray-400 text-center mb-12 max-w-3xl leading-relaxed"
