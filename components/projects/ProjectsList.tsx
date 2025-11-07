@@ -1,5 +1,5 @@
 "use client";
-import { BentoGrid, BentoCard } from '@/components/BentoComponents';
+import { BentoGrid, BentoCard } from '@/components/bento';
 import { Project, projects } from '@/data/projects';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
 
