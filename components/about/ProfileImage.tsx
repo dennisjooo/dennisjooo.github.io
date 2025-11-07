@@ -23,6 +23,8 @@ export const ProfileImage: React.FC<ProfileImageProps> = ({ mainControls }) => (
             width={300}
             height={300}
             className="rounded-full shadow-lg w-[225px] h-[225px] md:w-[300px] md:h-[300px]"
+            priority
+            sizes="(max-width: 768px) 225px, 300px"
         />
     </motion.div>
 );

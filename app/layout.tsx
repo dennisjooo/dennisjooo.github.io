@@ -20,11 +20,31 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Dennis' Portfolio",
+    title: {
+        default: "Dennis' Portfolio",
+        template: "%s | Dennis Jonathan"
+    },
     description: "AI enthusiast and problem solver with a background in math, stats, and machine learning. I build practical tools, explore weird ideas, and make complex stuff a little more approachable.",
     keywords: ['AI', 'Machine Learning', 'Data Science', 'Portfolio', 'Developer', 'Math', 'Statistics'],
     authors: [{ name: 'Dennis Jonathan', url: 'https://dennisjooo.github.io' }],
+    creator: 'Dennis Jonathan',
     metadataBase: new URL('https://dennisjooo.github.io'),
+    alternates: {
+        canonical: '/',
+    },
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: 'https://dennisjooo.github.io',
+        title: "Dennis' Portfolio",
+        description: "AI enthusiast and problem solver with a background in math, stats, and machine learning.",
+        siteName: "Dennis Jonathan's Portfolio",
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "Dennis' Portfolio",
+        description: "AI enthusiast and problem solver with a background in math, stats, and machine learning.",
+    },
     icons: {
         icon: '/favicon.ico',
     },
