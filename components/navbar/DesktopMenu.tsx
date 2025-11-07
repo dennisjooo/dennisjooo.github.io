@@ -25,7 +25,11 @@ export const DesktopMenu = ({ navItems, scrolled, onNavigate, textColorClass }: 
                             {item.label}
                         </Link>
                     ) : (
-                        <button onClick={() => onNavigate(item.id)} className={className}>
+                        <button 
+                            onClick={() => onNavigate(item.id)} 
+                            className={className}
+                            aria-label={`Navigate to ${item.label}`}
+                        >
                             {item.label}
                         </button>
                     )}

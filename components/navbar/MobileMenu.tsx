@@ -62,7 +62,12 @@ export const MobileMenu = ({
                                         {item.label}
                                     </Link>
                                 ) : (
-                                    <button type="button" onClick={handleNavigateClick(item)} className={className}>
+                                    <button 
+                                        type="button" 
+                                        onClick={handleNavigateClick(item)} 
+                                        className={className}
+                                        aria-label={`Navigate to ${item.label}`}
+                                    >
                                         {item.label}
                                     </button>
                                 )}
