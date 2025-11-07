@@ -17,7 +17,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ description, isInView 
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.5, delay: 0 }}
         >
-            <span className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(199,210,254,0.5)]">
+            <span className="bg-gradient-to-r from-white via-gray-100 to-gray-200 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                 A <span className="font-semibold">Portfolio</span> of
             </span>
         </motion.p>
