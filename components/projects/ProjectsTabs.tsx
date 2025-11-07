@@ -6,7 +6,7 @@ import TabSwitcher from "@/components/projects/TabSwitcher";
 import { tabContentVariants } from "@/lib/animations/variants";
 import { useTabState } from "@/lib/hooks/useTabState";
 import { AnimatePresence, motion } from "framer-motion";
-import GradientUnderline from "../GradientUnderline";
+import GradientUnderline from '@/components/shared/GradientUnderline';
 
 export function ProjectsTabs() {
     const { activeTab, setActiveTab, mounted } = useTabState();
