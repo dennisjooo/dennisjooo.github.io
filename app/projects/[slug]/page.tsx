@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import BackToTop from '@/components/BackToTop';
+import { BackToTop } from '@/components/shared';
 import ProjectPageClient from './ProjectPageClient';
 import { projects } from '@/data/projects';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
