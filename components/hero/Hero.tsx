@@ -1,6 +1,6 @@
 'use client';
 
-import { Iridescence } from '@/components/iridescence';
+import dynamic from 'next/dynamic';
 import { HERO_CONTENT } from '@/data/heroContent';
 import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
 import { useScrollEffect } from '@/lib/hooks/useScrollEffect';
@@ -9,6 +9,11 @@ import { useInView } from 'framer-motion';
 import React, { useCallback, useMemo } from 'react';
 import { HeroContent } from './HeroContent';
 import { ScrollButton } from './ScrollButton';
+
+const Iridescence = dynamic(() => import('@/components/iridescence').then(mod => mod.Iridescence), {
+    ssr: false,
+    loading: () => <div className="h-full w-full bg-gradient-to-br from-purple-600/20 to-blue-500/20" />
+});
 
 const Hero: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();

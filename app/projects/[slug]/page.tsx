@@ -22,7 +22,14 @@ export async function generateMetadata(
     }
 
     return {
-        title: `${project.title} | Dennis' Portfolio`,
+        title: `${project.title}`,
+        description: project.description,
+        openGraph: {
+            title: `${project.title}`,
+            description: project.description,
+            type: 'article',
+            url: `https://dennisjooo.github.io/projects/${slug}`,
+        },
     };
 }
 

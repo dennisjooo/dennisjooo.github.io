@@ -18,7 +18,7 @@ export const AboutContent: React.FC<AboutContentProps> = ({ mainControls }) => (
         transition={{ duration: 0.6, delay: 0.6 }}
     >
         {Object.entries(aboutContent).map(([key, content], index) => (
-            <motion.h5
+            <motion.p
                 key={key}
                 className="mb-4 last:mb-0 text-base md:text-lg text-gray-700 dark:text-gray-300"
                 variants={fadeInUpVariants}
@@ -27,7 +27,7 @@ export const AboutContent: React.FC<AboutContentProps> = ({ mainControls }) => (
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
             >
                 {content}
-            </motion.h5>
+            </motion.p>
         ))}
     </motion.div>
 );

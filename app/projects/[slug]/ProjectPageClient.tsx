@@ -2,12 +2,16 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { Project } from '@/data/projects';
-import ProjectContent from '@/components/projects/ProjectContent';
 import ProjectLinks from '@/components/projects/ProjectLinks';
 import ProjectDescription from '@/components/projects/ProjectDescription';
 import { BsArrowLeft } from "react-icons/bs";
+
+const ProjectContent = dynamic(() => import('@/components/projects/ProjectContent'), {
+    loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-800 h-96 rounded-lg" />
+});
 
 export default function ProjectPageClient({ project }: { project: Project }) {
     return (
