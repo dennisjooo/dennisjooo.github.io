@@ -1,5 +1,5 @@
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 
 import './Iridescence.css';
 
@@ -62,6 +62,26 @@ export default function Iridescence({
 }: IridescenceProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
+
+  // Convert normalized RGB (0-1) to 0-255 range and create gradient colors
+  const gradientStyle = useMemo(() => {
+    const r = Math.round(color[0] * 255);
+    const g = Math.round(color[1] * 255);
+    const b = Math.round(color[2] * 255);
+
+    // Create gradient stops: start (shifted towards indigo), middle (main color), end (shifted towards blue)
+    const startR = Math.round(Math.min(255, r * 0.6 + 99 * 0.4));
+    const startG = Math.round(Math.min(255, g * 0.6 + 102 * 0.4));
+    const startB = Math.round(Math.min(255, b * 0.6 + 241 * 0.4));
+
+    const endR = Math.round(Math.min(255, r * 0.6 + 59 * 0.4));
+    const endG = Math.round(Math.min(255, g * 0.6 + 130 * 0.4));
+    const endB = Math.round(Math.min(255, b * 0.6 + 246 * 0.4));
+
+    return {
+      background: `linear-gradient(135deg, rgba(${startR}, ${startG}, ${startB}, 0.3) 0%, rgba(${r}, ${g}, ${b}, 0.4) 50%, rgba(${endR}, ${endG}, ${endB}, 0.3) 100%)`
+    };
+  }, [color]);
 
   useEffect(() => {
     if (!ctnDom.current) return;
@@ -136,5 +156,5 @@ export default function Iridescence({
     };
   }, [color, speed, amplitude, mouseReact]);
 
-  return <div ref={ctnDom} className="iridescence-container" {...rest} />;
+  return <div ref={ctnDom} className="iridescence-container" style={gradientStyle} {...rest} />;
 }
