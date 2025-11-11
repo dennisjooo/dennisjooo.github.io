@@ -12,7 +12,7 @@ import { ScrollButton } from './ScrollButton';
 
 const Iridescence = dynamic(() => import('@/components/iridescence').then(mod => mod.Iridescence), {
     ssr: false,
-    loading: () => <div className="h-full w-full bg-gradient-to-br from-purple-600/20 to-blue-500/20" />
+    loading: () => <div className="h-full w-full bg-gradient-to-br from-indigo-500/30 via-purple-500/40 to-blue-500/30" />
 });
 
 const Hero: React.FC = () => {
@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
         <section
             id="home"
             ref={ref}
-            className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden"
+            className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-indigo-500/30 via-purple-500/40 to-blue-500/30"
         >
             <div className="absolute inset-0">
                 <Iridescence
