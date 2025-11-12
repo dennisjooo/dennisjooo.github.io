@@ -34,7 +34,7 @@ export const FeaturedProjectsGrid: React.FC<FeaturedProjectsGridProps> = ({ proj
                         description={truncateProjectDescription(description)}
                         href={`/projects/${createUrlSlug(title)}`}
                         cta="View Project"
-                        date={formatProjectDate(date)}
+                        date={formatProjectDate(date, true)}
                         imageUrl={imageUrl}
                     />
                 </motion.div>
