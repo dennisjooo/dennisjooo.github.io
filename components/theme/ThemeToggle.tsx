@@ -100,9 +100,9 @@ export const ThemeToggle = ({
         >
             <div className="relative w-5 h-5">
                 {isDark ? (
-                    <BsMoon className={`w-5 h-5 transition-all duration-300 ${textColorClass}`} />
-                ) : (
                     <BsSun className={`w-5 h-5 transition-all duration-300 ${textColorClass}`} />
+                ) : (
+                    <BsMoon className={`w-5 h-5 transition-all duration-300 ${textColorClass}`} />
                 )}
             </div>
             <span className="sr-only">Toggle theme</span>
