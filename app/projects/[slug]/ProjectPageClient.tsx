@@ -9,6 +9,7 @@ import ProjectLinks from '@/components/projects/ProjectLinks';
 import ProjectDescription from '@/components/projects/ProjectDescription';
 import { BsArrowLeft } from "react-icons/bs";
 import { formatProjectDate } from '@/lib/utils/projectFormatting';
+import { GradientUnderline } from '@/components/shared';
 
 const ProjectContent = dynamic(() => import('@/components/projects/ProjectContent'), {
     loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-800 h-96 rounded-lg" />
@@ -45,7 +46,9 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                         transition={{ duration: 0.8 }}
                         className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white"
                     >
-                        {project.title}
+                        <GradientUnderline delay={0.3}>
+                            {project.title}
+                        </GradientUnderline>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
