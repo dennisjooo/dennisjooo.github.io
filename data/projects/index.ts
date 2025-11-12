@@ -7,6 +7,7 @@ export { fraudDetection } from './fraudDetection';
 export { sarimaGoto } from './sarimaGoto';
 export { allNbaPredictor } from './allNbaPredictor';
 export { documentRotation } from './documentRotation';
+export { moodList } from './moodList';
 
 import { Project } from './types';
 import { actNatural } from './actNatural';
@@ -17,8 +18,10 @@ import { fraudDetection } from './fraudDetection';
 import { sarimaGoto } from './sarimaGoto';
 import { allNbaPredictor } from './allNbaPredictor';
 import { documentRotation } from './documentRotation';
+import { moodList } from './moodList';
 
 export const projects: Project[] = [
+    moodList,
     actNatural,
     birdClassifier,
     wizardryBooks,
