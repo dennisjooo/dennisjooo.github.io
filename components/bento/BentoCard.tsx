@@ -32,7 +32,8 @@ export const BentoCard = ({
     const LinkComponent = isExternal ? 'a' : Link;
 
     return (
-        <article
+        <LinkComponent
+            {...linkProps}
             className={cn(
                 'group relative flex flex-col overflow-hidden rounded-2xl',
                 'bg-white shadow-sm border border-neutral-200/50',
@@ -40,6 +41,7 @@ export const BentoCard = ({
                 'hover:shadow-xl hover:scale-[1.02] hover:border-neutral-300/50',
                 'dark:bg-neutral-900 dark:border-neutral-800 dark:hover:border-neutral-700',
                 isCertification ? 'min-h-[200px]' : 'min-h-[380px] sm:min-h-[400px] md:min-h-[420px]',
+                'cursor-pointer',
                 className,
             )}
         >
@@ -79,8 +81,7 @@ export const BentoCard = ({
                     </p>
                 </div>
 
-                <LinkComponent
-                    {...linkProps}
+                <span
                     className={cn(
                         'mt-6 inline-flex items-center gap-2 text-base font-medium',
                         'text-neutral-900 dark:text-neutral-100',
@@ -93,13 +94,13 @@ export const BentoCard = ({
                         className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
                         aria-hidden="true"
                     />
-                </LinkComponent>
+                </span>
             </div>
 
             <div
                 className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-neutral-900/5 dark:ring-white/5"
                 aria-hidden="true"
             />
-        </article>
+        </LinkComponent>
     );
 };
