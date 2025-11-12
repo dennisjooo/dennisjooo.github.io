@@ -28,7 +28,9 @@ export const markdownComponents: Components = {
     ),
 
     // Text elements
-    p: ({ children }) => <p className="mb-4 text-gray-700 dark:text-gray-300">{children}</p>,
+    p: ({ children }) => {
+        return <p className="mb-4 text-gray-700 dark:text-gray-300">{children}</p>;
+    },
     strong: ({ children }) => <strong className="font-bold text-gray-900 dark:text-white">{children}</strong>,
     em: ({ children }) => <em className="italic text-gray-700 dark:text-gray-300">{children}</em>,
     blockquote: ({ children }) => (
@@ -96,21 +98,22 @@ export const markdownComponents: Components = {
             return null;
         }
 
+        // Return just the image with styling - don't wrap in figure to avoid nesting issues
         return (
-            <figure className="my-8">
+            <span className="block my-8">
                 <img
                     src={src}
                     alt={alt ?? ''}
                     loading="lazy"
-                    className="w-full h-auto rounded-lg border border-gray-300 dark:border-gray-700/50 shadow-lg"
+                    className="w-full h-auto rounded-2xl border border-gray-300 dark:border-gray-700/50 shadow-lg"
                     {...rest}
                 />
                 {title ? (
-                    <figcaption className="mt-2 text-center text-sm text-gray-600 dark:text-neutral-400">
+                    <span className="block mt-2 text-center text-sm text-gray-600 dark:text-neutral-400">
                         {title}
-                    </figcaption>
+                    </span>
                 ) : null}
-            </figure>
+            </span>
         );
     },
     video: ({
