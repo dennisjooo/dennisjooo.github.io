@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import React from 'react';
 
 type TabType = 'projects' | 'certifications';
 
@@ -17,31 +18,43 @@ export default function TabSwitcher({ activeTab, onTabChange }: TabSwitcherProps
             transition={{ duration: 0.3 }}
             className="flex justify-center w-full mb-12"
         >
-            <div className="relative flex bg-gray-200 dark:bg-neutral-900 rounded-xl p-1">
-                {['projects', 'certifications'].map((tab) => (
-                    <motion.button
-                        key={tab}
-                        onClick={() => onTabChange(tab as TabType)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                        className={`
-                            relative z-10 px-5 sm:px-8 py-2
-                            text-sm font-medium capitalize 
-                            transition-colors duration-300 whitespace-nowrap
-                            ${activeTab === tab ? 'text-white dark:text-black' : 'text-gray-700 dark:text-white hover:text-gray-900 dark:hover:text-neutral-300'}
-                        `}
-                    >
-                        {tab}
-                        {activeTab === tab && (
-                            <motion.div
-                                layoutId="tab-background"
-                                className="absolute inset-0 bg-gray-900 dark:bg-white rounded-lg"
-                                style={{ zIndex: -1 }}
-                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            <div className="relative flex rounded-full border" style={{ borderColor: 'var(--default-border)' }}>
+                {['projects', 'certifications'].map((tab, index) => (
+                    <React.Fragment key={tab}>
+                        <motion.button
+                            onClick={() => onTabChange(tab as TabType)}
+                            whileHover={{ scale: 1.01 }}
+                            whileTap={{ scale: 0.99 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                            className={`
+                                relative z-10 px-5 sm:px-8 py-2.5
+                                text-sm font-medium capitalize
+                                transition-all duration-300 whitespace-nowrap
+                                ${index === 0 ? 'rounded-l-full' : 'rounded-r-full'}
+                                ${activeTab === tab ? 'text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}
+                            `}
+                        >
+                            {tab}
+                            {activeTab === tab && (
+                                <motion.div
+                                    layoutId="tab-background"
+                                    className={`absolute inset-0 ${index === 0 ? 'rounded-l-full' : 'rounded-r-full'}`}
+                                    style={{
+                                        zIndex: -1,
+                                        backgroundColor: 'var(--accent-border)',
+                                        boxShadow: '0 0 20px var(--accent-shadow)'
+                                    }}
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+                        </motion.button>
+                        {index === 0 && (
+                            <div
+                                className="w-px self-stretch my-2"
+                                style={{ backgroundColor: 'var(--default-border)' }}
                             />
                         )}
-                    </motion.button>
+                    </React.Fragment>
                 ))}
             </div>
         </motion.div>
