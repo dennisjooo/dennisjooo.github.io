@@ -18,7 +18,7 @@ export function ProjectsTabs() {
         >
             <h1 className="text-3xl md:text-4xl mb-6 text-center font-bold text-gray-900 dark:text-white">
                 <GradientUnderline>
-                    Projects & Certifications.
+                    Projects and Certs.
                 </GradientUnderline>
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto mb-12 leading-relaxed">
