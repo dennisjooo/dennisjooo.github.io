@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { Project } from '@/data/projects';
 import ProjectLinks from '@/components/projects/ProjectLinks';
 import ProjectDescription from '@/components/projects/ProjectDescription';
@@ -82,12 +83,23 @@ export default function ProjectPageClient({ project }: { project: Project }) {
 }
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
+    const [aspectRatio, setAspectRatio] = useState<number | null>(null);
+
+    useEffect(() => {
+        const img = new window.Image();
+        img.onload = () => {
+            setAspectRatio(img.naturalWidth / img.naturalHeight);
+        };
+        img.src = src;
+    }, [src]);
+
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] mb-6 overflow-hidden rounded-2xl"
+            className="relative w-full mb-6 overflow-hidden rounded-2xl max-h-[400px] sm:max-h-[500px] md:max-h-[600px]"
+            style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : { minHeight: '200px' }}
         >
             <Image
                 src={src}
