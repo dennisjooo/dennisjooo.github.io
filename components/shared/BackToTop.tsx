@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { BsArrowUpCircle } from 'react-icons/bs';
+import { BsArrowUp } from 'react-icons/bs';
 
 const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -34,10 +34,23 @@ const BackToTop = () => {
             {isVisible && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 p-2 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900 rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-gray-300 transition-all duration-300 z-50"
+                    className="fixed bottom-8 right-8 p-3 text-white rounded-full shadow-lg transition-all duration-300 z-50 border"
+                    style={{
+                        backgroundColor: 'var(--accent-border)',
+                        borderColor: 'var(--accent-border)',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px var(--accent-shadow)',
+                    }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.1)';
+                        e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.15), 0 0 30px var(--accent-shadow)';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px var(--accent-shadow)';
+                    }}
                     aria-label="Back to top"
                 >
-                    <BsArrowUpCircle size={24} />
+                    <BsArrowUp size={20} />
                 </button>
             )}
         </>
