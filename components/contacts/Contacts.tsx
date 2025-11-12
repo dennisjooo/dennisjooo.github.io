@@ -8,7 +8,7 @@ import { contactLinks } from '@/data/contactContent';
 
 const Contacts: React.FC = () => (
     <section id="contact" className="flex flex-col items-center py-24 bg-white dark:bg-black text-gray-900 dark:text-white px-8">
-        <div className="w-full max-w-md h-[2px] bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-600 to-transparent" />
+        <div className="w-full max-w-md h-[2px] bg-gradient-to-r from-transparent via-[var(--accent-border)] to-transparent" />
         <h2 className="mt-12 text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white">
             <GradientUnderline delay={0.3}>
                 Reach Me Here.

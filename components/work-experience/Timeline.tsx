@@ -14,7 +14,8 @@ interface TimelineProps {
 
 export const Timeline: React.FC<TimelineProps> = ({ items, mainControls, shouldReduceMotion }) => (
     <motion.ol
-        className="relative border-l-2 border-purple-400 dark:border-purple-500 ml-1 md:ml-3"
+        className="relative border-l-2 ml-1 md:ml-3"
+        style={{ borderColor: 'var(--accent-border)' }}
         variants={fadeInVariants}
         initial="hidden"
         animate={mainControls}
@@ -36,7 +37,7 @@ export const Timeline: React.FC<TimelineProps> = ({ items, mainControls, shouldR
             >
                 <span
                     aria-hidden="true"
-                    className="absolute left-0 top-4 md:top-5 w-2 md:w-3 h-2 md:h-3 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-full drop-shadow-[0_0_8px_rgba(168,85,247,0.6)] transform -translate-x-[calc(50%+1px)]"
+                    className="absolute left-0 top-4 md:top-5 w-2 md:w-3 h-2 md:h-3 bg-gradient-accent rounded-full drop-shadow-[0_0_8px_rgba(168,85,247,0.6)] transform -translate-x-[calc(50%+1px)]"
                 />
                 <article>
                     <header className="flex items-start">
