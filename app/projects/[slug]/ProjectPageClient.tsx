@@ -82,13 +82,13 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] mb-6 bg-gray-100 dark:bg-white rounded-lg overflow-hidden"
+            className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] mb-6 overflow-hidden rounded-2xl"
         >
             <Image
                 src={src}
                 alt={alt}
                 fill
-                style={{ objectFit: 'contain' }}
+                style={{ objectFit: 'cover' }}
                 className="rounded-lg"
             />
         </motion.div>
