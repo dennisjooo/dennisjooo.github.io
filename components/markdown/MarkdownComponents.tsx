@@ -3,6 +3,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { Components } from "react-markdown";
 import { CodeBlock, type CodeProps } from "./CodeBlock";
+import { PhotoView } from "react-photo-view";
 
 export const markdownComponents: Components = {
     // Headings
@@ -98,16 +99,17 @@ export const markdownComponents: Components = {
             return null;
         }
 
-        // Return just the image with styling - don't wrap in figure to avoid nesting issues
         return (
             <span className="block my-8">
-                <img
-                    src={src}
-                    alt={alt ?? ''}
-                    loading="lazy"
-                    className="w-full h-auto rounded-2xl border border-gray-300 dark:border-gray-700/50 shadow-lg"
-                    {...rest}
-                />
+                <PhotoView src={src}>
+                    <img
+                        src={src}
+                        alt={alt ?? ''}
+                        loading="lazy"
+                        className="w-full h-auto rounded-2xl border border-gray-300 dark:border-gray-700/50 shadow-lg cursor-zoom-in"
+                        {...rest}
+                    />
+                </PhotoView>
                 {title ? (
                     <span className="block mt-2 text-center text-sm text-gray-600 dark:text-neutral-400">
                         {title}
