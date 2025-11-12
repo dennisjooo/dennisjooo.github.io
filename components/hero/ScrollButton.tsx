@@ -30,7 +30,7 @@ export const ScrollButton: React.FC<ScrollButtonProps> = ({ onClick, mainControl
                 ease: 'easeInOut',
             }}
         >
-            <BsChevronDown className="text-white text-4xl" />
+            <BsChevronDown className="text-gray-800 dark:text-white text-4xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </motion.div>
     </motion.button>
 );
