@@ -15,7 +15,18 @@ export const ViewAllButton = () => (
         <Link
             href="/projects"
             prefetch
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105 text-base"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white border transition-all duration-300 transform hover:scale-105"
+            style={{
+                borderColor: 'var(--default-border)',
+            }}
+            onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent-border)';
+                e.currentTarget.style.boxShadow = '0 0 15px var(--accent-shadow)';
+            }}
+            onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--default-border)';
+                e.currentTarget.style.boxShadow = '';
+            }}
         >
             View All Projects and More.
             <ArrowUpRightIcon className="w-4 h-4" />

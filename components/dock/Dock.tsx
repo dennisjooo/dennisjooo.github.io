@@ -8,7 +8,7 @@ import { DEFAULT_DISTANCE, DEFAULT_MAGNIFICATION } from "./constants";
 import type { DockIconProps } from "./DockIcon";
 
 const dockVariants = cva(
-    "mx-auto w-max h-[58px] p-2 flex gap-2 rounded-2xl border border-gray-300 dark:border-gray-700 supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md"
+    "mx-auto w-max h-[58px] p-2 flex gap-2 rounded-2xl border supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md transition-all duration-300"
 );
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
@@ -37,13 +37,24 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
             <motion.div
                 ref={ref}
                 onMouseMove={(e) => mouseX.set(e.pageX)}
-                onMouseLeave={() => mouseX.set(Infinity)}
+                onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--accent-border)';
+                    e.currentTarget.style.boxShadow = '0 0 20px var(--accent-shadow)';
+                }}
+                onMouseLeave={(e) => {
+                    mouseX.set(Infinity);
+                    e.currentTarget.style.borderColor = 'var(--default-border)';
+                    e.currentTarget.style.boxShadow = '';
+                }}
                 {...props}
                 className={cn(dockVariants({ className }), {
                     "items-start": direction === "top",
                     "items-center": direction === "middle",
                     "items-end": direction === "bottom",
                 })}
+                style={{
+                    borderColor: 'var(--default-border)',
+                }}
             >
                 {React.Children.map(children, (child) =>
                     React.isValidElement(child) && React.isValidElement<DockIconProps>(child)

@@ -36,14 +36,27 @@ export const BentoCard = ({
             {...linkProps}
             className={cn(
                 'group relative flex flex-col overflow-hidden rounded-2xl',
-                'bg-white shadow-sm border border-neutral-200/50',
+                'bg-white shadow-sm border',
                 'backdrop-blur-sm transition-all duration-300 ease-out',
-                'hover:shadow-xl hover:scale-[1.02] hover:border-neutral-300/50',
-                'dark:bg-neutral-900 dark:border-neutral-800 dark:hover:border-neutral-700',
+                'hover:shadow-xl hover:scale-[1.02]',
+                'dark:bg-neutral-900',
                 isCertification ? 'min-h-[200px]' : 'min-h-[380px] sm:min-h-[400px] md:min-h-[420px]',
                 'cursor-pointer',
                 className,
             )}
+            style={{
+                borderColor: 'var(--default-border)',
+            }}
+            onMouseEnter={(e) => {
+                const target = e.currentTarget as HTMLElement;
+                target.style.borderColor = 'var(--accent-border)';
+                target.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 25px var(--accent-shadow)';
+            }}
+            onMouseLeave={(e) => {
+                const target = e.currentTarget as HTMLElement;
+                target.style.borderColor = 'var(--default-border)';
+                target.style.boxShadow = '';
+            }}
         >
             {!isCertification && (
                 <div className="relative w-full h-40 sm:h-48 overflow-hidden">

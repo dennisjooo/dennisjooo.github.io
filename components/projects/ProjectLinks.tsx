@@ -43,7 +43,18 @@ function ProjectLink({ url, text, index }: Link & { index: number }) {
             href={url}
             initial={{ opacity: 1, y: 0 }}
             animate={controls}
-            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white border border-gray-200 dark:border-gray-800 hover:border-purple-500 dark:hover:border-purple-400 hover:shadow-[0_0_15px_rgba(168,85,247,0.4)] dark:hover:shadow-[0_0_15px_rgba(192,132,252,0.4)] transition-all duration-200"
+            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white border transition-all duration-200"
+            style={{
+                borderColor: 'var(--default-border)',
+            }}
+            onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent-border)';
+                e.currentTarget.style.boxShadow = '0 0 15px var(--accent-shadow)';
+            }}
+            onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--default-border)';
+                e.currentTarget.style.boxShadow = '';
+            }}
             target="_blank"
             rel="noopener noreferrer"
             suppressHydrationWarning
