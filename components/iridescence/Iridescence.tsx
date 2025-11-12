@@ -1,8 +1,6 @@
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 import { useEffect, useRef, useMemo } from 'react';
 
-import './Iridescence.css';
-
 const vertexShader = `
 attribute vec2 uv;
 attribute vec2 position;
@@ -131,6 +129,7 @@ export default function Iridescence({
       renderer.render({ scene: mesh });
     }
     animateId = requestAnimationFrame(update);
+    gl.canvas.className = 'block w-full h-full animate-[fadeIn_0.6s_ease-in]';
     ctn.appendChild(gl.canvas);
 
     function handleMouseMove(e: MouseEvent) {
@@ -156,5 +155,5 @@ export default function Iridescence({
     };
   }, [color, speed, amplitude, mouseReact]);
 
-  return <div ref={ctnDom} className="iridescence-container" style={gradientStyle} {...rest} />;
+  return <div ref={ctnDom} className="w-full h-full backface-hidden transform-gpu" style={gradientStyle} {...rest} />;
 }
