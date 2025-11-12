@@ -8,10 +8,12 @@ import { Project } from '@/data/projects';
 import ProjectLinks from '@/components/projects/ProjectLinks';
 import ProjectDescription from '@/components/projects/ProjectDescription';
 import { BsArrowLeft } from "react-icons/bs";
+import { formatProjectDate } from '@/lib/utils/projectFormatting';
 
 const ProjectContent = dynamic(() => import('@/components/projects/ProjectContent'), {
     loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-800 h-96 rounded-lg" />
 });
+
 
 export default function ProjectPageClient({ project }: { project: Project }) {
     return (
@@ -51,7 +53,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                         transition={{ duration: 0.8, delay: 0.3 }}
                         className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-neutral-400"
                     >
-                        {project.date}
+                        {formatProjectDate(project.date)}
                     </motion.p>
                 </header>
                 <ProjectImage src={project.imageUrl} alt={project.title} />

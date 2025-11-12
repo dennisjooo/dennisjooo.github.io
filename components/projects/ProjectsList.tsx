@@ -2,6 +2,7 @@
 import { BentoGrid, BentoCard } from '@/components/bento';
 import { Project, projects } from '@/data/projects';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
+import { formatProjectDate } from '@/lib/utils/projectFormatting';
 
 const sortedProjects = [...projects].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
@@ -18,7 +19,7 @@ export default function ProjectsList() {
                     description={description}
                     href={`/projects/${createUrlSlug(title)}`}
                     cta="View Project"
-                    date={date}
+                    date={formatProjectDate(date, true)}
                     imageUrl={imageUrl}
                 />
             ))}
