@@ -7,18 +7,20 @@ import { useScrollEffect } from '@/lib/hooks/useScrollEffect';
 import { useTypingEffect } from '@/lib/hooks/useTypingEffect';
 import { useInView } from 'framer-motion';
 import React, { useCallback, useMemo } from 'react';
+import { useTheme } from 'next-themes';
 import { HeroContent } from './HeroContent';
 import { ScrollButton } from './ScrollButton';
 
 const Iridescence = dynamic(() => import('@/components/iridescence').then(mod => mod.Iridescence), {
     ssr: false,
-    loading: () => <div className="h-full w-full bg-gradient-to-br from-indigo-500/30 via-purple-500/40 to-blue-500/30" />
+    loading: () => <div className="h-full w-full bg-gradient-primary" />
 });
 
 const Hero: React.FC = () => {
     const { ref, mainControls } = useAnimateOnScroll();
     const description = useTypingEffect(HERO_CONTENT.descriptions);
     const isInView = useInView(ref, { once: true });
+    const { theme, systemTheme } = useTheme();
 
     useScrollEffect(ref);
 
@@ -26,13 +28,20 @@ const Hero: React.FC = () => {
         document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
     }, []);
 
-    const iridescenceColor = useMemo<[number, number, number]>(() => [0.5, 0.2, 0.8], []);
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+    const isDark = currentTheme === 'dark';
+
+    // Light mode: white-gray with subtle purple tint
+    // Dark mode: deep purple tones
+    const iridescenceColor = useMemo<[number, number, number]>(() =>
+        isDark ? [0.5, 0.2, 0.8] : [0.85, 0.82, 0.9],
+        [isDark]);
 
     return (
         <section
             id="home"
             ref={ref}
-            className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-indigo-500/30 via-purple-500/40 to-blue-500/30"
+            className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden bg-gradient-primary"
         >
             <div className="absolute inset-0">
                 <Iridescence
