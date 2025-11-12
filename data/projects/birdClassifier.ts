@@ -1,7 +1,7 @@
 import { Project } from './types';
 
 export const birdClassifier: Project = {
-    title: 'Bird Classifier on EfficientNet-B2',
+    title: 'What is that Bird we\'re looking at?',
     description: "Ever wondered what bird you're looking at? This classifier has over 90k downloads on HuggingFace's model hub.",
     imageUrl: '/images/project/birb_classifier.webp',
     date: '2023-11-05',

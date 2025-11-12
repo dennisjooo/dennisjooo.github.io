@@ -1,7 +1,7 @@
 import { Project } from './types';
 
 export const allNbaPredictor: Project = {
-    title: 'All-NBA-Predictor',
+    title: 'Will They Make All-NBA?',
     description: 'Can machine learning predict basketball greatness? Training models to forecast All-NBA team selections.',
     imageUrl: '/images/project/all_nba_pred.webp',
     date: '2022-05-26',

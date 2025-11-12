@@ -1,7 +1,7 @@
 import { Project } from './types';
 
 export const dcgan: Project = {
-    title: 'Deep Convolutional GAN on MNIST',
+    title: 'Forging Handwritten Digits',
     description: 'Teaching machines to forge handwritten digits so convincingly, even other machines can\'t tell the difference.',
     imageUrl: '/images/project/dcgan_mnist.webp',
     date: '2023-07-26',

@@ -1,7 +1,7 @@
 import { Project } from './types';
 
 export const sarimaGoto: Project = {
-    title: 'Predictive Modelling of Changes in GOTO Stock Prices using Historical and Exogenous Data with LSTM and SARIMAX',
+    title: 'Can Twitter Predict the Stock Market?',
     description: 'Can Twitter sentiment predict stock prices? Turns out LSTM + social media data beats traditional models.',
     imageUrl: '/images/project/stock_fp.webp',
     date: '2023-05-19',
