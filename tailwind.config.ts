@@ -17,6 +17,12 @@ const config: Config = {
   				'var(--font-mono)'
   			]
   		},
+  		keyframes: {
+  			fadeIn: {
+  				'0%': { opacity: '0' },
+  				'100%': { opacity: '1' },
+  			},
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
