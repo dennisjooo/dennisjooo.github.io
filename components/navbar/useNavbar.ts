@@ -116,7 +116,7 @@ export const useNavbarStyles = ({ isHeroSection, scrolled, isMenuOpen, pathname 
         const shadowClass = (!isHeroSection || scrolled) && !isMenuOpen ? "shadow-lg" : "";
 
         const textColorClass = isHeroSection && !scrolled && !isMenuOpen && pathname === "/"
-            ? "text-white"
+            ? "text-gray-900 dark:text-white"
             : "text-gray-900 dark:text-white";
 
         return { bgClass, navWidth, shadowClass, textColorClass };
