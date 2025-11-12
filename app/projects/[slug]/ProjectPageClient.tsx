@@ -5,6 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Project } from '@/data/projects';
 import ProjectLinks from '@/components/projects/ProjectLinks';
 import ProjectDescription from '@/components/projects/ProjectDescription';
@@ -94,20 +95,28 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
     }, [src]);
 
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative w-full mb-6 overflow-hidden rounded-2xl max-h-[400px] sm:max-h-[500px] md:max-h-[600px]"
-            style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : { minHeight: '200px' }}
-        >
-            <Image
-                src={src}
-                alt={alt}
-                fill
-                style={{ objectFit: 'cover' }}
-                className="rounded-lg"
-            />
-        </motion.div>
+        <PhotoProvider maskOpacity={0.85} speed={() => 280}>
+            <PhotoView src={src}>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="relative w-full mb-6 overflow-hidden rounded-2xl max-h-[400px] sm:max-h-[500px] md:max-h-[600px] cursor-zoom-in"
+                    style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : { minHeight: '200px' }}
+                >
+                    <Image
+                        src={src}
+                        alt={alt}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        className="rounded-lg"
+                        sizes="(max-width: 768px) 100vw, 768px"
+                    />
+                    <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium uppercase tracking-wide text-white">
+                        Click to zoom
+                    </span>
+                </motion.div>
+            </PhotoView>
+        </PhotoProvider>
     );
 }
