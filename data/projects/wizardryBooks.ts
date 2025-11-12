@@ -1,7 +1,7 @@
 import { Project } from './types';
 
 export const wizardryBooks: Project = {
-    title: 'Wizardry Books Text-Generation',
+    title: 'Teaching Transformers to Write Harry Potter',
     description: 'What happens when you teach AI to write like J.K. Rowling? Pure magic (or at least entertaining gibberish).',
     imageUrl: '/images/project/hp_text_gen.webp',
     date: '2023-08-15',

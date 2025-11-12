@@ -1,7 +1,7 @@
 import { Project } from './types';
 
 export const documentRotation: Project = {
-    title: 'Document Rotation Classification',
+    title: 'Straightening the Mess',
     description: 'Sometimes a slight nudge is all it takes to get documents straight',
     imageUrl: '/images/project/rotation_model.webp',
     date: '2025-05-20',

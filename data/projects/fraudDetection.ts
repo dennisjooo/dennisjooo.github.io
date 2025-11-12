@@ -1,7 +1,7 @@
 import { Project } from './types';
 
 export const fraudDetection: Project = {
-    title: 'Comparative Analysis of Fraud Detection Models',
+    title: 'Finding Anomalies using Things We Already Know',
     description: 'Hunting down financial criminals with machine learning. AutoEncoders won this round with 93% accuracy.',
     imageUrl: '/images/project/ae_creditfraud.webp',
     date: '2023-07-10',
