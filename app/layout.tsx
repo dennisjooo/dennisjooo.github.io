@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "katex/dist/katex.min.css";
+import "react-photo-view/dist/react-photo-view.css";
 import "./globals.css";
 import { Inter, Roboto_Mono } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
