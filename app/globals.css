@@ -40,6 +40,13 @@ html {
   --gradient-accent-to: rgb(233, 213, 255);
   /* purple-200 lighter */
 
+  /* Footer gradient colors - Light mode */
+  --footer-gradient-top: rgba(255, 255, 255, 0);
+  --footer-gradient-middle: rgba(233, 213, 255, 0.35);
+  --footer-gradient-bottom: rgba(196, 181, 253, 0.7);
+  --footer-glow-inner: rgba(221, 214, 254, 0.55);
+  --footer-glow-outer: rgba(233, 213, 255, 0.2);
+
   /* Theme accent colors for borders and effects - Light mode (subtle purple-gray) */
   --accent-border: rgb(196, 181, 253);
   /* purple-300 */
@@ -89,6 +96,13 @@ html {
   --gradient-accent-to: rgb(244, 114, 182);
   /* pink-400 */
 
+  /* Footer gradient colors - Dark mode */
+  --footer-gradient-top: rgba(10, 10, 10, 0);
+  --footer-gradient-middle: rgba(99, 102, 241, 0.25);
+  --footer-gradient-bottom: rgba(168, 85, 247, 0.45);
+  --footer-glow-inner: rgba(129, 140, 248, 0.5);
+  --footer-glow-outer: rgba(192, 132, 252, 0.2);
+
   /* Theme accent colors for borders and effects */
   --accent-border: rgb(168, 85, 247);
   /* purple-500 */
@@ -128,6 +142,24 @@ body {
 
   .bg-gradient-accent {
     background: linear-gradient(to right, var(--gradient-accent-from), var(--gradient-accent-via), var(--gradient-accent-to));
+  }
+
+  .bg-footer-gradient {
+    background: linear-gradient(
+      180deg,
+      var(--footer-gradient-top) 0%,
+      var(--footer-gradient-middle) 45%,
+      var(--footer-gradient-bottom) 100%
+    );
+  }
+
+  .footer-glow {
+    background: radial-gradient(
+      120% 120% at 50% 110%,
+      var(--footer-glow-inner) 0%,
+      var(--footer-glow-outer) 55%,
+      transparent 90%
+    );
   }
 
   /* Border and shadow utilities */
