@@ -73,8 +73,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <Providers>
                     <Navbar />
                     <main>{children}</main>
-                    <footer className="flex justify-center px-8 py-10 bg-white dark:bg-black">
-                        <CopyrightNotice />
+                    <footer className="relative isolate flex justify-center px-8 py-12 bg-white dark:bg-black">
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 -top-32 bg-gradient-to-t from-purple-200/40 via-purple-100/0 to-transparent dark:from-purple-700/30 dark:via-indigo-600/10 dark:to-transparent" />
+                        <div className="pointer-events-none absolute bottom-[-35%] left-1/2 -translate-x-1/2 w-[60rem] h-[30rem] rounded-full bg-purple-400/30 dark:bg-fuchsia-600/20 blur-[160px]" />
+                        <div className="relative z-10">
+                            <CopyrightNotice />
+                        </div>
                     </footer>
                 </Providers>
             </body>
