@@ -81,7 +81,7 @@ For the full technical stack details, check out the [about page](https://moodlis
 
 ## The Reality Check
 
-Building a full-stack app from scratch is *hard*. What works locally doesn't always translate to production—managing distributed sessions, OAuth flows, and infrastructure challenges taught me more than any tutorial. An AWS outage forced a pivot to Vercel/Railway/Neon/Upstash, while CORS issues and Spotify's dev-mode API limitations added complexity.
+Building a full-stack app from scratch is *hard*. What works locally doesn't always translate to production—managing distributed sessions, OAuth flows, and infrastructure challenges taught me more than any tutorial. An AWS outage forced a pivot to Vercel/Zeabur/Neon/Upstash, while CORS issues and Spotify's dev-mode API limitations added complexity.
 
 AI agents sounded promising but proved challenging—musical taste is hard to teach, response times lag, and recommendations miss the mark. As a non-designer, UX was new territory. This project exposed production realities: debugging, tradeoffs, and incremental building with AI tools like Cursor. End-to-end development is messy, but getting the ball rolling makes it manageable.
 
