@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/shared/Footer";
 import "katex/dist/katex.min.css";
+import type { Metadata } from "next";
+import { Inter, Roboto_Mono } from "next/font/google";
+import type { ReactNode } from "react";
 import "react-photo-view/dist/react-photo-view.css";
 import "./globals.css";
-import { Inter, Roboto_Mono } from "next/font/google";
-import Navbar from "@/components/navbar/Navbar";
-import { CopyrightNotice } from "@/components/shared";
 import { Providers } from "./providers";
 
 const inter = Inter({
@@ -73,9 +73,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <Providers>
                     <Navbar />
                     <main>{children}</main>
-                    <footer className="flex justify-center px-8 py-10 bg-white dark:bg-black">
-                        <CopyrightNotice />
-                    </footer>
+                    <Footer />
                 </Providers>
             </body>
         </html>
