@@ -7,23 +7,23 @@ import { PhotoView } from "react-photo-view";
 
 export const markdownComponents: Components = {
     // Headings
-    h1: ({ children }) => (
-        <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-300 dark:border-gray-600 pb-2">
+    h1: ({ children, ...props }) => (
+        <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-300 dark:border-gray-600 pb-2" {...props}>
             {children}
         </h1>
     ),
-    h2: ({ children }) => (
-        <h2 className="text-2xl font-bold mb-4 mt-8 text-gray-900 dark:text-white">
+    h2: ({ children, ...props }) => (
+        <h2 className="text-2xl font-bold mb-4 mt-8 text-gray-900 dark:text-white" {...props}>
             {children}
         </h2>
     ),
-    h3: ({ children }) => (
-        <h3 className="text-xl font-bold mb-3 mt-6 text-gray-900 dark:text-white">
+    h3: ({ children, ...props }) => (
+        <h3 className="text-xl font-bold mb-3 mt-6 text-gray-900 dark:text-white" {...props}>
             {children}
         </h3>
     ),
-    h4: ({ children }) => (
-        <h4 className="text-lg font-bold mb-2 mt-4 text-gray-900 dark:text-white">
+    h4: ({ children, ...props }) => (
+        <h4 className="text-lg font-bold mb-2 mt-4 text-gray-900 dark:text-white" {...props}>
             {children}
         </h4>
     ),
