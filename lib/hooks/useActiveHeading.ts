@@ -1,12 +1,18 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { Heading } from '@/lib/utils/markdownHelpers';
+import { SCROLL_ANIMATION_DURATION } from '@/lib/constants/scrolling';
 
 export function useActiveHeading(headings: Heading[]) {
     const [activeId, setActiveId] = useState<string>('');
     const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const manualScrollLockRef = useRef<NodeJS.Timeout | null>(null);
+    const isManualScrollLocked = useRef<boolean>(false);
 
     // Function to determine which heading is currently active
     const updateActiveHeading = useCallback(() => {
+        // Don't update if we're in a manual scroll lock period
+        if (isManualScrollLocked.current) return;
+
         if (headings.length === 0) return;
 
         // Get current scroll position
@@ -43,22 +49,27 @@ export function useActiveHeading(headings: Heading[]) {
             return;
         }
 
-        // Strategy: Find the heading closest to the middle of the viewport
-        // that is currently visible (above the middle)
-        const middleOfViewport = viewportHeight / 2;
+        // Strategy: Find the best heading for centered scroll behavior
+        // Prefer headings that are at or slightly above the center of viewport
+        const centerOfViewport = viewportHeight / 2;
+        const threshold = 100; // pixels of tolerance
 
         let bestHeading = headingPositions[0];
         let bestScore = Infinity;
 
         for (const heading of headingPositions) {
-            // Skip headings that are below the middle of viewport
-            if (heading.distanceFromTop > middleOfViewport) {
-                continue;
-            }
+            const distanceFromCenter = heading.distanceFromTop - centerOfViewport;
 
-            // Calculate score: how close is this heading to the top of viewport
-            // Lower score = closer to top = more likely to be the active section
-            const score = Math.abs(heading.distanceFromTop - 150); // 150px sweet spot
+            // Prioritize headings at or above center (distanceFromCenter <= 0)
+            // But also consider headings slightly below center if they're close
+            let score;
+            if (distanceFromCenter <= threshold) {
+                // For headings at or near center, prefer ones closer to center
+                score = Math.abs(distanceFromCenter);
+            } else {
+                // Headings far below center get penalized heavily
+                score = distanceFromCenter * 10;
+            }
 
             if (score < bestScore) {
                 bestScore = score;
@@ -102,5 +113,22 @@ export function useActiveHeading(headings: Heading[]) {
         };
     }, [updateActiveHeading]);
 
-    return { activeId, setActiveId };
+    return {
+        activeId,
+        setActiveId: (id: string) => {
+            // When manually setting (e.g., from TOC click), lock automatic updates
+            setActiveId(id);
+            isManualScrollLocked.current = true;
+
+            // Clear any existing timeout
+            if (manualScrollLockRef.current) {
+                clearTimeout(manualScrollLockRef.current);
+            }
+
+            // Unlock after scroll animation completes
+            manualScrollLockRef.current = setTimeout(() => {
+                isManualScrollLocked.current = false;
+            }, SCROLL_ANIMATION_DURATION);
+        }
+    };
 }

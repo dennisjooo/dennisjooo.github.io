@@ -1,5 +1,6 @@
 import { Heading } from '@/lib/utils/markdownHelpers';
-import { SCROLL_OFFSET } from '@/lib/constants/scrolling';
+import { scrollToCentered } from '@/lib/utils/scrollHelpers';
+import { SCROLL_ANIMATION_DURATION } from '@/lib/constants/scrolling';
 
 /**
  * Get the display active ID based on hover state and heading hierarchy.
@@ -55,15 +56,8 @@ export function handleTocClick(
         return;
     }
 
-    // Get the element's position
-    const rect = element.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const targetPosition = rect.top + scrollTop - SCROLL_OFFSET;
-
-    window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-    });
+    // Use shared scroll utility for consistent centering
+    scrollToCentered(element);
 
     // Update hash after a short delay
     setTimeout(() => {

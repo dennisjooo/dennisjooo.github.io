@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Heading } from '@/lib/utils/markdownHelpers';
 import { useActiveHeading } from '@/lib/hooks/useActiveHeading';
 import { getDisplayActiveId, handleTocClick } from '@/lib/utils/tableOfContents';
+import { SCROLL_ANIMATION_DURATION } from '@/lib/constants/scrolling';
 
 interface TableOfContentsProps {
     headings: Heading[];
@@ -12,14 +13,24 @@ interface TableOfContentsProps {
 
 export default function TableOfContents({ headings }: TableOfContentsProps) {
     const [isHovered, setIsHovered] = useState(false);
+    const [isManualClick, setIsManualClick] = useState(false);
     const { activeId, setActiveId } = useActiveHeading(headings);
 
     // Get the minimum heading level (e.g., if there are h2 and h3, min is 2)
     const minLevel = Math.min(...headings.map(h => h.level));
 
-    const displayActiveId = getDisplayActiveId(activeId, headings, isHovered);
+    // During manual click, show the exact activeId, not the parent
+    const displayActiveId = isManualClick ? activeId : getDisplayActiveId(activeId, headings, isHovered);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        // Set manual click flag
+        setIsManualClick(true);
+
+        // Clear it after scroll animation completes
+        setTimeout(() => {
+            setIsManualClick(false);
+        }, SCROLL_ANIMATION_DURATION);
+
         handleTocClick(e, id, setActiveId);
     };
 
