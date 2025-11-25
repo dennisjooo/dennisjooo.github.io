@@ -5,7 +5,7 @@ export const sarimaGoto: Project = {
     description: 'Can Twitter sentiment predict stock prices? Turns out LSTM + social media data beats traditional models.',
     imageUrl: '/images/project/stock_fp.webp',
     date: '2023-05-19',
-    blogPost: `The COVID-19 pandemic didn't just change how we work and live—it revolutionized retail investing. Suddenly, everyone from college students to grandparents was trading stocks and sharing their thoughts on social media. This project explores a fascinating question: **Can we use Twitter sentiment and social media buzz to predict stock price movements?** 
+    blogPost: `The COVID-19 pandemic didn't just change how we work and live, it revolutionized retail investing. Suddenly, everyone from college students to grandparents was trading stocks and sharing their thoughts on social media. This project explores a fascinating question: **Can we use Twitter sentiment and social media buzz to predict stock price movements?** 
 
 With lockdowns keeping people at home, we witnessed an unprecedented surge in retail investing where social media platforms became the new trading floors, making **GOTO (Gojek Tokopedia)**, Indonesia's tech giant, the perfect test subject for studying how social media sentiment could influence stock movements.
 
@@ -41,11 +41,11 @@ The comprehensive evaluation revealed that the **LSTM model enhanced with social
 - **Sentiment polarity and discussion volume** provided the strongest predictive signals
 - *Vanity metrics* like likes and follower counts showed virtually no predictive power
 
-This highlighted a crucial insight: **social media engagement ≠ predictive value**—quality beat quantity every time.
+This highlighted a crucial insight: **social media engagement ≠ predictive value**, quality beat quantity every time.
 
 ## The Future of Finance
 
-The research represents more than just successful stock prediction—it's a window into the future of finance where alternative data sources become as important as traditional financial statements. We're witnessing a fundamental shift where **retail investors now influence price movements through coordinated social media activity**, creating new patterns that traditional models struggle to capture. 
+The research represents more than just successful stock prediction, it's a window into the future of finance where alternative data sources become as important as traditional financial statements. We're witnessing a fundamental shift where **retail investors now influence price movements through coordinated social media activity**, creating new patterns that traditional models struggle to capture. 
 
 The LSTM's victory over traditional methods reflects a deeper truth about modern markets: they're increasingly driven by *collective digital behavior* rather than just fundamental analysis, proving that in our hyperconnected world, the crowd's digital whispers can be as predictive as corporate earnings reports.`,
     links: []

@@ -9,7 +9,7 @@ export const fraudDetection: Project = {
 
 ## The Data Challenge
 
-Working with **Lopez-Rojas's PaySim dataset** containing 6 million transactions across 11 features, the challenge was immediately apparent: only **0.13%** of transactions were fraudulent. Finding fraud in this context truly becomes like searching for needles in haystacks. Rather than trying to define what fraud looks like (since criminals constantly adapt), I trained models on abundant "clean" data and tuned them to detect *"novelties"*—transactions that don't fit normal patterns.
+Working with **Lopez-Rojas's PaySim dataset** containing 6 million transactions across 11 features, the challenge was immediately apparent: only **0.13%** of transactions were fraudulent. Finding fraud in this context truly becomes like searching for needles in haystacks. Rather than trying to define what fraud looks like (since criminals constantly adapt), I trained models on abundant "clean" data and tuned them to detect *"novelties"*, transactions that don't fit normal patterns.
 
 ## Three Approaches to Digital Detective Work
 
@@ -23,7 +23,7 @@ The **AutoEncoder method outperformed the other approaches with an AUC of 0.93**
 
 ## The Art of Balance
 
-A critical aspect of fraud detection is finding the right balance between catching fraud and avoiding false alarms. **The reconstruction threshold was carefully tuned to maximize the F1 score, achieving 0.86**—ensuring we catch fraud without overwhelming customers with false alarms. 
+A critical aspect of fraud detection is finding the right balance between catching fraud and avoiding false alarms. **The reconstruction threshold was carefully tuned to maximize the F1 score, achieving 0.86**, ensuring we catch fraud without overwhelming customers with false alarms. 
 
 The AutoEncoder's *automatic feature discovery* outperformed hand-crafted features, revealing subtle transaction patterns that human domain expertise might miss, while training exclusively on legitimate transactions proved more effective than trying to learn from fraudulent examples.
 
@@ -31,7 +31,7 @@ The AutoEncoder's *automatic feature discovery* outperformed hand-crafted featur
 
 This project highlighted that fraud detection is fundamentally an **arms race** between increasingly sophisticated detection methods and constantly adapting criminal tactics. The AutoEncoder's success represents a significant step forward, but the real challenge lies in building systems that can adapt and evolve alongside emerging threats. 
 
-Success in fraud detection requires balancing technical excellence with business practicality—*protecting customers while maintaining seamless user experiences*. The war against financial crime continues, and machine learning provides powerful weapons in this digital battlefield.`,
+Success in fraud detection requires balancing technical excellence with business practicality, *protecting customers while maintaining seamless user experiences*. The war against financial crime continues, and machine learning provides powerful weapons in this digital battlefield.`,
     links: [
         { text: 'Github', url: 'https://github.com/dennisjooo/Credit-Fraud-Detector' }
     ]

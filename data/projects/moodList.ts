@@ -12,9 +12,9 @@ export const moodList: Project = {
 
 ## The Inspiration
 
-Remember that Spotify feature that could create a playlist from another playlist? I used to rely on it heavily for music discovery—finding interesting songs to add to my own collections.
+Remember that Spotify feature that could create a playlist from another playlist? I used to rely on it heavily for music discovery, finding interesting songs to add to my own collections.
 
-The idea for MoodList is simple: **just describe what you want, and get a solid playlist out of it.** No manual searching, no endless scrolling. Just a query and boom—curated music that's listenable by you on Spotify.
+The idea for MoodList is simple: **just describe what you want, and get a solid playlist out of it.** No manual searching, no endless scrolling. Just a query and boom, curated music that's listenable by you on Spotify.
 
 ## Features and Showcase
 
@@ -81,13 +81,13 @@ For the full technical stack details, check out the [about page](https://moodlis
 
 ## The Reality Check
 
-Building a full-stack app from scratch is *hard*. What works locally doesn't always translate to production—managing distributed sessions, OAuth flows, and infrastructure challenges taught me more than any tutorial. An AWS outage forced a pivot to Vercel/Railway/Neon/Upstash, while CORS issues and Spotify's dev-mode API limitations added complexity.
+Building a full-stack app from scratch is *hard*. What works locally doesn't always translate to production, managing distributed sessions, OAuth flows, and infrastructure challenges taught me more than any tutorial. An AWS outage forced a pivot to Vercel/Railway/Neon/Upstash, while CORS issues and Spotify's dev-mode API limitations added complexity.
 
-AI agents sounded promising but proved challenging—musical taste is hard to teach, response times lag, and recommendations miss the mark. As a non-designer, UX was new territory. This project exposed production realities: debugging, tradeoffs, and incremental building with AI tools like Cursor. End-to-end development is messy, but getting the ball rolling makes it manageable.
+AI agents sounded promising but proved challenging, musical taste is hard to teach, response times lag, and recommendations miss the mark. As a non-designer, UX was new territory. This project exposed production realities: debugging, tradeoffs, and incremental building with AI tools like Cursor. End-to-end development is messy, but getting the ball rolling makes it manageable.
 
 ## Final Thoughts
 
-It's not the best. It's not the cleanest. But it's *something*—something I built from scratch, something that works, and something I can put in my portfolio.
+It's not the best. It's not the cleanest. But it's *something*, something I built from scratch, something that works, and something I can put in my portfolio.
 
 Most importantly: it was fun. I learned a ton, broke things, fixed them (mostly), and came out the other side with a working product.
 
