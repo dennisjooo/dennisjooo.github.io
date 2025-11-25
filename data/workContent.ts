@@ -11,7 +11,7 @@ export const workExperienceData: TimelineItemData[] = [
     {
         id: "sinarmas-staff",
         date: "February 2024 - Now",
-        title: "Analytics, AI, & ML Staff",
+        title: "AI/ML Engineer (Analytics, AI, & ML Staff)",
         company: "Sinarmas Land",
         imageSrc: "/images/work/sinarmas.svg",
         responsibilities: [
