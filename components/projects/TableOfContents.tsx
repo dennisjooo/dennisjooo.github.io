@@ -80,8 +80,8 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
                                     {/* Dot indicator */}
                                     <div
                                         className={`rounded-full transition-all duration-200 ease-in-out ${isActive
-                                            ? 'bg-[var(--accent)]'
-                                            : 'bg-[var(--border)] group-hover:bg-[var(--muted-foreground)]'
+                                            ? 'bg-accent'
+                                            : 'bg-border group-hover:bg-muted-foreground'
                                             }`}
                                         style={{
                                             width: isActive ? '10px' : '6px',
@@ -92,8 +92,8 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
                                     {/* Text label (shown on hover) */}
                                     <span
                                         className={`text-sm whitespace-nowrap transition-all duration-300 ease-in-out ${isActive
-                                            ? 'text-[var(--accent)] font-medium'
-                                            : 'text-[var(--muted-foreground)] group-hover:text-[var(--foreground)]'
+                                            ? 'text-accent font-medium'
+                                            : 'text-muted-foreground group-hover:text-foreground'
                                             }`}
                                         style={{
                                             maxWidth: isHovered ? '300px' : '0px',
