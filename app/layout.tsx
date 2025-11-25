@@ -2,16 +2,16 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/shared/Footer";
 import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Urbanist, Roboto_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import "react-photo-view/dist/react-photo-view.css";
 import "./globals.css";
 import { Providers } from "./providers";
 
-const inter = Inter({
+const urbanist = Urbanist({
     subsets: ["latin"],
     display: "swap",
-    variable: "--font-inter",
+    variable: "--font-urbanist",
 });
 
 const robotoMono = Roboto_Mono({
@@ -69,7 +69,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`bg-white dark:bg-black ${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
+            <body className={`bg-white dark:bg-black ${urbanist.variable} ${robotoMono.variable}`} suppressHydrationWarning>
                 <Providers>
                     <Navbar />
                     <main>{children}</main>
