@@ -10,13 +10,16 @@ interface DesktopMenuProps {
     textColorClass: string;
 }
 
+// Style constants
+const BASE_CLASSES = "w-full md:w-auto px-4 py-2 rounded-xl md:rounded-full transition-colors duration-300 ease-in-out lowercase";
+const HOVER_SCROLLED = "hover:bg-black/5 dark:hover:bg-white/10";
+const HOVER_DEFAULT = "hover:bg-black/10 dark:hover:bg-white/10";
+
 export const DesktopMenu = ({ navItems, scrolled, onNavigate, textColorClass }: DesktopMenuProps) => (
     <ul className="hidden md:flex md:flex-row justify-around items-center w-full">
         {navItems.map((item) => {
-            const hoverClass = scrolled 
-                ? "hover:bg-gray-200 dark:hover:bg-gray-700" 
-                : "hover:bg-gray-900 hover:bg-opacity-20 dark:hover:bg-white dark:hover:bg-opacity-20";
-            const className = `w-full md:w-auto px-4 py-2 rounded-xl md:rounded-full transition-colors duration-300 ease-in-out lowercase ${textColorClass} ${hoverClass}`;
+            const hoverClass = scrolled ? HOVER_SCROLLED : HOVER_DEFAULT;
+            const className = `${BASE_CLASSES} ${textColorClass} ${hoverClass}`;
 
             return (
                 <li key={item.id} className="w-full md:w-auto font-semibold">
@@ -25,8 +28,8 @@ export const DesktopMenu = ({ navItems, scrolled, onNavigate, textColorClass }: 
                             {item.label}
                         </Link>
                     ) : (
-                        <button 
-                            onClick={() => onNavigate(item.id)} 
+                        <button
+                            onClick={() => onNavigate(item.id)}
                             className={className}
                             aria-label={`Navigate to ${item.label}`}
                         >

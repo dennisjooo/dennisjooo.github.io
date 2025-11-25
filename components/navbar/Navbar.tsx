@@ -29,7 +29,7 @@ const Navbar = () => {
         closeMenu: () => setIsMenuOpen(false),
     });
 
-    const { bgClass, navWidth, shadowClass, textColorClass } = useNavbarStyles({
+    const { bgClass, navWidth, textColorClass } = useNavbarStyles({
         isHeroSection,
         scrolled,
         isMenuOpen,
@@ -41,12 +41,7 @@ const Navbar = () => {
             className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ease-in-out ${navWidth}`}
         >
             <div
-                className={`
-                relative ${bgClass} 
-                rounded-2xl md:rounded-full
-                ${shadowClass}
-                transition-all duration-300 ease-in-out overflow-hidden
-            `}
+                className={`relative ${bgClass} rounded-2xl md:rounded-full transition-all duration-300 ease-in-out overflow-hidden`}
             >
                 <div className="flex justify-between items-center px-4 py-3 min-h-[3rem]">
                     <BurgerButton
@@ -64,14 +59,14 @@ const Navbar = () => {
                         <ThemeToggle textColorClass={textColorClass} scrolled={scrolled} />
                     </div>
                 </div>
-                <MobileMenu
-                    navItems={navItems}
-                    isMenuOpen={isMenuOpen}
-                    onNavigate={handleNavigation}
-                    onToggle={(nextIsMenuOpen) => setIsMenuOpen(nextIsMenuOpen)}
-                    textColorClass={textColorClass}
-                />
             </div>
+            <MobileMenu
+                navItems={navItems}
+                isMenuOpen={isMenuOpen}
+                onNavigate={handleNavigation}
+                onToggle={(nextIsMenuOpen) => setIsMenuOpen(nextIsMenuOpen)}
+                textColorClass={textColorClass}
+            />
         </nav>
     );
 };

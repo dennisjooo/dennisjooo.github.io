@@ -3,7 +3,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export const useClientReady = () => {
+// Constants
+const SCROLL_THRESHOLD = 20;
+
+export const useClientReady = (): boolean => {
     const [isClientReady, setIsClientReady] = useState(false);
 
     useEffect(() => {
@@ -18,7 +21,7 @@ interface HeroSectionState {
     scrolled: boolean;
 }
 
-export const useHeroSectionState = (isClientReady: boolean, pathname: string) => {
+export const useHeroSectionState = (isClientReady: boolean, pathname: string): HeroSectionState => {
     const [state, setState] = useState<HeroSectionState>({
         isHeroSection: true,
         scrolled: false,
@@ -35,7 +38,7 @@ export const useHeroSectionState = (isClientReady: boolean, pathname: string) =>
 
             setState({
                 isHeroSection,
-                scrolled: window.scrollY > 20,
+                scrolled: window.scrollY > SCROLL_THRESHOLD,
             });
         };
 
@@ -69,7 +72,9 @@ interface UseSectionNavigationParams {
     closeMenu: () => void;
 }
 
-export const useSectionNavigation = ({ isClientReady, pathname, closeMenu }: UseSectionNavigationParams) => {
+export const useSectionNavigation = (
+    { isClientReady, pathname, closeMenu }: UseSectionNavigationParams
+): ((sectionId: string) => void) => {
     const router = useRouter();
 
     return useCallback(
@@ -101,23 +106,27 @@ interface NavbarStylesParams {
     pathname: string;
 }
 
-export const useNavbarStyles = ({ isHeroSection, scrolled, isMenuOpen, pathname }: NavbarStylesParams) =>
-    useMemo(() => {
-        const bgClass =
-            !isHeroSection || scrolled || isMenuOpen
-                ? "bg-white/90 dark:bg-black/90 backdrop-blur-sm"
-                : "bg-transparent";
+interface NavbarStyles {
+    bgClass: string;
+    navWidth: string;
+    textColorClass: string;
+}
 
+export const useNavbarStyles = (
+    { isHeroSection, scrolled, isMenuOpen, pathname }: NavbarStylesParams
+): NavbarStyles =>
+    useMemo(() => {
+        // Use glass-panel when scrolled, menu open, or not in hero section
+        const bgClass = !isHeroSection || scrolled || isMenuOpen ? "glass-panel" : "bg-transparent";
+
+        // Wider navbar in hero section when not scrolled
         const navWidth =
             isHeroSection && !scrolled && pathname === "/"
                 ? "w-11/12 lg:w-5/6"
                 : "w-11/12 lg:w-3/4 xl:w-2/3";
 
-        const shadowClass = (!isHeroSection || scrolled) && !isMenuOpen ? "shadow-lg" : "";
+        // Consistent text color across all states
+        const textColorClass = "text-gray-900 dark:text-white";
 
-        const textColorClass = isHeroSection && !scrolled && !isMenuOpen && pathname === "/"
-            ? "text-gray-900 dark:text-white"
-            : "text-gray-900 dark:text-white";
-
-        return { bgClass, navWidth, shadowClass, textColorClass };
+        return { bgClass, navWidth, textColorClass };
     }, [isHeroSection, isMenuOpen, pathname, scrolled]);
