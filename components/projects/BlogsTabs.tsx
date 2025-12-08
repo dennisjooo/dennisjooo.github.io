@@ -32,7 +32,11 @@ export function BlogsTabs() {
         }
     }, [mounted, activeTab, availableTabs, setActiveTab]);
 
-    const isPosts = activeTab === "posts";
+    const tabCaptions: Record<TabType, string> = {
+        posts: "Thoughts, tutorials, and ramblings about tech and whatever else I'm into.",
+        certifications: "Professional certifications and credentials that validate my expertise.",
+        projects: "Browse the builds I've been nerding out on lately."
+    };
 
     return (
         <div
@@ -45,9 +49,7 @@ export function BlogsTabs() {
                 </GradientUnderline>
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto mb-12 leading-relaxed">
-                {isPosts
-                    ? "Thoughts, tutorials, and ramblings about tech and whatever else I'm into."
-                    : "Browse the builds I've been nerding out on lately alongside the creds backing them up."}
+                {tabCaptions[activeTab]}
             </p>
 
             {availableTabs.length > 0 && (
