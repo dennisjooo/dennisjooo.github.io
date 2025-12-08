@@ -57,7 +57,7 @@ export const useScrollToSavedSection = (isClientReady: boolean, pathname: string
         try {
             const sectionToScroll = sessionStorage.getItem("scrollToSection");
             if (sectionToScroll) {
-                document.getElementById(sectionToScroll)?.scrollIntoView({ behavior: "smooth" });
+                document.getElementById(sectionToScroll)?.scrollIntoView({ behavior: "auto" });
                 sessionStorage.removeItem("scrollToSection");
             }
         } catch (error) {
