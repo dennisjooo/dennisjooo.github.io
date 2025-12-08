@@ -1,6 +1,7 @@
-import { Project } from './types';
+import { Blog } from './types';
 
-export const allNbaPredictor: Project = {
+export const allNbaPredictor: Blog = {
+    type: 'project',
     title: 'Will They Make All-NBA?',
     description: 'Can machine learning predict basketball greatness? Training models to forecast All-NBA team selections.',
     imageUrl: '/images/project/all_nba_pred.webp',

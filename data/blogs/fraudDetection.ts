@@ -1,6 +1,7 @@
-import { Project } from './types';
+import { Blog } from './types';
 
-export const fraudDetection: Project = {
+export const fraudDetection: Blog = {
+    type: 'project',
     title: 'Finding Anomalies using Things We Already Know',
     description: 'Hunting down financial criminals with machine learning. AutoEncoders won this round with 93% accuracy.',
     imageUrl: '/images/project/ae_creditfraud.webp',

@@ -1,6 +1,7 @@
-import { Project } from './types';
+import { Blog } from './types';
 
-export const birdClassifier: Project = {
+export const birdClassifier: Blog = {
+    type: 'project',
     title: 'What is that Bird we\'re looking at?',
     description: "Ever wondered what bird you're looking at? This classifier has over 90k downloads on HuggingFace's model hub.",
     imageUrl: '/images/project/birb_classifier.webp',

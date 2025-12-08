@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BackToTop } from '@/components/shared';
 import ProjectPageClient from './ProjectPageClient';
-import { projects } from '@/data/projects';
+import { projects } from '@/data/blogs';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
 
 type ProjectPageProps = {

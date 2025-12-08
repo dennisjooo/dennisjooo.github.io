@@ -1,6 +1,7 @@
-import { Project } from './types';
+import { Blog } from './types';
 
-export const documentRotation: Project = {
+export const documentRotation: Blog = {
+    type: 'project',
     title: 'Straightening the Mess',
     description: 'Sometimes a slight nudge is all it takes to get documents straight',
     imageUrl: '/images/project/rotation_model.webp',

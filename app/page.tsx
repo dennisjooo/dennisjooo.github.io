@@ -5,7 +5,7 @@ import WorkExperience from '@/components/work-experience';
 import Contacts from '@/components/contacts';
 import { BackToTop } from '@/components/shared';
 import FeaturedProjects from '@/components/featured-projects';
-import { projects } from '@/data/projects';
+import { projects } from '@/data/blogs';
 
 export default function Home() {
     return (

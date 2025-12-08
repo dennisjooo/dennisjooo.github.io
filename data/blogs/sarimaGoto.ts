@@ -1,6 +1,7 @@
-import { Project } from './types';
+import { Blog } from './types';
 
-export const sarimaGoto: Project = {
+export const sarimaGoto: Blog = {
+    type: 'project',
     title: 'Can Twitter Predict the Stock Market?',
     description: 'Can Twitter sentiment predict stock prices? Turns out LSTM + social media data beats traditional models.',
     imageUrl: '/images/project/stock_fp.webp',

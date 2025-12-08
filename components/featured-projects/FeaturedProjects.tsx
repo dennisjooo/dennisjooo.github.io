@@ -2,18 +2,18 @@
 
 import { useMemo } from 'react';
 import { sortProjectsByDate } from '@/lib/utils/projectFormatting';
-import { Project } from '@/data/projects/types';
+import { Blog } from '@/data/blogs/types';
 import { FeaturedProjectsHeader } from './FeaturedProjectsHeader';
 import { FeaturedProjectsGrid } from './FeaturedProjectsGrid';
 import { ViewAllButton } from './ViewAllButton';
 
 interface FeaturedProjectsProps {
-    projects: Project[];
+    projects: Blog[];
 }
 
 const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     const featuredProjects = useMemo(
-        () => sortProjectsByDate(projects).slice(0, 3),
+        () => sortProjectsByDate(projects.filter(p => p.type === 'project')).slice(0, 3),
         [projects]
     );
 

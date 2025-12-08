@@ -1,6 +1,7 @@
-import { Project } from './types';
+import { Blog } from './types';
 
-export const wizardryBooks: Project = {
+export const wizardryBooks: Blog = {
+    type: 'project',
     title: 'Teaching Transformers to Write Harry Potter',
     description: 'What happens when you teach AI to write like J.K. Rowling? Pure magic (or at least entertaining gibberish).',
     imageUrl: '/images/project/hp_text_gen.webp',

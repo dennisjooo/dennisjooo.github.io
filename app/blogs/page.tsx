@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { BackToTop } from '@/components/shared';
-import { ProjectsTabs } from '@/components/projects/ProjectsTabs';
+import { BlogsTabs } from '@/components/projects/BlogsTabs';
 
 export const metadata: Metadata = {
-    title: "Projects & Certifications | Dennis' Portfolio",
-    description: "Explore Dennis' highlighted projects and professional certifications.",
+    title: "Blogs & Projects | Dennis' Portfolio",
+    description: "Explore Dennis' highlighted projects, blog posts, and professional certifications.",
 };
 
 export default function ProjectsAndCertificationsPage() {
@@ -13,7 +13,7 @@ export default function ProjectsAndCertificationsPage() {
             id='projects-and-certifications'
             className='flex flex-col min-h-screen py-16 bg-white dark:bg-black text-gray-900 dark:text-white'
         >
-            <ProjectsTabs />
+            <BlogsTabs />
             <BackToTop />
         </section>
     );

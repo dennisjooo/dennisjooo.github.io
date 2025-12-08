@@ -13,7 +13,7 @@ export const ViewAllButton = () => (
         className="text-center mt-8"
     >
         <Link
-            href="/projects"
+            href="/blogs"
             prefetch
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white border transition-all duration-300 transform hover:scale-105"
             style={{

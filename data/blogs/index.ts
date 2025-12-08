@@ -9,7 +9,7 @@ export { allNbaPredictor } from './allNbaPredictor';
 export { documentRotation } from './documentRotation';
 export { moodList } from './moodList';
 
-import { Project } from './types';
+import { Blog } from './types';
 import { actNatural } from './actNatural';
 import { birdClassifier } from './birdClassifier';
 import { wizardryBooks } from './wizardryBooks';
@@ -20,7 +20,7 @@ import { allNbaPredictor } from './allNbaPredictor';
 import { documentRotation } from './documentRotation';
 import { moodList } from './moodList';
 
-export const projects: Project[] = [
+export const projects: Blog[] = [
     moodList,
     actNatural,
     birdClassifier,

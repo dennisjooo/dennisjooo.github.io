@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { projects } from '@/data/projects';
+import { projects } from '@/data/blogs';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
 
 export const dynamic = 'force-static';
@@ -16,16 +16,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1.0,
         },
         {
-            url: `${baseUrl}/projects`,
+            url: `${baseUrl}/blogs`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.8,
         },
     ];
 
-    // Dynamic project pages
+    // Dynamic blog pages
     const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
-        url: `${baseUrl}/projects/${createUrlSlug(project.title)}`,
+        url: `${baseUrl}/blogs/${createUrlSlug(project.title)}`,
         lastModified: new Date(project.date),
         changeFrequency: 'monthly' as const,
         priority: 0.6,

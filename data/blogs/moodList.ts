@@ -1,6 +1,7 @@
-import { Project } from './types';
+import { Blog } from './types';
 
-export const moodList: Project = {
+export const moodList: Blog = {
+    type: 'project',
     title: 'MoodList',
     description: 'Turn your mood into playlists, vibes, soundtracks, and more',
     imageUrl: '/images/project/moodlist/homepage.webp',

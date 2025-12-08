@@ -1,6 +1,6 @@
-import { Project } from "@/data/projects/types";
+import { Blog } from "@/data/blogs/types";
 
-export const sortProjectsByDate = (projects: Project[]): Project[] =>
+export const sortProjectsByDate = (projects: Blog[]): Blog[] =>
     [...projects].sort(
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
@@ -25,13 +25,13 @@ export const formatProjectDate = (dateString: string, shortFormat?: boolean): st
         const year = date.getFullYear();
         const ordinal = getOrdinalSuffix(day);
         if (shortFormat) {
-            return `${day} ${month} ${year}`;
+            return `${ day } ${ month } ${ year } `;
         } else {
-            return `${weekday}, ${month} ${day}${ordinal}, ${year}`;
+            return `${ weekday }, ${ month } ${ day }${ ordinal }, ${ year } `;
         }
     }
 
 export const truncateProjectDescription = (description: string, maxLength = 120): string =>
     description.length <= maxLength
         ? description
-        : `${description.slice(0, maxLength).trim()}...`;
+        : `${ description.slice(0, maxLength).trim() }...`;

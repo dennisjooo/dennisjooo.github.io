@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import { BentoGrid, BentoCard } from '@/components/bento';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
 import { formatProjectDate, truncateProjectDescription } from '@/lib/utils/projectFormatting';
-import { Project } from '@/data/projects/types';
+import { Blog } from '@/data/blogs/types';
 
 interface FeaturedProjectsGridProps {
-    projects: Project[];
+    projects: Blog[];
 }
 
 export const FeaturedProjectsGrid: React.FC<FeaturedProjectsGridProps> = ({ projects }) => (
@@ -32,7 +32,7 @@ export const FeaturedProjectsGrid: React.FC<FeaturedProjectsGridProps> = ({ proj
                         name={title}
                         className="col-span-1 h-[320px] md:h-[440px]"
                         description={truncateProjectDescription(description)}
-                        href={`/projects/${createUrlSlug(title)}`}
+                        href={`/blogs/${createUrlSlug(title)}`}
                         cta="View Project"
                         date={formatProjectDate(date, true)}
                         imageUrl={imageUrl}

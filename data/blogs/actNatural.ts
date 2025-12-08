@@ -1,6 +1,7 @@
-import { Project } from './types';
+import { Blog } from './types';
 
-export const actNatural: Project = {
+export const actNatural: Blog = {
+    type: 'project',
     title: 'Act Natural',
     description: 'Teaching AI to act human? Spoiler alert: it\'s beautifully chaotic.',
     imageUrl: '/images/project/act_natural.webp',

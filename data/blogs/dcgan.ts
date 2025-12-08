@@ -1,6 +1,7 @@
-import { Project } from './types';
+import { Blog } from './types';
 
-export const dcgan: Project = {
+export const dcgan: Blog = {
+    type: 'project',
     title: 'Forging Handwritten Digits',
     description: 'Teaching machines to forge handwritten digits so convincingly, even other machines can\'t tell the difference.',
     imageUrl: '/images/project/dcgan_mnist.webp',

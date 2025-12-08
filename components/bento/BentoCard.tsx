@@ -12,6 +12,7 @@ interface BentoCardProps {
     date: string;
     imageUrl?: string;
     isCertification?: boolean;
+    meta?: string;
 }
 
 export const BentoCard = ({
@@ -23,6 +24,7 @@ export const BentoCard = ({
     date,
     imageUrl,
     isCertification = false,
+    meta,
 }: BentoCardProps) => {
     const isExternal = href.startsWith('http');
     const linkProps = isExternal
@@ -83,12 +85,17 @@ export const BentoCard = ({
                             {name}
                         </h3>
                     </div>
-                    <time
-                        className="block text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-medium"
-                        dateTime={date}
-                    >
-                        {date}
-                    </time>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-medium">
+                        <time dateTime={date}>
+                            {date}
+                        </time>
+                        {meta && (
+                            <>
+                                <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-600" />
+                                <span>{meta}</span>
+                            </>
+                        )}
+                    </div>
                     <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 line-clamp-3 leading-relaxed">
                         {description}
                     </p>

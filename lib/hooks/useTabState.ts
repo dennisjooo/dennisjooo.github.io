@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getSessionItem, removeSessionItem, setSessionItem } from '@/lib/utils/storage';
 
-type TabType = 'projects' | 'certifications';
+type TabType = 'projects' | 'posts' | 'certifications';
 
 export function useTabState() {
     const [activeTab, setActiveTab] = useState<TabType>('projects');
