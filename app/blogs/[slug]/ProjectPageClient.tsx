@@ -87,7 +87,7 @@ export default function ProjectPageClient({ project }: { project: Blog }) {
                                 </div>
                             </motion.div>
                         </header>
-                        <ProjectImage src={project.imageUrl} alt={project.title} />
+                        {project.imageUrl && <ProjectImage src={project.imageUrl} alt={project.title} />}
                         <ProjectDescription description={project.description} />
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -97,13 +97,15 @@ export default function ProjectPageClient({ project }: { project: Blog }) {
                         >
                             <ProjectContent content={project.blogPost} />
                         </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.9 }}
-                        >
-                            <ProjectLinks links={project.links} />
-                        </motion.div>
+                        {project.links && project.links.length > 0 && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.9 }}
+                            >
+                                <ProjectLinks links={project.links} />
+                            </motion.div>
+                        )}
                     </motion.div>
                 </section>
             </PhotoProvider>

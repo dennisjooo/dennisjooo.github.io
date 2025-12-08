@@ -3,8 +3,8 @@ import { BackToTop } from '@/components/shared';
 import { BlogsTabs } from '@/components/projects/BlogsTabs';
 
 export const metadata: Metadata = {
-    title: "Blogs & Projects | Dennis' Portfolio",
-    description: "Explore Dennis' highlighted projects, blog posts, and professional certifications.",
+    title: "Blog & Certifications | Dennis' Portfolio",
+    description: "Explore Dennis' projects, blog posts, and professional certifications.",
 };
 
 export default function ProjectsAndCertificationsPage() {

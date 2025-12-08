@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-export type TabType = 'projects' | 'posts' | 'certifications';
+export type TabType = 'blog' | 'certifications';
 
 interface TabSwitcherProps {
     activeTab: TabType;

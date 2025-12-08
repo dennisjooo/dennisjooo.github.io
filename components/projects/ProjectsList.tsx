@@ -7,22 +7,24 @@ const allProjects = [...projects].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
 );
 
-export default function ProjectsList({ type = 'project' }: { type?: 'project' | 'blog' }) {
-    const filteredProjects = allProjects.filter((project) => project.type === type);
+export default function ProjectsList({ type = 'project' }: { type?: 'project' | 'blog' | 'all' }) {
+    const filteredProjects = type === 'all'
+        ? allProjects
+        : allProjects.filter((project) => project.type === type);
 
     return (
         <BentoGrid className="max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map(({ title, description, date, imageUrl, blogPost }: Blog) => (
+            {filteredProjects.map(({ title, description, date, imageUrl, blogPost, type: itemType }: Blog) => (
                 <BentoCard
                     key={`${title}_${date}`}
                     name={title}
                     className="col-span-1"
                     description={description}
                     href={`/blogs/${createUrlSlug(title)}`}
-                    cta={type === 'project' ? "View Project" : "Read Post"}
+                    cta={itemType === 'project' ? "View Project" : "Read Post"}
                     date={formatProjectDate(date, true)}
                     imageUrl={imageUrl}
-                    meta={type === 'blog' ? `${Math.ceil(blogPost.split(/\s+/).length / 200)} min read` : undefined}
+                    meta={`${Math.ceil(blogPost.split(/\s+/).length / 200)} min read`}
                 />
             ))}
         </BentoGrid>

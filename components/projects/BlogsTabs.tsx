@@ -11,20 +11,19 @@ import GradientUnderline from '@/components/shared/GradientUnderline';
 import { projects } from "@/data/blogs";
 import { certifications } from "@/data/certificationContent";
 import { TabType } from "./TabSwitcher";
+import { useMemo } from "react";
 import { useEffect } from "react";
 
 export function BlogsTabs() {
     const { activeTab, setActiveTab, mounted } = useTabState();
 
-    const hasProjects = projects.some(p => p.type === 'project');
-    const hasPosts = projects.some(p => p.type === 'blog');
+    const hasBlog = projects.length > 0;
     const hasCerts = certifications.length > 0;
 
-    const availableTabs: TabType[] = [
-        hasProjects ? 'projects' : null,
-        hasPosts ? 'posts' : null,
+    const availableTabs: TabType[] = useMemo(() => [
+        hasBlog ? 'blog' : null,
         hasCerts ? 'certifications' : null,
-    ].filter((t): t is TabType => t !== null);
+    ].filter((t): t is TabType => t !== null), [hasBlog, hasCerts]);
 
     useEffect(() => {
         if (mounted && !availableTabs.includes(activeTab) && availableTabs.length > 0) {
@@ -33,9 +32,8 @@ export function BlogsTabs() {
     }, [mounted, activeTab, availableTabs, setActiveTab]);
 
     const tabCaptions: Record<TabType, string> = {
-        posts: "Thoughts, tutorials, and ramblings about tech and whatever else I'm into.",
-        certifications: "Professional certifications and credentials that validate my expertise.",
-        projects: "Browse the builds I've been nerding out on lately."
+        blog: "Projects, tutorials, and experiments I've been building and writing about.",
+        certifications: "Professional certifications and credentials that validate my expertise."
     };
 
     return (
@@ -45,7 +43,7 @@ export function BlogsTabs() {
         >
             <h1 className="text-3xl md:text-4xl mb-6 text-center font-bold text-gray-900 dark:text-white">
                 <GradientUnderline>
-                    Blogs, Projects & Certs.
+                    Blog & Certifications
                 </GradientUnderline>
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto mb-12 leading-relaxed">
@@ -60,13 +58,9 @@ export function BlogsTabs() {
                 <div className="max-w-7xl mx-auto min-h-[50vh] mt-8">
                     {mounted ? (
                         <AnimatePresence mode="wait">
-                            {activeTab === "projects" ? (
-                                <motion.div key="projects" {...tabContentVariants}>
-                                    <ProjectsList type="project" />
-                                </motion.div>
-                            ) : activeTab === "posts" ? (
-                                <motion.div key="posts" {...tabContentVariants}>
-                                    <ProjectsList type="blog" />
+                            {activeTab === "blog" ? (
+                                <motion.div key="blog" {...tabContentVariants}>
+                                    <ProjectsList type="all" />
                                 </motion.div>
                             ) : (
                                 <motion.div key="certifications" {...tabContentVariants}>
@@ -75,8 +69,8 @@ export function BlogsTabs() {
                             )}
                         </AnimatePresence>
                     ) : (
-                        <motion.div key="projects" {...tabContentVariants}>
-                            <ProjectsList type="project" />
+                        <motion.div key="blog" {...tabContentVariants}>
+                            <ProjectsList type="all" />
                         </motion.div>
                     )}
                 </div>

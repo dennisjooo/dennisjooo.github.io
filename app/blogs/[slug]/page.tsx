@@ -22,7 +22,7 @@ export async function generateMetadata(
     }
 
     return {
-        title: `${project.title}`,
+        title: `${project.title} | Dennis' Portfolio`,
         description: project.description,
         openGraph: {
             title: `${project.title}`,
