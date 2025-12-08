@@ -13,13 +13,15 @@ export function calculateCenteredScrollPosition(element: HTMLElement): number {
 }
 
 /**
- * Scrolls to center an element in the viewport with smooth animation
+ * Scrolls to center an element in the viewport
  * @param element - The element to scroll to
+ * @param smooth - Whether to use smooth scrolling (default: true)
  */
-export function scrollToCentered(element: HTMLElement): void {
+export function scrollToCentered(element: HTMLElement, smooth: boolean = true): void {
     const scrollPosition = calculateCenteredScrollPosition(element);
     window.scrollTo({
         top: scrollPosition,
-        behavior: 'smooth'
+        behavior: smooth ? 'smooth' : 'instant'
     });
 }
+

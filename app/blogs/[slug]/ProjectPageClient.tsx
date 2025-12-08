@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useLayoutEffect } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Blog } from '@/data/blogs';
 import ProjectLinks from '@/components/projects/ProjectLinks';
@@ -23,6 +23,18 @@ const ProjectContent = dynamic(() => import('@/components/projects/ProjectConten
 
 export default function ProjectPageClient({ project }: { project: Blog }) {
     const headings = useMemo(() => extractHeadings(project.blogPost), [project.blogPost]);
+
+    // Reset scroll position on mount to prevent cumulative drift on hard refresh
+    useLayoutEffect(() => {
+        // Disable browser's automatic scroll restoration
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        // Scroll to top immediately (only if no hash in URL for deep linking)
+        if (!window.location.hash) {
+            window.scrollTo(0, 0);
+        }
+    }, []);
 
     return (
         <>
