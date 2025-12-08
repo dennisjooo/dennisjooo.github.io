@@ -28,7 +28,7 @@ export const ViewAllButton = () => (
                 e.currentTarget.style.boxShadow = '';
             }}
         >
-            View All Projects and More.
+            Wanna see more? Click here!
             <ArrowUpRightIcon className="w-4 h-4" />
         </Link>
     </motion.div>
