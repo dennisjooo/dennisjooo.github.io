@@ -122,15 +122,24 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="relative w-full mb-6 overflow-hidden rounded-2xl max-h-[400px] sm:max-h-[500px] md:max-h-[600px] cursor-zoom-in"
-                style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : { minHeight: '200px' }}
+                className="relative w-full max-w-3xl mx-auto mb-6 overflow-hidden rounded-3xl cursor-zoom-in"
+                style={
+                    aspectRatio
+                        ? {
+                            aspectRatio: `${aspectRatio}`,
+                            maxHeight: '60vh',
+                            width: `min(100%, calc(60vh * ${aspectRatio}))`,
+                            maxWidth: `min(100%, calc(60vh * ${aspectRatio}))`
+                        }
+                        : { minHeight: '200px', maxHeight: '60vh', width: '100%' }
+                }
             >
                 <Image
                     src={src}
                     alt={alt}
                     fill
-                    style={{ objectFit: 'cover' }}
-                    className="rounded-lg"
+                    style={{ objectFit: 'contain' }}
+                    className="rounded-3xl"
                     sizes="(max-width: 768px) 100vw, 768px"
                 />
                 <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium uppercase tracking-wide text-white">
