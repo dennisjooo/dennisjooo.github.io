@@ -12,7 +12,7 @@ interface MobileMenuProps {
 }
 
 // Style constants
-const ITEM_BASE_CLASSES = "block w-full rounded-2xl px-5 py-3 text-sm lowercase tracking-wide transition-colors duration-300 ease-in-out";
+const ITEM_BASE_CLASSES = "block w-full rounded-2xl px-5 py-3 text-sm lowercase tracking-wide transition-colors duration-300 ease-in-out text-center";
 const HOVER_CLASSES = "hover:bg-gray-900/5 dark:hover:bg-white/10";
 
 // Animation constants
