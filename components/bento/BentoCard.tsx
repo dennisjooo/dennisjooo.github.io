@@ -67,7 +67,7 @@ export const BentoCard = ({
                                 priority={false}
                             />
                             {/* Gradient Fade - Stronger and taller to ensure text readability */}
-                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/90 to-transparent dark:from-neutral-900 dark:via-neutral-900/90 dark:to-transparent" />
+                            <div className="absolute inset-x-0 bottom-0 h-3/4 group-hover:h-[85%] transition-all duration-500 bg-gradient-to-t from-white via-white/80 via-30% to-transparent dark:from-neutral-900 dark:via-neutral-900/80 dark:to-transparent" />
                             {/* Top unified dimming for dark mode */}
                             <div className="absolute inset-0 bg-transparent dark:bg-neutral-900/10" />
                         </>
