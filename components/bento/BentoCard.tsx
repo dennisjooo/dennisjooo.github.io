@@ -37,105 +37,81 @@ export const BentoCard = ({
         <LinkComponent
             {...linkProps}
             className={cn(
-                'group relative flex flex-col overflow-hidden rounded-2xl',
-                'bg-white shadow-sm border',
-                'backdrop-blur-sm transition-all duration-300 ease-out',
-                'hover:shadow-xl hover:scale-[1.02]',
-                'dark:bg-neutral-900',
-                isCertification ? 'min-h-[200px]' : 'min-h-[380px] sm:min-h-[400px] md:min-h-[420px]',
+                'group relative flex flex-col justify-end overflow-hidden rounded-3xl',
+                'bg-white dark:bg-neutral-900', // Solid background base
+                'border border-neutral-200 dark:border-neutral-800', // Subtle outer boundary
+                'text-neutral-900',
+                // Hover Effects:
+                'shadow-sm hover:shadow-accent/20',
+                'transition-all duration-500 ease-out',
+                'hover:scale-[1.01]', // Reduced scale effect for cleaner feel
+                isCertification ? 'min-h-[200px]' : 'min-h-[380px] sm:min-h-[400px]',
                 'cursor-pointer',
                 className,
             )}
-            style={{
-                borderColor: 'var(--default-border)',
-            }}
-            onMouseEnter={(e) => {
-                const target = e.currentTarget as HTMLElement;
-                target.style.borderColor = 'var(--accent-border)';
-                target.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 25px var(--accent-shadow)';
-            }}
-            onMouseLeave={(e) => {
-                const target = e.currentTarget as HTMLElement;
-                target.style.borderColor = 'var(--default-border)';
-                target.style.boxShadow = '';
-            }}
         >
+            {/* Inner Border/Ring for Glass Effect - Sits ON TOP of content */}
+            <div className="absolute inset-0 z-20 pointer-events-none rounded-3xl ring-1 ring-inset ring-black/5 dark:ring-white/10 group-hover:ring-accent/40 transition-all duration-500" />
+
+            {/* Background Image Layer */}
             {!isCertification && (
-                <div className="relative w-full h-40 sm:h-48 overflow-hidden">
+                <div className="absolute inset-0 h-full w-full">
                     {imageUrl ? (
-                        <Image
-                            src={imageUrl}
-                            alt={name}
-                            fill
-                            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            priority={false}
-                        />
+                        <>
+                            <Image
+                                src={imageUrl}
+                                alt={name}
+                                fill
+                                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                priority={false}
+                            />
+                            {/* Gradient Fade - Stronger and taller to ensure text readability */}
+                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/90 to-transparent dark:from-neutral-900 dark:via-neutral-900/90 dark:to-transparent" />
+                            {/* Top unified dimming for dark mode */}
+                            <div className="absolute inset-0 bg-transparent dark:bg-neutral-900/10" />
+                        </>
                     ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10 dark:from-purple-500/20 dark:via-pink-500/20 dark:to-orange-500/20 flex items-center justify-center">
-                            <svg
-                                className="w-16 h-16 text-neutral-300 dark:text-neutral-700 opacity-50"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={1.5}
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                                />
-                            </svg>
-                        </div>
+                        <div className="w-full h-full bg-gradient-to-br from-violet-500/5 via-fuchsia-500/5 to-orange-500/5 dark:from-violet-500/10 dark:via-fuchsia-500/10 dark:to-orange-500/10" />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
             )}
 
-            <div className="flex flex-col flex-1 p-6">
-                <div className="flex-1 space-y-2">
-                    <div className="flex items-start justify-between gap-3">
-                        <h3 className="font-semibold text-lg sm:text-xl text-neutral-900 dark:text-neutral-100 line-clamp-2 leading-tight">
-                            {name}
-                        </h3>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-medium">
-                        <time dateTime={date}>
-                            {date}
-                        </time>
-                        {meta && (
-                            <>
-                                <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-600" />
-                                <span>{meta}</span>
-                            </>
-                        )}
-                    </div>
-                    <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 line-clamp-3 leading-relaxed">
-                        {description}
-                    </p>
+            {/* Content Layer */}
+            <div className="relative z-10 p-6 flex flex-col gap-3">
+                <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-bold text-xl text-neutral-900 dark:text-white tracking-tight leading-tight group-hover:text-accent transition-colors duration-300">
+                        {name}
+                    </h3>
                 </div>
 
-                <span
-                    className={cn(
-                        'mt-6 inline-flex items-center gap-2 text-base font-medium',
-                        'text-neutral-900 dark:text-neutral-100',
-                        'transition-all duration-200 ease-out',
-                        'group-hover:gap-3',
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                    <time dateTime={date}>{date}</time>
+                    {meta && (
+                        <>
+                            <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-500" />
+                            <span>{meta}</span>
+                        </>
                     )}
-                >
+                </div>
+
+                <p className="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed font-medium">
+                    {description}
+                </p>
+
+                <div className={cn(
+                    "inline-flex items-center gap-2 text-sm font-bold mt-2",
+                    "text-neutral-900 dark:text-white",
+                    "transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent"
+                )}>
                     {cta}
-                    <ArrowRightIcon
-                        className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
-                        aria-hidden="true"
-                    />
-                </span>
+                    <ArrowRightIcon className="h-4 w-4" />
+                </div>
             </div>
 
-            <div
-                className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-neutral-900/5 dark:ring-white/5"
-                aria-hidden="true"
-            />
+            {/* Decorative Top Highlight */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </LinkComponent>
     );
 };
+
