@@ -37,7 +37,7 @@ export const BentoCard = ({
         <LinkComponent
             {...linkProps}
             className={cn(
-                'group relative flex flex-col justify-end overflow-hidden rounded-3xl',
+                'group relative flex flex-col overflow-hidden rounded-3xl',
                 'bg-white dark:bg-neutral-900', // Solid background base
                 'border border-neutral-200 dark:border-neutral-800', // Subtle outer boundary
                 'text-neutral-900',
@@ -45,7 +45,7 @@ export const BentoCard = ({
                 'shadow-sm hover:shadow-accent/20',
                 'transition-all duration-500 ease-out',
                 'hover:scale-[1.01]', // Reduced scale effect for cleaner feel
-                isCertification ? 'min-h-[200px]' : 'min-h-[380px] sm:min-h-[400px]',
+                isCertification ? 'min-h-[200px]' : 'min-h-[450px] sm:min-h-[480px]',
                 'cursor-pointer',
                 className,
             )}
@@ -55,7 +55,7 @@ export const BentoCard = ({
 
             {/* Background Image Layer */}
             {!isCertification && (
-                <div className="absolute inset-0 h-full w-full">
+                <div className="relative w-full h-[55%]">
                     {imageUrl ? (
                         <>
                             <Image
@@ -66,8 +66,6 @@ export const BentoCard = ({
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 priority={false}
                             />
-                            {/* Gradient Fade - Stronger and taller to ensure text readability */}
-                            <div className="absolute inset-x-0 bottom-0 h-3/4 group-hover:h-[85%] transition-all duration-500 bg-gradient-to-t from-white via-white/80 via-30% to-transparent dark:from-neutral-900 dark:via-neutral-900/80 dark:to-transparent" />
                             {/* Top unified dimming for dark mode */}
                             <div className="absolute inset-0 bg-transparent dark:bg-neutral-900/10" />
                         </>
@@ -78,14 +76,14 @@ export const BentoCard = ({
             )}
 
             {/* Content Layer */}
-            <div className="relative z-10 p-6 flex flex-col gap-3">
+            <div className="relative z-10 flex flex-col h-[45%] bg-white dark:bg-neutral-900 px-4 py-4 sm:px-6 sm:py-5 border-t border-neutral-200 dark:border-neutral-800">
                 <div className="flex items-start justify-between gap-3">
                     <h3 className="font-bold text-xl text-neutral-900 dark:text-white tracking-tight leading-tight group-hover:text-accent transition-colors duration-300">
                         {name}
                     </h3>
                 </div>
 
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2">
                     <time dateTime={date}>{date}</time>
                     {meta && (
                         <>
@@ -95,12 +93,12 @@ export const BentoCard = ({
                     )}
                 </div>
 
-                <p className="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed font-medium">
+                <p className="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-3 leading-relaxed font-medium mt-3">
                     {description}
                 </p>
 
                 <div className={cn(
-                    "inline-flex items-center gap-2 text-sm font-bold mt-2",
+                    "inline-flex items-center gap-2 text-sm font-bold mt-auto pt-3",
                     "text-neutral-900 dark:text-white",
                     "transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent"
                 )}>

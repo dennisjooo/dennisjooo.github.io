@@ -48,7 +48,7 @@ export default function ProjectPageClient({ project }: { project: Blog }) {
                             transition={{ duration: 0.8 }}
                             className="mb-6"
                         >
-                            <Link href="/blogs" className="inline-flex items-center text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                            <Link href="/blogs" className="text-sm md:text-base inline-flex items-center text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                                 <BsArrowLeft className="mr-2" />
                                 Back to Blogs
                             </Link>
@@ -58,7 +58,7 @@ export default function ProjectPageClient({ project }: { project: Blog }) {
                                 initial={{ opacity: 0, y: -20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8 }}
-                                className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white"
+                                className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white"
                             >
                                 <GradientUnderline delay={0.3}>
                                     {project.title}
@@ -68,7 +68,7 @@ export default function ProjectPageClient({ project }: { project: Blog }) {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.3 }}
-                                className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-neutral-400 flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4"
+                                className="font-mono text-xs md:text-sm uppercase tracking-wider text-neutral-500 dark:text-neutral-400 flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4"
                             >
                                 <span className="whitespace-nowrap">{formatProjectDate(project.date)}</span>
                                 <span className="hidden md:block w-1 h-1 bg-gray-400 rounded-full" />

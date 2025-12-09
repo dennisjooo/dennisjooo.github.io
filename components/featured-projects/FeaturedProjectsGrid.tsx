@@ -19,7 +19,7 @@ export const FeaturedProjectsGrid: React.FC<FeaturedProjectsGridProps> = ({ proj
         className="flex-1 flex items-center"
     >
         <BentoGrid className="w-full mx-auto grid-cols-1 md:grid-cols-3 gap-6">
-            {projects.map(({ title, description, date, imageUrl }, index) => (
+            {projects.map(({ title, description, date, imageUrl, blogPost }, index) => (
                 <motion.div
                     key={`${title}_${date}`}
                     initial={{ opacity: 0, y: 50 }}
@@ -36,6 +36,7 @@ export const FeaturedProjectsGrid: React.FC<FeaturedProjectsGridProps> = ({ proj
                         cta="View Project"
                         date={formatProjectDate(date, true)}
                         imageUrl={imageUrl}
+                        meta={`${Math.ceil(blogPost.split(/\s+/).length / 200)} min read`}
                     />
                 </motion.div>
             ))}
