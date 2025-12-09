@@ -25,16 +25,8 @@ export default function ProjectPageClient({ project }: { project: Blog }) {
     const headings = useMemo(() => extractHeadings(project.blogPost), [project.blogPost]);
 
     // Reset scroll position on mount to prevent cumulative drift on hard refresh
-    useLayoutEffect(() => {
-        // Disable browser's automatic scroll restoration
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-        }
-        // Scroll to top immediately (only if no hash in URL for deep linking)
-        if (!window.location.hash) {
-            window.scrollTo(0, 0);
-        }
-    }, []);
+    // Removed because we now have a global ScrollRestorer that handles this better
+    // and respects user's last position.
 
     return (
         <>

@@ -86,6 +86,8 @@ export const useSectionNavigation = (
             } else {
                 try {
                     sessionStorage.setItem("scrollToSection", sectionId);
+                    // Clear any saved scroll position for home so it doesn't conflict with our explicit jump
+                    sessionStorage.removeItem("scroll-pos-/");
                     router.push("/");
                 } catch (error) {
                     console.error("Error accessing sessionStorage:", error);
