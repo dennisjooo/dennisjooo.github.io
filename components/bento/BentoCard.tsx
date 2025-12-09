@@ -32,6 +32,11 @@ export const BentoCard = ({
         : { href };
 
     const LinkComponent = isExternal ? 'a' : Link;
+    const cardHeight = isCertification
+        ? undefined
+        : 'min-h-[450px] sm:min-h-[480px]';
+    const contentHeight = isCertification ? undefined : 'h-[45%]';
+    const ctaMargin = isCertification ? 'mt-3' : 'mt-auto';
 
     return (
         <LinkComponent
@@ -45,7 +50,7 @@ export const BentoCard = ({
                 'shadow-sm hover:shadow-accent/20',
                 'transition-all duration-500 ease-out',
                 'hover:scale-[1.01]', // Reduced scale effect for cleaner feel
-                isCertification ? 'min-h-[200px]' : 'min-h-[450px] sm:min-h-[480px]',
+                cardHeight,
                 'cursor-pointer',
                 className,
             )}
@@ -76,7 +81,12 @@ export const BentoCard = ({
             )}
 
             {/* Content Layer */}
-            <div className="relative z-10 flex flex-col h-[45%] bg-white dark:bg-neutral-900 px-4 py-4 sm:px-6 sm:py-5 border-t border-neutral-200 dark:border-neutral-800">
+            <div
+                className={cn(
+                    'relative z-10 flex flex-col bg-white dark:bg-neutral-900 px-4 py-4 sm:px-6 sm:py-5 border-t border-neutral-200 dark:border-neutral-800',
+                    contentHeight,
+                )}
+            >
                 <div className="flex items-start justify-between gap-3">
                     <h3 className="font-bold text-xl text-neutral-900 dark:text-white tracking-tight leading-tight group-hover:text-accent transition-colors duration-300">
                         {name}
@@ -98,7 +108,8 @@ export const BentoCard = ({
                 </p>
 
                 <div className={cn(
-                    "inline-flex items-center gap-2 text-sm font-bold mt-auto pt-3",
+                    "inline-flex items-center gap-2 text-sm font-bold pt-3",
+                    ctaMargin,
                     "text-neutral-900 dark:text-white",
                     "transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent"
                 )}>
