@@ -9,7 +9,6 @@ import { useInView } from 'framer-motion';
 import React, { useCallback, useMemo } from 'react';
 import { useTheme } from 'next-themes';
 import { HeroContent } from './HeroContent';
-import { ScrollButton } from './ScrollButton';
 
 const Iridescence = dynamic(() => import('@/components/iridescence').then(mod => mod.Iridescence), {
     ssr: false,
@@ -41,9 +40,9 @@ const Hero: React.FC = () => {
         <section
             id="home"
             ref={ref}
-            className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden bg-gradient-primary"
+            className="h-screen w-full relative overflow-hidden bg-gradient-primary bg-noise"
         >
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 z-0">
                 <Iridescence
                     color={iridescenceColor}
                     mouseReact={false}
@@ -51,10 +50,9 @@ const Hero: React.FC = () => {
                     speed={0.5}
                 />
             </div>
-            <div className="relative">
-                <HeroContent description={description} isInView={isInView} />
-            </div>
-            <ScrollButton onClick={scrollToAbout} mainControls={mainControls} />
+            
+            <HeroContent description={description} isInView={isInView} />
+            
         </section>
     );
 };

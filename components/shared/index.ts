@@ -4,3 +4,4 @@ export { default as Spinner } from './Spinner';
 export { default as ScrollRestorer } from './ScrollRestorer';
 export { default as ReadingProgress } from './ReadingProgress';
 export { BlinkingCursor } from './BlinkingCursor';
+export { SmoothScroll } from './SmoothScroll';

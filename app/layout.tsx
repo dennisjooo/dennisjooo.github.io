@@ -4,7 +4,7 @@ import { EasterEggs } from "@/components/fun/EasterEggs";
 import Footer from "@/components/shared/Footer";
 import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
-import { Urbanist, Roboto_Mono } from "next/font/google";
+import { Urbanist, Roboto_Mono, Playfair_Display } from "next/font/google";
 import type { ReactNode } from "react";
 import "react-photo-view/dist/react-photo-view.css";
 import "./globals.css";
@@ -20,6 +20,13 @@ const robotoMono = Roboto_Mono({
     subsets: ["latin"],
     display: "swap",
     variable: "--font-roboto-mono",
+});
+
+const playfair = Playfair_Display({
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-playfair",
+    style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -71,7 +78,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`bg-white dark:bg-black ${urbanist.variable} ${robotoMono.variable}`} suppressHydrationWarning>
+            <body className={`bg-white dark:bg-black ${urbanist.variable} ${robotoMono.variable} ${playfair.variable}`} suppressHydrationWarning>
                 <Providers>
                     <Navbar />
                     <CommandPalette />

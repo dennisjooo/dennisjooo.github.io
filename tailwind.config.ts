@@ -15,6 +15,9 @@ const config: Config = {
 				],
 				mono: [
 					'var(--font-mono)'
+				],
+				playfair: [
+					'var(--font-playfair)'
 				]
 			},
 			keyframes: {
