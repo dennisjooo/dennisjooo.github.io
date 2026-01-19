@@ -57,8 +57,39 @@ export const useScrollToSavedSection = (isClientReady: boolean, pathname: string
         try {
             const sectionToScroll = sessionStorage.getItem("scrollToSection");
             if (sectionToScroll) {
-                document.getElementById(sectionToScroll)?.scrollIntoView({ behavior: "auto" });
-                sessionStorage.removeItem("scrollToSection");
+                const scrollToElement = () => {
+                    const element = document.getElementById(sectionToScroll);
+                    if (element) {
+                        // Small delay to ensure layout is stable
+                        setTimeout(() => {
+                            element.scrollIntoView({ behavior: "auto" });
+                            sessionStorage.removeItem("scrollToSection");
+                        }, 100);
+                        return true;
+                    }
+                    return false;
+                };
+
+                // Try immediately
+                if (!scrollToElement()) {
+                    // Retry every 100ms for up to 2 seconds
+                    const intervalId = setInterval(() => {
+                        if (scrollToElement()) {
+                            clearInterval(intervalId);
+                        }
+                    }, 100);
+
+                    // Stop retrying after 2 seconds
+                    const timeoutId = setTimeout(() => {
+                        clearInterval(intervalId);
+                        sessionStorage.removeItem("scrollToSection");
+                    }, 2000);
+
+                    return () => {
+                        clearInterval(intervalId);
+                        clearTimeout(timeoutId);
+                    };
+                }
             }
         } catch (error) {
             console.error("Error accessing sessionStorage:", error);

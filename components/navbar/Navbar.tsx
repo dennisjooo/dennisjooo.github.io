@@ -14,7 +14,7 @@ import {
     useNavbarStyles,
     useScrollToSavedSection,
     useSectionNavigation,
-} from "@/components/navbar/useNavbar";
+} from "@/lib/hooks/useNavbar";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
