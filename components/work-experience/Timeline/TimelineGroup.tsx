@@ -15,19 +15,20 @@ export interface CompanyGroup {
 interface TimelineGroupProps {
     group: CompanyGroup;
     index: number;
+    isLast: boolean;
 }
 
-export const TimelineGroup: React.FC<TimelineGroupProps> = ({ group, index }) => {
+export const TimelineGroup: React.FC<TimelineGroupProps> = ({ group, index, isLast }) => {
     return (
         <motion.div
-            className={`group relative ${index > 0 ? 'border-t border-foreground/10' : ''} md:border-t-0 py-12 md:py-16 first:pt-0 last:pb-0 md:grid md:grid-cols-12 md:gap-12`}
+            className={`group relative ${index > 0 ? 'border-t border-foreground/10' : ''} md:border-t-0 py-12 md:py-0 md:grid md:grid-cols-12 md:gap-12`}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
             {/* Left Column: Sticky Company Header (Desktop) */}
-            <div className="md:col-span-4 lg:col-span-4 relative md:text-right md:pr-12">
+            <div className={`md:col-span-4 lg:col-span-4 relative md:text-right md:pr-12 md:border-r md:border-foreground/10 md:py-16 ${index === 0 ? 'md:pt-0' : ''} ${isLast ? 'md:pb-0' : ''}`}>
                 <div className="sticky top-32 flex flex-col md:items-end gap-6 mb-8 md:mb-0">
                     {/* Mobile: Company Header inline */}
                     <CompanyHeaderMobile
@@ -43,11 +44,11 @@ export const TimelineGroup: React.FC<TimelineGroupProps> = ({ group, index }) =>
                 </div>
 
                 {/* Timeline Dot (Desktop only) */}
-                <div className="hidden md:block absolute right-[-6.5px] top-[3.5rem] w-3 h-3 rounded-full bg-background border border-foreground/30 group-hover:bg-foreground group-hover:border-foreground transition-colors duration-500 z-10" />
+                <div className={`hidden md:block absolute right-[-6.5px] w-3 h-3 rounded-full bg-background border border-foreground/30 group-hover:bg-foreground group-hover:border-foreground transition-colors duration-500 z-10 ${index === 0 ? 'top-[3.5rem]' : 'top-[7.5rem]'}`} />
             </div>
 
             {/* Right Column: Roles & Content */}
-            <div className="md:col-span-8 lg:col-span-8 pt-0 md:pt-4">
+            <div className={`md:col-span-8 lg:col-span-8 pt-0 md:py-16 md:mt-4 ${index === 0 ? 'md:pt-0' : ''} ${isLast ? 'md:pb-0' : ''}`}>
                 <div className="flex flex-col space-y-12 md:space-y-16">
                     {group.roles.map((role) => (
                         <TimelineRole key={role.id} role={role} />

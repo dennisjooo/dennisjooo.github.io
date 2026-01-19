@@ -32,19 +32,17 @@ const groupItemsByCompany = (items: TimelineItemData[]): CompanyGroup[] => {
     return groups;
 };
 
-export const Timeline: React.FC<TimelineProps> = ({ items, shouldReduceMotion }) => {
+export const Timeline: React.FC<TimelineProps> = ({ items }) => {
     const groupedItems = groupItemsByCompany(items);
 
     return (
         <div className="flex flex-col w-full relative">
-            {/* Minimal vertical guide line (Desktop) */}
-            <div className="hidden md:block absolute left-[30%] top-0 bottom-0 w-px bg-foreground/10" />
-
             {groupedItems.map((group, index) => (
                 <TimelineGroup
                     key={index}
                     group={group}
                     index={index}
+                    isLast={index === groupedItems.length - 1}
                 />
             ))}
         </div>
