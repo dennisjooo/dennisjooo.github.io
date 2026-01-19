@@ -12,7 +12,7 @@ interface MobileMenuProps {
 }
 
 // Style constants
-const ITEM_BASE_CLASSES = "block w-full rounded-2xl px-5 py-3 text-sm lowercase tracking-wide transition-colors duration-300 ease-in-out text-center";
+const ITEM_BASE_CLASSES = "block w-full rounded-2xl px-5 py-3 text-xs uppercase tracking-widest font-bold transition-colors duration-300 ease-in-out text-center";
 const HOVER_CLASSES = "hover:bg-gray-900/5 dark:hover:bg-white/10";
 
 // Animation constants
@@ -28,7 +28,7 @@ export const MobileMenu = ({
 }: MobileMenuProps) => {
     const containerClasses = [
         "absolute top-full left-0 w-full mt-4 px-4 md:hidden",
-        "glass-panel rounded-3xl z-40 transform-gpu",
+        "glass-panel rounded-3xl z-40 transform-gpu border border-white/20 dark:border-white/10 bg-noise",
         MENU_TRANSITION,
         "will-change-[opacity,transform]",
         isMenuOpen

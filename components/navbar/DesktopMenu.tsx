@@ -11,7 +11,7 @@ interface DesktopMenuProps {
 }
 
 // Style constants
-const BASE_CLASSES = "w-full md:w-auto px-4 py-2 rounded-xl md:rounded-full transition-colors duration-300 ease-in-out lowercase";
+const BASE_CLASSES = "w-full md:w-auto px-4 py-2 rounded-xl md:rounded-full transition-colors duration-300 ease-in-out uppercase tracking-widest text-xs font-bold";
 const HOVER_SCROLLED = "hover:bg-black/5 dark:hover:bg-white/10";
 const HOVER_DEFAULT = "hover:bg-black/10 dark:hover:bg-white/10";
 
