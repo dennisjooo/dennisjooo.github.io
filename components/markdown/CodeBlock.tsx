@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useCopyToClipboard } from "@/lib/hooks/useCopyToClipboard";
 
 interface CodeProps {
     inline?: boolean;
@@ -11,20 +12,12 @@ interface CodeProps {
 }
 
 export const CodeBlock = ({ children, className }: CodeProps) => {
-    const [copied, setCopied] = useState(false);
+    const { copied, copyToClipboard } = useCopyToClipboard();
     const match = /language-(\w+)/.exec(className || "");
     const language = match ? match[1] : "";
     const codeString = String(children).replace(/\n$/, "");
 
-    const copyToClipboard = async () => {
-        try {
-            await navigator.clipboard.writeText(codeString);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-        } catch (err) {
-            console.error("Failed to copy code:", err);
-        }
-    };
+    const handleCopy = () => copyToClipboard(codeString);
 
     return (
         <div className="not-prose my-6">
@@ -44,7 +37,7 @@ export const CodeBlock = ({ children, className }: CodeProps) => {
                         )}
                     </div>
                     <button
-                        onClick={copyToClipboard}
+                        onClick={handleCopy}
                         className="code-copy-btn"
                         title="Copy code"
                     >

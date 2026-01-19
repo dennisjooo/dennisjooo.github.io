@@ -10,16 +10,12 @@ import {
   useVelocity,
   useAnimationFrame
 } from "framer-motion";
+import { wrap } from "@/lib/utils/math";
 
 interface ParallaxTextProps {
   children: React.ReactNode;
   baseVelocity: number;
 }
-
-const wrap = (min: number, max: number, v: number) => {
-  const rangeSize = max - min;
-  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
-};
 
 export function ParallaxText({ children, baseVelocity = 100 }: ParallaxTextProps) {
   const baseX = useMotionValue(0);
