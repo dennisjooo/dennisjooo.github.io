@@ -77,15 +77,54 @@ export const useSectionNavigation = (
 ): ((sectionId: string) => void) => {
     const router = useRouter();
 
+    // Track the current section when scrolling on the homepage
+    useEffect(() => {
+        if (!isClientReady || pathname !== "/") return;
+
+        const handleScroll = () => {
+            const sections = ["home", "about", "skills", "contact"];
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    // If the section is in view (top is above middle of viewport)
+                    if (rect.top <= window.innerHeight / 2 && rect.bottom > 0) {
+                        try {
+                            sessionStorage.setItem("currentSection", section);
+                        } catch (error) {
+                            console.error("Error saving current section:", error);
+                        }
+                        break;
+                    }
+                }
+            }
+        };
+
+        handleScroll();
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [isClientReady, pathname]);
+
     return useCallback(
         (sectionId: string) => {
             if (!isClientReady) return;
 
             if (pathname === "/") {
-                document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+                // If on homepage and clicking home, scroll to top
+                if (sectionId === "home") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+                }
             } else {
                 try {
-                    sessionStorage.setItem("scrollToSection", sectionId);
+                    // If clicking home from another page, go to the last visited section
+                    if (sectionId === "home") {
+                        const lastSection = sessionStorage.getItem("currentSection");
+                        sessionStorage.setItem("scrollToSection", lastSection || "home");
+                    } else {
+                        sessionStorage.setItem("scrollToSection", sectionId);
+                    }
                     // Clear any saved scroll position for home so it doesn't conflict with our explicit jump
                     sessionStorage.removeItem("scroll-pos-/");
                     router.push("/");
