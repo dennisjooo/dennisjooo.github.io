@@ -141,6 +141,14 @@ html {
     background: linear-gradient(to bottom right, var(--gradient-from), var(--gradient-via), var(--gradient-to));
   }
 
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r;
+    @apply from-purple-700 via-indigo-700 to-violet-700;
+  }
+  .dark .text-gradient-primary {
+    @apply from-indigo-400 via-purple-400 to-pink-400;
+  }
+
   .bg-gradient-accent {
     background: linear-gradient(to right, var(--gradient-accent-from), var(--gradient-accent-via), var(--gradient-accent-to));
   }

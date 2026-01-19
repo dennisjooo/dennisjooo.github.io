@@ -6,25 +6,25 @@ import { motion, AnimationControls } from 'framer-motion';
 import { fadeInUpVariants } from '@/lib/animations/variants';
 
 interface ProfileImageProps {
-    mainControls: AnimationControls;
+    mainControls?: AnimationControls;
 }
 
 export const ProfileImage: React.FC<ProfileImageProps> = ({ mainControls }) => (
     <motion.div
-        className="md:w-1/2 mb-8 md:mb-0"
+        className="w-full max-w-[300px] aspect-square relative flex-shrink-0 group"
         variants={fadeInUpVariants}
         initial="hidden"
-        animate={mainControls}
+        animate={mainControls || "visible"}
         transition={{ duration: 0.6, delay: 0.4 }}
     >
+        <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-[2rem] opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500" />
         <Image
             src="/images/profile.webp"
             alt="Profile picture"
-            width={300}
-            height={300}
-            className="rounded-full shadow-lg w-[225px] h-[225px] md:w-[300px] md:h-[300px]"
+            fill
+            className="rounded-2xl object-cover shadow-2xl group-hover:grayscale-0 transition-all duration-500 relative z-10"
             priority
-            sizes="(max-width: 768px) 225px, 300px"
+            sizes="(max-width: 768px) 100vw, 300px"
         />
     </motion.div>
 );
