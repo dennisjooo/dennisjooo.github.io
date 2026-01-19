@@ -1,40 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useParallax } from '@/lib/hooks/useParallax';
 
 export default function NotFound() {
-    // Parallax Logic
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-
-    // Smooth spring animation for the parallax
-    const springConfig = { damping: 30, stiffness: 200 };
-    const springX = useSpring(mouseX, springConfig);
-    const springY = useSpring(mouseY, springConfig);
-
-    // Transform mouse position to pixel movement (inverted for depth)
-    const x = useTransform(springX, [-0.5, 0.5], [40, -40]);
-    const y = useTransform(springY, [-0.5, 0.5], [40, -40]);
-    
-    // Background text movement (slower)
-    const bgX = useTransform(springX, [-0.5, 0.5], [-20, 20]);
-    const bgY = useTransform(springY, [-0.5, 0.5], [-20, 20]);
-
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-        const handleMouseMove = (e: MouseEvent) => {
-            const { innerWidth, innerHeight } = window;
-            mouseX.set(e.clientX / innerWidth - 0.5);
-            mouseY.set(e.clientY / innerHeight - 0.5);
-        };
-        
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, [mouseX, mouseY]);
+    const { mounted, foreground, background } = useParallax();
 
     if (!mounted) return null;
 
@@ -52,7 +23,7 @@ export default function NotFound() {
             {/* 2. Massive Background Typography (Parallax) */}
             <motion.div 
                 className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden"
-                style={{ x: bgX, y: bgY }}
+                style={{ x: background.x, y: background.y }}
             >
                 <div className="relative whitespace-nowrap">
                     <h1 className="font-playfair italic text-[45vw] leading-none text-foreground/5 dark:text-foreground/10 select-none mix-blend-overlay">
@@ -66,7 +37,7 @@ export default function NotFound() {
             {/* 3. The "Content" Anchor - Bottom Left (Poster Style) */}
             <motion.div 
                 className="absolute bottom-12 left-6 md:bottom-24 md:left-24 z-10 max-w-xl"
-                style={{ x, y }}
+                style={{ x: foreground.x, y: foreground.y }}
             >
                 <div className="flex flex-col gap-6">
                     <motion.div
