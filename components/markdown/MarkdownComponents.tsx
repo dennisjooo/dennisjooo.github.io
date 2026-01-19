@@ -6,48 +6,48 @@ import { CodeBlock, type CodeProps } from "./CodeBlock";
 import { PhotoView } from "react-photo-view";
 
 export const markdownComponents: Components = {
-    // Headings
+    // Headings - Editorial Typography
     h1: ({ children, ...props }) => (
-        <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-300 dark:border-gray-600 pb-2" {...props}>
+        <h1 className="font-urbanist font-black text-3xl md:text-4xl mb-6 text-foreground border-b border-border pb-4 tracking-tight" {...props}>
             {children}
         </h1>
     ),
     h2: ({ children, ...props }) => (
-        <h2 className="text-2xl font-bold mb-4 mt-8 text-gray-900 dark:text-white" {...props}>
+        <h2 className="font-urbanist font-bold text-2xl md:text-3xl mb-4 mt-12 text-foreground tracking-tight" {...props}>
             {children}
         </h2>
     ),
     h3: ({ children, ...props }) => (
-        <h3 className="text-xl font-bold mb-3 mt-6 text-gray-900 dark:text-white" {...props}>
+        <h3 className="font-urbanist font-bold text-xl md:text-2xl mb-3 mt-8 text-foreground tracking-tight" {...props}>
             {children}
         </h3>
     ),
     h4: ({ children, ...props }) => (
-        <h4 className="text-lg font-bold mb-2 mt-4 text-gray-900 dark:text-white" {...props}>
+        <h4 className="font-urbanist font-bold text-lg md:text-xl mb-2 mt-6 text-foreground tracking-tight" {...props}>
             {children}
         </h4>
     ),
 
     // Text elements
     p: ({ children }) => {
-        return <p className="mb-4 text-gray-700 dark:text-gray-300">{children}</p>;
+        return <p className="mb-5 text-muted-foreground leading-relaxed">{children}</p>;
     },
-    strong: ({ children }) => <strong className="font-bold text-gray-900 dark:text-white">{children}</strong>,
-    em: ({ children }) => <em className="italic text-gray-700 dark:text-gray-300">{children}</em>,
+    strong: ({ children }) => <strong className="font-bold text-foreground">{children}</strong>,
+    em: ({ children }) => <em className="italic text-muted-foreground">{children}</em>,
     blockquote: ({ children }) => (
-        <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 italic mb-4 text-gray-600 dark:text-gray-400">
+        <blockquote className="border-l-2 border-accent pl-6 my-6 italic text-muted-foreground bg-muted/30 py-4 pr-4 rounded-r-lg">
             {children}
         </blockquote>
     ),
 
     // Lists
     ul: ({ children }) => (
-        <ul className="list-disc list-inside mb-4 text-gray-700 dark:text-gray-300 space-y-1">{children}</ul>
+        <ul className="list-disc list-inside mb-5 text-muted-foreground space-y-2 leading-relaxed">{children}</ul>
     ),
     ol: ({ children }) => (
-        <ol className="list-decimal list-inside mb-4 text-gray-700 dark:text-gray-300 space-y-1">{children}</ol>
+        <ol className="list-decimal list-inside mb-5 text-muted-foreground space-y-2 leading-relaxed">{children}</ol>
     ),
-    li: ({ children }) => <li className="text-gray-700 dark:text-gray-300">{children}</li>,
+    li: ({ children }) => <li className="text-muted-foreground">{children}</li>,
 
     // Code
     code: ({ inline, children, className }: CodeProps) => {
@@ -59,7 +59,7 @@ export const markdownComponents: Components = {
 
         if (isInlineCode) {
             return (
-                <code className="bg-gray-200 dark:bg-gray-700/50 rounded px-2 py-1 text-sm font-mono text-pink-600 dark:text-orange-300 border border-gray-300 dark:border-gray-600/30">
+                <code className="bg-muted rounded px-2 py-1 text-sm font-mono text-accent border border-border">
                     {children}
                 </code>
             );
@@ -69,50 +69,59 @@ export const markdownComponents: Components = {
     },
     pre: ({ children }) => <>{children}</>,
 
-    // Tables
+    // Tables - Editorial Style
     table: ({ children }) => (
         <div className="not-prose my-8">
-            <div className="overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700/50 bg-white dark:bg-black shadow-2xl">
+            <div className="overflow-hidden rounded-xl border border-border bg-card">
                 <table className="min-w-full">{children}</table>
             </div>
         </div>
     ),
     thead: ({ children }) => (
-        <thead className="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">{children}</thead>
+        <thead className="bg-muted border-b border-border">{children}</thead>
     ),
     tbody: ({ children }) => (
-        <tbody className="divide-y divide-gray-200 dark:divide-gray-700/50">{children}</tbody>
+        <tbody className="divide-y divide-border">{children}</tbody>
     ),
-    tr: ({ children }) => <tr>{children}</tr>,
+    tr: ({ children }) => <tr className="hover:bg-muted/50 transition-colors">{children}</tr>,
     th: ({ children }) => (
-        <th className="px-6 py-4 text-left font-bold text-gray-900 dark:text-white text-sm tracking-wide">
+        <th className="px-6 py-4 text-left font-urbanist font-bold text-foreground text-sm tracking-wide uppercase">
             {children}
         </th>
     ),
     td: ({ children }) => (
-        <td className="px-6 py-4 text-gray-700 dark:text-gray-100 text-sm font-medium">{children}</td>
+        <td className="px-6 py-4 text-muted-foreground text-sm">{children}</td>
     ),
 
-    // Media
+    // Media - With Noise Overlay
     img: ({ src, alt, title, ...rest }: ComponentPropsWithoutRef<"img">) => {
         if (!src) {
             return null;
         }
 
         return (
-            <span className="block my-8">
+            <span className="block my-8 group">
                 <PhotoView src={src}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                        src={src}
-                        alt={alt ?? ''}
-                        loading="lazy"
-                        className="w-full h-auto rounded-2xl border border-gray-300 dark:border-gray-700/50 shadow-lg cursor-zoom-in"
-                        {...rest}
-                    />
+                    <span className="relative block rounded-xl overflow-hidden border border-border cursor-zoom-in">
+                        {/* Noise Overlay */}
+                        <span 
+                            className="absolute inset-0 z-10 pointer-events-none opacity-15 mix-blend-overlay"
+                            style={{
+                                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+                            }}
+                        />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={src}
+                            alt={alt ?? ''}
+                            loading="lazy"
+                            className="w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
+                            {...rest}
+                        />
+                    </span>
                 </PhotoView>
                 {title ? (
-                    <span className="block mt-2 text-center text-sm text-gray-600 dark:text-neutral-400">
+                    <span className="block mt-3 text-center font-mono text-xs uppercase tracking-wider text-muted-foreground">
                         {title}
                     </span>
                 ) : null}
@@ -138,20 +147,22 @@ export const markdownComponents: Components = {
 
         return (
             <figure className="my-8">
-                <video
-                    className="w-full rounded-lg border border-gray-300 dark:border-gray-700/50 shadow-lg"
-                    controls={showControls}
-                    autoPlay={autoPlay}
-                    loop={loop}
-                    muted={muted}
-                    poster={poster}
-                    {...rest}
-                >
-                    {src ? <source src={src} /> : null}
-                    {children}
-                </video>
+                <div className="relative rounded-xl overflow-hidden border border-border">
+                    <video
+                        className="w-full"
+                        controls={showControls}
+                        autoPlay={autoPlay}
+                        loop={loop}
+                        muted={muted}
+                        poster={poster}
+                        {...rest}
+                    >
+                        {src ? <source src={src} /> : null}
+                        {children}
+                    </video>
+                </div>
                 {title ? (
-                    <figcaption className="mt-2 text-center text-sm text-gray-600 dark:text-neutral-400">
+                    <figcaption className="mt-3 text-center font-mono text-xs uppercase tracking-wider text-muted-foreground">
                         {title}
                     </figcaption>
                 ) : null}
@@ -173,7 +184,7 @@ export const markdownComponents: Components = {
 
         return (
             <div className="my-8">
-                <div className="relative w-full overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700/50 shadow-lg">
+                <div className="relative w-full overflow-hidden rounded-xl border border-border">
                     <div className="aspect-video">
                         <iframe
                             src={src}
@@ -209,19 +220,21 @@ export const markdownComponents: Components = {
 
         return (
             <figure className="my-8">
-                <audio
-                    className="w-full"
-                    controls={showControls}
-                    autoPlay={autoPlay}
-                    loop={loop}
-                    muted={muted}
-                    {...rest}
-                >
-                    {src ? <source src={src} /> : null}
-                    {children}
-                </audio>
+                <div className="rounded-xl border border-border p-4 bg-muted/30">
+                    <audio
+                        className="w-full"
+                        controls={showControls}
+                        autoPlay={autoPlay}
+                        loop={loop}
+                        muted={muted}
+                        {...rest}
+                    >
+                        {src ? <source src={src} /> : null}
+                        {children}
+                    </audio>
+                </div>
                 {title ? (
-                    <figcaption className="mt-2 text-center text-sm text-gray-600 dark:text-neutral-400">
+                    <figcaption className="mt-3 text-center font-mono text-xs uppercase tracking-wider text-muted-foreground">
                         {title}
                     </figcaption>
                 ) : null}

@@ -1,9 +1,8 @@
 'use client';
 
-import { motion, useAnimation } from 'framer-motion';
-import { HiExternalLink } from 'react-icons/hi';
+import { motion } from 'framer-motion';
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import { BsGithub } from 'react-icons/bs';
-import { useEffect } from 'react';
 
 interface Link {
     url: string;
@@ -16,55 +15,57 @@ interface ProjectLinksProps {
 
 export default function ProjectLinks({ links }: ProjectLinksProps) {
     return (
-        <nav className="mt-8 flex flex-wrap gap-3">
-            {links.map((link, index) => (
-                <ProjectLink key={index} index={index} {...link} />
-            ))}
-        </nav>
+        <div className="pt-12 border-t border-border">
+            {/* Section Header */}
+            <div className="flex items-center gap-4 mb-6">
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                    Resources
+                </span>
+                <div className="flex-1 h-px bg-border" />
+            </div>
+
+            {/* Links Grid */}
+            <nav className="flex flex-wrap gap-4">
+                {links.map((link, index) => (
+                    <ProjectLink key={index} index={index} {...link} />
+                ))}
+            </nav>
+        </div>
     );
 }
 
 function ProjectLink({ url, text, index }: Link & { index: number }) {
-    const controls = useAnimation();
     const isGitHubLink = url.toLowerCase().includes('github.com');
-
-    useEffect(() => {
-        // Set initial state first, then animate
-        controls.set({ opacity: 0, y: 10 });
-        controls.start({
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.4, delay: index * 0.1 }
-        });
-    }, [controls, index]);
 
     return (
         <motion.a
             href={url}
-            initial={{ opacity: 1, y: 0 }}
-            animate={controls}
-            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white border transition-all duration-200"
-            style={{
-                borderColor: 'var(--default-border)',
-            }}
-            onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--accent-border)';
-                e.currentTarget.style.boxShadow = '0 0 15px var(--accent-shadow)';
-            }}
-            onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--default-border)';
-                e.currentTarget.style.boxShadow = '';
-            }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="group relative inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-border bg-card hover:border-accent/50 transition-all duration-300"
             target="_blank"
             rel="noopener noreferrer"
-            suppressHydrationWarning
         >
-            {text}
-            {isGitHubLink ? (
-                <BsGithub className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity duration-200" />
-            ) : (
-                <HiExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity duration-200" />
-            )}
+            {/* Gradient Glow on Hover */}
+            <div className="absolute -inset-px bg-gradient-accent rounded-lg opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-300 -z-10" />
+            
+            {/* Icon */}
+            <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center group-hover:bg-accent/10 transition-colors duration-300">
+                {isGitHubLink ? (
+                    <BsGithub className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors duration-300" />
+                ) : (
+                    <ArrowUpRightIcon className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors duration-300" />
+                )}
+            </div>
+
+            {/* Text */}
+            <span className="font-urbanist font-medium text-sm text-foreground group-hover:text-accent transition-colors duration-300">
+                {text}
+            </span>
+            
+            {/* Arrow */}
+            <ArrowUpRightIcon className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
         </motion.a>
     );
 }
