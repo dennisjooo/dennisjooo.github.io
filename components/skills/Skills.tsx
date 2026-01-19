@@ -11,9 +11,9 @@ const Skills: React.FC = () => {
         <section id="skills" className="py-24 w-full bg-background text-foreground overflow-hidden">
             <div className="w-full">
                 <div className="container mx-auto px-6 max-w-7xl mb-10">
-                    <SectionHeader 
-                        number="05." 
-                        title="Skills & Stacks" 
+                    <SectionHeader
+                        number="05."
+                        title="Skills & Stacks"
                     />
                 </div>
 
@@ -36,17 +36,17 @@ const Skills: React.FC = () => {
                                                 {/* Icon */}
                                                 <div className="w-8 h-8 md:w-10 md:h-10 relative grayscale opacity-30 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-300">
                                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                                    <img 
-                                                        src={`https://cdn.simpleicons.org/${getIconSlug(skill)}`} 
+                                                    <img
+                                                        src={`https://cdn.simpleicons.org/${getIconSlug(skill)}`}
                                                         alt={skill}
                                                         className="w-full h-full object-contain dark:invert dark:group-hover/item:invert-0 transition-all duration-300"
                                                         loading="lazy"
-                                                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                                        onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
                                                     />
                                                 </div>
 
                                                 {/* Text */}
-                                                <span 
+                                                <span
                                                     className={`
                                                         text-3xl md:text-5xl font-bold font-urbanist uppercase tracking-tight
                                                         text-foreground/20 group-hover/item:text-foreground
