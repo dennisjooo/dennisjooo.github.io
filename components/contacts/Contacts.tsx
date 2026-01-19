@@ -1,26 +1,14 @@
 'use client';
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Dock } from '@/components/Dock';
 import { DockIcon } from '@/components/DockIcon';
 import { contactLinks } from '@/data/contactContent';
 
 const Contacts: React.FC = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end end"]
-    });
-
-    // Parallax for the "Say HELLO" text
-    const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
-    // Opacity fade in
-    const opacity = useTransform(scrollYProgress, [0.6, 1], [0, 1]);
-
     return (
         <section 
-            ref={containerRef}
             id="contact" 
             className="relative min-h-[80vh] flex flex-col justify-center items-center py-24 px-4 md:px-8 bg-background overflow-hidden"
         >
@@ -44,8 +32,11 @@ const Contacts: React.FC = () => {
 
                 {/* Bottom Group: Text & Dock */}
                 <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     className="flex flex-col items-center gap-8"
-                    style={{ opacity, y }}
                 >
                     <p className="text-lg md:text-xl font-light text-muted-foreground font-sans text-center max-w-md px-4">
                         Have a cool idea? Want to geek out over AI, or just want to say hi? Drop a line.

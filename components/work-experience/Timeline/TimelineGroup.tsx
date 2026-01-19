@@ -15,10 +15,9 @@ export interface CompanyGroup {
 interface TimelineGroupProps {
     group: CompanyGroup;
     index: number;
-    shouldReduceMotion: boolean;
 }
 
-export const TimelineGroup: React.FC<TimelineGroupProps> = ({ group, index, shouldReduceMotion }) => {
+export const TimelineGroup: React.FC<TimelineGroupProps> = ({ group, index }) => {
     return (
         <motion.div
             className={`group relative ${index > 0 ? 'border-t border-foreground/10' : ''} md:border-t-0 py-12 md:py-16 first:pt-0 last:pb-0 md:grid md:grid-cols-12 md:gap-12`}

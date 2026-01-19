@@ -45,7 +45,6 @@ export const Timeline: React.FC<TimelineProps> = ({ items, shouldReduceMotion })
                     key={index}
                     group={group}
                     index={index}
-                    shouldReduceMotion={shouldReduceMotion}
                 />
             ))}
         </div>
