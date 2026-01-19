@@ -18,8 +18,8 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     );
 
     return (
-        <section id="projects" className="py-24 flex items-center justify-center min-h-screen px-8">
-            <div className="container max-w-7xl mx-auto flex-1 flex flex-col">
+        <section id="projects" className="py-24 md:py-32 w-full bg-background text-foreground overflow-hidden">
+            <div className="container mx-auto px-6 max-w-7xl">
                 <FeaturedProjectsHeader />
                 <FeaturedProjectsGrid projects={featuredProjects} />
                 <ViewAllButton />

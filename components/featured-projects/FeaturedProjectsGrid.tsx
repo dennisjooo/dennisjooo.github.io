@@ -1,45 +1,30 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { BentoGrid, BentoCard } from '@/components/bento';
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
-import { formatProjectDate, truncateProjectDescription } from '@/lib/utils/projectFormatting';
+import { formatProjectDate } from '@/lib/utils/projectFormatting';
 import { Blog } from '@/data/blogs/types';
+import { FeaturedProjectCard } from './FeaturedProjectCard';
 
 interface FeaturedProjectsGridProps {
     projects: Blog[];
 }
 
 export const FeaturedProjectsGrid: React.FC<FeaturedProjectsGridProps> = ({ projects }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="flex-1 flex items-center"
-    >
-        <BentoGrid className="w-full mx-auto grid-cols-1 md:grid-cols-3 gap-6">
-            {projects.map(({ title, description, date, imageUrl, blogPost }, index) => (
-                <motion.div
-                    key={`${title}_${date}`}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="h-full"
-                >
-                    <BentoCard
-                        name={title}
-                        className="col-span-1 h-[320px] md:h-[440px]"
-                        description={truncateProjectDescription(description)}
-                        href={`/blogs/${createUrlSlug(title)}`}
-                        cta="View Project"
-                        date={formatProjectDate(date, true)}
-                        imageUrl={imageUrl}
-                        meta={`${Math.ceil(blogPost.split(/\s+/).length / 200)} min read`}
-                    />
-                </motion.div>
-            ))}
-        </BentoGrid>
-    </motion.div>
+    <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+        {projects.map(({ title, description, date, imageUrl }, index) => (
+            <div 
+                key={`${title}_${date}`}
+                className="w-full"
+            >
+                <FeaturedProjectCard
+                    title={title}
+                    description={description}
+                    slug={createUrlSlug(title)}
+                    date={formatProjectDate(date, true)}
+                    imageUrl={imageUrl}
+                    index={index}
+                />
+            </div>
+        ))}
+    </div>
 );

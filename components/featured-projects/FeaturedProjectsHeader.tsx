@@ -1,23 +1,39 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import GradientUnderline from '@/components/shared/GradientUnderline';
+import { SectionHeader } from '@/components/shared/SectionHeader';
 
 export const FeaturedProjectsHeader = () => (
-    <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12"
-    >
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-            <GradientUnderline delay={0.6}>
-                Featured Projects.
-            </GradientUnderline>
-        </h2>
-        <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            A highlight reel of builds I loved obsessing over. Mostly scrappy experiments that makes me cherish the good old days.
-        </p>
-    </motion.div>
+    <div className="w-full mb-16 md:mb-24">
+        {/* Standard Section Header */}
+        <SectionHeader 
+            number="04." 
+            title="Featured Projects" 
+            className="mb-12"
+        />
+
+        {/* Artistic/Editorial Headline */}
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative w-full pt-12 select-none"
+        >
+            <div className="flex flex-col items-start w-full">
+                <motion.span 
+                    initial={{ x: -50, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="font-playfair italic text-4xl md:text-6xl ml-2 md:ml-12 mb-[-2vw] md:mb-[-3vw] relative z-20 text-foreground"
+                >
+                    Selected
+                </motion.span>
+                <h2 className="font-urbanist font-black text-[15vw] md:text-[12vw] leading-[0.8] tracking-tighter text-neutral-200 dark:text-neutral-800 z-10 select-none">
+                    WORK
+                </h2>
+            </div>
+        </motion.div>
+    </div>
 );
