@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { GradientUnderline } from '@/components/shared';
 
 export const ViewAllButton = () => (
     <motion.div
@@ -17,14 +18,11 @@ export const ViewAllButton = () => (
             prefetch
             className="group relative inline-flex items-center gap-3 py-2"
         >
-            <span className="font-urbanist font-bold text-lg md:text-xl uppercase tracking-widest text-foreground transition-colors duration-300 group-hover:text-accent">
+            <GradientUnderline trigger="hover" className="font-urbanist font-bold text-lg md:text-xl uppercase tracking-widest text-foreground transition-colors duration-300 group-hover:text-purple-700 dark:group-hover:text-purple-400">
                 All Projects
-            </span>
+            </GradientUnderline>
             
-            <ArrowRightIcon className="w-5 h-5 text-foreground transform transition-all duration-300 group-hover:translate-x-2 group-hover:text-accent" />
-            
-            {/* Underline animation */}
-            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-accent transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100" />
+            <ArrowRightIcon className="w-5 h-5 text-foreground transform transition-all duration-300 group-hover:translate-x-2 group-hover:text-purple-700 dark:group-hover:text-purple-400" />
         </Link>
     </motion.div>
 );

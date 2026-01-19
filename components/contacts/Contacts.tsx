@@ -37,7 +37,7 @@ const Contacts: React.FC = () => {
                     <span className="font-playfair italic text-[12vw] md:text-[10vw] leading-[0.8] text-muted-foreground mix-blend-difference select-none text-center">
                         Let&apos;s
                     </span>
-                    <span className="font-sans font-black text-[15vw] md:text-[12vw] leading-[0.8] text-foreground tracking-tighter select-none text-center">
+                    <span className="font-sans font-black text-[15vw] md:text-[12vw] leading-[0.8] text-gradient-primary tracking-tighter select-none text-center">
                         TALK
                     </span>
                 </motion.div>

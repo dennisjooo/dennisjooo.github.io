@@ -31,11 +31,16 @@ export const FeaturedProjectCard = ({
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
             >
-                {/* Image Container - Poster Style */}
-                <div className="relative aspect-[4/3] w-full bg-muted overflow-hidden rounded-md border border-border">
-                    {/* Noise Overlay */}
-                    <div 
-                        className="absolute inset-0 z-10 pointer-events-none opacity-20 mix-blend-overlay"
+                {/* Card Wrapper for Glow */}
+                <div className="relative w-full aspect-[4/3]">
+                    {/* Gradient Glow */}
+                    <div className="absolute -inset-1 bg-gradient-accent rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500" />
+                    
+                    {/* Image Container - Poster Style */}
+                    <div className="relative w-full h-full bg-muted overflow-hidden rounded-md border border-border">
+                        {/* Noise Overlay */}
+                        <div 
+                            className="absolute inset-0 z-10 pointer-events-none opacity-20 mix-blend-overlay"
                         style={{
                             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
                         }}
@@ -53,8 +58,9 @@ export const FeaturedProjectCard = ({
                         <div className="w-full h-full bg-gradient-to-br from-secondary to-muted" />
                     )}
                     
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500 z-10" />
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500 z-10" />
+                    </div>
                 </div>
 
                 {/* Content - Editorial Layout */}
