@@ -37,7 +37,7 @@ export const BlogsHero = ({ activeTab }: BlogsHeroProps) => (
                 >
                     Explore
                 </motion.span>
-                <h1 className="font-urbanist font-black text-[14vw] md:text-[11vw] leading-[0.8] tracking-tighter text-neutral-200 dark:text-neutral-800 z-10 select-none">
+                <h1 className="font-urbanist font-black text-[14vw] md:text-[11vw] leading-[0.8] tracking-tighter text-background-layer z-10 select-none">
                     WRITINGS
                 </h1>
             </div>

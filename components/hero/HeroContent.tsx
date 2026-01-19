@@ -34,7 +34,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ description, isInView 
         {/* Main Typography */}
         <div className="flex flex-col justify-center flex-grow relative w-full -mt-10 md:mt-0">
             <motion.h1
-                className="relative z-10 text-[18vw] md:text-[12vw] leading-[0.85] font-playfair italic font-normal text-gray-900 dark:text-white mix-blend-overlay dark:mix-blend-screen"
+                className="relative z-10 text-[18vw] md:text-[12vw] leading-[0.85] font-playfair italic font-normal text-foreground mix-blend-overlay dark:mix-blend-screen"
                 initial={{ opacity: 0, x: -50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
@@ -42,7 +42,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ description, isInView 
                 Dennis
             </motion.h1>
             <motion.h1
-                className="relative z-10 text-[18vw] md:text-[12vw] leading-[0.85] font-bold tracking-tighter text-gray-800 dark:text-white self-end text-right w-full"
+                className="relative z-10 text-[18vw] md:text-[12vw] leading-[0.85] font-bold tracking-tighter text-foreground self-end text-right w-full"
                 initial={{ opacity: 0, x: 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
@@ -54,7 +54,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ description, isInView 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 pb-8 md:pb-0">
             <motion.div
-                className="max-w-md text-sm md:text-xl lg:text-2xl font-light leading-relaxed text-gray-800 dark:text-gray-200 text-left"
+                className="max-w-md text-sm md:text-xl lg:text-2xl font-light leading-relaxed text-foreground/90 text-left"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.8, delay: 1 }}

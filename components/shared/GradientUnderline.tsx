@@ -24,7 +24,7 @@ const GradientUnderline: React.FC<GradientUnderlineProps> = ({
             <span className="relative z-[1]">{children}</span>
             <motion.span
                 className={cn(
-                    "absolute left-0 right-0 bottom-0 h-1 bg-gradient-accent rounded-full drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] z-0",
+                    "absolute left-0 right-0 bottom-0 h-1 bg-gradient-accent rounded-full drop-shadow-[0_0_10px_var(--accent-shadow)] z-0",
                     isHover && "scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                 )}
                 {...(!isHover ? {

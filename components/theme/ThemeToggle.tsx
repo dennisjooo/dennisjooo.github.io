@@ -15,7 +15,7 @@ interface ThemeToggleProps extends React.ComponentPropsWithoutRef<'button'> {
 export const ThemeToggle = ({
     className,
     duration = 400,
-    textColorClass = 'text-gray-900 dark:text-white',
+    textColorClass = 'text-foreground',
     scrolled = false,
     ...props
 }: ThemeToggleProps) => {
@@ -31,8 +31,8 @@ export const ThemeToggle = ({
     const isDark = mounted ? currentTheme === 'dark' : false;
 
     const hoverClass = scrolled
-        ? "hover:bg-gray-200 dark:hover:bg-gray-700"
-        : "hover:bg-gray-900 hover:bg-opacity-20 dark:hover:bg-white dark:hover:bg-opacity-20";
+        ? "hover:bg-black/5 dark:hover:bg-white/10"
+        : "hover:bg-black/10 dark:hover:bg-white/10";
 
     const toggleTheme = useCallback(async () => {
         if (!buttonRef.current) return;

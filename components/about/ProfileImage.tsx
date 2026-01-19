@@ -17,7 +17,7 @@ export const ProfileImage: React.FC<ProfileImageProps> = ({ mainControls }) => (
         animate={mainControls || "visible"}
         transition={{ duration: 0.6, delay: 0.4 }}
     >
-        <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-[2rem] opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500" />
+        <div className="absolute -inset-4 bg-gradient-accent rounded-[2rem] opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500" />
         <Image
             src="/images/profile.webp"
             alt="Profile picture"

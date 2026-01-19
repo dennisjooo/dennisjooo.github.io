@@ -35,7 +35,7 @@ const CommandDialog = ({ children, ...props }: DialogProps) => {
         <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
           <DialogPrimitive.Content 
             data-lenis-prevent
-            className="pointer-events-auto w-full max-w-xl mx-4 p-0 border-0 shadow-2xl shadow-accent/10 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl rounded-2xl bg-noise duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
+            className="pointer-events-auto w-full max-w-xl mx-4 p-0 border-0 glass-panel-xl rounded-2xl bg-noise duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
             {/* Decorative top gradient highlight */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
             

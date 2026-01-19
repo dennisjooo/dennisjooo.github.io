@@ -30,7 +30,7 @@ export const FeaturedProjectsHeader = () => (
                 >
                     Selected
                 </motion.span>
-                <h2 className="font-urbanist font-black text-[15vw] md:text-[12vw] leading-[0.8] tracking-tighter text-neutral-200 dark:text-neutral-800 z-10 select-none">
+                <h2 className="font-urbanist font-black text-[15vw] md:text-[12vw] leading-[0.8] tracking-tighter text-background-layer z-10 select-none">
                     WORK
                 </h2>
             </div>

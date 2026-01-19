@@ -43,9 +43,9 @@ export const BentoCard = ({
             {...linkProps}
             className={cn(
                 'group relative flex flex-col overflow-hidden rounded-3xl',
-                'bg-white dark:bg-neutral-900', // Solid background base
-                'border border-neutral-200 dark:border-neutral-800', // Subtle outer boundary
-                'text-neutral-900',
+                'bg-card', // Solid background base
+                'border border-border', // Subtle outer boundary
+                'text-card-foreground',
                 // Hover Effects:
                 'shadow-sm hover:shadow-accent/20',
                 'transition-all duration-500 ease-out',
@@ -72,10 +72,10 @@ export const BentoCard = ({
                                 priority={false}
                             />
                             {/* Top unified dimming for dark mode */}
-                            <div className="absolute inset-0 bg-transparent dark:bg-neutral-900/10" />
+                            <div className="absolute inset-0 bg-transparent dark:bg-black/40" />
                         </>
                     ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-violet-500/5 via-fuchsia-500/5 to-orange-500/5 dark:from-violet-500/10 dark:via-fuchsia-500/10 dark:to-orange-500/10" />
+                        <div className="w-full h-full bg-gradient-accent opacity-10 dark:opacity-20" />
                     )}
                 </div>
             )}
@@ -83,34 +83,34 @@ export const BentoCard = ({
             {/* Content Layer */}
             <div
                 className={cn(
-                    'relative z-10 flex flex-col bg-white dark:bg-neutral-900 px-4 py-4 sm:px-6 sm:py-5 border-t border-neutral-200 dark:border-neutral-800',
+                    'relative z-10 flex flex-col bg-card px-4 py-4 sm:px-6 sm:py-5 border-t border-border',
                     contentHeight,
                 )}
             >
                 <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-bold text-xl text-neutral-900 dark:text-white tracking-tight leading-tight group-hover:text-accent transition-colors duration-300">
+                    <h3 className="font-bold text-xl text-card-foreground tracking-tight leading-tight group-hover:text-accent transition-colors duration-300">
                         {name}
                     </h3>
                 </div>
 
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted-foreground mt-2">
                     <time dateTime={date}>{date}</time>
                     {meta && (
                         <>
-                            <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-500" />
+                            <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
                             <span>{meta}</span>
                         </>
                     )}
                 </div>
 
-                <p className="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-3 leading-relaxed font-medium mt-3">
+                <p className="text-sm text-muted-foreground/80 line-clamp-3 leading-relaxed font-medium mt-3">
                     {description}
                 </p>
 
                 <div className={cn(
                     "inline-flex items-center gap-2 text-sm font-bold pt-3",
                     ctaMargin,
-                    "text-neutral-900 dark:text-white",
+                    "text-card-foreground",
                     "transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent"
                 )}>
                     {cta}

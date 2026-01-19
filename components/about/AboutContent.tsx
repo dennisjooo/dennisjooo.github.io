@@ -11,7 +11,7 @@ interface AboutContentProps {
 
 export const AboutContent: React.FC<AboutContentProps> = ({ mainControls }) => (
     <motion.div
-        className="md:w-3/4 md:pl-5 font-light text-gray-700 dark:text-gray-300"
+        className="md:w-3/4 md:pl-5 font-light text-muted-foreground"
         variants={fadeInUpVariants}
         initial="hidden"
         animate={mainControls}
@@ -20,7 +20,7 @@ export const AboutContent: React.FC<AboutContentProps> = ({ mainControls }) => (
         {Object.entries(aboutContent).map(([key, content], index) => (
             <motion.p
                 key={key}
-                className="mb-4 last:mb-0 text-base md:text-lg text-gray-700 dark:text-gray-300"
+                className="mb-4 last:mb-0 text-base md:text-lg text-muted-foreground"
                 variants={fadeInUpVariants}
                 initial="hidden"
                 animate={mainControls}

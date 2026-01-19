@@ -167,7 +167,7 @@ export const useNavbarStyles = (
                 : "w-11/12 lg:w-3/4 xl:w-2/3";
 
         // Consistent text color across all states
-        const textColorClass = "text-gray-900 dark:text-white";
+        const textColorClass = "text-foreground";
 
         return { bgClass, navWidth, textColorClass };
     }, [isHeroSection, isMenuOpen, pathname, scrolled]);

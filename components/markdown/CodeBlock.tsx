@@ -28,9 +28,9 @@ export const CodeBlock = ({ children, className }: CodeProps) => {
 
     return (
         <div className="not-prose my-6">
-            <div className="bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-700/50 rounded-lg overflow-hidden shadow-lg">
+            <div className="code-block-wrapper">
                 {/* macOS-style window header */}
-                <div className="bg-gray-200 dark:bg-gray-800 px-4 py-2 border-b border-gray-300 dark:border-gray-700/50 flex items-center justify-between">
+                <div className="code-block-header">
                     <div className="flex items-center space-x-3">
                         <div className="flex space-x-2">
                             <div className="w-3 h-3 bg-red-500 rounded-full" />
@@ -38,14 +38,14 @@ export const CodeBlock = ({ children, className }: CodeProps) => {
                             <div className="w-3 h-3 bg-green-500 rounded-full" />
                         </div>
                         {language && (
-                            <span className="text-xs text-gray-600 dark:text-gray-400 font-mono">
+                            <span className="text-xs text-muted-foreground font-mono">
                                 {language}
                             </span>
                         )}
                     </div>
                     <button
                         onClick={copyToClipboard}
-                        className="flex items-center space-x-1 px-2 py-1 text-xs text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white bg-gray-300/50 dark:bg-gray-700/50 hover:bg-gray-400/50 dark:hover:bg-gray-600/50 rounded transition-all duration-200 border border-gray-400/30 dark:border-gray-600/30 hover:border-gray-500/50 dark:hover:border-gray-500/50"
+                        className="code-copy-btn"
                         title="Copy code"
                     >
                         {copied ? (

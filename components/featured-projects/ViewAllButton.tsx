@@ -18,11 +18,11 @@ export const ViewAllButton = () => (
             prefetch
             className="group relative inline-flex items-center gap-3 py-2"
         >
-            <GradientUnderline trigger="hover" className="font-urbanist font-bold text-lg md:text-xl uppercase tracking-widest text-foreground transition-colors duration-300 group-hover:text-purple-700 dark:group-hover:text-purple-400">
+            <GradientUnderline trigger="hover" className="font-urbanist font-bold text-lg md:text-xl uppercase tracking-widest text-foreground transition-colors duration-300 group-hover:text-accent">
                 All Projects
             </GradientUnderline>
             
-            <ArrowRightIcon className="w-5 h-5 text-foreground transform transition-all duration-300 group-hover:translate-x-2 group-hover:text-purple-700 dark:group-hover:text-purple-400" />
+            <ArrowRightIcon className="w-5 h-5 text-foreground transform transition-all duration-300 group-hover:translate-x-2 group-hover:text-accent" />
         </Link>
     </motion.div>
 );
