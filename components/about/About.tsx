@@ -4,6 +4,8 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion } from 'framer-motion';
+import { fadeInUpVariants } from '@/lib/animations/variants';
 import { aboutContent } from '@/data/aboutContent';
 import { ProfileImage } from './ProfileImage';
 import { SectionHeader } from '../shared/SectionHeader';
@@ -29,12 +31,12 @@ const About: React.FC = () => {
 
         // Mobile Animation (Horizontal Scroll)
         mm.add("(max-width: 767px)", () => {
-             const mobileContainer = document.querySelector('.mobile-scroll-container');
-             if (!mobileContainer) return;
+            const mobileContainer = document.querySelector('.mobile-scroll-container');
+            if (!mobileContainer) return;
 
-             const totalSections = 5; // Profile + 4 content sections
-             
-             gsap.to(mobileContainer, {
+            const totalSections = 5; // Profile + 4 content sections
+
+            gsap.to(mobileContainer, {
                 xPercent: -(100 * (totalSections - 1) / totalSections), // Move 4/5ths of the total width
                 ease: "none",
                 scrollTrigger: {
@@ -44,7 +46,7 @@ const About: React.FC = () => {
                     snap: 1 / (totalSections - 1),
                     end: "+=2000",
                 }
-             });
+            });
         });
 
         // Desktop Animation (3D Scroll)
@@ -85,13 +87,13 @@ const About: React.FC = () => {
 
                 // Transition Step
                 tl.to(currentTitle, { rotationX: 90, opacity: 0, duration: 1, ease: "power2.inOut" }, `step-${i}`)
-                  .to(currentBody, { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, `step-${i}`)
-                  
-                  .to(nextTitle, { rotationX: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, `step-${i}+=0.5`)
-                  .to(nextBody, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, `step-${i}+=0.8`);
-                
+                    .to(currentBody, { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, `step-${i}`)
+
+                    .to(nextTitle, { rotationX: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, `step-${i}+=0.5`)
+                    .to(nextBody, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, `step-${i}+=0.8`);
+
                 // Add a small pause/gap between sections
-                tl.to({}, { duration: 0.5 }); 
+                tl.to({}, { duration: 0.5 });
             });
         });
 
@@ -103,15 +105,15 @@ const About: React.FC = () => {
             id="about"
             className="min-h-screen relative bg-background text-foreground overflow-hidden"
         >
-            <div 
+            <div
                 ref={containerRef}
                 className="h-screen w-full flex flex-col md:max-w-7xl mx-auto md:px-6 pt-24 md:pt-20"
             >
                 {/* Header */}
                 <div className="w-full px-6 md:px-0 mb-8">
-                    <SectionHeader 
-                        number="02." 
-                        title="About Me" 
+                    <SectionHeader
+                        number="02."
+                        title="About Me"
                     />
                 </div>
 
@@ -119,17 +121,23 @@ const About: React.FC = () => {
                     {/* Mobile View (Horizontal Scroll) */}
                     <div className="md:hidden w-full h-full overflow-hidden">
                         <div className="mobile-scroll-container flex w-[500%] h-full">
-                            
+
                             {/* Card 1: Profile */}
                             <div className="w-screen h-full flex flex-col justify-center items-center px-8 relative">
                                 <span className="absolute top-32 font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">Swipe to Explore</span>
                                 <ProfileImage />
-                                <div className="mt-8 text-center space-y-2">
+                                <motion.div
+                                    className="mt-8 text-center space-y-2"
+                                    variants={fadeInUpVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                    transition={{ duration: 0.6, delay: 0.6 }}
+                                >
                                     <h3 className="font-playfair italic text-4xl text-foreground">Dennis Jonathan</h3>
                                     <p className="font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">
                                         Developer & Problem Solver
                                     </p>
-                                </div>
+                                </motion.div>
                             </div>
 
                             {/* Cards 2-5: Content */}
@@ -149,7 +157,7 @@ const About: React.FC = () => {
 
                     {/* Desktop View (Split: Sticky Image + 3D Scroll) */}
                     <div className="hidden md:flex w-full h-full">
-                        
+
                         {/* Col 1: Sticky Image & Metadata (40%) */}
                         <div className="w-[40%] h-full flex flex-col justify-center items-center p-12 relative z-10">
                             {/* Decorative Line */}
@@ -159,20 +167,33 @@ const About: React.FC = () => {
                                 {/* Removed old header from here */}
 
                                 <ProfileImage />
-                                
-                                <div className="mt-8 text-center space-y-2">
+
+                                <motion.div
+                                    className="mt-8 text-center space-y-2"
+                                    variants={fadeInUpVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                    transition={{ duration: 0.6, delay: 0.6 }}
+                                >
                                     <h3 className="font-playfair italic text-3xl text-foreground">Dennis Jonathan</h3>
                                     <p className="font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">
                                         Developer & Problem Solver
                                     </p>
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
 
                         {/* Col 2: The 3D Scroll Container (60%) */}
-                        <div ref={scrollContentRef} className="w-[60%] h-full flex items-center relative pl-16">
+                        <motion.div
+                            ref={scrollContentRef}
+                            className="w-[60%] h-full flex items-center relative pl-16"
+                            variants={fadeInUpVariants}
+                            initial="hidden"
+                            animate="visible"
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                        >
                             {contentSections.map((section) => (
-                                <div 
+                                <div
                                     key={section.id}
                                     className="absolute inset-x-16 top-1/2 -translate-y-1/2 flex flex-col justify-center"
                                 >
@@ -191,11 +212,11 @@ const About: React.FC = () => {
                                     </div>
                                 </div>
                             ))}
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 
