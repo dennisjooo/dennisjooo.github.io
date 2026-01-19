@@ -21,7 +21,7 @@ interface TimelineGroupProps {
 export const TimelineGroup: React.FC<TimelineGroupProps> = ({ group, index, shouldReduceMotion }) => {
     return (
         <motion.div
-            className="group relative border-t border-foreground/10 md:border-t-0 py-12 md:py-16 first:pt-0 last:pb-0 md:grid md:grid-cols-12 md:gap-12"
+            className={`group relative ${index > 0 ? 'border-t border-foreground/10' : ''} md:border-t-0 py-12 md:py-16 first:pt-0 last:pb-0 md:grid md:grid-cols-12 md:gap-12`}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}

@@ -5,3 +5,4 @@ export { default as ScrollRestorer } from './ScrollRestorer';
 export { default as ReadingProgress } from './ReadingProgress';
 export { BlinkingCursor } from './BlinkingCursor';
 export { SmoothScroll } from './SmoothScroll';
+export * from './SectionHeader';

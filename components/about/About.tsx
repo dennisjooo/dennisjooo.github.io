@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { aboutContent } from '@/data/aboutContent';
 import { ProfileImage } from './ProfileImage';
+import { SectionHeader } from '../shared/SectionHeader';
 
 const About: React.FC = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -104,86 +105,93 @@ const About: React.FC = () => {
         >
             <div 
                 ref={containerRef}
-                className="h-screen w-full flex flex-col md:flex-row md:max-w-[90%] 2xl:max-w-7xl mx-auto md:px-6"
+                className="h-screen w-full flex flex-col md:max-w-7xl mx-auto md:px-6 pt-24 md:pt-32"
             >
-                {/* Mobile View (Horizontal Scroll) */}
-                <div className="md:hidden w-full h-full overflow-hidden">
-                    <div className="mobile-scroll-container flex w-[500%] h-full">
-                        
-                        {/* Card 1: Profile */}
-                        <div className="w-screen h-full flex flex-col justify-center items-center px-8 relative">
-                            <span className="absolute top-32 font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">Swipe to Explore</span>
-                            <ProfileImage />
-                            <div className="mt-8 text-center space-y-2">
-                                <h3 className="font-playfair italic text-4xl text-foreground">Dennis Jonathan</h3>
-                                <p className="font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">
-                                    Developer & Problem Solver
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Cards 2-5: Content */}
-                        {contentSections.map((section) => (
-                            <div key={section.id} className="w-screen h-full flex flex-col justify-center px-8 space-y-6">
-                                <h3 className="text-5xl font-playfair italic font-bold leading-tight text-gradient-primary pb-2">
-                                    {section.title}
-                                </h3>
-                                <div className="w-12 h-px bg-current opacity-20 text-foreground" />
-                                <p className="font-light text-muted-foreground leading-relaxed text-lg">
-                                    {section.body}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
+                {/* Header */}
+                <div className="w-full px-6 md:px-0 mb-8">
+                    <SectionHeader 
+                        number="02." 
+                        title="About Me" 
+                    />
                 </div>
 
-                {/* Desktop View (Split: Sticky Image + 3D Scroll) */}
-                <div className="hidden md:flex w-full h-full">
-                    
-                    {/* Col 1: Sticky Image & Metadata (40%) */}
-                    <div className="w-[40%] h-full flex flex-col justify-center items-center p-12 relative z-10">
-                        {/* Decorative Line */}
-                        <div className="absolute right-0 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
-
-                        <div className="w-full max-w-md flex flex-col items-center">
-                            <div className="w-full flex justify-between items-end mb-8 border-b border-border pb-4">
-                                <span className="font-playfair italic text-2xl text-foreground">02.</span>
-                                <span className="font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">About Me</span>
-                            </div>
-
-                            <ProfileImage />
+                <div className="flex-1 w-full relative overflow-hidden flex flex-col md:flex-row">
+                    {/* Mobile View (Horizontal Scroll) */}
+                    <div className="md:hidden w-full h-full overflow-hidden">
+                        <div className="mobile-scroll-container flex w-[500%] h-full">
                             
-                            <div className="mt-8 text-center space-y-2">
-                                <h3 className="font-playfair italic text-3xl text-foreground">Dennis Jonathan</h3>
-                                <p className="font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">
-                                    Developer & Problem Solver
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Col 2: The 3D Scroll Container (60%) */}
-                    <div ref={scrollContentRef} className="w-[60%] h-full flex items-center relative pl-16">
-                        {contentSections.map((section, i) => (
-                            <div 
-                                key={section.id}
-                                className="absolute inset-x-16 top-1/2 -translate-y-1/2 flex flex-col justify-center"
-                            >
-                                {/* Title Wrapper */}
-                                <div className="about-title will-change-transform backface-hidden origin-center mb-8">
-                                    <h2 className="text-7xl xl:text-8xl font-playfair italic font-bold text-gradient-primary leading-tight pb-4">
-                                        {section.title}
-                                    </h2>
-                                </div>
-
-                                {/* Body Wrapper */}
-                                <div className="about-body origin-center max-w-xl">
-                                    <p className="text-xl xl:text-2xl font-light leading-relaxed text-muted-foreground">
-                                        {section.body}
+                            {/* Card 1: Profile */}
+                            <div className="w-screen h-full flex flex-col justify-center items-center px-8 relative">
+                                <span className="absolute top-32 font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">Swipe to Explore</span>
+                                <ProfileImage />
+                                <div className="mt-8 text-center space-y-2">
+                                    <h3 className="font-playfair italic text-4xl text-foreground">Dennis Jonathan</h3>
+                                    <p className="font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">
+                                        Developer & Problem Solver
                                     </p>
                                 </div>
                             </div>
-                        ))}
+
+                            {/* Cards 2-5: Content */}
+                            {contentSections.map((section) => (
+                                <div key={section.id} className="w-screen h-full flex flex-col justify-center px-8 space-y-6">
+                                    <h3 className="text-5xl font-playfair italic font-bold leading-tight text-gradient-primary pb-2">
+                                        {section.title}
+                                    </h3>
+                                    <div className="w-12 h-px bg-current opacity-20 text-foreground" />
+                                    <p className="font-light text-muted-foreground leading-relaxed text-lg">
+                                        {section.body}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Desktop View (Split: Sticky Image + 3D Scroll) */}
+                    <div className="hidden md:flex w-full h-full">
+                        
+                        {/* Col 1: Sticky Image & Metadata (40%) */}
+                        <div className="w-[40%] h-full flex flex-col justify-center items-center p-12 relative z-10">
+                            {/* Decorative Line */}
+                            <div className="absolute right-0 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
+
+                            <div className="w-full max-w-md flex flex-col items-center">
+                                {/* Removed old header from here */}
+
+                                <ProfileImage />
+                                
+                                <div className="mt-8 text-center space-y-2">
+                                    <h3 className="font-playfair italic text-3xl text-foreground">Dennis Jonathan</h3>
+                                    <p className="font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">
+                                        Developer & Problem Solver
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Col 2: The 3D Scroll Container (60%) */}
+                        <div ref={scrollContentRef} className="w-[60%] h-full flex items-center relative pl-16">
+                            {contentSections.map((section) => (
+                                <div 
+                                    key={section.id}
+                                    className="absolute inset-x-16 top-1/2 -translate-y-1/2 flex flex-col justify-center"
+                                >
+                                    {/* Title Wrapper */}
+                                    <div className="about-title will-change-transform backface-hidden origin-center mb-8">
+                                        <h2 className="text-7xl xl:text-8xl font-playfair italic font-bold text-gradient-primary leading-tight pb-4">
+                                            {section.title}
+                                        </h2>
+                                    </div>
+
+                                    {/* Body Wrapper */}
+                                    <div className="about-body origin-center max-w-xl">
+                                        <p className="text-xl xl:text-2xl font-light leading-relaxed text-muted-foreground">
+                                            {section.body}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

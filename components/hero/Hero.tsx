@@ -6,7 +6,7 @@ import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
 import { useScrollEffect } from '@/lib/hooks/useScrollEffect';
 import { useTypingEffect } from '@/lib/hooks/useTypingEffect';
 import { useInView } from 'framer-motion';
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useTheme } from 'next-themes';
 import { HeroContent } from './HeroContent';
 
@@ -16,16 +16,12 @@ const Iridescence = dynamic(() => import('@/components/iridescence').then(mod =>
 });
 
 const Hero: React.FC = () => {
-    const { ref, mainControls } = useAnimateOnScroll();
+    const { ref } = useAnimateOnScroll();
     const description = useTypingEffect(HERO_CONTENT.descriptions);
     const isInView = useInView(ref, { once: true });
     const { theme, systemTheme } = useTheme();
 
     useScrollEffect(ref);
-
-    const scrollToAbout = useCallback(() => {
-        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-    }, []);
 
     const currentTheme = theme === 'system' ? systemTheme : theme;
     const isDark = currentTheme === 'dark';

@@ -1,9 +1,10 @@
 "use client";
 
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
 import { workExperienceData } from '@/data/workContent';
 import { Timeline } from './Timeline';
+import { SectionHeader } from '../shared/SectionHeader';
 
 const WorkExperience: React.FC = () => {
     const reduceMotionPreference = useReducedMotion();
@@ -14,18 +15,13 @@ const WorkExperience: React.FC = () => {
             id="work"
             className="py-24 md:py-32 w-full bg-background text-foreground"
         >
-            <div className="container mx-auto px-6 max-w-5xl">
+            <div className="container mx-auto px-6 max-w-7xl">
                 {/* Header - Matching About Section Style */}
-                <motion.div 
-                    className="w-full flex justify-between items-end mb-16 border-b border-border pb-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <span className="font-playfair italic text-3xl md:text-4xl text-foreground">03.</span>
-                    <span className="font-mono text-xs md:text-sm uppercase tracking-widest opacity-50 text-muted-foreground">Work Experience</span>
-                </motion.div>
+                <SectionHeader 
+                    number="03." 
+                    title="Work Experience" 
+                    className="mb-16" 
+                />
 
                 {/* Content */}
                 <Timeline
