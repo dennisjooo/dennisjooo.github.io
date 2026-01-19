@@ -9,12 +9,15 @@ export const metadata: Metadata = {
 
 export default function ProjectsAndCertificationsPage() {
     return (
-        <section
-            id='projects-and-certifications'
-            className='flex flex-col min-h-screen py-16 text-gray-900 dark:text-white'
-        >
-            <BlogsTabs />
+        <main className="min-h-screen bg-background text-foreground">
+            <section
+                id='projects-and-certifications'
+                className='flex flex-col py-8 md:py-12'
+            >
+                <BlogsTabs />
+            </section>
+            
             <BackToTop />
-        </section>
+        </main>
     );
 }

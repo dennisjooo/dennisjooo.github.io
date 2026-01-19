@@ -6,13 +6,12 @@ import TabSwitcher from "@/components/projects/TabSwitcher";
 import { tabContentVariants } from "@/lib/animations/variants";
 import { useTabState } from "@/lib/hooks/useTabState";
 import { AnimatePresence, motion } from "framer-motion";
-import GradientUnderline from '@/components/shared/GradientUnderline';
+import { BlogsHero } from "@/components/blogs";
 
 import { projects } from "@/data/blogs";
 import { certifications } from "@/data/certificationContent";
 import { TabType } from "./TabSwitcher";
-import { useMemo } from "react";
-import { useEffect } from "react";
+import { useMemo, useEffect } from "react";
 
 export function BlogsTabs() {
     const { activeTab, setActiveTab, mounted } = useTabState();
@@ -31,31 +30,22 @@ export function BlogsTabs() {
         }
     }, [mounted, activeTab, availableTabs, setActiveTab]);
 
-    const tabCaptions: Record<TabType, string> = {
-        blog: "Projects, tutorials, and experiments I've been building and writing about.",
-        certifications: "Professional certifications and credentials that validate my expertise."
-    };
-
     return (
         <div
-            className={`container max-w-7xl mx-auto px-8 pt-16 transition-opacity duration-300 ${mounted ? "opacity-100" : "opacity-0"
+            className={`container max-w-7xl mx-auto px-6 pt-24 md:pt-20 transition-opacity duration-300 ${mounted ? "opacity-100" : "opacity-0"
                 }`}
         >
-            <h1 className="text-3xl md:text-4xl mb-6 text-center font-bold text-gray-900 dark:text-white">
-                <GradientUnderline>
-                    Blog & Certifications
-                </GradientUnderline>
-            </h1>
-            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto mb-12 leading-relaxed">
-                {tabCaptions[activeTab]}
-            </p>
+            {/* Editorial Hero Section */}
+            <BlogsHero activeTab={activeTab} />
 
+            {/* Tab Navigation */}
             {availableTabs.length > 0 && (
                 <TabSwitcher activeTab={activeTab} onTabChange={setActiveTab} tabs={availableTabs} />
             )}
 
+            {/* Content Grid */}
             {availableTabs.length > 0 && (
-                <div className="max-w-7xl mx-auto min-h-[50vh] mt-8">
+                <div className="w-full min-h-[50vh] mt-12">
                     {mounted ? (
                         <AnimatePresence mode="wait">
                             {activeTab === "blog" ? (
