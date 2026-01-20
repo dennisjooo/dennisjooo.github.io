@@ -22,7 +22,7 @@ const Skills: React.FC = () => {
                         <div key={category.title} className="relative group border-b border-border/30 overflow-hidden">
                             {/* Category Label */}
                             <div className="absolute top-3 left-4 md:left-8 z-10 pointer-events-none">
-                                <span className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground/60">
+                                <span className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground">
                                     {category.title}
                                 </span>
                             </div>

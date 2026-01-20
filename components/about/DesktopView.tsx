@@ -33,8 +33,8 @@ export const DesktopView: React.FC<DesktopViewProps> = ({ contentSections, scrol
                     animate="visible"
                     transition={{ duration: 0.6, delay: 0.6 }}
                 >
-                    <h3 className="font-playfair italic text-3xl text-foreground">Dennis Jonathan</h3>
-                    <p className="font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">
+                    <p className="font-playfair italic text-3xl text-foreground">Dennis Jonathan</p>
+                    <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                         Developer & Problem Solver
                     </p>
                 </motion.div>
