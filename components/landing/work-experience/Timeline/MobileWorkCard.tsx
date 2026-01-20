@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { memo } from 'react';
 import Image from 'next/image';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { CompanyGroup } from '@/lib/utils/workExperience';
@@ -13,7 +13,7 @@ interface MobileWorkCardProps {
     onToggle: () => void;
 }
 
-export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
+export const MobileWorkCard: React.FC<MobileWorkCardProps> = memo(({
     group,
     index,
     isExpanded,
@@ -29,15 +29,15 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
             className="relative p-px"
             style={{ zIndex: isExpanded ? 10 : 1 }}
         >
-            {/* Gradient Border - Only visible when expanded (no blur for performance) */}
+            {/* Gradient Border - Only visible when expanded */}
             <div
-                className={`absolute inset-0 bg-gradient-accent rounded-2xl transition-opacity duration-200 ${isExpanded ? 'opacity-100' : 'opacity-0'
+                className={`absolute inset-0 bg-gradient-accent rounded-2xl ${isExpanded ? 'opacity-100' : 'opacity-0'
                     }`}
             />
 
             {/* Card Container */}
             <div
-                className={`relative bg-background rounded-[15px] overflow-hidden transition-shadow duration-200 ${isExpanded
+                className={`relative bg-background rounded-[15px] overflow-hidden ${isExpanded
                     ? 'shadow-xl'
                     : 'border border-foreground/5 shadow-lg'
                     }`}
@@ -55,13 +55,10 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
                             0{index + 1}.
                         </span>
 
-                        {/* Expand Indicator - Using CSS transform instead of Framer Motion */}
+                        {/* Expand Indicator */}
                         <div
-                            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ease-out ${isExpanded ? 'bg-foreground/10' : 'bg-foreground/5'
+                            className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-150 ${isExpanded ? 'bg-foreground/10 rotate-180' : 'bg-foreground/5 rotate-0'
                                 }`}
-                            style={{
-                                transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                            }}
                         >
                             <ChevronDownIcon className="w-5 h-5 text-muted-foreground" />
                         </div>
@@ -73,7 +70,7 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
                             src={group.logo}
                             alt={group.companyName}
                             fill
-                            className={`object-contain object-left transition-[opacity,filter] duration-200 ${isExpanded ? 'opacity-100 grayscale-0' : 'opacity-70 grayscale'
+                            className={`object-contain object-left ${isExpanded ? 'opacity-100' : 'opacity-60 grayscale'
                                 }`}
                         />
                     </div>
@@ -112,16 +109,13 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
 
                 {/* Expandable Content - Using CSS grid for smooth height animation */}
                 <div
-                    className="grid transition-[grid-template-rows] duration-200 ease-out"
+                    className="grid transition-[grid-template-rows] duration-150 ease-out"
                     style={{
                         gridTemplateRows: isExpanded ? '1fr' : '0fr',
                     }}
                 >
                     <div className="overflow-hidden">
-                        <div
-                            className={`relative z-10 px-6 pb-6 space-y-4 transition-opacity duration-200 ${isExpanded ? 'opacity-100' : 'opacity-0'
-                                }`}
-                        >
+                        <div className="relative z-10 px-6 pb-6 space-y-4">
                             {/* Divider */}
                             <div className="w-full h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
 
@@ -139,4 +133,6 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
             </div>
         </div>
     );
-};
+});
+
+MobileWorkCard.displayName = 'MobileWorkCard';

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { TimelineItemData } from '@/data/workContent';
 import { groupItemsByCompany } from '@/lib/utils/workExperience';
 import { MobileWorkCard } from './MobileWorkCard';
@@ -10,14 +10,15 @@ interface MobileTimelineProps {
 }
 
 export const MobileTimeline: React.FC<MobileTimelineProps> = ({ items }) => {
-    const groupedItems = groupItemsByCompany(items);
+    // Memoize grouped items to avoid recalculation on every render
+    const groupedItems = useMemo(() => groupItemsByCompany(items), [items]);
     
     // Track which company card is expanded (default: first one)
     const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
-    const handleToggle = (index: number) => {
-        setExpandedIndex(expandedIndex === index ? null : index);
-    };
+    const handleToggle = useCallback((index: number) => {
+        setExpandedIndex(prev => prev === index ? null : index);
+    }, []);
 
     return (
         <div className="md:hidden w-full px-5 py-12">

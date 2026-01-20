@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { TimelineItemData } from '@/data/workContent';
 
 interface MobileRoleProps {
@@ -8,7 +8,7 @@ interface MobileRoleProps {
     isLast: boolean;
 }
 
-export const MobileRole: React.FC<MobileRoleProps> = ({ role, isLast }) => {
+export const MobileRole: React.FC<MobileRoleProps> = memo(({ role, isLast }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const INITIAL_COUNT = 2;
     const initialItems = role.responsibilities.slice(0, INITIAL_COUNT);
@@ -41,13 +41,13 @@ export const MobileRole: React.FC<MobileRoleProps> = ({ role, isLast }) => {
                 
                 {/* Expandable items using CSS grid for smooth height animation */}
                 <div
-                    className="grid transition-[grid-template-rows] duration-200 ease-out"
+                    className="grid transition-[grid-template-rows] duration-150 ease-out"
                     style={{
                         gridTemplateRows: isExpanded ? '1fr' : '0fr',
                     }}
                 >
                     <div className="overflow-hidden">
-                        <div className={`space-y-2 transition-opacity duration-150 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>
+                        <div className="space-y-2">
                             {expandedItems.map((resp, respIndex) => (
                                 <li
                                     key={`expanded-${respIndex}`}
@@ -72,10 +72,7 @@ export const MobileRole: React.FC<MobileRoleProps> = ({ role, isLast }) => {
                     className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors pt-1"
                 >
                     <span>{isExpanded ? 'Show Less' : 'Show More'}</span>
-                    <span 
-                        className="transition-transform duration-200"
-                        style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                    >
+                    <span className={`transition-transform duration-150 ${isExpanded ? 'rotate-180' : 'rotate-0'}`}>
                         ↓
                     </span>
                 </button>
@@ -89,4 +86,6 @@ export const MobileRole: React.FC<MobileRoleProps> = ({ role, isLast }) => {
             )}
         </div>
     );
-};
+});
+
+MobileRole.displayName = 'MobileRole';
