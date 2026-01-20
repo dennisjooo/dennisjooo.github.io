@@ -37,18 +37,22 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
     if (headings.length === 0) return null;
 
     return (
-        <div className="fixed right-6 inset-y-0 z-10 hidden 2xl:flex items-center">
+        <div className="fixed right-6 inset-y-0 z-10 hidden lg:flex items-center">
             <motion.nav
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="relative"
+                className={`relative p-3 rounded-2xl transition-all duration-300 ${
+                    isHovered 
+                        ? 'bg-muted/80 backdrop-blur-md border border-border shadow-lg' 
+                        : 'bg-transparent border border-transparent'
+                }`}
             >
                 {/* Label */}
                 <motion.span
-                    className="absolute -top-8 left-0 font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
+                    className="absolute -top-8 left-0 font-mono text-[10px] uppercase tracking-widest text-muted-foreground pl-3"
                     style={{
                         opacity: isHovered ? 1 : 0,
                         transition: 'opacity 0.3s ease'
@@ -100,14 +104,13 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
 
                                     {/* Text label (shown on hover) */}
                                     <span
-                                        className={`font-urbanist text-sm whitespace-nowrap transition-all duration-300 ease-in-out ${isActive
+                                        className={`font-urbanist text-sm truncate transition-all duration-300 ease-in-out ${isActive
                                             ? 'text-accent font-medium'
                                             : 'text-muted-foreground group-hover:text-foreground'
                                             }`}
                                         style={{
                                             maxWidth: isHovered ? '250px' : '0px',
                                             opacity: isHovered ? 1 : 0,
-                                            overflow: 'hidden'
                                         }}
                                     >
                                         {heading.text}
