@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { CompanyGroup } from '@/lib/utils/workExperience';
+import { MobileRole } from './MobileRole';
 
 interface MobileWorkCardProps {
     group: CompanyGroup;
@@ -147,7 +148,7 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
                 >
                     <div className="overflow-hidden">
                         <div
-                            className={`relative z-10 px-6 pb-6 space-y-8 transition-opacity duration-200 ${isExpanded ? 'opacity-100' : 'opacity-0'
+                            className={`relative z-10 px-6 pb-6 space-y-4 transition-opacity duration-200 ${isExpanded ? 'opacity-100' : 'opacity-0'
                                 }`}
                         >
                             {/* Divider */}
@@ -155,40 +156,11 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
 
                             {/* Roles - No staggered animations for better performance */}
                             {group.roles.map((role, roleIndex) => (
-                                <div
-                                    key={role.id}
-                                    className="space-y-4"
-                                >
-                                    {/* Role Header */}
-                                    <div className="space-y-1">
-                                        <h4 className="text-xl font-urbanist font-bold uppercase tracking-tight text-foreground">
-                                            {role.title}
-                                        </h4>
-                                        <span className="font-mono text-xs tracking-widest uppercase text-muted-foreground/60 bg-foreground/5 px-2 py-1 rounded inline-block">
-                                            {role.date}
-                                        </span>
-                                    </div>
-
-                                    {/* Responsibilities */}
-                                    <ul className="space-y-3">
-                                        {role.responsibilities.map((resp, respIndex) => (
-                                            <li
-                                                key={respIndex}
-                                                className="flex items-start text-sm font-light text-muted-foreground leading-relaxed"
-                                            >
-                                                <span className="mr-3 mt-2 w-1 h-1 rounded-full bg-foreground/40 shrink-0" />
-                                                <span>{resp}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-
-                                    {/* Role Divider (not for last role) */}
-                                    {roleIndex < group.roles.length - 1 && (
-                                        <div className="pt-4">
-                                            <div className="w-12 h-px bg-foreground/10" />
-                                        </div>
-                                    )}
-                                </div>
+                                <MobileRole 
+                                    key={role.id} 
+                                    role={role} 
+                                    isLast={roleIndex === group.roles.length - 1} 
+                                />
                             ))}
                         </div>
                     </div>
