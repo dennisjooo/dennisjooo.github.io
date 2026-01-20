@@ -7,11 +7,10 @@ import { TimelineRole } from './TimelineRole';
 
 interface TimelineGroupProps {
     group: CompanyGroup;
-    index: number;
     isLast: boolean;
 }
 
-export const TimelineGroup: React.FC<TimelineGroupProps> = ({ group, index, isLast }) => {
+export const TimelineGroup: React.FC<TimelineGroupProps> = ({ group, isLast }) => {
     return (
         <div className={`group relative w-full ${!isLast ? 'mb-0' : ''}`}>
             {/* Desktop Layout: Grid */}
