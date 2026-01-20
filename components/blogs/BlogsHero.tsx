@@ -13,7 +13,7 @@ const tabCaptions: Record<'blog' | 'certifications', string> = {
 };
 
 export const BlogsHero = ({ activeTab }: BlogsHeroProps) => (
-    <div className="w-full mb-12 md:mb-20">
+    <div className="w-full mb-10">
         {/* Standard Section Header */}
         <SectionHeader 
             number="" 

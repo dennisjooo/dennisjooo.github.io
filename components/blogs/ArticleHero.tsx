@@ -67,7 +67,7 @@ export const ArticleHero = ({
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-urbanist font-black text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-foreground mb-6"
+                className="font-playfair italic text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-foreground mb-6"
             >
                 {title}
             </motion.h1>

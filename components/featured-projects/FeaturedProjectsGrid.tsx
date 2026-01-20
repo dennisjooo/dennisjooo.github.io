@@ -3,7 +3,7 @@
 import { createUrlSlug } from '@/lib/utils/urlHelpers';
 import { formatProjectDate } from '@/lib/utils/projectFormatting';
 import { Blog } from '@/data/blogs/types';
-import { FeaturedProjectCard } from './FeaturedProjectCard';
+import { ContentCard } from '@/components/shared';
 
 interface FeaturedProjectsGridProps {
     projects: Blog[];
@@ -16,13 +16,14 @@ export const FeaturedProjectsGrid: React.FC<FeaturedProjectsGridProps> = ({ proj
                 key={`${title}_${date}`}
                 className="w-full"
             >
-                <FeaturedProjectCard
+                <ContentCard
                     title={title}
                     description={description}
                     slug={createUrlSlug(title)}
                     date={formatProjectDate(date, true)}
                     imageUrl={imageUrl}
                     index={index}
+                    variant="featured"
                 />
             </div>
         ))}

@@ -6,3 +6,4 @@ export { default as Footer } from './Footer';
 export { BlinkingCursor } from './BlinkingCursor';
 export { SmoothScroll } from './SmoothScroll';
 export * from './SectionHeader';
+export * from './ContentCard';
