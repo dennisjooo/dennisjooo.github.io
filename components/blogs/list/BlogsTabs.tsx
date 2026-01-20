@@ -1,12 +1,12 @@
 "use client";
 
-import CertificationsList from "@/components/projects/CertificationsList";
-import ProjectsList from "@/components/projects/ProjectsList";
-import TabSwitcher from "@/components/projects/TabSwitcher";
+import CertificationsList from "./CertificationsList";
+import ProjectsList from "./ProjectsList";
+import TabSwitcher from "./TabSwitcher";
 import { tabContentVariants } from "@/lib/animations/variants";
 import { useTabState } from "@/lib/hooks/useTabState";
 import { AnimatePresence, motion } from "framer-motion";
-import { BlogsHero } from "@/components/blogs";
+import { BlogsHero } from "./BlogsHero";
 
 import { projects } from "@/data/blogs";
 import { certifications } from "@/data/certificationContent";

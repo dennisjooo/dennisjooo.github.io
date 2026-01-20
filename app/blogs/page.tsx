@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { BackToTop } from '@/components/shared';
-import { BlogsTabs } from '@/components/projects/BlogsTabs';
+import { BlogsTabs } from '@/components/blogs/list/BlogsTabs';
 
 export const metadata: Metadata = {
     title: "Blog & Certifications | Dennis' Portfolio",

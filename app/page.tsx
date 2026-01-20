@@ -1,4 +1,4 @@
-import Hero from '@/components/hero';
+import Hero from '@/components/landing/hero';
 import { projects } from '@/data/blogs';
 import dynamic from 'next/dynamic';
 import { HomeClient } from './HomeClient';
@@ -10,21 +10,21 @@ const SectionSkeleton = ({ height = "min-h-screen" }: { height?: string }) => (
 
 // Dynamic imports - prioritized by visibility order
 // About comes right after Hero, so we load it with higher priority
-const About = dynamic(() => import('@/components/about'), {
+const About = dynamic(() => import('@/components/landing/about'), {
     loading: () => <SectionSkeleton />
 });
 
 // Below-the-fold content - lower priority
-const WorkExperience = dynamic(() => import('@/components/work-experience'), {
+const WorkExperience = dynamic(() => import('@/components/landing/work-experience'), {
     loading: () => <SectionSkeleton />
 });
-const FeaturedProjects = dynamic(() => import('@/components/featured-projects'), {
+const FeaturedProjects = dynamic(() => import('@/components/landing/featured-projects'), {
     loading: () => <SectionSkeleton />
 });
-const Skills = dynamic(() => import('@/components/skills'), {
+const Skills = dynamic(() => import('@/components/landing/skills'), {
     loading: () => <SectionSkeleton height="min-h-[50vh]" />
 });
-const Contacts = dynamic(() => import('@/components/contacts'), {
+const Contacts = dynamic(() => import('@/components/landing/contacts'), {
     loading: () => <SectionSkeleton height="min-h-[50vh]" />
 });
 

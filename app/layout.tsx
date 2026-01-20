@@ -1,5 +1,5 @@
-import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/shared/Footer";
+import Navbar from "@/components/layout/navbar/Navbar";
+import Footer from "@/components/layout/Footer";
 import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
 import { Urbanist, Roboto_Mono, Playfair_Display } from "next/font/google";

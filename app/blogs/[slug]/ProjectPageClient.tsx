@@ -1,9 +1,9 @@
 'use client';
 
-import ProjectLinks from '@/components/projects/ProjectLinks';
-import TableOfContents from '@/components/projects/TableOfContents';
+import ProjectLinks from '@/components/blogs/article/ProjectLinks';
+import TableOfContents from '@/components/blogs/article/TableOfContents';
 import { ReadingProgress } from '@/components/shared';
-import { ArticleHero } from '@/components/blogs';
+import { ArticleHero } from '@/components/blogs/article';
 import { Blog } from '@/data/blogs';
 import { PHOTO_VIEWER_CONFIG } from '@/lib/constants/photoViewer';
 import { extractHeadings } from '@/lib/utils/markdownHelpers';
@@ -13,7 +13,7 @@ import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
 import { PhotoProvider } from 'react-photo-view';
 
-const ProjectContent = dynamic(() => import('@/components/projects/ProjectContent'), {
+const ProjectContent = dynamic(() => import('@/components/blogs/article/ProjectContent'), {
     loading: () => <div className="animate-pulse bg-muted h-96 rounded-xl" />
 });
 

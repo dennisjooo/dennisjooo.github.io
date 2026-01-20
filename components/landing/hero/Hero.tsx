@@ -8,7 +8,7 @@ import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
 import { HeroContent } from './HeroContent';
 
-const Iridescence = dynamic(() => import('@/components/iridescence').then(mod => mod.Iridescence), {
+const Iridescence = dynamic(() => import('./Iridescence/Iridescence').then(mod => mod.default), {
     ssr: false,
     loading: () => <div className="h-full w-full bg-gradient-primary" />
 });

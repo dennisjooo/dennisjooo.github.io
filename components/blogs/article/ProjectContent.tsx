@@ -7,7 +7,7 @@ import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import rehypeSlug from 'rehype-slug';
-import { markdownComponents } from '@/components/markdown/MarkdownComponents';
+import { markdownComponents } from './Markdown/MarkdownComponents';
 import { scrollToCentered } from '@/lib/utils/scrollHelpers';
 import {
     HASH_SCROLL_RETRY_DELAY,

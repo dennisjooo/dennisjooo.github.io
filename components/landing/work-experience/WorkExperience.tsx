@@ -3,7 +3,7 @@
 import React from 'react';
 import { workExperienceData } from '@/data/workContent';
 import { DesktopTimeline, MobileTimeline } from './Timeline';
-import { SectionHeader } from '../shared/SectionHeader';
+import { SectionHeader } from '@/components/shared/SectionHeader';
 
 const WorkExperience: React.FC = () => {
     return (

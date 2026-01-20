@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { BurgerButton } from "@/components/navbar/BurgerButton";
-import { DesktopMenu } from "@/components/navbar/DesktopMenu";
-import { CommandMenuTrigger } from "@/components/navbar/CommandMenuTrigger";
-import { MobileMenu } from "@/components/navbar/MobileMenu";
+import { BurgerButton } from "./BurgerButton";
+import { DesktopMenu } from "./DesktopMenu";
+import { CommandMenuTrigger } from "./CommandMenuTrigger";
+import { MobileMenu } from "./MobileMenu";
 import { ThemeToggle } from "@/components/theme";
 import { navItems } from "@/data/navbarContent";
 import {

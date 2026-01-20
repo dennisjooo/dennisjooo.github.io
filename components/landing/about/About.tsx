@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { SectionHeader } from '../shared/SectionHeader';
+import { SectionHeader } from '@/components/shared/SectionHeader';
 import { MobileView } from './MobileView';
 import { DesktopView } from './DesktopView';
 import { useAboutAnimations } from '@/lib/hooks/useAboutAnimations';

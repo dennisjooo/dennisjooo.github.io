@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Dock } from '@/components/Dock';
-import { DockIcon } from '@/components/DockIcon';
+import { Dock } from './Dock/Dock';
+import { DockIconLink } from './Dock/DockIconLink';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { contactLinks } from '@/data/contactContent';
 
@@ -133,7 +133,7 @@ const Contacts: React.FC = () => {
                         <motion.div variants={itemVariants}>
                             <Dock className="mx-auto">
                                 {contactLinks.map(({ href, ariaLabel, icon }) => (
-                                    <DockIcon key={ariaLabel} href={href} ariaLabel={ariaLabel} icon={icon} />
+                                    <DockIconLink key={ariaLabel} href={href} ariaLabel={ariaLabel} icon={icon} />
                                 ))}
                             </Dock>
                         </motion.div>

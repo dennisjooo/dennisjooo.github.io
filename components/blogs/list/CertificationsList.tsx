@@ -1,5 +1,5 @@
 import { certifications } from '@/data/certificationContent';
-import { CertificationCard } from '@/components/blogs';
+import { CertificationCard } from './CertificationCard';
 
 export default function CertificationsList() {
     return (
