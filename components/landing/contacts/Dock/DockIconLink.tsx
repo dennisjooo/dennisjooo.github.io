@@ -11,7 +11,7 @@ interface DockIconLinkProps extends Partial<DockIconProps> {
 export const DockIconLink: React.FC<DockIconLinkProps> = ({ href, ariaLabel, icon, ...dockProps }) => {
     return (
         <DockIcon
-            className="bg-gradient-primary text-neutral-100 dark:mix-blend-screen dark:bg-gradient-primary backdrop-blur-sm hover:scale-110 hover:opacity-90 transition-all duration-100"
+            className="transition-all duration-200"
             {...dockProps}
         >
             <Link
@@ -19,7 +19,7 @@ export const DockIconLink: React.FC<DockIconLinkProps> = ({ href, ariaLabel, ico
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={ariaLabel}
-                className="flex items-center justify-center size-full"
+                className="flex items-center justify-center size-full text-muted-foreground hover:text-primary transition-colors duration-200"
             >
                 {icon}
             </Link>
