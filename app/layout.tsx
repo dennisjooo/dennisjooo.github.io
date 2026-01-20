@@ -1,13 +1,25 @@
 import Navbar from "@/components/layout/navbar/Navbar";
-import Footer from "@/components/layout/Footer";
 import "katex/dist/katex.min.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Urbanist, Roboto_Mono, Playfair_Display } from "next/font/google";
 import type { ReactNode } from "react";
 import dynamic from "next/dynamic";
 import "react-photo-view/dist/react-photo-view.css";
 import "./globals.css";
 import { Providers } from "./providers";
+
+// Lazy load Footer since it's always below the fold
+const Footer = dynamic(() => import("@/components/layout/Footer"));
+
+// Viewport configuration for mobile optimization
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    themeColor: [
+        { media: '(prefers-color-scheme: light)', color: '#f5f3ff' },
+        { media: '(prefers-color-scheme: dark)', color: '#000000' }
+    ],
+};
 
 // Lazy load non-critical components for better initial load performance
 const CommandPalette = dynamic(

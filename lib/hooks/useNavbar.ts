@@ -30,21 +30,38 @@ export const useHeroSectionState = (isClientReady: boolean, pathname: string): H
     useEffect(() => {
         if (!isClientReady) return;
 
-        const handleScroll = () => {
+        let rafId: number | null = null;
+        let lastScrollY = 0;
+
+        const updateState = () => {
             const heroSection = document.getElementById("home");
             const isHeroSection = heroSection
-                ? window.scrollY < heroSection.offsetTop + heroSection.offsetHeight
+                ? lastScrollY < heroSection.offsetTop + heroSection.offsetHeight
                 : false;
 
             setState({
                 isHeroSection,
-                scrolled: window.scrollY > SCROLL_THRESHOLD,
+                scrolled: lastScrollY > SCROLL_THRESHOLD,
             });
+            rafId = null;
+        };
+
+        const handleScroll = () => {
+            lastScrollY = window.scrollY;
+            // Throttle to one update per frame
+            if (rafId === null) {
+                rafId = requestAnimationFrame(updateState);
+            }
         };
 
         handleScroll();
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            if (rafId !== null) {
+                cancelAnimationFrame(rafId);
+            }
+        };
     }, [isClientReady, pathname]);
 
     return state;
@@ -112,7 +129,9 @@ export const useSectionNavigation = (
     useEffect(() => {
         if (!isClientReady || pathname !== "/") return;
 
-        const handleScroll = () => {
+        let rafId: number | null = null;
+
+        const updateSection = () => {
             const sections = ["home", "about", "skills", "contact"];
             for (const section of sections) {
                 const element = document.getElementById(section);
@@ -129,11 +148,24 @@ export const useSectionNavigation = (
                     }
                 }
             }
+            rafId = null;
+        };
+
+        const handleScroll = () => {
+            // Throttle to one update per frame
+            if (rafId === null) {
+                rafId = requestAnimationFrame(updateSection);
+            }
         };
 
         handleScroll();
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            if (rafId !== null) {
+                cancelAnimationFrame(rafId);
+            }
+        };
     }, [isClientReady, pathname]);
 
     return useCallback(

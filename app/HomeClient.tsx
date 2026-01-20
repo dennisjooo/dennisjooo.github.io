@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, type ReactNode } from 'react';
+import { useRef, useEffect, useState, type ReactNode } from 'react';
 
 interface HomeClientProps {
     heroContent: ReactNode;
@@ -10,14 +10,25 @@ interface HomeClientProps {
 
 /**
  * Minimal client wrapper for GSAP scroll animations
- * Defers GSAP loading to after initial paint for better LCP
+ * Defers GSAP loading significantly to after LCP for better mobile performance
  */
 export function HomeClient({ heroContent, mainContent, backToTop }: HomeClientProps) {
     const heroRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        // Defer GSAP initialization to after LCP
+        // Check if mobile
+        const checkMobile = window.innerWidth < 768;
+        setIsMobile(checkMobile);
+
+        // On mobile, use simpler CSS-based approach instead of GSAP for better performance
+        if (checkMobile) {
+            // Mobile: Skip GSAP animations entirely - CSS handles the sticky behavior
+            return;
+        }
+
+        // Desktop: Initialize GSAP animations after a delay
         const initAnimations = async () => {
             const [gsap, { ScrollTrigger }] = await Promise.all([
                 import('gsap').then(m => m.default),
@@ -26,48 +37,29 @@ export function HomeClient({ heroContent, mainContent, backToTop }: HomeClientPr
 
             gsap.registerPlugin(ScrollTrigger);
 
-            const mm = gsap.matchMedia();
-
-            // Mobile: Simplified animation (no blur - very expensive on mobile GPUs)
-            mm.add("(max-width: 767px)", () => {
-                gsap.to(heroRef.current, {
-                    scale: 0.97,
-                    opacity: 0.6,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: contentRef.current,
-                        start: "top 100%",
-                        end: "top 0%",
-                        scrub: 0.5, // Faster response on mobile
-                    }
-                });
-            });
-
             // Desktop: Full visual effect with blur
-            mm.add("(min-width: 768px)", () => {
-                gsap.to(heroRef.current, {
-                    scale: 0.95,
-                    opacity: 0.8,
-                    filter: "blur(5px)",
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: contentRef.current,
-                        start: "top 100%",
-                        end: "top 0%",
-                        scrub: true,
-                    }
-                });
+            gsap.to(heroRef.current, {
+                scale: 0.95,
+                opacity: 0.8,
+                filter: "blur(5px)",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: contentRef.current,
+                    start: "top 100%",
+                    end: "top 0%",
+                    scrub: true,
+                }
             });
 
-            return () => mm.revert();
+            return () => ScrollTrigger.killAll();
         };
 
-        // Use requestIdleCallback if available for better performance
+        // Use requestIdleCallback for better performance - longer timeout on desktop is fine
         if ('requestIdleCallback' in window) {
-            const id = window.requestIdleCallback(() => initAnimations(), { timeout: 1000 });
+            const id = window.requestIdleCallback(() => initAnimations(), { timeout: 2000 });
             return () => window.cancelIdleCallback(id);
         } else {
-            const timer = setTimeout(initAnimations, 100);
+            const timer = setTimeout(initAnimations, 1000);
             return () => clearTimeout(timer);
         }
     }, []);

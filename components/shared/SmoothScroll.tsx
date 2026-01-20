@@ -1,14 +1,25 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface SmoothScrollProps {
     children: ReactNode;
 }
 
 export const SmoothScroll = ({ children }: SmoothScrollProps) => {
+    const [isMobile, setIsMobile] = useState(false);
+
     useEffect(() => {
-        // Defer Lenis initialization to after first paint
+        // Check if mobile - skip smooth scroll on mobile for better performance
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+        };
+        checkMobile();
+
+        // Don't initialize Lenis on mobile - native scroll is better for performance
+        if (isMobile) return;
+
+        // Defer Lenis initialization significantly to not block LCP
         // This prevents blocking the main thread during initial load
         const initLenis = async () => {
             const [{ default: Lenis }, { default: gsap }, { ScrollTrigger }] = await Promise.all([
@@ -17,7 +28,7 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
                 import('gsap/ScrollTrigger')
             ]);
 
-            // Initialize Lenis
+            // Initialize Lenis with reduced options for better performance
             const lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -53,19 +64,32 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
             };
         };
 
-        // Use requestIdleCallback or setTimeout to defer initialization
+        // Use requestIdleCallback for better performance - defer until browser is idle
         let cleanup: (() => void) | undefined;
-        const timeoutId = setTimeout(() => {
+        
+        const startInit = () => {
             initLenis().then(cleanupFn => {
                 cleanup = cleanupFn;
             });
-        }, 100);
-
-        return () => {
-            clearTimeout(timeoutId);
-            cleanup?.();
         };
-    }, []);
+
+        // Delay initialization significantly to let LCP complete
+        // Use requestIdleCallback if available for better timing
+        if ('requestIdleCallback' in window) {
+            const idleId = window.requestIdleCallback(startInit, { timeout: 3000 });
+            return () => {
+                window.cancelIdleCallback(idleId);
+                cleanup?.();
+            };
+        } else {
+            // Fallback: 1.5 second delay
+            const timeoutId = setTimeout(startInit, 1500);
+            return () => {
+                clearTimeout(timeoutId);
+                cleanup?.();
+            };
+        }
+    }, [isMobile]);
 
     return <>{children}</>;
 };
