@@ -101,7 +101,7 @@ const Contacts: React.FC = () => {
                         {/* Main headline - Playfair italic for "Let's" */}
                         <motion.span
                             variants={wordVariants}
-                            className="font-playfair italic text-[18vw] md:text-[10vw] leading-[0.8] text-foreground mix-blend-overlay dark:mix-blend-screen select-none text-center relative"
+                            className="font-playfair italic text-[18vw] md:text-[10vw] leading-[0.8] text-foreground dark:mix-blend-screen select-none text-center relative"
                         >
                             Let&apos;s
                         </motion.span>
