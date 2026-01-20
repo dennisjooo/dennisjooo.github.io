@@ -26,7 +26,7 @@ const About: React.FC = () => {
         >
             <div
                 ref={containerRef}
-                className="h-screen w-full flex flex-col md:max-w-7xl mx-auto md:px-6 pt-24 md:pt-20"
+                className="h-screen w-full flex flex-col md:max-w-7xl mx-auto md:px-6 py-24 md:py-20"
             >
                 {/* Header */}
                 <div className="w-full px-6 md:px-0 mb-8">
