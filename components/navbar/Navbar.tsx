@@ -37,12 +37,25 @@ const Navbar = () => {
         pathname,
     });
 
+    const isGlass = bgClass === "glass-panel";
+    const borderClass = isGlass ? "border border-white/20 dark:border-white/10" : "";
+    const noiseClass = isGlass ? "bg-noise" : "";
+
+    const navbarContainerClasses = [
+        "relative flex flex-col",
+        bgClass,
+        noiseClass,
+        isMenuOpen ? "rounded-2xl" : "rounded-2xl md:rounded-full",
+        "transition-all duration-300 ease-in-out overflow-hidden",
+        borderClass
+    ].join(" ");
+
     return (
         <nav
             className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ease-in-out ${navWidth}`}
         >
             <div
-                className={`relative ${bgClass} rounded-2xl md:rounded-full transition-all duration-300 ease-in-out overflow-hidden`}
+                className={navbarContainerClasses}
             >
                 <div className="flex justify-between items-center px-4 py-3 min-h-[3rem]">
                     <BurgerButton
@@ -61,14 +74,14 @@ const Navbar = () => {
                         <ThemeToggle textColorClass={textColorClass} scrolled={scrolled} />
                     </div>
                 </div>
+                <MobileMenu
+                    navItems={navItems}
+                    isMenuOpen={isMenuOpen}
+                    onNavigate={handleNavigation}
+                    onToggle={(nextIsMenuOpen) => setIsMenuOpen(nextIsMenuOpen)}
+                    textColorClass={textColorClass}
+                />
             </div>
-            <MobileMenu
-                navItems={navItems}
-                isMenuOpen={isMenuOpen}
-                onNavigate={handleNavigation}
-                onToggle={(nextIsMenuOpen) => setIsMenuOpen(nextIsMenuOpen)}
-                textColorClass={textColorClass}
-            />
         </nav>
     );
 };

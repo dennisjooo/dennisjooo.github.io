@@ -16,7 +16,6 @@ const ITEM_BASE_CLASSES = "block w-full rounded-2xl px-5 py-3 text-xs uppercase 
 const HOVER_CLASSES = "hover:bg-black/5 dark:hover:bg-white/10";
 
 // Animation constants
-const MENU_TRANSITION = "transition-[opacity,transform] duration-300 ease-out";
 const ITEM_ANIMATION_BASE = "transition-[opacity,transform] duration-300 ease-out will-change-transform";
 
 export const MobileMenu = ({
@@ -26,15 +25,6 @@ export const MobileMenu = ({
     onNavigate,
     textColorClass,
 }: MobileMenuProps) => {
-    const containerClasses = [
-        "absolute top-full left-0 w-full mt-4 px-4 md:hidden",
-        "glass-panel rounded-3xl z-40 transform-gpu border border-white/20 dark:border-white/10 bg-noise",
-        MENU_TRANSITION,
-        "will-change-[opacity,transform]",
-        isMenuOpen
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-4 pointer-events-none",
-    ].join(" ");
 
     const handleToggleOff = () => onToggle(false);
 
@@ -55,35 +45,43 @@ export const MobileMenu = ({
     };
 
     return (
-        <div className={containerClasses} aria-hidden={!isMenuOpen}>
-            <nav aria-label="Mobile navigation" className="p-2">
-                <ul className="flex flex-col gap-1">
-                    {navItems.map((item) => {
-                        const linkClassName = `${ITEM_BASE_CLASSES} ${HOVER_CLASSES} ${textColorClass}`;
-                        const itemClassName = `${ITEM_ANIMATION_BASE} ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
-                            }`;
+        <div
+            className={`
+                md:hidden w-full transition-[grid-template-rows,padding] duration-300 ease-in-out grid
+                ${isMenuOpen ? "grid-rows-[1fr] pb-2" : "grid-rows-[0fr] pb-0"}
+            `}
+            aria-hidden={!isMenuOpen}
+        >
+            <div className="overflow-hidden">
+                <nav aria-label="Mobile navigation" className="px-2 pb-2">
+                    <ul className="flex flex-col gap-1">
+                        {navItems.map((item) => {
+                            const linkClassName = `${ITEM_BASE_CLASSES} ${HOVER_CLASSES} ${textColorClass}`;
+                            const itemClassName = `${ITEM_ANIMATION_BASE} ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+                                }`;
 
-                        return (
-                            <li key={item.id} className={itemClassName}>
-                                {item.href ? (
-                                    <Link href={item.href} onClick={handleLinkClick(item)} className={linkClassName}>
-                                        {item.label}
-                                    </Link>
-                                ) : (
-                                    <button
-                                        type="button"
-                                        onClick={handleNavigateClick(item)}
-                                        className={linkClassName}
-                                        aria-label={`Navigate to ${item.label}`}
-                                    >
-                                        {item.label}
-                                    </button>
-                                )}
-                            </li>
-                        );
-                    })}
-                </ul>
-            </nav>
+                            return (
+                                <li key={item.id} className={itemClassName}>
+                                    {item.href ? (
+                                        <Link href={item.href} onClick={handleLinkClick(item)} className={linkClassName}>
+                                            {item.label}
+                                        </Link>
+                                    ) : (
+                                        <button
+                                            type="button"
+                                            onClick={handleNavigateClick(item)}
+                                            className={linkClassName}
+                                            aria-label={`Navigate to ${item.label}`}
+                                        >
+                                            {item.label}
+                                        </button>
+                                    )}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </nav>
+            </div>
         </div>
     );
 };
