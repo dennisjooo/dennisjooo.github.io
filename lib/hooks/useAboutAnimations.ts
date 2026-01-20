@@ -36,22 +36,45 @@ export const useAboutAnimations = ({
 
             // Mobile Animation (Horizontal Scroll)
             mm.add("(max-width: 767px)", () => {
-                const mobileContainer = document.querySelector('.mobile-scroll-container');
+                const mobileContainer = document.querySelector('.mobile-scroll-container') as HTMLElement;
                 if (!mobileContainer) return;
 
                 const totalSections = 5; // Profile + 4 content sections
 
-                gsap.to(mobileContainer, {
+                // Force GPU acceleration for smoother transforms
+                gsap.set(mobileContainer, {
+                    willChange: 'transform',
+                    force3D: true
+                });
+
+                const scrollTriggerInstance = gsap.to(mobileContainer, {
                     xPercent: -(100 * (totalSections - 1) / totalSections),
                     ease: "none",
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         pin: true,
-                        scrub: 1,
-                        snap: 1 / (totalSections - 1),
+                        scrub: 0.3, // Reduced from 1 for faster touch response
+                        snap: {
+                            snapTo: 1 / (totalSections - 1),
+                            duration: { min: 0.2, max: 0.4 }, // Faster snapping
+                            ease: "power2.out",
+                            inertia: false // Disable inertia for more predictable snapping
+                        },
                         end: "+=2000",
+                        fastScrollEnd: true, // Improves snap behavior on fast swipes
+                        preventOverlaps: true,
+                        invalidateOnRefresh: true // Recalculate on resize
                     }
                 });
+
+                // Clean up will-change after animation is set up to free GPU memory
+                ScrollTrigger.addEventListener("scrollEnd", () => {
+                    gsap.set(mobileContainer, { willChange: 'auto' });
+                });
+
+                return () => {
+                    scrollTriggerInstance.scrollTrigger?.kill();
+                };
             });
 
             // Desktop Animation (3D Scroll)

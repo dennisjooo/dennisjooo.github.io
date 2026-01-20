@@ -16,8 +16,8 @@ interface MobileViewProps {
 }
 
 export const MobileView: React.FC<MobileViewProps> = ({ contentSections }) => (
-    <div className="md:hidden w-full h-full overflow-hidden">
-        <div className="mobile-scroll-container flex w-[500%] h-full">
+    <div className="md:hidden w-full h-full overflow-hidden touch-pan-y">
+        <div className="mobile-scroll-container flex w-[500%] h-full transform-gpu backface-hidden">
             {/* Card 1: Profile */}
             <div className="w-screen h-full flex flex-col justify-center items-center px-8 relative">
                 <span className="absolute top-32 font-mono text-xs uppercase tracking-widest opacity-50 text-muted-foreground">

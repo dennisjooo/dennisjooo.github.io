@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useMotionValue, useSpring, useTransform, MotionValue } from 'framer-motion';
 
 interface ParallaxConfig {
@@ -53,19 +53,44 @@ export function useParallax(config: ParallaxConfig = {}): ParallaxResult {
     const bgY = useTransform(springY, [-0.5, 0.5], backgroundRange);
 
     const [mounted, setMounted] = useState(false);
+    const rafId = useRef<number | null>(null);
+    const lastMousePos = useRef({ x: 0, y: 0 });
+
+    // Throttled update using RAF for smoother performance on mid-tier devices
+    const updateMousePosition = useCallback(() => {
+        mouseX.set(lastMousePos.current.x);
+        mouseY.set(lastMousePos.current.y);
+        rafId.current = null;
+    }, [mouseX, mouseY]);
 
     useEffect(() => {
         setMounted(true);
 
+        // Disable parallax on touch devices for better performance
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouchDevice) return;
+
         const handleMouseMove = (e: MouseEvent) => {
             const { innerWidth, innerHeight } = window;
-            mouseX.set(e.clientX / innerWidth - 0.5);
-            mouseY.set(e.clientY / innerHeight - 0.5);
+            lastMousePos.current = {
+                x: e.clientX / innerWidth - 0.5,
+                y: e.clientY / innerHeight - 0.5
+            };
+
+            // Throttle updates to once per frame
+            if (rafId.current === null) {
+                rafId.current = requestAnimationFrame(updateMousePosition);
+            }
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, [mouseX, mouseY]);
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            if (rafId.current !== null) {
+                cancelAnimationFrame(rafId.current);
+            }
+        };
+    }, [mouseX, mouseY, updateMousePosition]);
 
     return {
         mounted,

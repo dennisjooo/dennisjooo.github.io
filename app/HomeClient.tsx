@@ -26,19 +26,40 @@ export function HomeClient({ heroContent, mainContent, backToTop }: HomeClientPr
 
             gsap.registerPlugin(ScrollTrigger);
 
-            // Visual effect for the Hero as it gets covered
-            gsap.to(heroRef.current, {
-                scale: 0.95,
-                opacity: 0.8,
-                filter: "blur(5px)",
-                ease: "none",
-                scrollTrigger: {
-                    trigger: contentRef.current,
-                    start: "top 100%",
-                    end: "top 0%",
-                    scrub: true,
-                }
+            const mm = gsap.matchMedia();
+
+            // Mobile: Simplified animation (no blur - very expensive on mobile GPUs)
+            mm.add("(max-width: 767px)", () => {
+                gsap.to(heroRef.current, {
+                    scale: 0.97,
+                    opacity: 0.6,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: contentRef.current,
+                        start: "top 100%",
+                        end: "top 0%",
+                        scrub: 0.5, // Faster response on mobile
+                    }
+                });
             });
+
+            // Desktop: Full visual effect with blur
+            mm.add("(min-width: 768px)", () => {
+                gsap.to(heroRef.current, {
+                    scale: 0.95,
+                    opacity: 0.8,
+                    filter: "blur(5px)",
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: contentRef.current,
+                        start: "top 100%",
+                        end: "top 0%",
+                        scrub: true,
+                    }
+                });
+            });
+
+            return () => mm.revert();
         };
 
         // Use requestIdleCallback if available for better performance
