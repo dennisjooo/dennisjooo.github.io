@@ -18,7 +18,6 @@ export const DesktopTimeline: React.FC<DesktopTimelineProps> = ({ items }) => {
                 <TimelineGroup
                     key={index}
                     group={group}
-                    index={index}
                     isLast={index === groupedItems.length - 1}
                 />
             ))}
