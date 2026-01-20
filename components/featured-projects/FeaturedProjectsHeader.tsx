@@ -26,7 +26,7 @@ export const FeaturedProjectsHeader = () => (
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="font-playfair italic text-4xl md:text-6xl ml-2 md:ml-12 mb-[-2vw] md:mb-[-3vw] relative z-20 text-foreground"
+                    className="font-playfair italic text-7xl md:text-9xl ml-2 md:ml-12 mb-[-3vw] md:mb-[-4vw] relative z-20 text-foreground"
                 >
                     Selected
                 </motion.span>

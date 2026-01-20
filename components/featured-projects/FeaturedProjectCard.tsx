@@ -26,15 +26,21 @@ export const FeaturedProjectCard = ({
         <Link href={`/blogs/${slug}`} className="block group w-full cursor-pointer h-full">
             <motion.div
                 className="flex flex-col gap-4 h-full"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ 
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 20,
+                    delay: index * 0.2 
+                }}
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ y: -12 }}
             >
                 {/* Card Wrapper for Glow */}
                 <div className="relative w-full aspect-[4/3]">
                     {/* Gradient Glow */}
-                    <div className="absolute -inset-1 bg-gradient-accent rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500" />
+                    <div className="absolute -inset-1 bg-gradient-accent rounded-lg opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500" />
                     
                     {/* Image Container - Poster Style */}
                     <div className="relative w-full h-full bg-muted overflow-hidden rounded-md border border-border">
@@ -51,7 +57,7 @@ export const FeaturedProjectCard = ({
                             src={imageUrl}
                             alt={title}
                             fill
-                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                             sizes="(max-width: 768px) 100vw, 33vw"
                         />
                     ) : (
