@@ -60,8 +60,8 @@ export const useAboutAnimations = ({
                             ease: "power2.out",
                             inertia: false // Disable inertia for more predictable snapping
                         },
-                        end: "+=2000",
-                        fastScrollEnd: true, // Improves snap behavior on fast swipes
+                        end: "+=4000",
+                        fastScrollEnd: false, // Improves snap behavior on fast swipes
                         preventOverlaps: true,
                         invalidateOnRefresh: true // Recalculate on resize
                     }
