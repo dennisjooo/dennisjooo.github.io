@@ -38,7 +38,6 @@ const Navbar = () => {
     });
 
     const isGlass = bgClass === "glass-panel";
-    const borderClass = isGlass ? "border border-white/20 dark:border-white/10" : "";
     const noiseClass = isGlass ? "bg-noise" : "";
 
     const navbarContainerClasses = [
@@ -46,8 +45,7 @@ const Navbar = () => {
         bgClass,
         noiseClass,
         isMenuOpen ? "rounded-2xl" : "rounded-2xl md:rounded-full",
-        "transition-all duration-300 ease-in-out overflow-hidden",
-        borderClass
+        "transition-all duration-300 ease-in-out overflow-hidden"
     ].join(" ");
 
     return (
