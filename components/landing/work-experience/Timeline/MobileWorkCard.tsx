@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { CompanyGroup } from '@/lib/utils/workExperience';
 import { MobileRole } from './MobileRole';
@@ -26,48 +25,23 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
         : group.roles[0].date;
 
     return (
-        <motion.div
-            className="relative"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: [0.25, 0.1, 0.25, 1],
-            }}
+        <div
+            className="relative p-px"
             style={{ zIndex: isExpanded ? 10 : 1 }}
         >
-            {/* Gradient Glow - Only visible when expanded */}
+            {/* Gradient Border - Only visible when expanded (no blur for performance) */}
             <div
-                className={`absolute -inset-1 bg-gradient-accent rounded-2xl blur-lg transition-opacity duration-300 ${isExpanded ? 'opacity-50' : 'opacity-0'
+                className={`absolute inset-0 bg-gradient-accent rounded-2xl transition-opacity duration-200 ${isExpanded ? 'opacity-100' : 'opacity-0'
                     }`}
             />
 
-            {/* Gradient Border - Only visible when expanded */}
+            {/* Card Container */}
             <div
-                className={`absolute -inset-px bg-gradient-accent rounded-2xl transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'
+                className={`relative bg-background rounded-[15px] overflow-hidden transition-shadow duration-200 ${isExpanded
+                    ? 'shadow-xl'
+                    : 'border border-foreground/5 shadow-lg'
                     }`}
-            />
-
-            {/* Card Container - Using CSS transitions instead of Framer Motion for performance */}
-            <div
-                className={`relative bg-background rounded-2xl overflow-hidden transition-shadow duration-300 ${isExpanded
-                        ? 'shadow-xl'
-                        : 'border border-foreground/5 shadow-lg'
-                    }`}
-                style={{
-                    margin: isExpanded ? '1px' : '0',
-                    willChange: 'auto',
-                }}
             >
-                {/* Noise Overlay */}
-                <div
-                    className="absolute inset-0 z-0 pointer-events-none opacity-20 mix-blend-overlay"
-                    style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-                    }}
-                />
 
                 {/* Card Header - Clickable */}
                 <button
@@ -99,11 +73,8 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
                             src={group.logo}
                             alt={group.companyName}
                             fill
-                            className={`object-contain object-left transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-70'
+                            className={`object-contain object-left transition-[opacity,filter] duration-200 ${isExpanded ? 'opacity-100 grayscale-0' : 'opacity-70 grayscale'
                                 }`}
-                            style={{
-                                filter: isExpanded ? 'grayscale(0)' : 'grayscale(1)',
-                            }}
                         />
                     </div>
 
@@ -156,16 +127,16 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
 
                             {/* Roles - No staggered animations for better performance */}
                             {group.roles.map((role, roleIndex) => (
-                                <MobileRole 
-                                    key={role.id} 
-                                    role={role} 
-                                    isLast={roleIndex === group.roles.length - 1} 
+                                <MobileRole
+                                    key={role.id}
+                                    role={role}
+                                    isLast={roleIndex === group.roles.length - 1}
                                 />
                             ))}
                         </div>
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 };

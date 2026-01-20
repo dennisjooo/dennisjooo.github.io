@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { TimelineItemData } from '@/data/workContent';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface MobileRoleProps {
     role: TimelineItemData;
@@ -40,21 +39,27 @@ export const MobileRole: React.FC<MobileRoleProps> = ({ role, isLast }) => {
                     </li>
                 ))}
                 
-                <AnimatePresence>
-                    {isExpanded && expandedItems.map((resp, respIndex) => (
-                        <motion.li
-                            key={`expanded-${respIndex}`}
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="flex items-start text-sm font-light text-muted-foreground leading-relaxed overflow-hidden"
-                        >
-                            <span className="mr-3 mt-2 w-1 h-1 rounded-full bg-foreground/40 shrink-0" />
-                            <span>{resp}</span>
-                        </motion.li>
-                    ))}
-                </AnimatePresence>
+                {/* Expandable items using CSS grid for smooth height animation */}
+                <div
+                    className="grid transition-[grid-template-rows] duration-200 ease-out"
+                    style={{
+                        gridTemplateRows: isExpanded ? '1fr' : '0fr',
+                    }}
+                >
+                    <div className="overflow-hidden">
+                        <div className={`space-y-2 transition-opacity duration-150 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>
+                            {expandedItems.map((resp, respIndex) => (
+                                <li
+                                    key={`expanded-${respIndex}`}
+                                    className="flex items-start text-sm font-light text-muted-foreground leading-relaxed"
+                                >
+                                    <span className="mr-3 mt-2 w-1 h-1 rounded-full bg-foreground/40 shrink-0" />
+                                    <span>{resp}</span>
+                                </li>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </ul>
 
             {/* Read More Button */}
@@ -67,7 +72,10 @@ export const MobileRole: React.FC<MobileRoleProps> = ({ role, isLast }) => {
                     className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors pt-1"
                 >
                     <span>{isExpanded ? 'Show Less' : 'Show More'}</span>
-                    <span className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180' : 'rotate-0'}`}>
+                    <span 
+                        className="transition-transform duration-200"
+                        style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                    >
                         ↓
                     </span>
                 </button>
