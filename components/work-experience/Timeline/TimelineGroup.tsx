@@ -1,16 +1,9 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { TimelineItemData } from '@/data/workContent';
-import { CompanyHeaderMobile, CompanyHeaderDesktop } from './CompanyHeader';
+import { CompanyGroup } from '@/lib/utils/workExperience';
+import { CompanyHeader } from './CompanyHeader';
 import { TimelineRole } from './TimelineRole';
-
-export interface CompanyGroup {
-    companyName: string;
-    logo: string;
-    roles: TimelineItemData[];
-}
 
 interface TimelineGroupProps {
     group: CompanyGroup;
@@ -20,41 +13,28 @@ interface TimelineGroupProps {
 
 export const TimelineGroup: React.FC<TimelineGroupProps> = ({ group, index, isLast }) => {
     return (
-        <motion.div
-            className={`group relative ${index > 0 ? 'border-t border-foreground/10' : ''} md:border-t-0 py-12 md:py-0 md:grid md:grid-cols-12 md:gap-12`}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-            {/* Left Column: Sticky Company Header (Desktop) */}
-            <div className={`md:col-span-4 lg:col-span-4 relative md:text-right md:pr-12 md:border-r md:border-foreground/10 md:py-16 ${index === 0 ? 'md:pt-0' : ''} ${isLast ? 'md:pb-0' : ''}`}>
-                <div className="sticky top-32 flex flex-col md:items-end gap-6 mb-8 md:mb-0">
-                    {/* Mobile: Company Header inline */}
-                    <CompanyHeaderMobile
-                        companyName={group.companyName}
-                        logo={group.logo}
-                    />
+        <div className={`group relative w-full ${!isLast ? 'mb-0' : ''}`}>
+            {/* Desktop Layout: Grid */}
+            <div className="hidden md:grid md:grid-cols-12 md:gap-16 min-h-[50vh]">
+                {/* Left Column: Sticky Header */}
+                <div className="col-span-5 relative">
+                    <div className="sticky will-change-transform top-32 flex flex-col items-end pb-20">
+                        <CompanyHeader companyName={group.companyName} logo={group.logo} />
 
-                    {/* Desktop: Sticky Content */}
-                    <CompanyHeaderDesktop
-                        companyName={group.companyName}
-                        logo={group.logo}
-                    />
+                        {/* Decorative Dot */}
+                        <div className="absolute right-[-4.5rem] top-6 w-4 h-4 rounded-full bg-background border-2 border-foreground group-hover:bg-foreground transition-colors duration-500 z-10 hidden lg:block" />
+                    </div>
                 </div>
 
-                {/* Timeline Dot (Desktop only) */}
-                <div className={`hidden md:block absolute right-[-6.5px] w-3 h-3 rounded-full bg-background border border-foreground/30 group-hover:bg-foreground group-hover:border-foreground transition-colors duration-500 z-10 ${index === 0 ? 'top-[3.5rem]' : 'top-[7.5rem]'}`} />
-            </div>
-
-            {/* Right Column: Roles & Content */}
-            <div className={`md:col-span-8 lg:col-span-8 pt-0 md:py-16 md:mt-4 ${index === 0 ? 'md:pt-0' : ''} ${isLast ? 'md:pb-0' : ''}`}>
-                <div className="flex flex-col space-y-12 md:space-y-16">
-                    {group.roles.map((role) => (
-                        <TimelineRole key={role.id} role={role} />
-                    ))}
+                {/* Right Column: Content */}
+                <div className="col-span-7 pt-8 pb-32 border-l border-foreground/10 pl-16">
+                    <div className="flex flex-col space-y-20">
+                        {group.roles.map((role, i) => (
+                            <TimelineRole key={role.id} role={role} index={i} />
+                        ))}
+                    </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 };

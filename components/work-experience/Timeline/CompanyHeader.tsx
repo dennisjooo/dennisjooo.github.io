@@ -8,45 +8,21 @@ interface CompanyHeaderProps {
     logo: string;
 }
 
-/**
- * Mobile version of the company header - inline layout
- */
-export const CompanyHeaderMobile: React.FC<CompanyHeaderProps> = ({ companyName, logo }) => {
+export const CompanyHeader: React.FC<CompanyHeaderProps> = ({ companyName, logo }) => {
     return (
-        <div className="md:hidden flex items-center gap-4 mb-6">
-            <div className="relative w-10 h-10 overflow-hidden shrink-0">
-                <Image
-                    src={logo}
-                    alt={companyName}
-                    fill
-                    className="object-contain"
-                />
-            </div>
-            <h3 className="text-2xl font-playfair italic font-bold text-foreground leading-tight">
-                {companyName}
-            </h3>
-        </div>
-    );
-};
-
-/**
- * Desktop version of the company header - sticky sidebar layout
- */
-export const CompanyHeaderDesktop: React.FC<CompanyHeaderProps> = ({ companyName, logo }) => {
-    return (
-        <div className="hidden md:flex flex-col items-end gap-6">
+        <div className="flex flex-col md:items-end gap-4 md:gap-6 w-full transition-all duration-500">
             {/* Logo */}
-            <div className="relative w-16 h-16 opacity-80 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+            <div className="relative w-12 h-12 md:w-16 md:h-16 overflow-hidden shrink-0 opacity-100 grayscale-0 md:opacity-80 md:grayscale md:group-hover:grayscale-0 md:group-hover:opacity-100 transition-all duration-500">
                 <Image
                     src={logo}
                     alt={companyName}
                     fill
-                    className="object-contain"
+                    className="object-contain object-left md:object-right"
                 />
             </div>
 
             {/* Company Name */}
-            <h3 className="text-4xl lg:text-5xl font-playfair italic font-bold text-foreground leading-none text-right">
+            <h3 className="text-4xl md:text-6xl lg:text-7xl font-playfair italic font-bold text-foreground leading-[0.9] md:text-right tracking-tight">
                 {companyName}
             </h3>
         </div>
