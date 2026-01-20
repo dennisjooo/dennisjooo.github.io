@@ -12,11 +12,11 @@ interface MobileMenuProps {
 }
 
 // Style constants
-const ITEM_BASE_CLASSES = "block w-full rounded-2xl px-5 py-3 text-xs uppercase tracking-widest font-bold transition-colors duration-300 ease-in-out text-center";
+const ITEM_BASE_CLASSES = "block w-full rounded-2xl px-5 py-3 text-xs uppercase tracking-widest font-bold transition-colors duration-200 ease-in-out text-center";
 const HOVER_CLASSES = "hover:bg-black/5 dark:hover:bg-white/10";
 
 // Animation constants
-const ITEM_ANIMATION_BASE = "transition-[opacity,transform] duration-300 ease-out will-change-transform";
+const ITEM_ANIMATION_BASE = "transition-[opacity,transform] duration-200 ease-out will-change-transform";
 
 export const MobileMenu = ({
     navItems,
@@ -47,7 +47,7 @@ export const MobileMenu = ({
     return (
         <div
             className={`
-                md:hidden w-full transition-[grid-template-rows,padding] duration-300 ease-in-out grid
+                md:hidden w-full transition-[grid-template-rows,padding] duration-200 ease-in-out grid
                 ${isMenuOpen ? "grid-rows-[1fr] pb-2" : "grid-rows-[0fr] pb-0"}
             `}
             aria-hidden={!isMenuOpen}

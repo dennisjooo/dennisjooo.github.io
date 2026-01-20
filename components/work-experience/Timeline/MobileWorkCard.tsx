@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { CompanyGroup } from '@/lib/utils/workExperience';
 
@@ -12,53 +12,6 @@ interface MobileWorkCardProps {
     isExpanded: boolean;
     onToggle: () => void;
 }
-
-const roleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-            delay: i * 0.1,
-            duration: 0.4,
-            ease: [0.25, 0.1, 0.25, 1],
-        },
-    }),
-};
-
-const contentVariants = {
-    collapsed: {
-        height: 0,
-        opacity: 0,
-        transition: {
-            height: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] },
-            opacity: { duration: 0.2 },
-        },
-    },
-    expanded: {
-        height: 'auto',
-        opacity: 1,
-        transition: {
-            height: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] },
-            opacity: { duration: 0.3, delay: 0.1 },
-        },
-    },
-};
-
-const cardVariants = {
-    collapsed: {
-        scale: 1,
-        y: 0,
-    },
-    expanded: {
-        scale: 1.02,
-        y: -4,
-        transition: {
-            duration: 0.4,
-            ease: [0.25, 0.1, 0.25, 1],
-        },
-    },
-};
 
 export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
     group,
@@ -86,28 +39,26 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
         >
             {/* Gradient Glow - Only visible when expanded */}
             <div
-                className={`absolute -inset-1 bg-gradient-accent rounded-2xl blur-lg transition-opacity duration-500 ${
-                    isExpanded ? 'opacity-50' : 'opacity-0'
-                }`}
+                className={`absolute -inset-1 bg-gradient-accent rounded-2xl blur-lg transition-opacity duration-300 ${isExpanded ? 'opacity-50' : 'opacity-0'
+                    }`}
             />
 
             {/* Gradient Border - Only visible when expanded */}
             <div
-                className={`absolute -inset-px bg-gradient-accent rounded-2xl transition-opacity duration-500 ${
-                    isExpanded ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`absolute -inset-px bg-gradient-accent rounded-2xl transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0'
+                    }`}
             />
 
-            {/* Card Container */}
-            <motion.div
-                variants={cardVariants}
-                animate={isExpanded ? 'expanded' : 'collapsed'}
-                className={`relative bg-background rounded-2xl overflow-hidden transition-all duration-500 ${
-                    isExpanded
+            {/* Card Container - Using CSS transitions instead of Framer Motion for performance */}
+            <div
+                className={`relative bg-background rounded-2xl overflow-hidden transition-shadow duration-300 ${isExpanded
                         ? 'shadow-xl'
                         : 'border border-foreground/5 shadow-lg'
-                }`}
-                style={{ margin: isExpanded ? '1px' : '0' }}
+                    }`}
+                style={{
+                    margin: isExpanded ? '1px' : '0',
+                    willChange: 'auto',
+                }}
             >
                 {/* Noise Overlay */}
                 <div
@@ -129,16 +80,16 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
                             0{index + 1}.
                         </span>
 
-                        {/* Expand Indicator */}
-                        <motion.div
-                            animate={{ rotate: isExpanded ? 180 : 0 }}
-                            transition={{ duration: 0.3, ease: "easeInOut" }}
-                            className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                                isExpanded ? 'bg-foreground/10' : 'bg-foreground/5'
-                            }`}
+                        {/* Expand Indicator - Using CSS transform instead of Framer Motion */}
+                        <div
+                            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ease-out ${isExpanded ? 'bg-foreground/10' : 'bg-foreground/5'
+                                }`}
+                            style={{
+                                transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                            }}
                         >
                             <ChevronDownIcon className="w-5 h-5 text-muted-foreground" />
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* Logo - Featured Large */}
@@ -147,9 +98,11 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
                             src={group.logo}
                             alt={group.companyName}
                             fill
-                            className={`object-contain object-left transition-all duration-500 ${
-                                isExpanded ? 'grayscale-0 opacity-100' : 'grayscale opacity-70'
-                            }`}
+                            className={`object-contain object-left transition-opacity duration-300 ${isExpanded ? 'opacity-100' : 'opacity-70'
+                                }`}
+                            style={{
+                                filter: isExpanded ? 'grayscale(0)' : 'grayscale(1)',
+                            }}
                         />
                     </div>
 
@@ -185,67 +138,62 @@ export const MobileWorkCard: React.FC<MobileWorkCardProps> = ({
                     )}
                 </button>
 
-                {/* Expandable Content */}
-                <AnimatePresence initial={false}>
-                    {isExpanded && (
-                        <motion.div
-                            key="content"
-                            variants={contentVariants}
-                            initial="collapsed"
-                            animate="expanded"
-                            exit="collapsed"
-                            className="overflow-hidden"
+                {/* Expandable Content - Using CSS grid for smooth height animation */}
+                <div
+                    className="grid transition-[grid-template-rows] duration-200 ease-out"
+                    style={{
+                        gridTemplateRows: isExpanded ? '1fr' : '0fr',
+                    }}
+                >
+                    <div className="overflow-hidden">
+                        <div
+                            className={`relative z-10 px-6 pb-6 space-y-8 transition-opacity duration-200 ${isExpanded ? 'opacity-100' : 'opacity-0'
+                                }`}
                         >
-                            <div className="relative z-10 px-6 pb-6 space-y-8">
-                                {/* Divider */}
-                                <div className="w-full h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
+                            {/* Divider */}
+                            <div className="w-full h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
 
-                                {/* Roles */}
-                                {group.roles.map((role, roleIndex) => (
-                                    <motion.div
-                                        key={role.id}
-                                        custom={roleIndex}
-                                        variants={roleVariants}
-                                        initial="hidden"
-                                        animate="visible"
-                                        className="space-y-4"
-                                    >
-                                        {/* Role Header */}
-                                        <div className="space-y-1">
-                                            <h4 className="text-xl font-urbanist font-bold uppercase tracking-tight text-foreground">
-                                                {role.title}
-                                            </h4>
-                                            <span className="font-mono text-xs tracking-widest uppercase text-muted-foreground/60 bg-foreground/5 px-2 py-1 rounded inline-block">
-                                                {role.date}
-                                            </span>
+                            {/* Roles - No staggered animations for better performance */}
+                            {group.roles.map((role, roleIndex) => (
+                                <div
+                                    key={role.id}
+                                    className="space-y-4"
+                                >
+                                    {/* Role Header */}
+                                    <div className="space-y-1">
+                                        <h4 className="text-xl font-urbanist font-bold uppercase tracking-tight text-foreground">
+                                            {role.title}
+                                        </h4>
+                                        <span className="font-mono text-xs tracking-widest uppercase text-muted-foreground/60 bg-foreground/5 px-2 py-1 rounded inline-block">
+                                            {role.date}
+                                        </span>
+                                    </div>
+
+                                    {/* Responsibilities */}
+                                    <ul className="space-y-3">
+                                        {role.responsibilities.map((resp, respIndex) => (
+                                            <li
+                                                key={respIndex}
+                                                className="flex items-start text-sm font-light text-muted-foreground leading-relaxed"
+                                            >
+                                                <span className="mr-3 mt-2 w-1 h-1 rounded-full bg-foreground/40 shrink-0" />
+                                                <span>{resp}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/* Role Divider (not for last role) */}
+                                    {roleIndex < group.roles.length - 1 && (
+                                        <div className="pt-4">
+                                            <div className="w-12 h-px bg-foreground/10" />
                                         </div>
-
-                                        {/* Responsibilities */}
-                                        <ul className="space-y-3">
-                                            {role.responsibilities.map((resp, respIndex) => (
-                                                <li
-                                                    key={respIndex}
-                                                    className="flex items-start text-sm font-light text-muted-foreground leading-relaxed"
-                                                >
-                                                    <span className="mr-3 mt-2 w-1 h-1 rounded-full bg-foreground/40 shrink-0" />
-                                                    <span>{resp}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-
-                                        {/* Role Divider (not for last role) */}
-                                        {roleIndex < group.roles.length - 1 && (
-                                            <div className="pt-4">
-                                                <div className="w-12 h-px bg-foreground/10" />
-                                            </div>
-                                        )}
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </motion.div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </motion.div>
     );
 };

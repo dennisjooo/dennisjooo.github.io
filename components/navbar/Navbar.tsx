@@ -45,12 +45,12 @@ const Navbar = () => {
         bgClass,
         noiseClass,
         isMenuOpen ? "rounded-2xl" : "rounded-2xl md:rounded-full",
-        "transition-all duration-300 ease-in-out overflow-hidden"
+        "transition-all duration-200 ease-in-out overflow-hidden"
     ].join(" ");
 
     return (
         <nav
-            className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ease-in-out ${navWidth}`}
+            className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-200 ease-in-out ${navWidth}`}
         >
             <div
                 className={navbarContainerClasses}
