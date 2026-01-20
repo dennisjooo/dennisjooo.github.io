@@ -65,7 +65,17 @@ const createConfig = (phase) => {
             formats: ['image/avif', 'image/webp']
         },
         experimental: {
-            optimizePackageImports: ['framer-motion']
+            optimizePackageImports: [
+                'framer-motion',
+                'gsap',
+                '@gsap/react',
+                'lucide-react',
+                '@heroicons/react',
+                'react-icons',
+                '@radix-ui/react-dialog',
+                '@radix-ui/react-icons',
+                '@radix-ui/react-scroll-area',
+            ]
         },
         async redirects() {
             return sectionRedirects;

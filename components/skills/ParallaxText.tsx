@@ -8,7 +8,8 @@ import {
   useTransform,
   useMotionValue,
   useVelocity,
-  useAnimationFrame
+  useAnimationFrame,
+  useInView
 } from "framer-motion";
 import { wrap } from "@/lib/utils/math";
 
@@ -38,8 +39,12 @@ export function ParallaxText({ children, baseVelocity = 100 }: ParallaxTextProps
   const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
   const directionFactor = useRef<number>(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef);
   
   useAnimationFrame((t, delta) => {
+    if (!isInView) return;
+
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
     /**
@@ -58,7 +63,7 @@ export function ParallaxText({ children, baseVelocity = 100 }: ParallaxTextProps
   });
 
   return (
-    <div className="overflow-hidden m-0 whitespace-nowrap flex flex-nowrap w-full">
+    <div ref={containerRef} className="overflow-hidden m-0 whitespace-nowrap flex flex-nowrap w-full">
       <motion.div 
         className="flex whitespace-nowrap gap-8 md:gap-16 flex-nowrap will-change-transform" 
         style={{ x }}

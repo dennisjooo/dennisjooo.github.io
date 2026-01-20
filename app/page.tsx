@@ -1,17 +1,19 @@
 'use client';
 
-import Skills from '@/components/skills';
 import Hero from '@/components/hero';
 import About from '@/components/about';
-import WorkExperience from '@/components/work-experience';
-import Contacts from '@/components/contacts';
 import { BackToTop } from '@/components/shared';
-import FeaturedProjects from '@/components/featured-projects';
 import { projects } from '@/data/blogs';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import dynamic from 'next/dynamic';
+
+const WorkExperience = dynamic(() => import('@/components/work-experience'));
+const FeaturedProjects = dynamic(() => import('@/components/featured-projects'));
+const Skills = dynamic(() => import('@/components/skills'));
+const Contacts = dynamic(() => import('@/components/contacts'));
 
 export default function Home() {
     const heroRef = useRef<HTMLDivElement>(null);

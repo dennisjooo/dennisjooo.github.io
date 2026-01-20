@@ -84,7 +84,8 @@ export default function Iridescence({
   useEffect(() => {
     if (!ctnDom.current) return;
     const ctn = ctnDom.current;
-    const renderer = new Renderer();
+    const dpr = Math.min(window.devicePixelRatio, 1.5);
+    const renderer = new Renderer({ dpr });
     const gl = renderer.gl;
     gl.clearColor(1, 1, 1, 1);
 
@@ -92,7 +93,19 @@ export default function Iridescence({
 
     function resize() {
       const scale = 1;
+      // Cap DPR to 1.5 for performance on high-res screens
+      const dpr = Math.min(window.devicePixelRatio, 1.5);
+      
       renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
+      
+      // Manually set canvas width/height to account for capped DPR if OGL doesn't handle it with setSize
+      // Checking OGL docs/source, setSize usually sets canvas width/height based on dpr if provided in constructor,
+      // or we can set it manually. 
+      // The current implementation uses gl.canvas.width which is set by setSize.
+      // Let's set the dpr on the renderer if possible, or manually scale.
+      renderer.dpr = dpr; 
+      renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
+
       if (program) {
         program.uniforms.uResolution.value = new Color(
           gl.canvas.width,

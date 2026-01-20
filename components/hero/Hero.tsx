@@ -5,8 +5,7 @@ import { HERO_CONTENT } from '@/data/heroContent';
 import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
 import { useScrollEffect } from '@/lib/hooks/useScrollEffect';
 import { useTypingEffect } from '@/lib/hooks/useTypingEffect';
-import { useInView } from 'framer-motion';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { HeroContent } from './HeroContent';
 
@@ -18,8 +17,22 @@ const Iridescence = dynamic(() => import('@/components/iridescence').then(mod =>
 const Hero: React.FC = () => {
     const { ref } = useAnimateOnScroll();
     const description = useTypingEffect(HERO_CONTENT.descriptions);
-    const isInView = useInView(ref, { once: true });
+    // Force true for LCP optimization - render immediately
+    const isInView = true; 
     const { theme, systemTheme } = useTheme();
+    
+    // Delay WebGL loading to prioritize LCP text
+    const [showIridescence, setShowIridescence] = useState(false);
+    useEffect(() => {
+        // Use requestIdleCallback if available, otherwise setTimeout
+        if ('requestIdleCallback' in window) {
+            const id = window.requestIdleCallback(() => setShowIridescence(true), { timeout: 500 });
+            return () => window.cancelIdleCallback(id);
+        } else {
+            const timer = setTimeout(() => setShowIridescence(true), 200);
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
     useScrollEffect(ref);
 
@@ -39,12 +52,14 @@ const Hero: React.FC = () => {
             className="h-screen w-full relative overflow-hidden bg-gradient-primary bg-noise"
         >
             <div className="absolute inset-0 z-0">
-                <Iridescence
-                    color={iridescenceColor}
-                    mouseReact={false}
-                    amplitude={0.5}
-                    speed={0.5}
-                />
+                {showIridescence && (
+                    <Iridescence
+                        color={iridescenceColor}
+                        mouseReact={false}
+                        amplitude={0.5}
+                        speed={0.5}
+                    />
+                )}
             </div>
             
             <HeroContent description={description} isInView={isInView} />
