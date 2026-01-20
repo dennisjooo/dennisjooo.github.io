@@ -34,7 +34,7 @@ const BackToTop = () => {
             {isVisible && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 p-3 text-white rounded-full shadow-lg transition-all duration-300 z-50 border-none bg-gradient-accent"
+                    className="fixed bottom-8 right-8 p-3 text-accent-foreground rounded-full shadow-lg transition-all duration-300 z-50 border-none bg-accent"
                     style={{
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px var(--accent-shadow)',
                     }}
