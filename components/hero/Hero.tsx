@@ -2,10 +2,9 @@
 
 import dynamic from 'next/dynamic';
 import { HERO_CONTENT } from '@/data/heroContent';
-import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
 import { useScrollEffect } from '@/lib/hooks/useScrollEffect';
 import { useTypingEffect } from '@/lib/hooks/useTypingEffect';
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
 import { HeroContent } from './HeroContent';
 
@@ -15,23 +14,25 @@ const Iridescence = dynamic(() => import('@/components/iridescence').then(mod =>
 });
 
 const Hero: React.FC = () => {
-    const { ref } = useAnimateOnScroll();
+    const ref = useRef<HTMLElement>(null);
     const description = useTypingEffect(HERO_CONTENT.descriptions);
     // Force true for LCP optimization - render immediately
     const isInView = true; 
     const { theme, systemTheme } = useTheme();
     
-    // Delay WebGL loading to prioritize LCP text
+    // Delay WebGL loading significantly to prioritize LCP text
+    // WebGL is decorative and should not block the main content
     const [showIridescence, setShowIridescence] = useState(false);
     useEffect(() => {
-        // Use requestIdleCallback if available, otherwise setTimeout
-        if ('requestIdleCallback' in window) {
-            const id = window.requestIdleCallback(() => setShowIridescence(true), { timeout: 500 });
-            return () => window.cancelIdleCallback(id);
-        } else {
-            const timer = setTimeout(() => setShowIridescence(true), 200);
-            return () => clearTimeout(timer);
-        }
+        // Wait for LCP to complete before loading heavy WebGL
+        const timer = setTimeout(() => {
+            if ('requestIdleCallback' in window) {
+                window.requestIdleCallback(() => setShowIridescence(true), { timeout: 2000 });
+            } else {
+                setShowIridescence(true);
+            }
+        }, 1000); // 1 second delay to ensure LCP completes first
+        return () => clearTimeout(timer);
     }, []);
 
     useScrollEffect(ref);

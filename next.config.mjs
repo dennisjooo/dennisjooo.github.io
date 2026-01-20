@@ -75,6 +75,12 @@ const createConfig = (phase) => {
                 '@radix-ui/react-dialog',
                 '@radix-ui/react-icons',
                 '@radix-ui/react-scroll-area',
+                '@radix-ui/react-visually-hidden',
+                'react-syntax-highlighter',
+                'simple-icons',
+                'cmdk',
+                'ogl',
+                'lenis',
             ]
         },
         async redirects() {

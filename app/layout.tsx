@@ -1,19 +1,27 @@
 import Navbar from "@/components/navbar/Navbar";
-import { CommandPalette } from "@/components/command-palette/CommandPalette";
-import { EasterEggs } from "@/components/fun/EasterEggs";
 import Footer from "@/components/shared/Footer";
 import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
 import { Urbanist, Roboto_Mono, Playfair_Display } from "next/font/google";
 import type { ReactNode } from "react";
+import dynamic from "next/dynamic";
 import "react-photo-view/dist/react-photo-view.css";
 import "./globals.css";
 import { Providers } from "./providers";
+
+// Lazy load non-critical components for better initial load performance
+const CommandPalette = dynamic(
+    () => import("@/components/command-palette/CommandPalette").then(m => ({ default: m.CommandPalette }))
+);
+const EasterEggs = dynamic(
+    () => import("@/components/fun/EasterEggs").then(m => ({ default: m.EasterEggs }))
+);
 
 const urbanist = Urbanist({
     subsets: ["latin"],
     display: "swap",
     variable: "--font-urbanist",
+    preload: true,
 });
 
 const robotoMono = Roboto_Mono({
@@ -22,11 +30,13 @@ const robotoMono = Roboto_Mono({
     variable: "--font-roboto-mono",
 });
 
+// Playfair is used for LCP element - prioritize loading
 const playfair = Playfair_Display({
     subsets: ["latin"],
     display: "swap",
     variable: "--font-playfair",
     style: ["normal", "italic"],
+    preload: true,
 });
 
 export const metadata: Metadata = {
